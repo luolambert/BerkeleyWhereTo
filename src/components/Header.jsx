@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 function Header() {
   return (
@@ -12,8 +12,8 @@ function Header() {
     >
       {/* Glass Pill Header */}
       <div className="glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20">
-        <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-500/30">
-          <MapPin size={20} strokeWidth={2.5} />
+        <div className="w-10 h-10 flex items-center justify-center">
+          <img src={logo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm" />
         </div>
         <div>
             <h1 className="text-xl font-bold text-neutral-800 tracking-tight leading-tight">

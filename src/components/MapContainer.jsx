@@ -85,7 +85,15 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
   }, []);
 
   React.useEffect(() => {
+    let isCancelled = false;
+
     if (isLoaded && routePoints && routePoints.start && routePoints.end) {
+      // Clear previous state to avoid ghosting
+      setDirections(null);
+      setColoredSegments([]);
+      setError(null);
+      if (onElevationLoaded) onElevationLoaded(null);
+
       const directionsService = new window.google.maps.DirectionsService();
       const elevationService = new window.google.maps.ElevationService();
 
@@ -96,6 +104,8 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
           travelMode: window.google.maps.TravelMode.WALKING,
         },
         (result, status) => {
+          if (isCancelled) return;
+
           if (status === window.google.maps.DirectionsStatus.OK) {
             setDirections(result);
             setError(null);
@@ -127,6 +137,8 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
                 path: path,
                 samples: 256
             }, (elevationResults, elevationStatus) => {
+                if (isCancelled) return;
+
                 if (elevationStatus === 'OK') {
                     // Process elevation data
                     let cumulativeDistance = 0;
@@ -217,6 +229,10 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
         setColoredSegments([]);
         if (onElevationLoaded) onElevationLoaded(null);
     }
+
+    return () => {
+      isCancelled = true;
+    };
   }, [isLoaded, routePoints, onElevationLoaded]);
 
   React.useEffect(() => {

@@ -8,6 +8,11 @@ import TravelTimeDisplay from './components/TravelTimeDisplay';
 import ElevationChart from './components/ElevationChart';
 import BuildingSelectionPanel from './components/BuildingSelectionPanel';
 import { buildings } from './data/buildings';
+import { buildings as advancedBuildings } from './data/advanced_building';
+
+// Combine buildings for lookup to support both Freshman and Advanced modes
+// Some buildings might have different names in different lists (e.g. LeConte vs Physics North)
+const ALL_BUILDINGS = [...buildings, ...advancedBuildings];
 
 const LIBRARIES = ['places', 'geometry'];
 
@@ -33,8 +38,10 @@ function App() {
     setElevationData(null); // Reset elevation data
     
     // Find building objects
-    const startBuilding = buildings.find(b => b.name === startLocation);
-    const endBuilding = buildings.find(b => b.name === endLocation);
+    // Find building objects
+    // Search in the combined list to ensure we find the building regardless of which mode it was selected from
+    const startBuilding = ALL_BUILDINGS.find(b => b.name === startLocation);
+    const endBuilding = ALL_BUILDINGS.find(b => b.name === endLocation);
 
     if (!startBuilding || !endBuilding) {
       alert("Please select valid buildings from the list.");

@@ -10,10 +10,16 @@ import {
   Palette,
   Briefcase,
   X,
+  Home,
+  Dumbbell,
+  Microscope,
+  Flag,
+  Scale,
 } from "lucide-react";
-import { buildings } from "../data/buildings";
+import { buildings as freshmanBuildings } from "../data/buildings";
+import { buildings as advancedBuildings } from "../data/advanced_building";
 
-const CATEGORIES = [
+const FRESHMAN_CATEGORIES = [
   { id: "all", label: "All", icon: Building2 },
   { id: "popular", label: "Popular", icon: Users },
   { id: "STEM", label: "STEM", icon: Beaker },
@@ -24,10 +30,32 @@ const CATEGORIES = [
   { id: "Campus Life", label: "Campus Life", icon: Users },
 ];
 
+const ADVANCED_CATEGORIES = [
+  { id: "all", label: "All", icon: Building2 },
+  { id: "popular", label: "Popular", icon: Users },
+  { id: "STEM", label: "STEM", icon: Beaker },
+  { id: "Humanities", label: "Humanities", icon: GraduationCap },
+  { id: "Business", label: "Business", icon: Briefcase },
+  { id: "Arts & Design", label: "Arts", icon: Palette },
+  { id: "Libraries", label: "Libraries", icon: BookOpen },
+  { id: "Campus Life", label: "Campus Life", icon: Users },
+  { id: "Housing", label: "Housing", icon: Home },
+  { id: "Athletics", label: "Athletics", icon: Dumbbell },
+  { id: "Research", label: "Research", icon: Microscope },
+  { id: "Professional", label: "Professional", icon: Scale },
+  { id: "Admin", label: "Admin", icon: Building2 },
+  { id: "Landmark", label: "Landmark", icon: Flag },
+];
+
 const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
+  const [mode, setMode] = useState("freshman"); // 'freshman' | 'advanced'
   const inputRef = useRef(null);
+
+  const categories = mode === "freshman" ? FRESHMAN_CATEGORIES : ADVANCED_CATEGORIES;
+
+
 
   // Focus search input when mounted
   useEffect(() => {
@@ -37,7 +65,9 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
   }, []);
 
   // Filter buildings
-  const filteredBuildings = buildings.filter((b) => {
+  const currentBuildings = mode === 'freshman' ? freshmanBuildings : advancedBuildings;
+
+  const filteredBuildings = currentBuildings.filter((b) => {
     const matchesSearch = b.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -76,6 +106,37 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
             className="w-full bg-neutral-100 hover:bg-neutral-50 focus:bg-white border-2 border-transparent focus:border-primary-500 rounded-2xl pl-12 pr-4 py-3 text-lg font-medium transition-all outline-none"
           />
         </div>
+        
+        {/* Mode Toggle */}
+        <div className="bg-neutral-100 p-1 rounded-xl flex items-center gap-1 shrink-0">
+          <button
+            onClick={() => {
+              setMode("freshman");
+              setActiveCategory("all");
+            }}
+            className={`px-3 py-2 rounded-lg text-sm font-bold transition-all ${
+              mode === "freshman"
+                ? "bg-white text-primary-600 shadow-sm"
+                : "text-neutral-500 hover:text-neutral-700"
+            }`}
+          >
+            Freshman
+          </button>
+          <button
+            onClick={() => {
+              setMode("advanced");
+              setActiveCategory("all");
+            }}
+            className={`px-3 py-2 rounded-lg text-sm font-bold transition-all ${
+              mode === "advanced"
+                ? "bg-white text-primary-600 shadow-sm"
+                : "text-neutral-500 hover:text-neutral-700"
+            }`}
+          >
+            Advanced
+          </button>
+        </div>
+
         <button
           onClick={onClose}
           className="p-3 rounded-full hover:bg-neutral-100 text-neutral-500 transition-colors"
@@ -87,7 +148,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
       {/* Categories */}
       <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-x-auto no-scrollbar">
         <div className="flex gap-2">
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
@@ -143,6 +204,20 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
                 </div>
                 <div className="text-xs text-neutral-500 mt-1 font-medium">
                   {b.category}
+                </div>
+                
+                {/* Student Type Tags */}
+                <div className="absolute bottom-2 right-2 flex gap-1">
+                  {b.undergrad && (
+                    <span className="bg-blue-50 text-blue-600 border border-blue-100 text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                      Undergrad
+                    </span>
+                  )}
+                  {b.grad && (
+                    <span className="bg-purple-50 text-purple-600 border border-purple-100 text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                      Grad
+                    </span>
+                  )}
                 </div>
               </button>
             ))}
