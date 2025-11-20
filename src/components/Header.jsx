@@ -17,7 +17,7 @@ function Header() {
         </div>
         <div>
             <h1 className="text-xl font-bold text-neutral-800 tracking-tight leading-tight">
-            Berkeley <span className="text-primary-600">Where-To-Go</span>
+            Berkeley <span className="text-primary-600">Where To Go</span>
             </h1>
             <p className="text-xs text-neutral-500 font-medium">Campus Navigation</p>
         </div>
