@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.png';
+import logoGo from '../assets/WhereToGo_Logo.png';
+import logoKnow from '../assets/WhereToKnow_Logo.png';
 
 function Header({ onNavigate, currentView, hasResults, centered = false }) {
   const [isHovering, setIsHovering] = React.useState(false);
@@ -45,6 +46,10 @@ function Header({ onNavigate, currentView, hasResults, centered = false }) {
   const dropdownTitle = isNavigation ? 'Where To Know' : 'Where To Go';
   const dropdownSubtitle = isNavigation ? 'Explore Buildings' : 'Campus Navigation';
   const dropdownTargetView = isNavigation ? 'info' : 'navigation';
+
+  // Logos
+  const mainLogo = isNavigation ? logoGo : logoKnow;
+  const dropdownLogo = isNavigation ? logoKnow : logoGo;
 
   // Helper to determine if subtitle should be gray/arrowless (Explore Buildings)
   const isExploreSubtitle = (subtitle) => subtitle === 'Explore Buildings';
@@ -97,7 +102,7 @@ function Header({ onNavigate, currentView, hasResults, centered = false }) {
                 onMouseEnter={openMenu}
                 onMouseLeave={cancelOpen}
             >
-                <img src={logo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm" />
+                <img src={mainLogo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm" />
             </motion.div>
 
             <div className={`min-w-0 ${centered ? 'text-left' : ''}`}>
@@ -156,9 +161,9 @@ function Header({ onNavigate, currentView, hasResults, centered = false }) {
                 >
                     <motion.div 
                         layoutId={`${dropdownLayoutId}-logo`}
-                        className="w-10 h-10 flex items-center justify-center shrink-0 opacity-50"
+                        className="w-10 h-10 flex items-center justify-center shrink-0"
                     >
-                        <img src={logo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm grayscale" />
+                        <img src={dropdownLogo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm" />
                     </motion.div>
                     <div className="min-w-0">
                         <motion.h1 
