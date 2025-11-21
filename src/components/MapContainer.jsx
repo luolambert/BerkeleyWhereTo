@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Polyline, DirectionsRenderer, OverlayView } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -75,12 +75,23 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
   const [error, setError] = useState(null);
   const [placements, setPlacements] = useState({ start: 'top', end: 'top' });
   const [coloredSegments, setColoredSegments] = useState([]);
+  const directionsRendererRef = useRef(null);
+  const polylinesRef = useRef([]);
 
   const onLoad = useCallback(function callback(map) {
     setMap(map);
   }, []);
 
   const onUnmount = useCallback(function callback(map) {
+    if (directionsRendererRef.current) {
+      directionsRendererRef.current.setMap(null);
+      directionsRendererRef.current = null;
+    }
+    // Clean up polylines
+    if (polylinesRef.current) {
+        polylinesRef.current.forEach(polyline => polyline.setMap(null));
+        polylinesRef.current = [];
+    }
     setMap(null);
   }, []);
 
@@ -89,8 +100,6 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
 
     if (isLoaded && routePoints && routePoints.start && routePoints.end) {
       // Clear previous state to avoid ghosting
-      setDirections(null);
-      setColoredSegments([]);
       setError(null);
       if (onElevationLoaded) onElevationLoaded(null);
 
@@ -107,9 +116,6 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
           if (isCancelled) return;
 
           if (status === window.google.maps.DirectionsStatus.OK) {
-            setDirections(result);
-            setError(null);
-
             // Calculate placements
             const route = result.routes[0];
             const path = route.overview_path;
@@ -139,6 +145,10 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
             }, (elevationResults, elevationStatus) => {
                 if (isCancelled) return;
 
+                // Prepare new state
+                let newColoredSegments = [];
+                let newElevationData = null;
+
                 if (elevationStatus === 'OK') {
                     // Process elevation data
                     let cumulativeDistance = 0;
@@ -156,10 +166,7 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
                         };
                     });
 
-                    // Pass data up to parent for the chart
-                    if (onElevationLoaded) {
-                        onElevationLoaded(processedData);
-                    }
+                    newElevationData = processedData;
 
                     // Create Colored Segments with Merging
                     const segments = [];
@@ -209,11 +216,18 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
                         });
                     }
                     
-                    setColoredSegments(segments);
+                    newColoredSegments = segments;
 
                 } else {
                     console.warn("Elevation request failed:", elevationStatus);
                 }
+
+                // Update all state at once to prevent flashing/ghosting
+                if (onElevationLoaded) {
+                    onElevationLoaded(newElevationData);
+                }
+                setColoredSegments(newColoredSegments);
+                setDirections(result);
             });
 
           } else {
@@ -221,6 +235,8 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
             setDirections(null);
             setError(`Directions failed: ${status}`);
           }
+
+
         }
       );
     } else {
@@ -236,10 +252,98 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
   }, [isLoaded, routePoints, onElevationLoaded]);
 
   React.useEffect(() => {
-    if (map && directions && directions.routes[0].bounds) {
-      map.fitBounds(directions.routes[0].bounds);
+    if (map && directions && directions.routes[0].overview_path) {
+      // Create bounds from the path to ensure it covers the whole route
+      const bounds = new window.google.maps.LatLngBounds();
+      directions.routes[0].overview_path.forEach(point => bounds.extend(point));
+      
+      // Determine padding based on screen size to avoid UI overlap
+      const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+      const isTablet = window.innerWidth >= 640;   // sm breakpoint
+
+      let padding = { top: 50, right: 50, bottom: 50, left: 50 };
+
+      if (isDesktop) {
+          // Left panel is ~450px, add more buffer for long names
+          padding.left = 600; 
+      } else if (isTablet) {
+          // Left panel is ~400px
+          padding.left = 430;
+      } else {
+          // Mobile: Panel is at the top. 
+          // We need significant top padding, but not too much to hide the map.
+          // Let's give it enough space for the route to be centered in the bottom half.
+          padding.top = 200; 
+      }
+
+      // Fit bounds with padding
+      map.fitBounds(bounds, padding); 
     }
   }, [map, directions]);
+
+  // Imperative DirectionsRenderer handling
+  React.useEffect(() => {
+    if (!map) return;
+
+    // Initialize renderer if it doesn't exist
+    if (!directionsRendererRef.current) {
+      directionsRendererRef.current = new window.google.maps.DirectionsRenderer({
+        suppressMarkers: true,
+        preserveViewport: true,
+        map: map,
+        polylineOptions: {
+            strokeColor: "#3B82F6",
+            strokeWeight: 8,
+            strokeOpacity: 0.8
+        }
+      });
+    }
+
+    const renderer = directionsRendererRef.current;
+
+    if (directions) {
+        renderer.setDirections(directions);
+        
+        // Update options based on coloredSegments
+        // If we have colored segments, we want to make the main line transparent
+        const opacity = coloredSegments.length > 0 ? 0 : 0.8;
+        
+        renderer.setOptions({
+            polylineOptions: {
+                strokeColor: "#3B82F6",
+                strokeWeight: 8,
+                strokeOpacity: opacity
+            }
+        });
+    } else {
+        // Clear the route
+        renderer.setDirections({ routes: [] });
+    }
+
+    // Imperative Polyline handling
+    // 1. Clear existing polylines
+    if (polylinesRef.current) {
+        polylinesRef.current.forEach(polyline => polyline.setMap(null));
+        polylinesRef.current = [];
+    }
+
+    // 2. Draw new polylines
+    if (coloredSegments.length > 0) {
+        const newPolylines = coloredSegments.map(segment => {
+            const polyline = new window.google.maps.Polyline({
+                path: segment.path,
+                strokeColor: segment.color,
+                strokeWeight: 8,
+                strokeOpacity: 1.0,
+                zIndex: 10,
+                map: map
+            });
+            return polyline;
+        });
+        polylinesRef.current = newPolylines;
+    }
+
+  }, [map, directions, coloredSegments]);
 
   if (!isLoaded) {
     return (
@@ -260,38 +364,12 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
       onUnmount={onUnmount}
       options={options}
     >
+
+
+
+
       {directions && (
         <>
-            {/* Colored Route Segments */}
-            {coloredSegments.length > 0 ? (
-                coloredSegments.map((segment, index) => (
-                    <Polyline
-                        key={index}
-                        path={segment.path}
-                        options={{
-                            strokeColor: segment.color,
-                            strokeWeight: 8,
-                            strokeOpacity: 1.0,
-                            zIndex: 10, // Ensure it sits on top
-                        }}
-                    />
-                ))
-            ) : (
-                // Fallback if elevation fails
-                <DirectionsRenderer
-                    directions={directions}
-                    options={{
-                        suppressMarkers: true,
-                        polylineOptions: {
-                            strokeColor: "#3B82F6",
-                            strokeWeight: 8,
-                            strokeOpacity: 0.8,
-                        },
-                        preserveViewport: false 
-                    }}
-                />
-            )}
-
             {/* Custom Start Marker */}
             <CustomMarker 
                 position={directions.routes[0].legs[0].start_location}
