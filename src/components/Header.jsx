@@ -60,13 +60,33 @@ function Header({ onNavigate, currentView, hasResults, centered = false }) {
         className={`relative ${centered ? 'inline-flex items-center' : ''}`}
         onMouseLeave={closeMenu}
       >
-        {/* Main Bar */}
+        {/* 
+            Background Layer - The "Expanding" Effect 
+            Separated from content to allow it to scale independently
+        */}
         <motion.div 
-            layoutId={mainLayoutId}
+            layoutId={`${mainLayoutId}-bg`}
+            className={
+                centered 
+                ? "fixed inset-0 w-[150vmax] h-[150vmax] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white/0 z-0 pointer-events-none" // Know View: Massive, transparent, centered
+                : "absolute inset-0 glass rounded-2xl shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20 z-0" // Go View: Standard Panel
+            }
+            transition={{ 
+                duration: 0.8, 
+                ease: [0.16, 1, 0.3, 1] // Smooth "Apple-like" ease
+            }}
+        />
+
+        {/* 
+            Content Layer - Smooth Translation
+            Sits on top of the background
+        */}
+        <motion.div 
+            layoutId={`${mainLayoutId}-content`}
             className={`relative z-20 transition-all duration-300
                 ${centered 
                     ? 'flex items-center gap-6 justify-center' // Know View: Row, Centered Content
-                    : 'glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20' // Go View: Panel
+                    : 'px-6 py-4 flex items-center gap-4' // Go View: Padding inside the glass panel
                 }
             `}
         >
@@ -111,7 +131,7 @@ function Header({ onNavigate, currentView, hasResults, centered = false }) {
                         : { opacity: 0, x: 10, scale: 0.95 }
                     }
                     animate={!centered
-                        ? (hasResults ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 })
+                        ? (hasResults ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 })
                         : { opacity: 1, x: 0, scale: 1 }
                     }
                     exit={!centered
