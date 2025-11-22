@@ -13,7 +13,7 @@
 
 帮助新生和全体学生轻松规划课间路线，准时到达教室！
 
-### [🚀 在线使用](https://berkeley-where-to-go.vercel.app)
+### [🚀 在线使用](https://berkeleywheretogo.vercel.app)
 
 </div>
 
@@ -21,41 +21,26 @@
 
 ## 📸 功能预览
 
-<table>
-  <tr>
-    <td width="60%">
-      <img src="src/assets/FrontPage.jpg" alt="Front Page" width="100%" />
-    </td>
-    <td width="40%">
-      <h3>👋 欢迎界面</h3>
-      <p>极简主义设计，核心功能一触即达。</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="40%">
-      <h3>🏢 智能建筑选择</h3>
-      <p><b>双模式选择器：</b></p>
-      <ul>
-        <li><b>新生模式</b>：精选 38 个核心建筑，快速上手</li>
-        <li><b>高级模式</b>：100+ 完整数据库，支持分类筛选</li>
-      </ul>
-      <p>支持实时搜索与键盘快捷键操作。</p>
-    </td>
-    <td width="60%">
-      <img src="src/assets/BuildingSelectPanel_Advanced.jpg" alt="Building Selection" width="100%" />
-    </td>
-  </tr>
-  <tr>
-    <td width="60%">
-      <img src="src/assets/RouteDisplay.jpg" alt="Route Display" width="100%" />
-    </td>
-    <td width="40%">
-      <h3>🗺️ 沉浸式导航</h3>
-      <p><b>坡度可视化：</b> 路线颜色随坡度变化，轻松识别陡峭路段。</p>
-      <p><b>数据面板：</b> 实时显示步行/滑板车耗时，底部海拔剖面图直观展示地形起伏。</p>
-    </td>
-  </tr>
-</table>
+### 👋 欢迎界面
+
+![FrontPage](src/assets/FrontPage.jpg)
+
+### 👶 新生模式选择
+
+![BuildingSelectPanel_Freshman](src/assets/BuildingSelectPanel_Freshman.jpg)
+
+### 🎓 高级模式选择
+
+![BuildingSelectPanel_Advanced](src/assets/BuildingSelectPanel_Advanced.jpg)
+
+### 🗺️ 静态路线展示
+
+![staticRouteDisplay](src/assets/staticRouteDisplay.jpg)
+
+### 🚶 动态导航演示
+
+![dynamicRouteDisplay1](src/assets/dynamicRouteDisplay1.gif)
+![dynamicRouteDisplay2](src/assets/dynamicRouteDisplay2.gif)
 
 ---
 
@@ -130,29 +115,6 @@
 - **响应式布局** - 完美适配桌面、平板和手机
 
 - **浮动面板设计** - 所有 UI 元素带阴影效果，层次分明
-
-### 🎨 UI 设计系统
-
-我们精心打造了一套现代、舒适的视觉系统，确保最佳的用户体验。
-
-#### 配色方案 (Color Palette)
-
-| 颜色          | Hex       | 用途                       | 预览                                                            |
-| :------------ | :-------- | :------------------------- | :-------------------------------------------------------------- |
-| **Primary**   | `#4f46e5` | 主品牌色、按钮、强调       | ![#4f46e5](https://via.placeholder.com/15/4f46e5/000000?text=+) |
-| **Secondary** | `#14b8a6` | 辅助色、渐变搭配           | ![#14b8a6](https://via.placeholder.com/15/14b8a6/000000?text=+) |
-| **Surface**   | `#ffffff` | 背景、卡片 (Glassmorphism) | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) |
-| **Text**      | `#1e293b` | 主要文字内容               | ![#1e293b](https://via.placeholder.com/15/1e293b/000000?text=+) |
-
-#### 坡度可视化图例
-
-地图路线颜色根据实时坡度数据动态渲染：
-
-| 坡度等级    | 颜色        | 含义     | 适合人群  |
-| :---------- | :---------- | :------- | :-------- |
-| **< 3%**    | � **浅蓝**  | 平坦舒适 | 所有人群  |
-| **3% - 8%** | 🔵 **中蓝** | 轻微起伏 | 步行/骑行 |
-| **> 8%**    | 🔵 **深蓝** | 陡峭挑战 | 建议步行  |
 
 ---
 
@@ -263,27 +225,27 @@ berkeley-where-to-go/
 
 ### 核心框架
 
-- ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) **React 19.2.0** - 最新的 React 框架，支持并发特性
-- ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite 7.2.2** - 极速开发构建工具
-- ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) **TailwindCSS 4.1.17** - 现代化原子 CSS 框架
+- ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) - 最新的 React 框架，支持并发特性
+- ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=flat-square&logo=vite&logoColor=white) - 极速开发构建工具
+- ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) - 现代化原子 CSS 框架
 
 ### UI & 动画
 
-- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23.24-0055FF?style=flat-square&logo=framer&logoColor=white) **Framer Motion 12.23.24** - 高性能动画库
-- ![Lucide Icons](https://img.shields.io/badge/Lucide_React-0.554.0-F56565?style=flat-square&logo=lucide&logoColor=white) **Lucide React 0.554.0** - 精美图标库
-- ![Recharts](https://img.shields.io/badge/Recharts-3.4.1-22B5BF?style=flat-square&logo=react&logoColor=white) **Recharts 3.4.1** - React 数据可视化图表
+- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23.24-0055FF?style=flat-square&logo=framer&logoColor=white) - 高性能动画库
+- ![Lucide Icons](https://img.shields.io/badge/Lucide_React-0.554.0-F56565?style=flat-square&logo=lucide&logoColor=white) - 精美图标库
+- ![Recharts](https://img.shields.io/badge/Recharts-3.4.1-22B5BF?style=flat-square&logo=react&logoColor=white) - React 数据可视化图表
 
 ### 地图服务
 
-- ![Google Maps](https://img.shields.io/badge/Google_Maps_API-Platform-4285F4?style=flat-square&logo=google-maps&logoColor=white) **@react-google-maps/api 2.20.7** - Google Maps React 集成
-- ![Google Maps JS](https://img.shields.io/badge/Google_Maps_JS-API-4285F4?style=flat-square&logo=google-maps&logoColor=white) **Google Maps JavaScript API** - 地图显示
-- ![Google Directions](https://img.shields.io/badge/Directions_API-Route-34A853?style=flat-square&logo=google-maps&logoColor=white) **Google Directions API** - 路线规划
-- ![Google Elevation](https://img.shields.io/badge/Elevation_API-Terrain-EA4335?style=flat-square&logo=google-maps&logoColor=white) **Google Elevation API** - 海拔数据获取
+- ![Google Maps](https://img.shields.io/badge/Google_Maps_API-Platform-4285F4?style=flat-square&logo=google-maps&logoColor=white) - Google Maps React 集成
+- ![Google Maps JS](https://img.shields.io/badge/Google_Maps_JS-API-4285F4?style=flat-square&logo=google-maps&logoColor=white) - 地图显示
+- ![Google Directions](https://img.shields.io/badge/Directions_API-Route-34A853?style=flat-square&logo=google-maps&logoColor=white) - 路线规划
+- ![Google Elevation](https://img.shields.io/badge/Elevation_API-Terrain-EA4335?style=flat-square&logo=google-maps&logoColor=white) - 海拔数据获取
 
 ### 开发工具
 
-- ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) **ESLint 9.39.1** - 代码质量保证
-- ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) **PostCSS + Autoprefixer** - CSS 处理和兼容性
+- ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) - 代码质量保证
+- ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) - CSS 处理和兼容性
 
 ---
 

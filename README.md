@@ -13,7 +13,7 @@
 
 Helping freshmen and all students easily plan their inter-class routes and arrive on time!
 
-### [🚀 Try App Online](https://berkeley-where-to-go.vercel.app)
+### [🚀 Try App Online](https://berkeleywheretogo.vercel.app)
 
 </div>
 
@@ -21,41 +21,26 @@ Helping freshmen and all students easily plan their inter-class routes and arriv
 
 ## 📸 Feature Preview
 
-<table>
-  <tr>
-    <td width="60%">
-      <img src="src/assets/FrontPage.jpg" alt="Front Page" width="100%" />
-    </td>
-    <td width="40%">
-      <h3>👋 Welcome Interface</h3>
-      <p>Minimalist design with core functions at your fingertips.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="40%">
-      <h3>🏢 Smart Building Selection</h3>
-      <p><b>Dual Mode Selector:</b></p>
-      <ul>
-        <li><b>Freshman Mode</b>: Curated list of 38 essential buildings for quick access.</li>
-        <li><b>Advanced Mode</b>: Complete database of 100+ locations with category filtering.</li>
-      </ul>
-      <p>Supports real-time search and keyboard shortcuts.</p>
-    </td>
-    <td width="60%">
-      <img src="src/assets/BuildingSelectPanel_Advanced.jpg" alt="Building Selection" width="100%" />
-    </td>
-  </tr>
-  <tr>
-    <td width="60%">
-      <img src="src/assets/RouteDisplay.jpg" alt="Route Display" width="100%" />
-    </td>
-    <td width="40%">
-      <h3>🗺️ Immersive Navigation</h3>
-      <p><b>Slope Visualization:</b> Route colors change dynamically based on steepness.</p>
-      <p><b>Data Panel:</b> Real-time walking/scooting time estimates, with an elevation profile chart at the bottom.</p>
-    </td>
-  </tr>
-</table>
+### 👋 Welcome Interface
+
+![FrontPage](src/assets/FrontPage.jpg)
+
+### 👶 Freshman Mode Selection
+
+![BuildingSelectPanel_Freshman](src/assets/BuildingSelectPanel_Freshman.jpg)
+
+### 🎓 Advanced Mode Selection
+
+![BuildingSelectPanel_Advanced](src/assets/BuildingSelectPanel_Advanced.jpg)
+
+### 🗺️ Static Route Display
+
+![staticRouteDisplay](src/assets/staticRouteDisplay.jpg)
+
+### 🚶 Dynamic Navigation Demo
+
+![dynamicRouteDisplay1](src/assets/dynamicRouteDisplay1.gif)
+![dynamicRouteDisplay2](src/assets/dynamicRouteDisplay2.gif)
 
 ---
 
@@ -130,29 +115,6 @@ Covers **Over 100 campus buildings** (Advanced Mode), including:
 - **Responsive Design** - Perfect for desktop, tablet, and mobile
 
 - **Floating Panel Design** - All UI elements with shadow effects, clear hierarchy
-
-### 🎨 UI Design System
-
-We have crafted a modern, comfortable visual system to ensure the best user experience.
-
-#### Color Palette
-
-| Color         | Hex       | Usage                              | Preview                                                         |
-| :------------ | :-------- | :--------------------------------- | :-------------------------------------------------------------- |
-| **Primary**   | `#4f46e5` | Brand color, buttons, accents      | ![#4f46e5](https://via.placeholder.com/15/4f46e5/000000?text=+) |
-| **Secondary** | `#14b8a6` | Secondary color, gradients         | ![#14b8a6](https://via.placeholder.com/15/14b8a6/000000?text=+) |
-| **Surface**   | `#ffffff` | Backgrounds, cards (Glassmorphism) | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) |
-| **Text**      | `#1e293b` | Primary text content               | ![#1e293b](https://via.placeholder.com/15/1e293b/000000?text=+) |
-
-#### Slope Visualization Legend
-
-Map route colors are dynamically rendered based on real-time slope data:
-
-| Grade       | Color              | Meaning            | Recommendation   |
-| :---------- | :----------------- | :----------------- | :--------------- |
-| **< 3%**    | 🔵 **Light Blue**  | Flat & Comfortable | Everyone         |
-| **3% - 8%** | 🔵 **Medium Blue** | Moderate Slope     | Walk / Bike      |
-| **> 8%**    | 🔵 **Dark Blue**   | Steep Challenge    | Walk Recommended |
 
 ---
 
@@ -263,27 +225,27 @@ berkeley-where-to-go/
 
 ### Core Frameworks
 
-- ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) **React 19.2.0** - Latest React framework with concurrency support
-- ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite 7.2.2** - Fast development build tool
-- ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) **TailwindCSS 4.1.17** - Modern utility-first CSS framework
+- ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) - Latest React framework with concurrency support
+- ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=flat-square&logo=vite&logoColor=white) - Fast development build tool
+- ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) - Modern utility-first CSS framework
 
 ### UI & Animations
 
-- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23.24-0055FF?style=flat-square&logo=framer&logoColor=white) **Framer Motion 12.23.24** - High-performance animation library
-- ![Lucide Icons](https://img.shields.io/badge/Lucide_React-0.554.0-F56565?style=flat-square&logo=lucide&logoColor=white) **Lucide React 0.554.0** - Beautiful icon library
-- ![Recharts](https://img.shields.io/badge/Recharts-3.4.1-22B5BF?style=flat-square&logo=react&logoColor=white) **Recharts 3.4.1** - React data visualization library
+- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23.24-0055FF?style=flat-square&logo=framer&logoColor=white) - High-performance animation library
+- ![Lucide Icons](https://img.shields.io/badge/Lucide_React-0.554.0-F56565?style=flat-square&logo=lucide&logoColor=white) - Beautiful icon library
+- ![Recharts](https://img.shields.io/badge/Recharts-3.4.1-22B5BF?style=flat-square&logo=react&logoColor=white) - React data visualization library
 
 ### Map Services
 
-- ![Google Maps](https://img.shields.io/badge/Google_Maps_API-Platform-4285F4?style=flat-square&logo=google-maps&logoColor=white) **@react-google-maps/api 2.20.7** - Google Maps React integration
-- ![Google Maps JS](https://img.shields.io/badge/Google_Maps_JS-API-4285F4?style=flat-square&logo=google-maps&logoColor=white) **Google Maps JavaScript API** - Map display
-- ![Google Directions](https://img.shields.io/badge/Directions_API-Route-34A853?style=flat-square&logo=google-maps&logoColor=white) **Google Directions API** - Route planning
-- ![Google Elevation](https://img.shields.io/badge/Elevation_API-Terrain-EA4335?style=flat-square&logo=google-maps&logoColor=white) **Google Elevation API** - Elevation data fetching
+- ![Google Maps](https://img.shields.io/badge/Google_Maps_API-Platform-4285F4?style=flat-square&logo=google-maps&logoColor=white) - Google Maps React integration
+- ![Google Maps JS](https://img.shields.io/badge/Google_Maps_JS-API-4285F4?style=flat-square&logo=google-maps&logoColor=white) - Map display
+- ![Google Directions](https://img.shields.io/badge/Directions_API-Route-34A853?style=flat-square&logo=google-maps&logoColor=white) - Route planning
+- ![Google Elevation](https://img.shields.io/badge/Elevation_API-Terrain-EA4335?style=flat-square&logo=google-maps&logoColor=white) - Elevation data fetching
 
 ### Development Tools
 
-- ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) **ESLint 9.39.1** - Code quality assurance
-- ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) **PostCSS + Autoprefixer** - CSS processing and compatibility
+- ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) - Code quality assurance
+- ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) - CSS processing and compatibility
 
 ---
 
