@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
+import { Github } from 'lucide-react';
 import Header from './components/Header';
 import MapContainer from './components/MapContainer';
 import RouteInput from './components/RouteInput';
@@ -89,6 +90,15 @@ function App() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50">
+      <a
+        href="https://github.com/luolambert/BerkeleyWhereToGo"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-[20px] right-[60px] z-50 w-10 h-10 bg-white rounded-full shadow-xl border border-neutral-200 flex items-center justify-center hover:scale-110 transition-all duration-300"
+        title="View on GitHub"
+      >
+        <Github className="w-5 h-5 text-neutral-900" />
+      </a>
       <LayoutGroup>
       <AnimatePresence mode="wait">
         {currentView === 'navigation' ? (

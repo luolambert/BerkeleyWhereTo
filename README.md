@@ -13,16 +13,57 @@
 
 Helping freshmen and all students easily plan their inter-class routes and arrive on time!
 
+### [🚀 Try App Online](https://berkeley-where-to-go.vercel.app)
+
 </div>
 
 ---
 
-## 📸 Preview
+## 📸 Feature Preview
 
-![FrontPage](src/assets/FrontPage.jpg)
-![BuildingSelectPanel_Freshman](src/assets/BuildingSelectPanel_Freshman.jpg)
-![BuildingSelectPanel_Advanced](src/assets/BuildingSelectPanel_Advanced.jpg)
-![RouteDisplay](src/assets/RouteDisplay.jpg)
+<table>
+  <tr>
+    <td width="60%">
+      <img src="src/assets/FrontPage.jpg" alt="Front Page" width="100%" />
+    </td>
+    <td width="40%">
+      <h3>👋 Welcome Interface</h3>
+      <p>Minimalist design with core functions at your fingertips.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="40%">
+      <h3>🏢 Smart Building Selection</h3>
+      <p><b>Dual Mode Selector:</b></p>
+      <ul>
+        <li><b>Freshman Mode</b>: Curated list of 38 essential buildings for quick access.</li>
+        <li><b>Advanced Mode</b>: Complete database of 100+ locations with category filtering.</li>
+      </ul>
+      <p>Supports real-time search and keyboard shortcuts.</p>
+    </td>
+    <td width="60%">
+      <img src="src/assets/BuildingSelectPanel_Advanced.jpg" alt="Building Selection" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="60%">
+      <img src="src/assets/RouteDisplay.jpg" alt="Route Display" width="100%" />
+    </td>
+    <td width="40%">
+      <h3>🗺️ Immersive Navigation</h3>
+      <p><b>Slope Visualization:</b> Route colors change dynamically based on steepness.</p>
+      <p><b>Data Panel:</b> Real-time walking/scooting time estimates, with an elevation profile chart at the bottom.</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 💡 Inspiration
+
+As a freshman selecting courses, I often faced a dilemma: **"Is it safe to schedule these two classes back-to-back?"**
+
+Even with the famous 10-minute "Berkeley Time," rushing from one end of campus to the other can be stressful. I created this project to help you **visualize and estimate commute times** between buildings. Whether you walk or scoot, this tool empowers you to craft your schedule with confidence, knowing exactly if you can make it to your next class on time.
 
 ---
 
@@ -37,6 +78,7 @@ Helping freshmen and all students easily plan their inter-class routes and arriv
   - 🔵 **Dark Blue**: Steep Slope (> 8% slope)
 - **Smart Route Markers** - Elegant start/end markers showing full building names
 - **Dynamic Marker Positioning** - Markers auto-adjust to avoid obscuring routes
+- **One-Click Reset** - Instantly clear map data with smooth fade-out animations
 
 ### 📊 Elevation Analysis
 
@@ -56,7 +98,7 @@ Helping freshmen and all students easily plan their inter-class routes and arriv
   - 🏠 **Campus Life**: Housing, Dining, Athletics, Student Centers
   - 🔬 **Research**: LBNL, Institutes, Labs
   - 🏛️ **Admin & Landmarks**: Sproul, Campanile, etc.
-- **Grid Layout Display** - All buildings at a glance, PC and mobile friendly
+- **Grid Layout Display** - All buildings at a glance (Currently PC Only)
 - **Smart Interactions** - Support ESC to close, click to toggle, and more
 
 ### 🏛️ Building Database
@@ -88,6 +130,29 @@ Covers **Over 100 campus buildings** (Advanced Mode), including:
 - **Responsive Design** - Perfect for desktop, tablet, and mobile
 
 - **Floating Panel Design** - All UI elements with shadow effects, clear hierarchy
+
+### 🎨 UI Design System
+
+We have crafted a modern, comfortable visual system to ensure the best user experience.
+
+#### Color Palette
+
+| Color         | Hex       | Usage                              | Preview                                                         |
+| :------------ | :-------- | :--------------------------------- | :-------------------------------------------------------------- |
+| **Primary**   | `#4f46e5` | Brand color, buttons, accents      | ![#4f46e5](https://via.placeholder.com/15/4f46e5/000000?text=+) |
+| **Secondary** | `#14b8a6` | Secondary color, gradients         | ![#14b8a6](https://via.placeholder.com/15/14b8a6/000000?text=+) |
+| **Surface**   | `#ffffff` | Backgrounds, cards (Glassmorphism) | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) |
+| **Text**      | `#1e293b` | Primary text content               | ![#1e293b](https://via.placeholder.com/15/1e293b/000000?text=+) |
+
+#### Slope Visualization Legend
+
+Map route colors are dynamically rendered based on real-time slope data:
+
+| Grade       | Color              | Meaning            | Recommendation   |
+| :---------- | :----------------- | :----------------- | :--------------- |
+| **< 3%**    | 🔵 **Light Blue**  | Flat & Comfortable | Everyone         |
+| **3% - 8%** | 🔵 **Medium Blue** | Moderate Slope     | Walk / Bike      |
+| **> 8%**    | 🔵 **Dark Blue**   | Steep Challenge    | Walk Recommended |
 
 ---
 
@@ -170,25 +235,26 @@ npm run preview
 ```
 berkeley-where-to-go/
 ├── src/
-│   ├── components/                    # React Components
-│   │   ├── Header.jsx                # Page header
-│   │   ├── RouteInput.jsx            # Route input form
-│   │   ├── BuildingSelect.jsx        # Building input component
-│   │   ├── BuildingSelectionPanel.jsx # Building selection panel
-│   │   ├── MapContainer.jsx          # Map container & route rendering
-│   │   ├── TravelTimeDisplay.jsx     # Travel time display
-│   │   └── ElevationChart.jsx        # Elevation profile chart
+│   ├── components/                    # 🧩 React Components
+│   │   ├── Header.jsx                # 🧭 Page header & navigation
+│   │   ├── RouteInput.jsx            # ✏️ Route input form
+│   │   ├── BuildingSelect.jsx        # 🏢 Building input component
+│   │   ├── BuildingSelectionPanel.jsx # 🪟 Building selection panel
+│   │   ├── MapContainer.jsx          # 🗺️ Map container & route rendering
+│   │   ├── TravelTimeDisplay.jsx     # ⏱️ Travel time display
+│   │   └── ElevationChart.jsx        # 📊 Elevation profile chart
 │   ├── data/
-│   │   └── buildings.js              # 38 campus buildings data
-│   ├── App.jsx                       # Main app component
-│   ├── main.jsx                      # App entry point
-│   └── index.css                     # Global styles
-├── public/                           # Static assets
-├── .env                              # Environment variables
-├── package.json                      # Project dependencies
-├── vite.config.js                   # Vite configuration
-├── tailwind.config.js               # Tailwind configuration
-└── README.md                        # Project documentation
+│   │   ├── buildings.js              # 👶 Freshman mode buildings
+│   │   └── advanced_building.js      # 🎓 Advanced mode full database
+│   ├── App.jsx                       # ⚛️ Main app component
+│   ├── main.jsx                      # 🚪 App entry point
+│   └── index.css                     # 🎨 Global styles
+├── public/                           # 📦 Static assets
+├── .env                              # 🔐 Environment variables
+├── package.json                      # 📦 Project dependencies
+├── vite.config.js                   # ⚡ Vite configuration
+├── tailwind.config.js               # 🌬️ Tailwind configuration
+└── README.md                        # 📖 Project documentation
 ```
 
 ---
@@ -197,27 +263,27 @@ berkeley-where-to-go/
 
 ### Core Frameworks
 
-- **React 19.2.0** - Latest React framework with concurrency support
-- **Vite 7.2.2** - Fast development build tool
-- **TailwindCSS 4.1.17** - Modern utility-first CSS framework
+- ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) **React 19.2.0** - Latest React framework with concurrency support
+- ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite 7.2.2** - Fast development build tool
+- ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) **TailwindCSS 4.1.17** - Modern utility-first CSS framework
 
 ### UI & Animations
 
-- **Framer Motion 12.23.24** - High-performance animation library
-- **Lucide React 0.554.0** - Beautiful icon library
-- **Recharts 3.4.1** - React data visualization library
+- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23.24-0055FF?style=flat-square&logo=framer&logoColor=white) **Framer Motion 12.23.24** - High-performance animation library
+- ![Lucide Icons](https://img.shields.io/badge/Lucide_React-0.554.0-F56565?style=flat-square&logo=lucide&logoColor=white) **Lucide React 0.554.0** - Beautiful icon library
+- ![Recharts](https://img.shields.io/badge/Recharts-3.4.1-22B5BF?style=flat-square&logo=react&logoColor=white) **Recharts 3.4.1** - React data visualization library
 
 ### Map Services
 
-- **@react-google-maps/api 2.20.7** - Google Maps React integration
-- **Google Maps JavaScript API** - Map display
-- **Google Directions API** - Route planning
-- **Google Elevation API** - Elevation data fetching
+- ![Google Maps](https://img.shields.io/badge/Google_Maps_API-Platform-4285F4?style=flat-square&logo=google-maps&logoColor=white) **@react-google-maps/api 2.20.7** - Google Maps React integration
+- ![Google Maps JS](https://img.shields.io/badge/Google_Maps_JS-API-4285F4?style=flat-square&logo=google-maps&logoColor=white) **Google Maps JavaScript API** - Map display
+- ![Google Directions](https://img.shields.io/badge/Directions_API-Route-34A853?style=flat-square&logo=google-maps&logoColor=white) **Google Directions API** - Route planning
+- ![Google Elevation](https://img.shields.io/badge/Elevation_API-Terrain-EA4335?style=flat-square&logo=google-maps&logoColor=white) **Google Elevation API** - Elevation data fetching
 
 ### Development Tools
 
-- **ESLint 9.39.1** - Code quality assurance
-- **PostCSS + Autoprefixer** - CSS processing and compatibility
+- ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) **ESLint 9.39.1** - Code quality assurance
+- ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) **PostCSS + Autoprefixer** - CSS processing and compatibility
 
 ---
 
@@ -284,14 +350,14 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 
 ## 📊 Performance Metrics
 
-| Metric                 | Value          |
-| ---------------------- | -------------- |
-| Initial Load Time      | < 3s           |
-| Route Calculation Time | < 2s           |
-| Elevation Data Fetch   | < 1s           |
-| Mobile Compatibility   | ✅ Perfect     |
-| Responsive Layout      | ✅ All Devices |
-| PWA Support            | 🔄 Extensible  |
+| Metric                 | Value           |
+| ---------------------- | --------------- |
+| Initial Load Time      | < 3s            |
+| Route Calculation Time | < 2s            |
+| Elevation Data Fetch   | < 1s            |
+| Mobile Compatibility   | 🚧 In Progress  |
+| Responsive Layout      | 🖥️ Desktop Only |
+| PWA Support            | 🔄 Extensible   |
 
 ---
 
@@ -300,21 +366,19 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 ### ✅ Completed
 
 - [x] Google Maps Core Integration
-- [x] 38 Buildings Database
+- [x] 100+ Buildings Database (Advanced Mode)
 - [x] Smart Building Selection Panel (Categories, Search)
 - [x] Route Planning and Time Calculation
 - [x] Elevation Data and Slope Visualization
-- [x] Responsive UI Design
-- [x] Animations and Interactions
+- [x] Modern UI Design & Animations
 - [x] Custom Map Markers
+- [x] One-Click Reset
 
 ### 🚧 Planned
 
-- [ ] More Campus Building Data
+- [ ] Mobile Support
 - [ ] Save Favorite Routes
-
 - [ ] Dark Mode
-- [ ] Multi-Language Support (English/Chinese Toggle)
 - [ ] PWA Offline Support
 - [ ] User Comments and Suggestions
 
@@ -345,7 +409,14 @@ Issues and Pull Requests are welcome!
 
 ## 📝 Changelog
 
-### v1.2.0 (Current - 2025-11)
+### v1.3.0 (Current - 2025-11)
+
+- ✨ **One-Click Reset** - Instantly clear routes with smooth fade-out animation
+- ✨ **Enhanced Header** - Refined view switching and animations
+- ✨ **Logo Integration** - New "WhereToGo" branding
+- 🐛 **Bug Fixes** - Resolved map focus and route clearing issues
+
+### v1.2.0 (2025-11)
 
 - ✨ **Advanced Mode** - Complete campus database with over 100 buildings
 - ✨ **Dual Selection System** - Switch between Freshman and Advanced views
