@@ -1,17 +1,18 @@
-# 🎓 Berkeley Where-To-Go
+# 🎓 Berkeley Where To
 
 [🇺🇸 English](README.md)
 
 <div align="center">
 
-**一个专为加州大学伯克利分校学生设计的智能校园路线规划应用**
+**一个专为加州大学伯克利分校学生设计的智能校园助手：Go & Know**
 
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?logo=vite)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![Google Maps](https://img.shields.io/badge/Google%20Maps-API-4285F4?logo=google-maps)](https://developers.google.com/maps)
 
-帮助新生和全体学生轻松规划课间路线，准时到达教室！
+"Where To Go" 帮助新生和全体学生轻松规划课间路线，准时到达教室！
+"Where To Know" 带你探索建筑背后的故事。
 
 ### [🚀 在线使用](https://berkeleywheretogo.vercel.app)
 
@@ -23,7 +24,7 @@
 
 ### 👋 欢迎界面
 
-![FrontPage](src/assets/FrontPage.jpg)
+![Go_FrontPage](src/assets/Go_FrontPage.jpg)
 
 ### 👶 新生模式选择
 
@@ -42,6 +43,18 @@
 ![dynamicRouteDisplay1](src/assets/dynamicRouteDisplay1.gif)
 ![dynamicRouteDisplay2](src/assets/dynamicRouteDisplay2.gif)
 
+### 🔄 模式切换演示
+
+![SwitchTab](src/assets/SwitchTab.gif)
+
+### 📖 Where To Know 首页
+
+![Know_FrontPage](src/assets/Know_FrontPage.jpg)
+
+### 🏛️ 建筑详情演示
+
+![BuildingDetail](src/assets/BuildingDetail.gif)
+
 ---
 
 ## 💡 开发初衷
@@ -50,11 +63,16 @@
 
 即使有 "Berkeley Time" 的 10 分钟缓冲，从校园一端赶到另一端依然让人心里没底。我开发这个项目的初衷，就是为了帮你**直观地测试两个教学楼之间的通勤时间**。无论是步行还是滑板车，都能让你对路程耗时心中有数，从而更自信、更从容地规划每一学期的课表。
 
+但校园生活不仅仅是赶课，更是了解我们周围历史和传说的过程。因此，这个项目已演变为 **Berkeley Where To**：
+
+- **Where To Go**：你的智能导航助手。
+- **Where To Know**：你的校园故事探索指南。
+
 ---
 
 ## ✨ 核心特性
 
-### 🗺️ 智能地图导航
+### 🚀 Where To Go: 智能导航
 
 - **Google Maps 集成** - 基于真实地理数据的精确路线规划
 - **坡度可视化路线** - 路线颜色根据陡峭程度动态变化
@@ -64,6 +82,14 @@
 - **智能路线标记** - 优雅的起点/终点标识，显示完整建筑名称
 - **动态标记定位** - 标记自动调整位置，避免遮挡路线
 - **一键重置** - 即时清除地图数据，配备流畅的淡出动画
+
+### 📖 Where To Know: 校园故事
+
+- **丰富的建筑故事** - 探索校园建筑的历史、冷知识和传说
+- **Markdown 渲染** - 精美排版的文本，支持点击外部链接
+- **互动图库** - 高质量的校园地标图片
+- **学生生存指南** - 来自学长学姐的实用建议
+- **最佳拍照点** - 发现适合发 Instagram 的绝佳角度
 
 ### 📊 海拔分析工具
 
@@ -115,10 +141,11 @@
 - **响应式布局** - 完美适配桌面、平板和手机
 
 - **浮动面板设计** - 所有 UI 元素带阴影效果，层次分明
+- **GitHub 集成** - 通过浮动 GitHub 按钮快速访问源代码
 
 ---
 
-## �🚀 快速开始
+## 🚀 快速开始
 
 ### 前置要求
 
@@ -164,7 +191,7 @@ npm run preview
 
 ## 📖 使用指南
 
-### 基本操作
+### 🚀 Where To Go: 导航模式
 
 1. **选择起点**
 
@@ -190,6 +217,31 @@ npm run preview
    - 📊 底部显示海拔剖面图
    - 🏷️ 查看路线坡度图例
 
+### 📖 Where To Know: 探索模式
+
+1. **切换模式**
+
+   - 将鼠标悬停在左上角的 Logo 区域
+   - 点击出现的 "Where To Know" 选项切换至探索模式
+
+2. **浏览建筑**
+
+   - 浏览精美的建筑卡片网格
+   - 使用滚动条查看更多校园建筑
+
+3. **查看详情**
+
+   - 点击感兴趣的建筑卡片进入详情页
+   - 📜 阅读建筑简介和历史背景
+   - 👻 探索校园传说和冷知识
+   - 💡 获取学长学姐的生存指南
+   - 📸 发现最佳拍照打卡点
+
+4. **返回导航 (Where To Go)**
+
+   - 再次将鼠标悬停在左上角的 Logo 区域
+   - 点击出现的 "Where To Go" 选项切回导航模式
+
 ---
 
 ## 🏗️ 项目结构
@@ -204,17 +256,19 @@ berkeley-where-to-go/
 │   │   ├── BuildingSelectionPanel.jsx # 🪟 建筑选择面板
 │   │   ├── MapContainer.jsx          # 🗺️ 地图容器和路线渲染
 │   │   ├── TravelTimeDisplay.jsx     # ⏱️ 时间显示卡片
-│   │   └── ElevationChart.jsx        # 📊 海拔剖面图
+│   │   ├── ElevationChart.jsx        # 📊 海拔剖面图
+│   │   └── BuildingInfo.jsx          # ℹ️ 建筑详情与故事页
 │   ├── data/
 │   │   ├── buildings.js              # 👶 新生模式建筑数据
-│   │   └── advanced_building.js      # 🎓 高级模式完整建筑数据
+│   │   ├── advanced_building.js      # 🎓 高级模式完整建筑数据
+│   │   └── know_chinese.js           # 📖 校园故事数据
 │   ├── App.jsx                       # ⚛️ 主应用组件
 │   ├── main.jsx                      # 🚪 应用入口
 │   └── index.css                     # 🎨 全局样式
 ├── public/                           # 📦 静态资源
 ├── .env                              # 🔐 环境变量
 ├── package.json                      # 📦 项目依赖
-├── vite.config.js                   # ⚡ Vite 配置
+├── vite.config.js                   # ⚡️ Vite 配置
 ├── tailwind.config.js               # 🌬️ Tailwind 配置
 └── README.md                        # 📖 项目文档
 ```
@@ -274,6 +328,12 @@ berkeley-where-to-go/
 - 快速找到活动地点
 - 计划从宿舍/停车场的路线
 - 为访客提供导航指引
+
+### 👻 校园探索 (Where To Know)
+
+- **历史猎人**：挖掘建筑背后的百年历史与神秘传说
+- **打卡达人**：寻找校园最佳拍照点，朋友圈素材不用愁
+- **生存指南**：获取学长学姐的"避坑"建议和实用贴士
 
 ---
 
@@ -335,11 +395,14 @@ npm run build
 - [x] 现代化 UI 设计与动画交互
 - [x] 自定义地图标记
 - [x] 一键重置功能
+- [x] Where To Know 校园故事模式
+- [x] Markdown 富文本支持
+- [x] GitHub 快捷访问
 
 ### 🚧 规划中
 
 - [ ] 移动端适配
-- [ ] 保存常用路线
+- [ ] Know 界面中英文切换
 - [ ] 夜间模式
 - [ ] PWA 离线支持
 - [ ] 用户评论和建议功能
@@ -371,11 +434,17 @@ npm run build
 
 ## 📝 更新日志
 
-### v1.3.0 (Current - 2025-11)
+### v1.4.0 (2025-11)
+
+- ✨ **项目更名** - 正式更名为 "Berkeley Where To"，包含 "Go" 和 "Know" 双模式
+- ✨ **Where To Know** - 新增探索建筑故事和传说的板块
+- ✨ **Markdown 支持** - 建筑描述支持富文本渲染
+- ✨ **GitHub 链接** - UI 界面新增 GitHub 仓库快速访问入口
+
+### v1.3.0 (2025-11)
 
 - ✨ **一键重置** - 即时清除路线，配备流畅淡出动画
 - ✨ **增强版页眉** - 优化视图切换与动画效果
-- ✨ **Logo 集成** - 全新 "WhereToGo" 标识
 - 🐛 **Bug 修复** - 解决地图聚焦和路线清除问题
 
 ### v1.2.0 (2025-11)

@@ -1,17 +1,17 @@
-# 🎓 Berkeley Where-To-Go
+# 🎓 Berkeley Where To
 
 [🇨🇳 中文版](README_zh.md)
 
 <div align="center">
 
-**Intelligent Campus Route Planning App for UC Berkeley Students**
+**Intelligent Campus Companion for UC Berkeley Students: Go & Know**
 
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?logo=vite)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![Google Maps](https://img.shields.io/badge/Google%20Maps-API-4285F4?logo=google-maps)](https://developers.google.com/maps)
 
-Helping freshmen and all students easily plan their inter-class routes and arrive on time!
+"Where To Go" helps you plan routes and arrive on time. "Where To Know" helps you discover the stories behind the buildings.
 
 ### [🚀 Try App Online](https://berkeleywheretogo.vercel.app)
 
@@ -23,7 +23,7 @@ Helping freshmen and all students easily plan their inter-class routes and arriv
 
 ### 👋 Welcome Interface
 
-![FrontPage](src/assets/FrontPage.jpg)
+![Go_FrontPage](src/assets/Go_FrontPage.jpg)
 
 ### 👶 Freshman Mode Selection
 
@@ -42,19 +42,36 @@ Helping freshmen and all students easily plan their inter-class routes and arriv
 ![dynamicRouteDisplay1](src/assets/dynamicRouteDisplay1.gif)
 ![dynamicRouteDisplay2](src/assets/dynamicRouteDisplay2.gif)
 
+### 🔄 Mode Switching Demo
+
+![SwitchTab](src/assets/SwitchTab.gif)
+
+### 📖 Where To Know Interface
+
+![Know_FrontPage](src/assets/Know_FrontPage.jpg)
+
+### 🏛️ Building Details Demo
+
+![BuildingDetail](src/assets/BuildingDetail.gif)
+
 ---
 
 ## 💡 Inspiration
 
 As a freshman selecting courses, I often faced a dilemma: **"Is it safe to schedule these two classes back-to-back?"**
 
-Even with the famous 10-minute "Berkeley Time," rushing from one end of campus to the other can be stressful. I created this project to help you **visualize and estimate commute times** between buildings. Whether you walk or scoot, this tool empowers you to craft your schedule with confidence, knowing exactly if you can make it to your next class on time.
+Even with the famous 10-minute "Berkeley Time," rushing from one end of campus to the other can be stressful. I created this project to help you **visualize and estimate commute times** between buildings.
+
+But campus life isn't just about rushing to class. It's also about understanding the history and legends around us. That's why this project has evolved into **Berkeley Where To**:
+
+- **Where To Go**: Your smart navigation assistant.
+- **Where To Know**: Your guide to campus stories and secrets.
 
 ---
 
 ## ✨ Core Features
 
-### 🗺️ Smart Map Navigation
+### 🚀 Where To Go: Smart Navigation
 
 - **Deep Google Maps Integration** - Accurate route planning based on real geographic data
 - **Slope-Colored Routes** - Route colors change dynamically based on steepness
@@ -64,6 +81,14 @@ Even with the famous 10-minute "Berkeley Time," rushing from one end of campus t
 - **Smart Route Markers** - Elegant start/end markers showing full building names
 - **Dynamic Marker Positioning** - Markers auto-adjust to avoid obscuring routes
 - **One-Click Reset** - Instantly clear map data with smooth fade-out animations
+
+### 📖 Where To Know: Campus Stories
+
+- **Rich Building Stories** - Discover the history, fun facts, and legends of campus buildings
+- **Markdown Rendering** - Beautifully formatted text with clickable links to external resources
+- **Interactive Gallery** - High-quality images of campus landmarks
+- **Student Survival Tips** - Practical advice from seniors for each location
+- **Photo Spots** - Find the best angles for your Instagram shots
 
 ### 📊 Elevation Analysis
 
@@ -115,6 +140,7 @@ Covers **Over 100 campus buildings** (Advanced Mode), including:
 - **Responsive Design** - Perfect for desktop, tablet, and mobile
 
 - **Floating Panel Design** - All UI elements with shadow effects, clear hierarchy
+- **GitHub Integration** - Quick access to source code via the floating GitHub button
 
 ---
 
@@ -164,7 +190,7 @@ npm run preview
 
 ## 📖 Usage Guide
 
-### Basic Operations
+### 🚀 Where To Go: Navigation Mode
 
 1. **Select Start Location**
 
@@ -190,6 +216,31 @@ npm run preview
    - 📊 Bottom shows elevation profile
    - 🏷️ View slope legend
 
+### 📖 Where To Know: Discovery Mode
+
+1. **Switch Mode**
+
+   - Hover over the Logo area in the top left
+   - Click the "Where To Know" option to switch to Discovery Mode
+
+2. **Browse Buildings**
+
+   - Browse the beautiful grid of building cards
+   - Scroll to explore more campus buildings
+
+3. **View Details**
+
+   - Click on any building card to view details
+   - 📜 Read building summary and history
+   - 👻 Discover campus legends and fun facts
+   - 💡 Get survival tips from seniors
+   - 📸 Find the best photo spots
+
+4. **Return to Navigation (Where To Go)**
+
+   - Hover over the Logo area in the top left again
+   - Click the "Where To Go" option to switch back to Navigation Mode
+
 ---
 
 ## 🏗️ Project Structure
@@ -204,17 +255,19 @@ berkeley-where-to-go/
 │   │   ├── BuildingSelectionPanel.jsx # 🪟 Building selection panel
 │   │   ├── MapContainer.jsx          # 🗺️ Map container & route rendering
 │   │   ├── TravelTimeDisplay.jsx     # ⏱️ Travel time display
-│   │   └── ElevationChart.jsx        # 📊 Elevation profile chart
+│   │   ├── ElevationChart.jsx        # 📊 Elevation profile chart
+│   │   └── BuildingInfo.jsx          # ℹ️ Building details & stories
 │   ├── data/
 │   │   ├── buildings.js              # 👶 Freshman mode buildings
-│   │   └── advanced_building.js      # 🎓 Advanced mode full database
+│   │   ├── advanced_building.js      # 🎓 Advanced mode full database
+│   │   └── know_chinese.js           # 📖 Campus stories data
 │   ├── App.jsx                       # ⚛️ Main app component
 │   ├── main.jsx                      # 🚪 App entry point
 │   └── index.css                     # 🎨 Global styles
 ├── public/                           # 📦 Static assets
 ├── .env                              # 🔐 Environment variables
 ├── package.json                      # 📦 Project dependencies
-├── vite.config.js                   # ⚡ Vite configuration
+├── vite.config.js                   # ⚡️ Vite configuration
 ├── tailwind.config.js               # 🌬️ Tailwind configuration
 └── README.md                        # 📖 Project documentation
 ```
@@ -274,6 +327,12 @@ berkeley-where-to-go/
 - Quickly find event locations
 - Plan route from dorm/parking
 - Provide navigation for visitors
+
+### 👻 Campus Exploration (Where To Know)
+
+- **History Hunter**: Uncover centuries of history and mysterious legends
+- **Photo Spots**: Find the best angles for your social media
+- **Survival Guide**: Get practical tips and advice from seniors
 
 ---
 
@@ -335,11 +394,14 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 - [x] Modern UI Design & Animations
 - [x] Custom Map Markers
 - [x] One-Click Reset
+- [x] Where To Know Campus Stories
+- [x] Markdown Text Rendering
+- [x] GitHub Repository Link
 
 ### 🚧 Planned
 
 - [ ] Mobile Support
-- [ ] Save Favorite Routes
+- [ ] Know Interface Language Switch
 - [ ] Dark Mode
 - [ ] PWA Offline Support
 - [ ] User Comments and Suggestions
@@ -371,11 +433,17 @@ Issues and Pull Requests are welcome!
 
 ## 📝 Changelog
 
-### v1.3.0 (Current - 2025-11)
+### v1.4.0 (2025-11)
+
+- ✨ **Project Renamed** - Officially "Berkeley Where To" with dual "Go" & "Know" modes
+- ✨ **Where To Know** - New section for discovering building stories and legends
+- ✨ **Markdown Support** - Rich text rendering for building descriptions
+- ✨ **GitHub Link** - Quick access to repository from the UI
+
+### v1.3.0 (2025-11)
 
 - ✨ **One-Click Reset** - Instantly clear routes with smooth fade-out animation
 - ✨ **Enhanced Header** - Refined view switching and animations
-- ✨ **Logo Integration** - New "WhereToGo" branding
 - 🐛 **Bug Fixes** - Resolved map focus and route clearing issues
 
 ### v1.2.0 (2025-11)
