@@ -30,22 +30,6 @@ function AppContent({
   const navigate = useNavigate();
   const isNavigation = location.pathname === '/go';
 
-  // Domain-based routing logic
-  React.useEffect(() => {
-    const hostname = window.location.hostname;
-    const path = location.pathname;
-
-    // Only redirect if we are at the root path to avoid redirect loops or overriding user navigation
-    if (path === '/') {
-      if (hostname.includes('berkeleywheretogo')) {
-        navigate('/go', { replace: true });
-      } else if (hostname.includes('berkeleywheretoknow')) {
-        navigate('/know', { replace: true });
-      }
-      // 'berkeleywhereto' or localhost stays on '/' (LandingPage)
-    }
-  }, [location.pathname, navigate]);
-
   // Metadata updates
   React.useEffect(() => {
     if (location.pathname === '/know') {
@@ -85,7 +69,7 @@ function AppContent({
       <LayoutGroup>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<RootRedirector />} />
             <Route 
               path="/go" 
               element={
@@ -116,6 +100,20 @@ function AppContent({
       </LayoutGroup>
     </div>
   );
+}
+
+function RootRedirector() {
+  const hostname = window.location.hostname;
+  
+  if (hostname.includes('berkeleywheretogo')) {
+    return <Navigate to="/go" replace />;
+  } 
+  
+  if (hostname.includes('berkeleywheretoknow')) {
+    return <Navigate to="/know" replace />;
+  }
+  
+  return <LandingPage />;
 }
 
 function App() {
