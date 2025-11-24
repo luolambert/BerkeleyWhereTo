@@ -2,9 +2,10 @@ import React, { useState, useCallback } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import { Github } from 'lucide-react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import NavigationPage from './views/NavigationPage';
 import InfoPage from './views/InfoPage';
+import LandingPage from './views/LandingPage';
 import { buildings } from './data/buildings';
 import { buildings as advancedBuildings } from './data/advanced_building';
 
@@ -26,17 +27,40 @@ function AppContent({
   calculateRoute
 }) {
   const location = useLocation();
-  const isNavigation = location.pathname === '/go' || location.pathname === '/';
+  const navigate = useNavigate();
+  const isNavigation = location.pathname === '/go';
 
+  // Domain-based routing logic
+  React.useEffect(() => {
+    const hostname = window.location.hostname;
+    const path = location.pathname;
+
+    // Only redirect if we are at the root path to avoid redirect loops or overriding user navigation
+    if (path === '/') {
+      if (hostname.includes('berkeleywheretogo')) {
+        navigate('/go', { replace: true });
+      } else if (hostname.includes('berkeleywheretoknow')) {
+        navigate('/know', { replace: true });
+      }
+      // 'berkeleywhereto' or localhost stays on '/' (LandingPage)
+    }
+  }, [location.pathname, navigate]);
+
+  // Metadata updates
   React.useEffect(() => {
     if (location.pathname === '/know') {
       document.title = 'BerkeleyWhereToKnow';
       const link = document.querySelector("link[rel~='icon']");
       if (link) link.href = '/WhereToKnow_Logo.png';
-    } else {
+    } else if (location.pathname === '/go') {
       document.title = 'BerkeleyWhereToGo';
       const link = document.querySelector("link[rel~='icon']");
       if (link) link.href = '/WhereToGo_Logo.png';
+    } else {
+      // Landing Page
+      document.title = 'Berkeley Where To';
+      const link = document.querySelector("link[rel~='icon']");
+      if (link) link.href = '/WhereToGo_Logo.png'; // Default to Go logo or maybe a generic one
     }
   }, [location.pathname]);
 
@@ -61,6 +85,7 @@ function AppContent({
       <LayoutGroup>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<LandingPage />} />
             <Route 
               path="/go" 
               element={
@@ -85,8 +110,7 @@ function AppContent({
               } 
             />
             <Route path="/know" element={<InfoPage />} />
-            <Route path="/" element={<Navigate to="/go" replace />} />
-            <Route path="*" element={<Navigate to="/go" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
       </LayoutGroup>
