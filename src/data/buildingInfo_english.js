@@ -8,16 +8,18 @@ export const knowLocations = [
     architect: 'Weihe, Frick & Kruse',
     summary: 'The certified "Freshman Maze" with its own laws of physics 🌀',
     description: `
-      Welcome to Dwinelle Hall, the largest "Escape Room" on campus.
+      Welcome to Dwinelle Hall, the largest "Escape Room" on campus and the starting point of every freshman's nightmares.
       
-      This building is actually two completely different structures (the southern "Office Wing" and the northern "Academic Wing") forcibly stitched together, resulting in its infamous split-level design. You will often find yourself pressing "Level F" on the elevator only to walk out onto a mezzanine, or walking down a hall where the floor color changes and suddenly Level 2 becomes Level B1.
+      This building is actually two completely different structures (the "Office Wing" and the "Academic Wing") forcibly stitched together, resulting in its infamous split-level design. You will often find yourself pressing "Level F" on the elevator only to walk out onto a mezzanine, or walking down a hall where the floor color changes and suddenly Level 2 becomes Level B1.
+
+      The laws of physics don't apply here. If you don't bring a compass (or the navigator app listed below), you might actually get lost on your way to a GSI's office and never be seen again.
 
       🚧 **Live Status (2025)**: Heads up! The Dwinelle Parking Lot on the west side is gone. It is now the construction site for the **Undergraduate Academic Building**, scheduled for completion in 2026. This means some side entrances may be blocked, and you can expect construction noise nearby.
     `,
     funFacts: [
-      'It has the most confusing room numbering system on campus (100s are on Level D, 200s on Level E... don\'t ask why).',
-      'Rumor has it the architects of the office wing and classroom wing refused to talk to each other, so the construction crew just forced the blueprints together (it\'s a myth, but a believable one).',
-      'It is the second-largest building on campus, surpassed only by VLSB.'
+      'It has the most confusing room numbering system on campus (100s are on Level D, 200s on Level E... logic? We don\'t do that here).',
+      'Rumor has it the architects of the office wing and classroom wing refused to talk to each other, so the construction crew just forced the blueprints together (it\'s a myth, but walk around inside and you\'ll believe it).',
+      'It is the second-largest building on campus, surpassed only by VLSB, which means the area in which you can get lost is massive.'
     ],
     studentTips: [
       '🚧 **Construction Alert**: The West entrance is tricky right now due to the new building construction. Follow the detour signs.',
@@ -44,19 +46,19 @@ export const knowLocations = [
     architect: 'John Galen Howard',
     summary: 'The largest lecture hall and the backdrop for every campus protest 📣',
     description: `
-      If you are a Berkeley freshman, your first massive lecture (CS 61A, Data 8, Econ 1) will almost certainly happen in Wheeler 150.
+      Think of Wheeler Hall as the "Main Character" of academic buildings. If you are a freshman, your first massive lecture (CS 61A, Data 8, Econ 1) will almost certainly happen here.
       
-      This Neoclassical building is the heart of campus academics and activism. While the exterior is stately and historic, the interior underwent a complete gut renovation in 2017. It now boasts the strongest AC on campus and cushioned seats perfect for napping.
+      This Neoclassical beauty is the heart of campus academics and activism. While the exterior screams "traditional university," the interior underwent a complete gut renovation in 2017. It now boasts the strongest AC on campus and cushioned seats that are dangerously comfortable for napping.
       
       Wheeler is also a landmark for the Free Speech Movement. If you see news helicopters hovering overhead or the doors taped off with caution tape, don't panic—that's just a normal Tuesday at Wheeler.
     `,
     funFacts: [
-      'Wheeler 150 is the largest lecture hall on campus, seating over 700 students.',
-      'Thanks to the 2017 renovation, it is one of the few historic buildings with modern, powerful central air conditioning (a lifesaver during heat waves).',
-      'Named after Benjamin Ide Wheeler, the President who transformed Cal into a world-class research university.'
+      'Wheeler 150 is the largest lecture hall on campus, seating over 700 students, yet it still gets packed.',
+      'Thanks to the 2017 renovation, it is one of the few historic buildings with modern, powerful central air conditioning (a lifesaver during California heat waves).',
+      'Named after Benjamin Ide Wheeler, the President who transformed Cal from a small college into a world-class research university.'
     ],
     studentTips: [
-      '💤 **Nap Strat**: The Balcony seats in Wheeler 150 are super soft and offer a great view, making them the undisputed best napping spot on campus. However, you need eagle eyes to read the blackboard from there.',
+      '💤 **Nap Strat**: The Balcony seats in Wheeler 150 are super soft and offer a great view, making them the undisputed best napping spot on campus. However, you need binoculars to read the blackboard from there.',
       '🚽 **Restroom Guide**: Avoid the first-floor lobby restrooms—lines are always long. Go to the Basement or the 3rd floor+. The upper floors are so empty they are sometimes called the "Chamber of Secrets."',
       '🔌 **Outlet Crisis**: Despite the renovation, outlets under the seats are scarce and often broken. Bring a fully charged laptop.',
       '🚪 **Secret Entry**: There is an accessible ramp entrance on the North side that leads directly to the basement vending machines—great for rainy days.'
@@ -79,21 +81,21 @@ export const knowLocations = [
     architect: 'Anshen & Allen',
     summary: 'The rotating chemistry hub, possibly haunted by a Nobel Laureate 🧪',
     description: `
-      Pimentel Hall is one of the most unique cylindrical buildings at Cal, designed specifically for massive chemistry lectures.
+      Pimentel Hall looks like a giant concrete UFO and is one of the most unique buildings at Cal, designed specifically for massive chemistry lectures.
       
-      Its claim to fame is the "Rotating Stage." Yes, the stage actually spins! This allows one professor to set up elaborate explosions backstage while another is lecturing out front, facilitating a quick swap. (Though it's rarely used nowadays).
+      Its claim to fame is the "Rotating Stage." Yes, the stage actually spins! This allows one professor to set up elaborate explosions backstage while another is lecturing out front, facilitating a quick swap. Although it's rarely used nowadays for safety reasons, the giant turntable is still there.
       
-      If you are in STEM, you will likely spend many painful nights here cramming for Chem 1A or Chem 3A midterms.
+      If you are in STEM, you will likely spend many painful nights here cramming for Chem 1A or Chem 3A midterms, fueled by adrenaline and the building's aggressive air conditioning.
     `,
     funFacts: [
       'Named after the late Professor George C. Pimentel, the inventor of the chemical laser.',
-      'The circular design was intended to ensure every student had a clear view of experimental demonstrations.',
+      'The circular design was intended to ensure every student had a clear view of experimental demonstrations (though the back row still feels miles away).',
       'The stage is a giant turntable divided into three pie slices: Lecture, Prep, and Cleanup.'
     ],
     studentTips: [
       '👻 **Campus Lore**: Rumor has it George Pimentel\'s "ghost" still wanders here. Sometimes he helps correct your titration... or maybe that\'s just sleep deprivation hallucination.',
       '💺 **Seat Selection**: Sit in the front. Despite the design, visibility in the back rows is poor for seeing detailed chemical reactions on the bench.',
-      '🌬️ **AC Warning**: It is perpetually freezing in here. Bring a hoodie even in August.',
+      '🌬️ **AC Warning**: It is perpetually freezing in here—morgue levels of cold. Bring a hoodie even in August.',
       '🚪 **Entrance Maze**: The main entrance is on the West, but there is a hallway tunnel from the Latimer Hall basement that connects directly to Pimentel. Very useful when it rains.'
     ],
     relatedLegend: 'Pimentel\'s Ghost: Late at night, students claim to hear the clinking of beakers on the empty stage, as if the old professor is continuing his research.',
@@ -113,15 +115,15 @@ export const knowLocations = [
     architect: 'Anshen & Allen',
     summary: 'The Mothership for CS majors, fueled by caffeine and deadline panic 💻',
     description: `
-      Welcome to Soda Hall, the beating heart of Computer Science at Berkeley. If you are EECS or CS, this is your primary residence for the next four years.
+      Welcome to Soda Hall, the beating heart of Computer Science at Berkeley. If you are EECS or CS, this is your primary residence (and possibly your bedroom) for the next four years.
       
-      This green-clad building looks like a giant circuit board (or some say a bite-taken apple?). The lights are on 24/7, especially the night before a project is due. Behind every window is a soul fighting for an A (or just fighting to pass).
+      This green-clad building looks like a giant circuit board (or some say a bite-taken apple?). The lights are on 24/7, especially the night before a project is due. Behind every window is a soul fighting for an A—or just fighting to pass.
       
-      Don't let the modern exterior fool you; the interior is "Industrial Chic," which is fancy talk for exposed pipes and concrete walls.
+      Don't let the modern exterior fool you; the interior is "Industrial Chic," which is fancy talk for exposed pipes, concrete walls, and a very "garage startup" vibe.
     `,
     funFacts: [
       'Built in 1994, funded by Y. Charles and Helen Soda.',
-      'The Wozniak Lounge on the 2nd floor (named after Apple co-founder Steve Wozniak) is one of the top spots on campus for sleeping overnight.',
+      'The Wozniak Lounge on the 2nd floor (named after Apple co-founder Steve Wozniak) is one of the top spots on campus for sleeping overnight. The couches are legit.',
       'Legend says there are showers in the building for students who literally live there during finals (True, but you need specific keycard access).'
     ],
     studentTips: [
@@ -150,9 +152,9 @@ export const knowLocations = [
     description: `
       Cory Hall is the soul of Electrical Engineering (EE). If you prefer circuits, hardware, and microelectronics over code, this is home.
       
-      The building has a heavy history—it was targeted twice by the Unabomber (Ted Kaczynski). Today, however, it stands as a hub of innovation. You'll see countless students hunched over oscilloscopes late into the night.
+      The building has a heavy history—it was targeted twice by the Unabomber (Ted Kaczynski). Today, however, it stands as a hub of innovation. You'll see countless students hunched over oscilloscopes late into the night, and the air always smells faintly of solder.
       
-      The top floor exterior is designed to look like a microchip pattern—very on brand.
+      Check out the top floor (5th floor) exterior—it was added in the 80s and is designed to look like a microchip pattern. Very on brand.
     `,
     funFacts: [
       'It is the only building on campus targeted twice by the Unabomber (1982 and 1985).',
@@ -160,10 +162,10 @@ export const knowLocations = [
       'Houses one of the top nanofabrication labs in the country (Marvell Nanofabrication Laboratory).'
     ],
     studentTips: [
-      '🍩 **Snack Savior**: The HKN (Eta Kappa Nu) Lounge on the 2nd floor is legendary. It runs on the honor system and has the cheapest snacks/coffee on campus, plus the holy grail: Past Exam Test Banks.',
+      '🍩 **Snack Savior**: The HKN (Eta Kappa Nu) Lounge on the 2nd floor is legendary. It runs on the honor system (no cashier) and has the cheapest snacks/coffee on campus, plus the holy grail: Past Exam Test Banks.',
       '🛋️ **TI Lounge**: Sponsored by Texas Instruments, this 2nd-floor lounge has floor-to-ceiling windows facing the courtyard. Prime spot for group work or napping.',
       '🌉 **The Twin Towers**: Don\'t forget the bridge to Soda Hall on the 3rd floor.',
-      '⚡ **Lab Safety**: If you are taking EE 16A/B, bring your own breadboard and please, for the love of Oski, don\'t plug the capacitor in backwards (it will pop).'
+      '⚡ **Lab Safety**: If you are taking EE 16A/B, bring your own breadboard and please, for the love of Oski, don\'t plug the capacitor in backwards (it will explode, and it will be loud).'
     ],
     relatedLegend: 'The Package Paranoia: Due to the Unabomber history, older professors are famously wary of unexpected packages. While it\'s safe now, the history lingers.',
     photoSpots: [
@@ -185,18 +187,18 @@ export const knowLocations = [
     description: `
       Etcheverry Hall is the fortress for Mechanical Engineering (ME), Nuclear Engineering (NE), and Industrial Engineering (IEOR).
       
-      The most hardcore fact about this building: its basement used to house a live nuclear research reactor (1966-1987). Don't worry, it's long gone, though urban legends about radiation persist.
+      The most hardcore fact about this building: its basement used to house a live nuclear research reactor (1966-1987). Don't worry, it's long gone (though urban legends about radiation super-powers persist), and that massive reactor hall has been converted into spacious student computer labs.
       
-      Despite its bunker-like appearance, Etcheverry has a secret weapon: the Rooftop Garden. It is one of Northside's best hidden gems for views of the Bay.
+      Despite its bunker-like appearance, Etcheverry has a secret weapon: the Rooftop Garden. It is one of Northside's best hidden gems for views of the Bay, perfect for cooling off when your code won't run.
     `,
     funFacts: [
       'Named after Professor Bernard Etcheverry, an expert in irrigation and drainage.',
-      'The massive basement hall where the reactor stood has been converted into spacious student computer labs and workshops.',
+      'The massive basement hall where the reactor stood has been converted into spacious student computer labs and workshops—the ceiling height is insane.',
       'The building\'s foundation is incredibly thick, originally designed to support the reactor and withstand earthquakes.'
     ],
     studentTips: [
       '🌇 **Rooftop Secret**: Take the elevator to the top floor or walk up. The Rooftop Garden is quiet, has benches, and offers a stunning sunset view of the Golden Gate Bridge. Few people know about it.',
-      '🛠️ **Machine Shop**: The Student Machine Shop on the 1st floor is the ME sanctuary. If you see someone walking out covered in grease, pay your respects.',
+      '🛠️ **Machine Shop**: The Student Machine Shop on the 1st floor is the ME sanctuary (and nightmare). If you see someone walking out covered in grease, pay your respects.',
       '🚪 **Tunnel Rumors**: Students swear the pipe tunnels between here and Soda are walkable. We don\'t advise trying.',
       '🥪 **Food Run**: It\'s right across the street from "Food Row" on Euclid Ave. Easy access to La Val\'s and Brewed Awakening.'
     ],
@@ -218,22 +220,22 @@ export const knowLocations = [
     architect: 'Leddy Maytum Stacy Architects',
     summary: 'Basically an Apple Store, but with laser cutters and 3D printers 🎨',
     description: `
-      The Jacobs Institute for Design Innovation is one of the most modern buildings at Cal. Transparent, sleek, and filled with light, it sits at the intersection of Engineering and Design.
+      The Jacobs Institute for Design Innovation is one of the most modern buildings at Cal. Transparent, sleek, and filled with light, it looks less like a classroom and more like an Apple Store flagship. It sits at the intersection of Engineering and Design.
       
       This is a Maker's dream. With a Maker Pass, you get access to millions of dollars worth of equipment: 3D printers, laser cutters, woodshops, and electronics labs.
       
-      Even if you aren't making anything, the natural lighting and ventilation make it a top-tier study spot.
+      Even if you aren't making anything, the natural lighting and ventilation make it a top-tier study spot. The furniture is ergonomic, and the vibe is immaculate.
     `,
     funFacts: [
       'It was the first building at Berkeley to receive LEED Platinum certification (highest eco-friendly standard).',
       'The building is actually tiny footprint-wise. It uses cantilevered upper floors to maximize space over the sidewalk.',
-      'Although it screams "Design School," it actually falls under the College of Engineering.'
+      'Although it screams "Design School," it actually falls under the College of Engineering, so you see a mix of artsy types and hardcore engineers.'
     ],
     studentTips: [
       '🎫 **Maker Pass**: This is your golden ticket. Apply at the start of the semester and pass the safety quiz. It gets you free (or cheap) access to all the toys.',
       '💡 **Study Spot**: The 1st floor is loud (machines), but the window seats on the 2nd and 3rd floors are peaceful and sunny.',
       '🚽 **Best Restroom**: Jacobs restrooms consistently rank in the "Top 3 Cleanest on Campus." Modern, private, and well-lit.',
-      '🔌 **Power From Above**: Since the floors are open-plan for machines, the power outlets hang from the ceiling on retractable cords. Very industrial chic.'
+      '🔌 **Power From Above**: Since the floors are open-plan for machines, the power outlets hang from the ceiling on retractable cords. No more crawling under tables!'
     ],
     relatedLegend: 'Design Brain: Stay here long enough and you start seeing everything as a "prototype." Also, someone definitely tried to laser cut a watermelon here once.',
     photoSpots: [
@@ -255,7 +257,7 @@ export const knowLocations = [
     description: `
       Davis Hall is the base for Civil & Environmental Engineering (CEE). This Brutalist concrete beast looks like a fortress—which makes sense given the heavy experiments happening inside.
       
-      The highlight is the massive, multi-story Structural Engineering Materials Laboratory on the first floor, where you can see giant cranes and hydraulic presses crushing concrete columns for science.
+      The highlight is the massive, multi-story Structural Engineering Materials Laboratory on the first floor. Through the glass, you can see giant yellow cranes and hydraulic presses crushing concrete columns for science—it's surprisingly therapeutic to watch.
       
       🚧 **Live Status (2025)**: Davis is currently "Ground Zero" for construction. The **Grimes Engineering Center** (replacing the old Bechtel expansion) is being built right against its north face. Expect barricades and noise near the Trefethen Terrace.
     `,
@@ -322,7 +324,9 @@ export const knowLocations = [
   description: `
     If you feel that this building blocks the view of the Golden Gate Bridge from Memorial Glade, don't worry, you are not alone—the university agrees. It has been officially slated for demolition, and the upcoming Undergraduate Academic Building is designed in part to replace Evans Hall's classroom functions.
 
-    Evans Hall is a typical Brutalist structure—gray, heavy, and maze-like inside. It is the fortress of the Math, Economics, and Statistics departments and the birthplace of many "C-grade nightmares." While students love to complain about its aesthetics, it binds generations of Cal Bears together in their shared struggle of grinding through problem sets and deadlines.
+    Evans Hall is a typical Brutalist structure—gray, heavy, and maze-like inside. It is the fortress of the Math, Economics, and Statistics departments and the birthplace of many "C-grade nightmares." While students love to complain about its aesthetics, it binds generations of Cal Bears together in their shared struggle of grinding through problem sets.
+    
+    Ironically, the best view on campus is from the top of Evans Hall—because it's the only place where you can't see Evans Hall.
   `,
   funFacts: [
     'The best view of Berkeley is rumored to be from the roof of Evans Hall—simply because it’s the only place on campus where you can\'t see Evans Hall.',
@@ -331,7 +335,7 @@ export const knowLocations = [
   ],
   studentTips: [
     '🚧 **Status Update:** It is slated for demolition in the near future. Visit while you can for a piece of history.',
-    '🛗 **Elevator Roulette:** The elevators are notoriously slow, creaky, and unreliable. Take the stairs for a workout if you\'re going to floors 1-4.',
+    '🛗 **Elevator Roulette:** The elevators are notoriously slow, creaky, and unreliable (the "Tower of Terror"). Take the stairs for a workout if you\'re going to floors 1-4.',
     '🚽 **Restroom Hack:** The first floor has individual gender-neutral stalls that offer decent privacy compared to the dungeon-like restrooms on other floors.',
     '🌅 **Secret View:** Try to sneak a peek from the 10th-floor balcony/lounge area for one of the best sunsets on campus.'
   ],
@@ -355,7 +359,7 @@ export const knowLocations = [
   description: `
     This isn't just a physics building; it's hallowed ground for science history. Formerly known as LeConte Hall, Physics North is where J. Robert Oppenheimer held the first secret meetings for what would become the Manhattan Project.
 
-    Built in 1924 by campus architect John Galen Howard, this Beaux-Arts beauty has housed some of the greatest minds in history. Ernest Lawrence built the world's first cyclotron (atom smasher) here. Walking through its halls feels like stepping onto a movie set—which makes sense, since Christopher Nolan filmed scenes for *Oppenheimer* right here.
+    Built in 1924 by campus architect John Galen Howard, this Beaux-Arts beauty has housed some of the greatest minds in history. Ernest Lawrence built the world's first cyclotron (atom smasher) here. Walking through its halls feels like stepping onto a movie set—which makes sense, since Christopher Nolan filmed scenes for *Oppenheimer* right here. Maybe if you study here, you'll absorb some genius by osmosis.
   `,
   funFacts: [
     'Oppenheimer\'s office was located in the northwest corner of the top floor (4th floor), featuring a balcony where he would step out for fresh air during intense discussions.',
@@ -386,19 +390,21 @@ export const knowLocations = [
   architect: 'Charles Moore',
   summary: 'The "mini-campus" with the best restrooms and sharpest suits 💼',
   description: `
-    Step into the Haas School of Business, and you might feel like you've left the rest of UC Berkeley behind. This "mini-campus" consists of interconnected buildings surrounding a pristine central courtyard, designed to foster community (and networking, of course).
+    Step into the Haas School of Business, and you might feel like you've left the rest of UC Berkeley behind. This "mini-campus" consists of interconnected buildings surrounding a pristine central courtyard, designed to feel more like a luxury resort than a school.
 
-    Designed by renowned architect Charles Moore, Haas is a blend of modern facilities and collaborative spaces. It houses state-of-the-art classrooms, the Long Business Library, and an atmosphere that buzzes with entrepreneurial energy. It's the place where future CEOs are made, and where everyone seems to own a blazer.
+    It houses state-of-the-art classrooms, the Long Business Library, and an atmosphere that buzzes with entrepreneurial energy. 
+    
+    Interestingly, while it produces future CEOs, Haas prides itself on a culture of "Confidence Without Attitude." So while you'll see plenty of suits, most people are actually pretty chill (hopefully).
   `,
   funFacts: [
     'Haas is the second-oldest business school in the United States and the oldest at a public university, founded in 1898.',
-    'The complex cost $55 million to build, funded entirely by private donations.',
-    'Unlike the "bougie" stereotypes of other top business schools, Haas prides itself on a culture of "Confidence Without Attitude."'
+    'The architect Charles Moore (former Chair of Architecture at Cal) designed it to foster a "village" community feel.',
+    'Unlike the "bougie" stereotypes of other top business schools, Haas prides itself on being more down-to-earth.'
   ],
   studentTips: [
     '🚽 **Throne Room:** Hands down, Haas has the best restrooms on campus. They are clean, modern, and often have full-length mirrors. Worth the walk.',
     '🤫 **Study Haven:** The Long Business Library is a fantastic, quiet study spot with comfortable seating, even if you aren\'t a business major.',
-    '☕ **Cafe Culture:** The on-site cafe is a great spot to grab a bite, but be prepared for prices that reflect the future salaries of the students.',
+    '☕ **Cafe Culture:** The on-site cafe is a great spot to grab a bite and people-watch, but be prepared for prices that reflect the future salaries of the students.',
     '🐍 **Stereotype Alert:** You might hear jokes about "Haas-holes" or "snakes" due to the competitive grading curve, but many students find the community genuinely supportive.'
   ],
   relatedLegend: 'Legend has it that if you whisper "investment banking" in the courtyard, three recruiters will appear out of thin air.',
@@ -454,7 +460,7 @@ export const knowLocations = [
   description: `
     Located on the south side of campus, this building was known as Barrows Hall until 2020, when it was unnamed due to the namesake's racist history. It is now temporarily referred to as "The Social Sciences Building."
 
-    It houses the departments of Sociology, Political Science, and Ethnic Studies. With its dim, long corridors and notoriously glitchy elevators, the building gives off a distinctively eerie vibe. Despite its gloomy architecture, it remains a vibrant hub for student activism and intellectual debate.
+    It houses the departments of Sociology, Political Science, and Ethnic Studies. With its dim, long corridors and notoriously glitchy elevators, the building gives off a distinctively eerie vibe. Despite its gloomy architecture, it remains a vibrant hub for student activism and intellectual debate—especially in the bathroom graffiti.
   `,
   funFacts: [
     'The unnaming in 2020 was the result of years of student activism, as the original namesake, David Prescott Barrows, was a proponent of colonialism and white supremacy.',
@@ -514,7 +520,7 @@ export const knowLocations = [
   images: ['https://www.usgbc.org/sites/default/files/chou-hall-v2.jpg'],
   id: 'chou',
   title: 'Chou Hall',
-  yearBuilt: '2018',
+  yearBuilt: '2017',
   architect: 'Perkins+Will',
   summary: 'The greenest building in the US, where trash cans are extinct ♻️',
   description: `
@@ -553,7 +559,9 @@ export const knowLocations = [
   description: `
     Funded by a $40 million donation from global philanthropist Li Ka-shing, this building is the cutting-edge hub for biomedical and health sciences at Berkeley. With its massive glass facade and terracotta tiles, it stands out as a beacon of modernity on the western edge of campus.
 
-    Inside, top scientists work on curing cancer, Alzheimer's, and infectious diseases. The open, airy design feels more like a high-end Silicon Valley tech HQ than a university building, symbolizing the future of medical research.
+    Inside, top scientists work on curing cancer, Alzheimer's, and infectious diseases. The open, airy design feels more like a high-end Silicon Valley tech HQ than a university building.
+    
+    Look closely at the interior wood paneling—it's actually reclaimed wood from demolished local warehouses, blending sustainability with modern aesthetics.
   `,
   funFacts: [
     'The building is LEED Gold certified, featuring a green roof designed to attract native butterflies and bees.',

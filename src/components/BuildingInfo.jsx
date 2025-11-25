@@ -70,7 +70,7 @@ function BuildingInfo({ onBack, currentView }) {
 
     if (isSectioned) {
       return sortData.map(section => ({
-        title: section.title,
+        title: typeof section.title === 'object' ? section.title[language === 'CN' ? 'cn' : 'en'] : section.title,
         buildings: section.ids.map(id => currentLocations.find(b => b.id === id)).filter(Boolean)
       })).filter(section => section.buildings.length > 0);
     } else {
