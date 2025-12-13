@@ -91,7 +91,7 @@ function Header({ currentView, hasResults, centered = false, hideTitle = false, 
         */}
         <motion.div 
             layoutId={`${mainLayoutId}-content`}
-            className={`relative z-20 transition-all duration-300
+            className={`relative z-20 transition-[padding] duration-200
                 ${centered 
                     ? 'flex items-center gap-6 justify-center' // Know View: Row, Centered Content
                     : compact 

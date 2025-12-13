@@ -54,7 +54,7 @@ function RouteInput({ startLocation, setStartLocation, endLocation, setEndLocati
           whileTap={{ scale: 0.98 }}
           onClick={onCalculate}
           disabled={isCalculating}
-          className={`w-full mt-4 py-4 rounded-xl font-bold text-white shadow-lg shadow-primary-500/25 flex items-center justify-center gap-2 transition-all
+          className={`w-full mt-4 py-4 rounded-xl font-bold text-white shadow-lg shadow-primary-500/25 flex items-center justify-center gap-2 transition-[background,box-shadow] duration-200
             ${isCalculating 
               ? 'bg-neutral-400 cursor-not-allowed' 
               : 'bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400'

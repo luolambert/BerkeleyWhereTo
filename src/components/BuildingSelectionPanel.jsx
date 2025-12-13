@@ -117,7 +117,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
             placeholder="Search for a building..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-neutral-100 hover:bg-neutral-50 focus:bg-white border-2 border-transparent focus:border-primary-500 rounded-2xl pl-12 pr-4 py-3 text-lg font-medium transition-all outline-none"
+            className="w-full bg-neutral-100 hover:bg-neutral-50 focus:bg-white border-2 border-transparent focus:border-primary-500 rounded-2xl pl-12 pr-4 py-3 text-lg font-medium transition-[background-color,border-color] duration-200 outline-none"
           />
         </div>
         
@@ -128,7 +128,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
               setMode("freshman");
               setActiveCategory("all");
             }}
-            className={`px-3 py-2 rounded-lg text-sm font-bold transition-all ${
+            className={`px-3 py-2 rounded-lg text-sm font-bold transition-[background-color,color,box-shadow] duration-200 ${
               mode === "freshman"
                 ? "bg-white text-primary-600 shadow-sm"
                 : "text-neutral-500 hover:text-neutral-700"
@@ -141,7 +141,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
               setMode("advanced");
               setActiveCategory("all");
             }}
-            className={`px-3 py-2 rounded-lg text-sm font-bold transition-all ${
+            className={`px-3 py-2 rounded-lg text-sm font-bold transition-[background-color,color,box-shadow] duration-200 ${
               mode === "advanced"
                 ? "bg-white text-primary-600 shadow-sm"
                 : "text-neutral-500 hover:text-neutral-700"
@@ -166,7 +166,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-200
                         ${
                           activeCategory === cat.id
                             ? "bg-primary-600 text-white shadow-lg shadow-primary-500/30 scale-105"
@@ -189,7 +189,7 @@ const BuildingSelectionPanel = ({ onSelect, onClose, selectedValue }) => {
               <button
                 key={b.id}
                 onClick={() => onSelect(b.name)}
-                className={`text-left p-3 rounded-2xl border transition-all group relative overflow-hidden
+                className={`text-left p-3 rounded-2xl border transition-[border-color,box-shadow,transform] duration-200 group relative overflow-hidden
                                 ${
                                   selectedValue === b.name
                                     ? "bg-primary-50 border-primary-500 ring-1 ring-primary-500"

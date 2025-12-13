@@ -14,7 +14,7 @@ const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActi
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={onFocus}
-      className={`w-full text-left bg-white/50 hover:bg-white/80 transition-all border rounded-xl px-4 py-3 flex items-center justify-between shadow-sm
+      className={`w-full text-left bg-white/50 hover:bg-white/80 transition-[background-color,border-color,box-shadow] duration-200 border rounded-xl px-4 py-3 flex items-center justify-between shadow-sm
         ${isActive ? 'border-primary-500 ring-2 ring-primary-100 bg-white' : 'border-neutral-200'}
         ${value ? 'border-primary-500/50' : ''}
       `}

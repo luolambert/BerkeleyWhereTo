@@ -100,7 +100,7 @@ function BuildingInfo({ onBack, currentView }) {
             <div className="absolute top-6 right-6 z-[60]">
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 px-3 py-2 bg-white/80 backdrop-blur-md hover:bg-white text-neutral-800 rounded-full shadow-sm hover:shadow-md transition-all border border-neutral-200 group"
+                className="flex items-center gap-2 px-3 py-2 bg-white/80 backdrop-blur-md hover:bg-white text-neutral-800 rounded-full shadow-sm hover:shadow-md transition-[background-color,box-shadow] duration-200 border border-neutral-200 group"
               >
                 <Globe className="w-4 h-4 text-neutral-600 group-hover:text-blue-600 transition-colors" />
                 <span className="text-sm font-medium w-6 text-center">
@@ -138,51 +138,40 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
 
   const SCROLL_RANGE = 150;
 
-  // Container animations
-  const headerHeight = useTransform(scrollY, [0, SCROLL_RANGE], [160, 60]);
-  const headerPaddingTop = useTransform(scrollY, [0, SCROLL_RANGE], [24, 12]);
-  const headerPaddingBottom = useTransform(scrollY, [0, SCROLL_RANGE], [16, 12]);
-  const bgOpacity = useTransform(scrollY, [0, SCROLL_RANGE], [0, 0.9]);
-  const blurAmount = useTransform(scrollY, [0, SCROLL_RANGE], [0, 12]);
-  const shadowOpacity = useTransform(scrollY, [0, SCROLL_RANGE], [0, 0.05]);
-
-  // Convert to CSS strings
-  const backgroundColor = useTransform(bgOpacity, (v) => `rgba(250, 250, 250, ${v})`);
-  const backdropFilter = useTransform(blurAmount, (v) => `blur(${v}px)`);
-  const boxShadow = useTransform(shadowOpacity, (v) => `0 1px 2px rgba(0, 0, 0, ${v})`);
-
-  // Title fade out (in Header component)
-  const titleOpacity = useTransform(scrollY, [0, SCROLL_RANGE * 0.4], [1, 0]);
-
-  // Logo scale
-  const logoScale = useTransform(scrollY, [0, SCROLL_RANGE], [1, 0.8]);
-
-  // Subtitle animations
-  const subtitleFontSize = useTransform(scrollY, [0, SCROLL_RANGE], [18, 14]);
-  const subtitleOpacity = useTransform(scrollY, [0, SCROLL_RANGE], [1, 0.85]);
+  // 🚀 优化：使用单一进度值作为基础
+  const scrollProgress = useTransform(scrollY, [0, SCROLL_RANGE], [0, 1]);
   
-  // Controls scale
-  const controlsScale = useTransform(scrollY, [0, SCROLL_RANGE], [1, 1]);
-
-  // Layout Transforms (Absolute Positioning)
+  // 容器动画 - 从 scrollProgress 派生，减少独立计算
+  const headerHeight = useTransform(scrollProgress, [0, 1], [160, 60]);
+  const headerPaddingTop = useTransform(scrollProgress, [0, 1], [24, 12]);
+  const headerPaddingBottom = useTransform(scrollProgress, [0, 1], [16, 12]);
   
-  // Logo: Center Top -> Left Center
-  const logoTop = useTransform(scrollY, [0, SCROLL_RANGE], ["-4px", "50%"]);
-  const logoLeft = useTransform(scrollY, [0, SCROLL_RANGE], ["50%", "0%"]);
-  const logoX = useTransform(scrollY, [0, SCROLL_RANGE], ["-50%", "0%"]);
-  const logoY = useTransform(scrollY, [0, SCROLL_RANGE], ["0%", "-50%"]);
+  // 🚀 优化：直接使用 opacity 值，不再拼接 rgba 字符串
+  const bgOpacity = useTransform(scrollProgress, [0, 1], [0, 0.9]);
+  const blurAmount = useTransform(scrollProgress, [0, 1], [0, 12]);
+  const shadowOpacity = useTransform(scrollProgress, [0, 1], [0, 0.05]);
 
-  // Subtitle: Center Middle -> Center Middle (but moves up)
-  const subtitleTop = useTransform(scrollY, [0, SCROLL_RANGE], ["56px", "50%"]);
-  const subtitleLeft = useTransform(scrollY, [0, SCROLL_RANGE], ["50%", "50%"]); // Stays centered horizontally
-  const subtitleX = useTransform(scrollY, [0, SCROLL_RANGE], ["-50%", "-50%"]);
-  const subtitleY = useTransform(scrollY, [0, SCROLL_RANGE], ["0%", "-50%"]);
+  // Title fade out faster
+  const titleOpacity = useTransform(scrollProgress, [0, 0.4], [1, 0]);
 
-  // Controls: Center Bottom -> Right Center
-  const controlsTop = useTransform(scrollY, [0, SCROLL_RANGE], ["85px", "50%"]);
-  const controlsLeft = useTransform(scrollY, [0, SCROLL_RANGE], ["50%", "100%"]);
-  const controlsX = useTransform(scrollY, [0, SCROLL_RANGE], ["-50%", "-100%"]);
-  const controlsY = useTransform(scrollY, [0, SCROLL_RANGE], ["0%", "-50%"]);
+  // Logo 变换
+  const logoScale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
+  const logoTop = useTransform(scrollProgress, [0, 1], ["-4px", "50%"]);
+  const logoLeft = useTransform(scrollProgress, [0, 1], ["50%", "0%"]);
+  const logoX = useTransform(scrollProgress, [0, 1], ["-50%", "0%"]);
+  const logoY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
+
+  // Subtitle 变换
+  const subtitleFontSize = useTransform(scrollProgress, [0, 1], [18, 14]);
+  const subtitleOpacity = useTransform(scrollProgress, [0, 1], [1, 0.85]);
+  const subtitleTop = useTransform(scrollProgress, [0, 1], ["56px", "50%"]);
+  const subtitleY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
+
+  // Controls 变换
+  const controlsTop = useTransform(scrollProgress, [0, 1], ["85px", "50%"]);
+  const controlsLeft = useTransform(scrollProgress, [0, 1], ["50%", "100%"]);
+  const controlsX = useTransform(scrollProgress, [0, 1], ["-50%", "-100%"]);
+  const controlsY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
   const title = language === 'CN' 
     ? "Discover the stories and legends behind Berkeley's campus buildings"
@@ -216,11 +205,17 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
             height: headerHeight,
             paddingTop: headerPaddingTop,
             paddingBottom: headerPaddingBottom,
-            backgroundColor,
-            backdropFilter,
-            boxShadow
           }}
         >
+          {/* 背景层 - 独立控制透明度，滚动后变为实体白色 */}
+          <motion.div 
+            className="absolute inset-0"
+            style={{
+              backgroundColor: 'rgb(250, 250, 250)',
+              opacity: bgOpacity,
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+            }}
+          />
           <div className="mx-auto w-full max-w-[1920px] h-full relative">
              {/* Main Header Component (Logo) */}
              <motion.div 
@@ -249,8 +244,8 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
                  fontSize: subtitleFontSize,
                  opacity: subtitleOpacity,
                  top: subtitleTop,
-                 left: subtitleLeft,
-                 x: subtitleX,
+                 left: '50%',
+                 x: '-50%',
                  y: subtitleY
                }}
              >
@@ -261,7 +256,6 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
              <motion.div 
                className="absolute flex items-center gap-4 w-auto"
                style={{
-                 scale: controlsScale,
                  top: controlsTop,
                  left: controlsLeft,
                  x: controlsX,
@@ -299,7 +293,7 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
                 {/* Language Toggle */}
                 <button
                     onClick={onToggleLanguage}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-white hover:bg-neutral-50 text-neutral-800 rounded-full shadow-sm hover:shadow border border-neutral-200 group transition-all"
+                    className="flex items-center gap-2 px-3 py-1.5 bg-white hover:bg-neutral-50 text-neutral-800 rounded-full shadow-sm hover:shadow border border-neutral-200 group transition-[background-color,box-shadow] duration-200"
                 >
                     <Globe className="w-3.5 h-3.5 text-neutral-600 group-hover:text-blue-600 transition-colors" />
                     <span className="text-xs font-medium w-5 text-center">
@@ -321,22 +315,20 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {section.buildings.map((building) => (
-                  <motion.div
+                  // 🚀 优化：改用纯 CSS 悬停效果，减少事件监听器
+                  <div
                     key={building.id}
                     onClick={() => onSelect(building)}
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    whileTap={{ scale: 0.98 }}
-                    // Image background card style
-                    className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden h-[280px]"
+                    className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 overflow-hidden h-[280px]"
                   >
-                    {/* Full background image */}
-                    <motion.img 
+                    {/* Full background image - 🚀 优化：加快动画速度 */}
+                    <img 
                       src={building.images[0]} 
                       alt={building.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
                     />
                     
-                    {/* Gradient Overlay - Darker at bottom for text readability */}
+                    {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
                     
                     {/* Hover "View Details" badge */}
@@ -348,16 +340,16 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
 
                     {/* Text Content - Overlaid at bottom */}
                     <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
-                      <motion.h3 
+                      <h3 
                         className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm"
                       >
                         {building.title}
-                      </motion.h3>
+                      </h3>
                       <p className="text-sm text-white/80 line-clamp-1 leading-relaxed font-medium">
                         {building.summary}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -458,13 +450,13 @@ function BuildingDetail({ building, onBack, language }) {
           <>
             <button 
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-all z-40 opacity-0 group-hover:opacity-100"
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
             >
               <ChevronLeft className="w-8 h-8" />
             </button>
             <button 
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-all z-40 opacity-0 group-hover:opacity-100"
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
             >
               <ChevronRight className="w-8 h-8" />
             </button>
@@ -475,7 +467,7 @@ function BuildingDetail({ building, onBack, language }) {
                 <button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-2 h-2 rounded-full transition-[width,background-color] duration-200 ${
                     idx === currentImageIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
                   }`}
                 />
@@ -512,16 +504,14 @@ function BuildingDetail({ building, onBack, language }) {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - 🚀 优化：改用 CSS animation 减少 JS 开销 */}
         <div className="absolute bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="flex flex-col items-center gap-2 text-white/80"
+            <div
+                className="flex flex-col items-center gap-2 text-white/80 animate-bounce"
             >
                 <span className="text-xs font-medium tracking-widest uppercase">{labels.scroll}</span>
                 <ChevronDown className="w-6 h-6" />
-            </motion.div>
+            </div>
         </div>
       </div>
 
