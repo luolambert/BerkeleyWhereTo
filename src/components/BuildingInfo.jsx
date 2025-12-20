@@ -56,6 +56,18 @@ function BuildingInfo({ onBack, currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
   const [language, setLanguage] = useState('CN'); // 'CN' or 'EN'
   const [sortMethod, setSortMethod] = useState('students'); // 'students', 'categorical', 'popularity'
+  const [slideDirection, setSlideDirection] = useState(0);
+
+  // Define the order of tabs to determine slide direction
+  const sortOrder = ['students', 'categorical', 'popularity'];
+
+  const handleSortChange = (newSort) => {
+    if (newSort === sortMethod) return;
+    const oldIndex = sortOrder.indexOf(sortMethod);
+    const newIndex = sortOrder.indexOf(newSort);
+    setSlideDirection(newIndex > oldIndex ? 1 : -1);
+    setSortMethod(newSort);
+  };
 
   const currentLocations = language === 'CN' ? knowLocationsCN : knowLocationsEN;
   
@@ -123,7 +135,8 @@ function BuildingInfo({ onBack, currentView }) {
             language={language}
             onToggleLanguage={toggleLanguage}
             sortMethod={sortMethod}
-            onSortChange={setSortMethod}
+            onSortChange={handleSortChange}
+            slideDirection={slideDirection}
             currentView={currentView}
           />
         )}
@@ -132,7 +145,7 @@ function BuildingInfo({ onBack, currentView }) {
   );
 }
 
-function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMethod, onSortChange, currentView }) {
+function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMethod, onSortChange, slideDirection, currentView }) {
   const scrollRef = React.useRef(null);
   const { scrollY } = useScroll({ container: scrollRef });
 
@@ -262,26 +275,27 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
                  y: controlsY
                }}
              >
-                {/* Sort Control */}
-                <div className="flex items-center p-1 bg-neutral-200/50 backdrop-blur-xl rounded-full border border-white/20 shadow-[inset_0_1px_3px_rgba(0,0,0,0.06)] relative">
+                {/* Sort Control - iOS Segmented Control Style */}
+                <div className="flex items-center p-1 bg-neutral-100/80 backdrop-blur-md rounded-full border border-white/20 shadow-inner relative">
                   {sortOptions.map((option) => (
                     <button
                       key={option.id}
                       onClick={() => onSortChange(option.id)}
-                      className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 z-10 whitespace-nowrap ${
+                      className={`relative px-4 py-1.5 rounded-full text-sm transition-colors duration-200 z-10 whitespace-nowrap ${
                         sortMethod === option.id
-                          ? 'text-neutral-900'
-                          : 'text-neutral-500 hover:text-neutral-700'
+                          ? 'text-neutral-900 font-semibold'
+                          : 'text-neutral-500 font-medium hover:text-neutral-700'
                       }`}
                     >
                       {sortMethod === option.id && (
                         <motion.div
                           layoutId="activeSort"
-                          className="absolute inset-0 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.12),0_1px_2px_rgba(0,0,0,0.08)] rounded-full z-[-1]"
+                          className="absolute inset-0 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] rounded-full z-[-1]"
                           transition={{ 
                             type: "spring", 
-                            stiffness: 400, 
-                            damping: 30 
+                            stiffness: 500, 
+                            damping: 35,
+                            mass: 0.8
                           }}
                         />
                       )}
@@ -304,57 +318,69 @@ function BuildingGrid({ sections, onSelect, language, onToggleLanguage, sortMeth
           </div>
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="w-[90%] max-w-[1920px] mx-auto pb-12 space-y-12">
-          {sections.map((section, sectionIndex) => (
-            <div key={sectionIndex}>
-              {section.title && (
-                <h3 className="text-xl font-bold text-neutral-800 mb-6 pl-2 border-l-4 border-blue-500">
-                  {section.title}
-                </h3>
-              )}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                {section.buildings.map((building) => (
-                  // 🚀 优化：改用纯 CSS 悬停效果，减少事件监听器
-                  <div
-                    key={building.id}
-                    onClick={() => onSelect(building)}
-                    className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 overflow-hidden h-[280px]"
-                  >
-                    {/* Full background image - 🚀 优化：加快动画速度 */}
-                    <img 
-                      src={building.images[0]} 
-                      alt={building.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
-                    />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-                    
-                    {/* Hover "View Details" badge */}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                      <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
-                          {viewDetailsText}
-                      </span>
-                    </div>
+        {/* Content Grid - Slide Transition */}
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={sortMethod}
+            className="w-[90%] max-w-[1920px] mx-auto pb-12 space-y-12"
+            initial={{ opacity: 0, x: slideDirection * 25 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -slideDirection * 25 }}
+            transition={{ 
+              duration: 0.25, 
+              ease: [0.32, 0.72, 0, 1] // Apple-like ease
+            }}
+          >
+            {sections.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                {section.title && (
+                  <h3 className="text-xl font-bold text-neutral-800 mb-6 pl-2 border-l-4 border-blue-500">
+                    {section.title}
+                  </h3>
+                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {section.buildings.map((building) => (
+                    // 🚀 优化：改用纯 CSS 悬停效果，减少事件监听器
+                    <div
+                      key={building.id}
+                      onClick={() => onSelect(building)}
+                      className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 overflow-hidden h-[280px]"
+                    >
+                      {/* Full background image - 🚀 优化：加快动画速度 */}
+                      <img 
+                        src={building.images[0]} 
+                        alt={building.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                      
+                      {/* Hover "View Details" badge */}
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+                            {viewDetailsText}
+                        </span>
+                      </div>
 
-                    {/* Text Content - Overlaid at bottom */}
-                    <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
-                      <h3 
-                        className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm"
-                      >
-                        {building.title}
-                      </h3>
-                      <p className="text-sm text-white/80 line-clamp-1 leading-relaxed font-medium">
-                        {building.summary}
-                      </p>
+                      {/* Text Content - Overlaid at bottom */}
+                      <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
+                        <h3 
+                          className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm"
+                        >
+                          {building.title}
+                        </h3>
+                        <p className="text-sm text-white/80 line-clamp-1 leading-relaxed font-medium">
+                          {building.summary}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
       
       {/* Disclaimer */}
