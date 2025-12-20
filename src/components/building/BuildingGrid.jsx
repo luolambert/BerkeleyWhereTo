@@ -19,9 +19,36 @@ function BuildingGrid({
   currentView 
 }) {
   const scrollRef = React.useRef(null);
+  const logoRef = React.useRef(null);
+  const containerRef = React.useRef(null);
+  const [centerPosition, setCenterPosition] = React.useState(0);
+  
   const { scrollY } = useScroll({ container: scrollRef });
 
-  const SCROLL_RANGE = 150;
+  // Calculate center position in pixels
+  React.useEffect(() => {
+    const calculateCenter = () => {
+      if (containerRef.current && logoRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const logoWidth = logoRef.current.offsetWidth;
+        const center = (containerWidth - logoWidth) / 2;
+        setCenterPosition(center);
+      }
+    };
+
+    calculateCenter();
+    window.addEventListener('resize', calculateCenter);
+    
+    // Recalculate after a short delay to ensure DOM is ready
+    const timer = setTimeout(calculateCenter, 100);
+    
+    return () => {
+      window.removeEventListener('resize', calculateCenter);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  const SCROLL_RANGE = 400;
 
   // Use a single progress value as base
   const scrollProgress = useTransform(scrollY, [0, SCROLL_RANGE], [0, 1]);
@@ -35,14 +62,12 @@ function BuildingGrid({
   const bgOpacity = useTransform(scrollProgress, [0, 1], [0, 0.9]);
 
   // Title fade out faster
-  const titleOpacity = useTransform(scrollProgress, [0, 0.4], [1, 0]);
+  const titleOpacity = useTransform(scrollProgress, [0, 0.8], [1, 0]);
 
-  // Logo transformations
-  const logoScale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
+  // Logo transformations - Use fixed pixel values
+  const logoScale = useTransform(scrollProgress, [0, 1], [1, 0.7]);
   const logoTop = useTransform(scrollProgress, [0, 1], ["-4px", "50%"]);
-  // Use a single x transform from center (-50%) to left edge (calc: -50% of parent width)
-  // This avoids animating both 'left' and 'x' which can cause visual jitter
-  const logoX = useTransform(scrollProgress, [0, 1], ["-50%", "calc(-50% - 50vw + 24px)"]);
+  const logoLeft = useTransform(scrollProgress, [0, 1], [centerPosition, 24]);
   const logoY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
   // Subtitle transformations
@@ -110,16 +135,17 @@ function BuildingGrid({
               boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           />
-          <div className="mx-auto w-full max-w-[1920px] h-full relative">
+          <div ref={containerRef} className="mx-auto w-full max-w-[1920px] h-full relative">
              {/* Main Header Component (Logo) */}
              <motion.div 
+               ref={logoRef}
                className="absolute w-auto"
                style={{
                  scale: logoScale,
                  top: logoTop,
-                 left: '50%',
-                 x: logoX,
-                 y: logoY
+                 left: logoLeft,
+                 y: logoY,
+                 transformOrigin: '0% 50%'
                }}
              >
                 <Header 
