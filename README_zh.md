@@ -91,6 +91,9 @@
 - **学生生存指南** - 来自学长学姐的实用建议
 - **智能排序与筛选** - 支持按熟悉度、学院类别或热门程度对建筑进行排序和筛选
 - **最佳拍照点** - 发现适合发 Instagram 的绝佳角度
+- **全局多语言支持** - 支持中英文无缝切换，覆盖全站内容
+- **智能化资源预加载** - 优化资源加载顺序，大幅提升页面切换性能
+- **高级交互动画** - 排序时的平滑过渡以及 Header 与 Logo 的动态联动
 
 ### 📊 海拔分析工具
 
@@ -251,6 +254,8 @@ npm run preview
 berkeley-where-to-go/
 ├── src/
 │   ├── components/                    # 🧩 React 组件
+│   │   ├── building/                 # 🏢 建筑相关组件 (Grid, Detail)
+│   │   ├── common/                   # 🛠️ 通用 UI 组件
 │   │   ├── Header.jsx                # 🧭 页面标题与导航
 │   │   ├── RouteInput.jsx            # ✏️ 路线输入表单
 │   │   ├── BuildingSelect.jsx        # 🏢 建筑输入组件
@@ -258,11 +263,17 @@ berkeley-where-to-go/
 │   │   ├── MapContainer.jsx          # 🗺️ 地图容器和路线渲染
 │   │   ├── TravelTimeDisplay.jsx     # ⏱️ 时间显示卡片
 │   │   ├── ElevationChart.jsx        # 📊 海拔剖面图
-│   │   └── BuildingInfo.jsx          # ℹ️ 建筑详情与故事页
-│   ├── data/
-│   │   ├── buildings.js              # 👶 新生模式建筑数据
-│   │   ├── advanced_building.js      # 🎓 高级模式完整建筑数据
-│   │   └── know_chinese.js           # 📖 校园故事数据
+│   │   └── BuildingInfo.jsx          # ℹ️ 建筑详情与故事页 (Deprecated)
+│   ├── views/                         # 🖼️ 页面级组件
+│   │   ├── LandingPage.jsx           # 👋 欢迎页
+│   │   ├── NavigationPage.jsx        # 🚀 导航页 (Go)
+│   │   └── InfoPage.jsx              # 📖 信息页 (Know)
+│   ├── locales/                       # 🌍 国际化语言包
+│   │   ├── zh.js                     # 🇨🇳 中文
+│   │   └── en.js                     # 🇺🇸 英文
+│   ├── context/                       # 💡 全局状态管理
+│   ├── data/                          # 📊 静态数据文件
+│   ├── hooks/                         # ⚓ 常用 Hooks
 │   ├── App.jsx                       # ⚛️ 主应用组件
 │   ├── main.jsx                      # 🚪 应用入口
 │   └── index.css                     # 🎨 全局样式
@@ -434,6 +445,14 @@ npm run build
 ---
 
 ## 📝 更新日志
+
+### v1.5.0 (2025-12)
+
+- ✨ **全站多语言** - 实现了中英文双语支持，包含地图标记与建筑详情
+- ✨ **资源预加载** - 引入关键图片与动画资源预加载，消除模式切换卡顿
+- ✨ **性能大幅优化** - 优化了 Framer Motion 动画性能与 React 组件 Memoization
+- ✨ **结构重构** - 将页面拆分为专用的 `views` 目录，建立了国际化 `locales` 架构
+- ✨ **动画增强** - 新增建筑列表排序滑动效果，优化了 Header 滚动交互性能
 
 ### v1.4.0 (2025-11)
 

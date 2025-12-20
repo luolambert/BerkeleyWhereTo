@@ -91,6 +91,9 @@ But campus life isn't just about rushing to class. It's also about understanding
 - **Student Survival Tips** - Practical advice from seniors for each location
 - **Smart Sorting & Filtering** - Sort and filter buildings by familiarity, category, or popularity
 - **Photo Spots** - Find the best angles for your Instagram shots
+- **Global Multi-language Support** - Seamlessly switch between Chinese and English across all site content
+- **Smart Asset Preloading** - Optimized resource loading order, significantly boosting performance during mode transitions
+- **Advanced Interaction Animations** - Smooth transitions for list sorting and dynamic linkage between the Header and Logo
 
 ### 📊 Elevation Analysis
 
@@ -251,6 +254,8 @@ npm run preview
 berkeley-where-to-go/
 ├── src/
 │   ├── components/                    # 🧩 React Components
+│   │   ├── building/                 # 🏢 Building-related components (Grid, Detail)
+│   │   ├── common/                   # 🛠️ Common UI components
 │   │   ├── Header.jsx                # 🧭 Page header & navigation
 │   │   ├── RouteInput.jsx            # ✏️ Route input form
 │   │   ├── BuildingSelect.jsx        # 🏢 Building input component
@@ -258,11 +263,17 @@ berkeley-where-to-go/
 │   │   ├── MapContainer.jsx          # 🗺️ Map container & route rendering
 │   │   ├── TravelTimeDisplay.jsx     # ⏱️ Travel time display
 │   │   ├── ElevationChart.jsx        # 📊 Elevation profile chart
-│   │   └── BuildingInfo.jsx          # ℹ️ Building details & stories
-│   ├── data/
-│   │   ├── buildings.js              # 👶 Freshman mode buildings
-│   │   ├── advanced_building.js      # 🎓 Advanced mode full database
-│   │   └── know_chinese.js           # 📖 Campus stories data
+│   │   └── BuildingInfo.jsx          # ℹ️ Building details & stories (Deprecated)
+│   ├── views/                         # 🖼️ Page-level components
+│   │   ├── LandingPage.jsx           # 👋 Landing Page
+│   │   ├── NavigationPage.jsx        # 🚀 Navigation Page (Go)
+│   │   └── InfoPage.jsx              # 📖 Information Page (Know)
+│   ├── locales/                       # 🌍 Internationalization bundles
+│   │   ├── zh.js                     # 🇨🇳 Chinese
+│   │   └── en.js                     # 🇺🇸 English
+│   ├── context/                       # 💡 Global state management
+│   ├── data/                          # 📊 Static data files
+│   ├── hooks/                         # ⚓ Custom Hooks
 │   ├── App.jsx                       # ⚛️ Main app component
 │   ├── main.jsx                      # 🚪 App entry point
 │   └── index.css                     # 🎨 Global styles
@@ -434,6 +445,14 @@ Issues and Pull Requests are welcome!
 ---
 
 ## 📝 Changelog
+
+### v1.5.0 (2025-12)
+
+- ✨ **Site-wide I18n** - Implemented full English and Chinese support, including map markers and building details
+- ✨ **Asset Preloading** - Introduced preloading for critical images and animations to eliminate stutters during mode transitions
+- ✨ **Performance Boost** - Optimized Framer Motion animations and React component memoization
+- ✨ **Structural Refactoring** - Separated pages into a dedicated `views` directory and established a `locales` architecture
+- ✨ **Animation Enhancements** - Added slide effects for building grid sorting and refined Header scroll interaction
 
 ### v1.4.0 (2025-11)
 
