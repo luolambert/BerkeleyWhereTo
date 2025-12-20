@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigation } from '../context/NavigationContext';
 import Header from '../components/Header';
 import MapContainer from '../components/MapContainer';
 import RouteInput from '../components/RouteInput';
@@ -7,24 +8,21 @@ import TravelTimeDisplay from '../components/TravelTimeDisplay';
 import ElevationChart from '../components/ElevationChart';
 import BuildingSelectionPanel from '../components/BuildingSelectionPanel';
 
-function NavigationPage({
-  isLoaded,
-  startLocation,
-  setStartLocation,
-  endLocation,
-  setEndLocation,
-  travelTimes,
-  setTravelTimes,
-  isCalculating,
-  setIsCalculating,
-  routePoints,
-  setRoutePoints,
-  elevationData,
-  setElevationData,
-  activeField,
-  setActiveField,
-  calculateRoute
-}) {
+function NavigationPage({ isLoaded }) {
+  const {
+    startLocation,
+    endLocation,
+    travelTimes,
+    routePoints,
+    elevationData,
+    activeField,
+    setElevationData,
+    calculateRoute,
+    resetNavigation,
+    toggleField,
+    selectBuilding,
+  } = useNavigation();
+
   return (
     <motion.div 
         key="navigation"
@@ -63,22 +61,11 @@ function NavigationPage({
                 />
                 <RouteInput 
                     startLocation={startLocation}
-                    setStartLocation={setStartLocation}
                     endLocation={endLocation}
-                    setEndLocation={setEndLocation}
                     onCalculate={calculateRoute}
-                    isCalculating={isCalculating}
                     activeField={activeField}
-                    onFieldFocus={(field) => setActiveField(current => current === field ? null : field)}
-                    onReset={() => {
-                        setStartLocation('');
-                        setEndLocation('');
-                        setTravelTimes(null);
-                        setRoutePoints(null);
-                        setElevationData(null);
-                        setActiveField(null);
-                        setIsCalculating(false);
-                    }}
+                    onFieldFocus={toggleField}
+                    onReset={resetNavigation}
                 />
                 
                 {/* Results Area */}
@@ -117,12 +104,8 @@ function NavigationPage({
                         >
                             <BuildingSelectionPanel 
                                 selectedValue={activeField === 'start' ? startLocation : endLocation}
-                                onSelect={(buildingName) => {
-                                    if (activeField === 'start') setStartLocation(buildingName);
-                                    else setEndLocation(buildingName);
-                                    setActiveField(null);
-                                }}
-                                onClose={() => setActiveField(null)}
+                                onSelect={selectBuilding}
+                                onClose={() => toggleField(null)}
                             />
                         </motion.div>
                     </div>

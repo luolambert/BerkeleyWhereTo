@@ -2,9 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Navigation, Map, MapPin, RefreshCw } from 'lucide-react';
 import BuildingSelect from './BuildingSelect';
+import { useNavigation } from '../context/NavigationContext';
 
-function RouteInput({ startLocation, setStartLocation, endLocation, setEndLocation, onCalculate, isCalculating, activeField, onFieldFocus, onReset }) {
+function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset }) {
+  const { isCalculating } = useNavigation();
+  
   return (
+
     <motion.div 
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
