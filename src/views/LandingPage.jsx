@@ -9,7 +9,12 @@ function LandingPage() {
   const [hoveredSide, setHoveredSide] = useState(null); // 'go' | 'know' | null
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col md:flex-row">
+    <motion.div 
+      className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col md:flex-row"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <LayoutGroup>
         {/* Left Side - Where To Go */}
         {/* OPTIMIZATION: Removed layout prop to avoid re-layouts, added willChange hint */}
@@ -18,6 +23,7 @@ function LandingPage() {
           onClick={() => navigate('/go')}
           onMouseEnter={() => setHoveredSide('go')}
           onMouseLeave={() => setHoveredSide(null)}
+          initial={false}
           animate={{ 
             flex: hoveredSide === 'go' ? 1.5 : (hoveredSide === 'know' ? 0.8 : 1) 
           }}
@@ -75,6 +81,7 @@ function LandingPage() {
           onClick={() => navigate('/know')}
           onMouseEnter={() => setHoveredSide('know')}
           onMouseLeave={() => setHoveredSide(null)}
+          initial={false}
           animate={{ 
             flex: hoveredSide === 'know' ? 1.5 : (hoveredSide === 'go' ? 0.8 : 1) 
           }}
@@ -116,7 +123,7 @@ function LandingPage() {
           </motion.div>
         </motion.div>
       </LayoutGroup>
-    </div>
+    </motion.div>
   );
 }
 

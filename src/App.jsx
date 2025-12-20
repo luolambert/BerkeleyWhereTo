@@ -4,6 +4,7 @@ import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
 import { Github } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { NavigationProvider } from './context/NavigationContext';
+import { PreloadProvider } from './context/PreloadContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import NavigationPage from './views/NavigationPage';
 import InfoPage from './views/InfoPage';
@@ -99,9 +100,11 @@ function App() {
   });
 
   return (
-    <BrowserRouter>
-      <AppContent isLoaded={isLoaded} />
-    </BrowserRouter>
+    <PreloadProvider>
+      <BrowserRouter>
+        <AppContent isLoaded={isLoaded} />
+      </BrowserRouter>
+    </PreloadProvider>
   );
 }
 

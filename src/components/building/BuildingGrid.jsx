@@ -40,8 +40,9 @@ function BuildingGrid({
   // Logo transformations
   const logoScale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
   const logoTop = useTransform(scrollProgress, [0, 1], ["-4px", "50%"]);
-  const logoLeft = useTransform(scrollProgress, [0, 1], ["50%", "0%"]);
-  const logoX = useTransform(scrollProgress, [0, 1], ["-50%", "0%"]);
+  // Use a single x transform from center (-50%) to left edge (calc: -50% of parent width)
+  // This avoids animating both 'left' and 'x' which can cause visual jitter
+  const logoX = useTransform(scrollProgress, [0, 1], ["-50%", "calc(-50% - 50vw + 24px)"]);
   const logoY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
   // Subtitle transformations
@@ -56,18 +57,30 @@ function BuildingGrid({
   const controlsX = useTransform(scrollProgress, [0, 1], ["-50%", "-100%"]);
   const controlsY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
-  const title = "Discover the stories and legends behind Berkeley's campus buildings";
+  const title = language === 'CN' 
+    ? "探索伯克利校园建筑背后的故事与传说" 
+    : "Discover the stories and legends behind Berkeley's campus buildings";
+  
   const viewDetailsText = language === 'CN' ? "查看详情" : "View Details";
-  const disclaimerText = [
+  
+  const disclaimerText = language === 'CN' ? [
+    "信息为个人收集，可能不准确或过时。",
+    "图片来源于 Google 或加州大学伯克利分校官网。"
+  ] : [
     "Information collected personally, may be inaccurate or outdated.",
     "Images sourced from Google or UC Berkeley official website."
   ];
 
-  const sortOptions = [
+  const sortOptions = language === 'CN' ? [
+    { id: 'students', label: '适合学生' },
+    { id: 'categorical', label: '按类别' },
+    { id: 'popularity', label: '热门程度' },
+  ] : [
     { id: 'students', label: 'For Students' },
     { id: 'categorical', label: 'Categorical' },
     { id: 'popularity', label: 'Popularity' },
   ];
+
 
   return (
     <motion.div 
@@ -77,7 +90,7 @@ function BuildingGrid({
       className="w-full h-full flex flex-col overflow-hidden"
     >
       {/* Scrollable Container */}
-      <div ref={scrollRef} className="w-full h-full overflow-y-auto px-6 sm:px-8 pb-12">
+      <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden px-6 sm:px-8 pb-12">
         
         {/* Sticky Header Container */}
         <motion.div 
@@ -104,7 +117,7 @@ function BuildingGrid({
                style={{
                  scale: logoScale,
                  top: logoTop,
-                 left: logoLeft,
+                 left: '50%',
                  x: logoX,
                  y: logoY
                }}

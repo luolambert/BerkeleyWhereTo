@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Polyline, DirectionsRenderer, OverlayView } from '@react-google-maps/api';
+import { useNavigation } from '../context/NavigationContext';
 
 const containerStyle = {
   width: '100%',
@@ -70,6 +71,7 @@ const CustomMarker = ({ position, label, type, placement = 'top' }) => {
 };
 
 const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
+  const { language } = useNavigation();
   const [map, setMap] = useState(null);
   const [directions, setDirections] = useState(null);
   const [error, setError] = useState(null);
@@ -77,6 +79,7 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
   const [coloredSegments, setColoredSegments] = useState([]);
   const directionsRendererRef = useRef(null);
   const polylinesRef = useRef([]);
+
 
   const onLoad = useCallback(function callback(map) {
     setMap(map);
@@ -396,19 +399,27 @@ const MapContainer = ({ isLoaded, routePoints, onElevationLoaded }) => {
       {/* Legend - Moved to avoid zoom controls */}
       {coloredSegments.length > 0 && (
           <div className="absolute bottom-8 right-16 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-100 z-50">
-              <h4 className="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">Slope Intensity</h4>
+              <h4 className="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">
+                {language === 'CN' ? '坡度强度' : 'Slope Intensity'}
+              </h4>
               <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-3">
                       <div className="w-6 h-2 bg-blue-300 rounded-full"></div>
-                      <span className="text-xs font-medium text-gray-600">Flat (&lt;3%)</span>
+                      <span className="text-xs font-medium text-gray-600">
+                        {language === 'CN' ? '平坦 (<3%)' : 'Flat (<3%)'}
+                      </span>
                   </div>
                   <div className="flex items-center gap-3">
                       <div className="w-6 h-2 bg-blue-600 rounded-full"></div>
-                      <span className="text-xs font-medium text-gray-600">Moderate (3-8%)</span>
+                      <span className="text-xs font-medium text-gray-600">
+                        {language === 'CN' ? '中等 (3-8%)' : 'Moderate (3-8%)'}
+                      </span>
                   </div>
                   <div className="flex items-center gap-3">
                       <div className="w-6 h-2 bg-blue-900 rounded-full"></div>
-                      <span className="text-xs font-medium text-gray-600">Steep (&gt;8%)</span>
+                      <span className="text-xs font-medium text-gray-600">
+                        {language === 'CN' ? '陡峭 (>8%)' : 'Steep (>8%)'}
+                      </span>
                   </div>
               </div>
           </div>
