@@ -7,6 +7,7 @@ import RouteInput from '../components/RouteInput';
 import TravelTimeDisplay from '../components/TravelTimeDisplay';
 import ElevationChart from '../components/ElevationChart';
 import BuildingSelectionPanel from '../components/BuildingSelectionPanel';
+import { EXTERNAL_LINKS } from '../constants/appConfig';
 
 function NavigationPage({ isLoaded }) {
   const {
@@ -22,6 +23,7 @@ function NavigationPage({ isLoaded }) {
     toggleField,
     selectBuilding,
   } = useNavigation();
+
 
   return (
     <motion.div 
@@ -41,14 +43,15 @@ function NavigationPage({ isLoaded }) {
             />
         </div>
 
-        {/* Berkeley Logo (Top Right) */}
+        {/* Berkeley Seal (Top Right) */}
         <div className="absolute top-4 right-4 z-20 pointer-events-auto">
             <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg" 
-            alt="Berkeley Seal" 
-            className="w-16 h-16 opacity-90 hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
+                src={EXTERNAL_LINKS.BERKELEY_SEAL}
+                alt="Berkeley Seal" 
+                className="w-16 h-16 opacity-90 hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
             />
         </div>
+
 
         {/* Floating Panel Container */}
         <div className="absolute inset-0 z-10 pointer-events-none flex flex-col sm:flex-row p-4 sm:p-6 gap-4 sm:gap-6">

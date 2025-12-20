@@ -5,8 +5,8 @@ import { useScroll, useTransform } from 'framer-motion';
 import Header from '../Header';
 
 /**
- * 建筑网格组件
- * 展示建筑卡片列表，支持分类和动态滚动效果
+ * Building Grid Component
+ * Displays a list of building cards with support for categorization and dynamic scrolling
  */
 function BuildingGrid({ 
   sections, 
@@ -23,34 +23,34 @@ function BuildingGrid({
 
   const SCROLL_RANGE = 150;
 
-  // 使用单一进度值作为基础
+  // Use a single progress value as base
   const scrollProgress = useTransform(scrollY, [0, SCROLL_RANGE], [0, 1]);
   
-  // 容器动画 - 从 scrollProgress 派生
+  // Header container animations - Derived from scrollProgress
   const headerHeight = useTransform(scrollProgress, [0, 1], [160, 60]);
   const headerPaddingTop = useTransform(scrollProgress, [0, 1], [24, 12]);
   const headerPaddingBottom = useTransform(scrollProgress, [0, 1], [16, 12]);
   
-  // 背景效果
+  // Background effects
   const bgOpacity = useTransform(scrollProgress, [0, 1], [0, 0.9]);
 
   // Title fade out faster
   const titleOpacity = useTransform(scrollProgress, [0, 0.4], [1, 0]);
 
-  // Logo 变换
+  // Logo transformations
   const logoScale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
   const logoTop = useTransform(scrollProgress, [0, 1], ["-4px", "50%"]);
   const logoLeft = useTransform(scrollProgress, [0, 1], ["50%", "0%"]);
   const logoX = useTransform(scrollProgress, [0, 1], ["-50%", "0%"]);
   const logoY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
-  // Subtitle 变换
+  // Subtitle transformations
   const subtitleFontSize = useTransform(scrollProgress, [0, 1], [18, 14]);
   const subtitleOpacity = useTransform(scrollProgress, [0, 1], [1, 0.85]);
   const subtitleTop = useTransform(scrollProgress, [0, 1], ["56px", "50%"]);
   const subtitleY = useTransform(scrollProgress, [0, 1], ["0%", "-50%"]);
 
-  // Controls 变换
+  // Controls transformations
   const controlsTop = useTransform(scrollProgress, [0, 1], ["85px", "50%"]);
   const controlsLeft = useTransform(scrollProgress, [0, 1], ["50%", "100%"]);
   const controlsX = useTransform(scrollProgress, [0, 1], ["-50%", "-100%"]);
@@ -88,7 +88,7 @@ function BuildingGrid({
             paddingBottom: headerPaddingBottom,
           }}
         >
-          {/* 背景层 */}
+          {/* Background Layer */}
           <motion.div 
             className="absolute inset-0"
             style={{

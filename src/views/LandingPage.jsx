@@ -12,7 +12,7 @@ function LandingPage() {
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col md:flex-row">
       <LayoutGroup>
         {/* Left Side - Where To Go */}
-        {/* 🚀 优化：移除 layout prop 避免布局重排，添加 willChange 提示 */}
+        {/* OPTIMIZATION: Removed layout prop to avoid re-layouts, added willChange hint */}
         <motion.div 
           className="relative group cursor-pointer overflow-hidden"
           onClick={() => navigate('/go')}
@@ -59,7 +59,7 @@ function LandingPage() {
           </motion.div>
         </motion.div>
 
-        {/* Divider (Desktop) - 🚀 优化：移除 layout prop */}
+        {/* Divider (Desktop) - OPTIMIZATION: Removed layout prop */}
         <div 
             className="hidden md:block w-px bg-neutral-200 relative z-30"
         >
@@ -69,7 +69,7 @@ function LandingPage() {
         </div>
 
         {/* Right Side - Where To Know */}
-        {/* 🚀 优化：移除 layout prop 避免布局重排 */}
+        {/* OPTIMIZATION: Removed layout prop to avoid re-layouts */}
         <motion.div 
           className="relative group cursor-pointer overflow-hidden"
           onClick={() => navigate('/know')}

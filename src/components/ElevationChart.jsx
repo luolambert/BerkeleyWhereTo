@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -89,4 +90,4 @@ const ElevationChart = ({ data }) => {
   );
 };
 
-export default ElevationChart;
+export default React.memo(ElevationChart);

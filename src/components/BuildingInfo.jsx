@@ -13,7 +13,7 @@ import BuildingDetail from './building/BuildingDetail';
  */
 function BuildingInfo({ onBack, currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
-  const [language, setLanguage] = useState('CN'); // 'CN' or 'EN'
+  const [language, setLanguage] = useState('EN'); // 'CN' or 'EN'
   const [sortMethod, setSortMethod] = useState('students'); // 'students', 'categorical', 'popularity'
   const [slideDirection, setSlideDirection] = useState(0);
 

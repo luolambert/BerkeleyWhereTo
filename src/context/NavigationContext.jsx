@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { buildings } from '../data/buildings';
 import { buildings as advancedBuildings } from '../data/advanced_building';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants/appConfig';
 
 // Combine buildings for lookup
 const ALL_BUILDINGS = [...buildings, ...advancedBuildings];
 
 /**
- * 导航状态初始值
+ * Initial navigation state
  */
 const initialState = {
   startLocation: '',
@@ -16,17 +17,18 @@ const initialState = {
   routePoints: null,
   elevationData: null,
   activeField: null, // 'start' | 'end' | null
+  language: DEFAULT_LANGUAGE, // 'CN' | 'EN'
 };
 
 /**
  * NavigationContext
- * 管理导航页面的所有状态，消除 prop drilling
+ * Manages all navigation states to eliminate prop drilling
  */
 const NavigationContext = createContext(null);
 
 /**
  * NavigationProvider
- * 包装应用，提供导航状态和方法
+ * Wraps the app to provide navigation state and methods
  */
 export function NavigationProvider({ children, isLoaded }) {
   const [startLocation, setStartLocation] = useState(initialState.startLocation);
@@ -36,8 +38,14 @@ export function NavigationProvider({ children, isLoaded }) {
   const [routePoints, setRoutePoints] = useState(initialState.routePoints);
   const [elevationData, setElevationData] = useState(initialState.elevationData);
   const [activeField, setActiveField] = useState(initialState.activeField);
+  const [language, setLanguage] = useState(initialState.language);
 
-  // 计算路线
+  // Toggle language
+  const toggleLanguage = useCallback(() => {
+    setLanguage(prev => prev === SUPPORTED_LANGUAGES.CN ? SUPPORTED_LANGUAGES.EN : SUPPORTED_LANGUAGES.CN);
+  }, []);
+
+  // Calculate route
   const calculateRoute = useCallback(async () => {
     if (!startLocation || !endLocation || !isLoaded) return;
 
@@ -85,7 +93,7 @@ export function NavigationProvider({ children, isLoaded }) {
     }
   }, [startLocation, endLocation, isLoaded]);
 
-  // 重置所有状态
+  // Reset all states
   const resetNavigation = useCallback(() => {
     setStartLocation('');
     setEndLocation('');
@@ -96,12 +104,12 @@ export function NavigationProvider({ children, isLoaded }) {
     setIsCalculating(false);
   }, []);
 
-  // 切换输入框激活状态
+  // Toggle input field focus state
   const toggleField = useCallback((field) => {
     setActiveField(current => current === field ? null : field);
   }, []);
 
-  // 选择建筑并关闭面板
+  // Select building and close panel
   const selectBuilding = useCallback((buildingName) => {
     if (activeField === 'start') {
       setStartLocation(buildingName);
@@ -112,7 +120,7 @@ export function NavigationProvider({ children, isLoaded }) {
   }, [activeField]);
 
   const value = {
-    // 状态
+    // State
     startLocation,
     endLocation,
     travelTimes,
@@ -120,17 +128,19 @@ export function NavigationProvider({ children, isLoaded }) {
     routePoints,
     elevationData,
     activeField,
+    language,
     
-    // Setters（仅保留必要的）
+    // Setters (Keep only necessary ones)
     setStartLocation,
     setEndLocation,
     setElevationData,
     
-    // 方法
+    // Methods
     calculateRoute,
     resetNavigation,
     toggleField,
     selectBuilding,
+    toggleLanguage,
   };
 
   return (
@@ -142,7 +152,7 @@ export function NavigationProvider({ children, isLoaded }) {
 
 /**
  * useNavigation Hook
- * 在组件中使用导航状态和方法
+ * Consumes navigation state and methods in components
  */
 export function useNavigation() {
   const context = useContext(NavigationContext);

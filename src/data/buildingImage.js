@@ -1,14 +1,10 @@
 export const buildingImages = {
-  // ---------------------------------------------------------
-  // 1. The "Big Three" (核心通识课大教室)
-  // ---------------------------------------------------------
+  // 1. The "Big Three"
   dwinelle: ['https://upload.wikimedia.org/wikipedia/commons/5/5d/Dwinelle_hall_uc_berkeley.jpg'],
   wheeler: ['https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wheeler_Hall--UC_Berkeley--Panoramic.jpg/2560px-Wheeler_Hall--UC_Berkeley--Panoramic.jpg'],
   pimentel: ['https://chemistry.berkeley.edu/sites/default/files/styles/panopoly_image_original/public/pimentel_hall_photo_yijian-shan-_staff.jpg?itok=ch5N3vzl&timestamp=1572625477'],
 
-  // ---------------------------------------------------------
-  // 2. STEM Core (理科与工程基础课)
-  // ---------------------------------------------------------
+  // 2. STEM Core
   valley_life: ['https://funginstitute.berkeley.edu/wp-content/uploads/2015/06/vlsb.jpg'],
   evans: ['https://bloximages.chicago2.vip.townnews.com/dailycal.org/content/tncms/assets/v3/editorial/4/ae/4ae9190c-2f4f-11ef-a3fa-838acad1d195/6674a48d2a90f.image.jpg'],
   physics: ['https://dac.berkeley.edu/sites/default/files/styles/openberkeley_widgets_spotlight_full/public/buildings-2/buildings-2/Leconte-Building.jpg?itok=GKbRHrAN'],
@@ -18,9 +14,7 @@ export const buildingImages = {
   etcheverry: ['https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Etcheverry_Hall.jpg/2560px-Etcheverry_Hall.jpg'],
   hearst_mining: [], // Placeholder needed
 
-  // ---------------------------------------------------------
-  // 3. Libraries & Study Spaces (主要图书馆)
-  // ---------------------------------------------------------
+  // 3. Libraries & Study Spaces
   moffitt: ['https://www.lib.berkeley.edu/sites/default/files/inline-images/Mitchell_Moffitt%20Library_20.jpg'],
   doe: ['https://upload.wikimedia.org/wikipedia/commons/9/9a/Doe_Library%2C_main_facade%2C_July_2018.jpg',
         'https://thomasguignard.photo/wp-content/uploads/sites/6/2020/05/tguignard-ucberkeley-web-0723.jpg'],
@@ -28,9 +22,7 @@ export const buildingImages = {
   grimes: [],
   bancroft: [],
 
-  // ---------------------------------------------------------
-  // 4. Social Sciences, Arts & Professional (文社科与专业学院)
-  // ---------------------------------------------------------
+  // 4. Social Sciences, Arts & Professional
   social_sciences: ['https://eventservices.berkeley.edu/wp-content/uploads/2022/10/Social-Sciences-C.-3.jpg'],
   bauer_wurster: ['https://www.sosbrutalism.org/sixcms/media.php/1685/thumbnails/Wurster%20Hall%20-%20UC%20Berkeley%20%28Vernon%20De%20Mars%2C%20Donald%20Olsen%2C%20Joseph%20Esherick%2C%201964%29%2C%20Berkeley.jpg.3065879.jpg'],
   haas: ['https://www.usnews.com/cmsmedia/b2/f7/0776ad8f4bdb81e93fd317995d14/hero-azh-511m-1920x760.jpg'],
@@ -38,32 +30,24 @@ export const buildingImages = {
   genetics: [],
   anth_art: [],
 
-  // ---------------------------------------------------------
-  // 5. Student Life & Essentials (生活服务与活动)
-  // ---------------------------------------------------------
+  // 5. Student Life & Essentials
   mlk: ['https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-6/481044662_1207552781218380_7311915614725282251_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=PbuuwH_5-gEQ7kNvwGDPSGc&_nc_oc=Adl59X11cySSx8ijgM_5ur-SUpmaDbbVsmy7edIUO7XcegUhcXE6qlfmhLsM4752j4mJqTw4Jt1zrriFzxxOONtO&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&_nc_gid=7ujKEvUpqz9ekiFcgPFpkQ&oh=00_AfjSwQox5gFF43LxxiUa5LMJ5q4d1zfjiPcR87yBUCc64Q&oe=692AB8E7'],
   sproul: [],
   rsf: [],
   tang_center: [],
   golden_bear_cafe: [],
 
-  // ---------------------------------------------------------
-  // 6. Iconic Landmarks (地标)
-  // ---------------------------------------------------------
+  // 6. Iconic Landmarks
   sather_gate: [],
   campanile: [],
   memorial_glade: [],
 
-  // ---------------------------------------------------------
-  // 7. Athletics & Culture (体育与文化)
-  // ---------------------------------------------------------
+  // 7. Athletics & Culture
   stadium: [],
   haas_pavilion: [],
   bampfa: [],
 
-  // ---------------------------------------------------------
-  // 8. Housing (宿舍)
-  // ---------------------------------------------------------
+  // 8. Housing
   unit_1: [],
   unit_2: [],
   unit_3: [],

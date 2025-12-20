@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Footprints, Bike } from 'lucide-react';
+import { useNavigation } from '../context/NavigationContext';
+import useTranslation from '../hooks/useTranslation';
 
 function TravelTimeDisplay({ walkingTime, scooterTime }) {
+  const { language } = useNavigation();
+  const { t } = useTranslation(language);
+
   const container = {
     hidden: { opacity: 0, height: 0 },
     show: {
@@ -52,9 +57,9 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
           <Footprints size={24} />
         </div>
         <div className="text-3xl font-bold text-neutral-800 mb-1">
-          {walkingTime}<span className="text-sm font-medium text-neutral-500 ml-1">min</span>
+          {walkingTime}<span className="text-sm font-medium text-neutral-500 ml-1">{t('navigation.min')}</span>
         </div>
-        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">Walking</div>
+        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">{t('navigation.walking')}</div>
       </motion.div>
 
       {/* Scooter Card */}
@@ -67,12 +72,12 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
           <Bike size={24} />
         </div>
         <div className="text-3xl font-bold text-neutral-800 mb-1">
-          {scooterTime}<span className="text-sm font-medium text-neutral-500 ml-1">min</span>
+          {scooterTime}<span className="text-sm font-medium text-neutral-500 ml-1">{t('navigation.min')}</span>
         </div>
-        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">Scooter</div>
+        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">{t('navigation.scooter')}</div>
       </motion.div>
     </motion.div>
   );
 }
 
-export default TravelTimeDisplay;
+export default React.memo(TravelTimeDisplay);

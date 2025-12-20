@@ -2,8 +2,8 @@ import React from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 /**
- * 错误边界组件
- * 捕获子组件的 JavaScript 错误，显示友好的错误界面
+ * ErrorBoundary Component
+ * Catches JavaScript errors in child components and displays a friendly error UI
  */
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     this.setState({ errorInfo });
     
-    // 可以在这里上报错误到日志服务
+    // Error reporting services can be integrated here
     console.error('ErrorBoundary caught an error:', error, errorInfo);
   }
 
@@ -38,31 +38,31 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       const { fallback, showDetails = false } = this.props;
       
-      // 如果提供了自定义 fallback，使用它
+      // Use custom fallback if provided
       if (fallback) {
         return fallback;
       }
 
-      // 默认错误界面
+      // Default error UI
       return (
         <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-6">
           <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-            {/* 图标 */}
+            {/* Icon */}
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <AlertTriangle className="w-8 h-8 text-red-600" />
             </div>
             
-            {/* 标题 */}
+            {/* Title */}
             <h1 className="text-2xl font-bold text-neutral-900 mb-2">
               Oops! Something went wrong
             </h1>
             
-            {/* 描述 */}
+            {/* Description */}
             <p className="text-neutral-600 mb-6">
               We're sorry, but something unexpected happened. Please try again or return to the home page.
             </p>
             
-            {/* 错误详情（仅开发环境） */}
+            {/* Error details (Development environment only) */}
             {showDetails && this.state.error && (
               <div className="bg-red-50 rounded-lg p-4 mb-6 text-left">
                 <p className="text-sm font-mono text-red-800 break-all">
@@ -71,7 +71,7 @@ class ErrorBoundary extends React.Component {
               </div>
             )}
             
-            {/* 操作按钮 */}
+            {/* Action Buttons */}
             <div className="flex gap-3 justify-center">
               <button
                 onClick={this.handleRetry}

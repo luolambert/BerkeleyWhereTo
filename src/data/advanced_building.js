@@ -1,7 +1,5 @@
 export const buildings = [
-  // ---------------------------------------------------------
-  // 1. Academic - General & Humanities (人文社科教学楼)
-  // ---------------------------------------------------------
+// 1. Academic - General & Humanities
   { id: 'dwinelle', name: 'Dwinelle Hall', lat: 37.8706, lng: -122.2605, category: 'Humanities', popular: true, undergrad: true, grad: true },
   { id: 'wheeler', name: 'Wheeler Hall', lat: 37.8713, lng: -122.2580, category: 'Humanities', popular: true, undergrad: true, grad: true },
   { id: 'social_sciences', name: 'The Social Sciences Building (Old Barrows)', lat: 37.8700, lng: -122.2579, category: 'Humanities', popular: true, undergrad: true, grad: true },
@@ -13,9 +11,7 @@ export const buildings = [
   { id: 'durant', name: 'Durant Hall', lat: 37.8718, lng: -122.2595, category: 'Humanities', popular: false, undergrad: true, grad: true },
   { id: 'anthony', name: 'Anthony Hall', lat: 37.8707, lng: -122.2560, category: 'Humanities', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
   // 2. Academic - STEM (Engineering, Physics, Bio, Chem)
-  // ---------------------------------------------------------
   { id: 'soda', name: 'Soda Hall (CS)', lat: 37.8756, lng: -122.2588, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'cory', name: 'Cory Hall (EE)', lat: 37.8752, lng: -122.2576, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'etcheverry', name: 'Etcheverry Hall', lat: 37.8759, lng: -122.2593, category: 'STEM', popular: true, undergrad: true, grad: true },
@@ -52,9 +48,7 @@ export const buildings = [
   { id: 'giannini', name: 'Giannini Hall', lat: 37.8735, lng: -122.2624, category: 'STEM', popular: false, undergrad: true, grad: true },
   { id: 'weill', name: 'Weill Hall (LSA)', lat: 37.8718, lng: -122.2628, category: 'STEM', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 3. Academic - Arts & Design (艺术与设计)
-  // ---------------------------------------------------------
+  // 3. Academic - Arts & Design
   { id: 'bauer_wurster', name: 'Bauer Wurster Hall', lat: 37.8704, lng: -122.2546, category: 'Arts & Design', popular: true, undergrad: true, grad: true },
   { id: 'hertz', name: 'Hertz Hall', lat: 37.8703, lng: -122.2559, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
   { id: 'morrison', name: 'Morrison Hall', lat: 37.8702, lng: -122.2562, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
@@ -62,9 +56,7 @@ export const buildings = [
   { id: 'north_gate', name: 'North Gate Hall (Journalism)', lat: 37.8743, lng: -122.2597, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
   { id: 'bampfa', name: 'Berkeley Art Museum and Pacific Film Archive (BAMPFA)', lat: 37.8709, lng: -122.2664, category: 'Arts & Design', popular: true, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
   // 4. Professional Schools (Business, Law, Education, Optometry)
-  // ---------------------------------------------------------
   { id: 'haas', name: 'Haas School of Business', lat: 37.8716, lng: -122.2533, category: 'Business', popular: true, undergrad: true, grad: true },
   { id: 'chou', name: 'Chou Hall', lat: 37.8720, lng: -122.2539, category: 'Business', popular: true, undergrad: true, grad: true },
   { id: 'cheit', name: 'Cheit Hall', lat: 37.8717, lng: -122.2538, category: 'Business', popular: false, undergrad: true, grad: true },
@@ -73,9 +65,7 @@ export const buildings = [
   { id: 'haviland', name: 'Haviland Hall (Social Welfare)', lat: 37.8735, lng: -122.2553, category: 'Professional', popular: false, undergrad: true, grad: true },
   { id: 'goldman_school', name: 'Goldman School of Public Policy', lat: 37.8758, lng: -122.2583, category: 'Professional', popular: false, undergrad: false, grad: true },
 
-  // ---------------------------------------------------------
-  // 5. Libraries (图书馆)
-  // ---------------------------------------------------------
+  // 5. Libraries
   { id: 'moffitt', name: 'Moffitt Library', lat: 37.8726, lng: -122.2606, category: 'Libraries', popular: true, undergrad: true, grad: true },
   { id: 'doe', name: 'Doe Memorial Library', lat: 37.8721, lng: -122.2593, category: 'Libraries', popular: true, undergrad: true, grad: true },
   { id: 'bancroft', name: 'Bancroft Library', lat: 37.8723, lng: -122.2598, category: 'Libraries', popular: false, undergrad: true, grad: true },
@@ -83,9 +73,7 @@ export const buildings = [
   { id: 'grimes', name: 'Grimes Engineering Library (Bechtel)', lat: 37.8739, lng: -122.2583, category: 'Libraries', popular: false, undergrad: true, grad: true },
   { id: 'hargrove', name: 'Hargrove Music Library', lat: 37.8702, lng: -122.2557, category: 'Libraries', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 6. Campus Life & Student Unions (校园生活)
-  // ---------------------------------------------------------
+  // 6. Campus Life & Student Unions
   { id: 'mlk', name: 'Martin Luther King Jr. Student Union (MLK)', lat: 37.8692, lng: -122.2597, category: 'Campus Life', popular: true, undergrad: true, grad: true },
   { id: 'eshleman', name: 'Eshleman Hall', lat: 37.8689, lng: -122.2601, category: 'Campus Life', popular: false, undergrad: true, grad: true },
   { id: 'cesar_chavez', name: 'César E. Chávez Student Center', lat: 37.8697, lng: -122.2601, category: 'Campus Life', popular: false, undergrad: true, grad: true },
@@ -97,9 +85,7 @@ export const buildings = [
   { id: 'tang_center', name: 'University Health Services (Tang Center)', lat: 37.8676, lng: -122.2642, category: 'Campus Life', popular: true, undergrad: true, grad: true },
   { id: 'career_engagement', name: 'Career Engagement (Center)', lat: 37.8687, lng: -122.2605, category: 'Campus Life', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 7. Housing (宿舍)
-  // ---------------------------------------------------------
+  // 7. Housing
   { id: 'unit_1', name: 'Unit 1', lat: 37.8671, lng: -122.2557, category: 'Housing', popular: true, undergrad: true, grad: false },
   { id: 'unit_2', name: 'Unit 2', lat: 37.8661, lng: -122.2555, category: 'Housing', popular: true, undergrad: true, grad: false },
   { id: 'unit_3', name: 'Unit 3', lat: 37.8670, lng: -122.2595, category: 'Housing', popular: true, undergrad: true, grad: false },
@@ -115,9 +101,7 @@ export const buildings = [
   { id: 'manville', name: 'Manville Apartments', lat: 37.8684, lng: -122.2598, category: 'Housing', popular: false, undergrad: false, grad: true },
   { id: 'rssb', name: 'Residential and Student Services Building (RSSB)', lat: 37.8674, lng: -122.2602, category: 'Housing', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 8. Athletics & Recreation (体育)
-  // ---------------------------------------------------------
+  // 8. Athletics & Recreation
   { id: 'stadium', name: 'California Memorial Stadium', lat: 37.8710, lng: -122.2508, category: 'Athletics', popular: true, undergrad: true, grad: true },
   { id: 'haas_pavilion', name: 'Haas Pavilion', lat: 37.8696, lng: -122.2615, category: 'Athletics', popular: true, undergrad: true, grad: true },
   { id: 'rsf', name: 'Recreational Sports Facility (RSF)', lat: 37.8686, lng: -122.2627, category: 'Athletics', popular: true, undergrad: true, grad: true },
@@ -132,9 +116,7 @@ export const buildings = [
   { id: 'strawberry_canyon', name: 'Strawberry Canyon Rec Area', lat: 37.8727, lng: -122.2414, category: 'Athletics', popular: false, undergrad: true, grad: true },
   { id: 'golden_bear_rec', name: 'Golden Bear Rec Center', lat: 37.8650, lng: -122.2480, category: 'Athletics', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 9. Research, Institutes & Remote Facilities (研究机构)
-  // ---------------------------------------------------------
+  // 9. Research, Institutes & Remote Facilities
   { id: 'lhs', name: 'Lawrence Hall of Science', lat: 37.8793, lng: -122.2466, category: 'Research', popular: true, undergrad: true, grad: true },
   { id: 'lbnl', name: 'Lawrence Berkeley National Laboratory (LBNL)', lat: 37.8763, lng: -122.2467, category: 'Research', popular: false, undergrad: true, grad: true },
   { id: 'ssl', name: 'Space Sciences Laboratory (SSL)', lat: 37.8790, lng: -122.2465, category: 'Research', popular: false, undergrad: true, grad: true },
@@ -146,9 +128,7 @@ export const buildings = [
   { id: 'blulm', name: 'Blum Hall', lat: 37.8746, lng: -122.2596, category: 'Research', popular: false, undergrad: false, grad: true },
   { id: 'rfs', name: 'Richmond Field Station (RFS)', lat: 37.9150, lng: -122.3350, category: 'Research', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 10. Services, Admin & Other Buildings (服务与行政)
-  // ---------------------------------------------------------
+  // 10. Services, Admin & Other Buildings
   { id: 'university_hall', name: 'University Hall', lat: 37.8716, lng: -122.2657, category: 'Admin', popular: false, undergrad: true, grad: true },
   { id: 'police', name: 'UC Police (Sproul)', lat: 37.8696, lng: -122.2591, category: 'Admin', popular: false, undergrad: true, grad: true },
   { id: 'a_and_e', name: 'Architects and Engineers (A&E)', lat: 37.8698, lng: -122.2585, category: 'Admin', popular: false, undergrad: false, grad: true },
@@ -162,9 +142,7 @@ export const buildings = [
   { id: 'child_study', name: 'Harold E. Jones Child Study Center', lat: 37.8665, lng: -122.2675, category: 'Services', popular: false, undergrad: false, grad: true },
   { id: 'haste_child_dev', name: 'Haste Street Child Development', lat: 37.8656, lng: -122.2610, category: 'Services', popular: false, undergrad: false, grad: true },
 
-  // ---------------------------------------------------------
-  // 11. Landmarks & Visitor Attractions (核心地标与景点)
-  // ---------------------------------------------------------
+  // 11. Landmarks & Visitor Attractions
   { id: 'campanile', name: 'Sather Tower (The Campanile)', lat: 37.8720, lng: -122.2578, category: 'Landmark', popular: true, undergrad: true, grad: true },
   { id: 'sather_gate', name: 'Sather Gate', lat: 37.8703, lng: -122.2595, category: 'Landmark', popular: true, undergrad: true, grad: true },
   { id: 'memorial_glade', name: 'Memorial Glade', lat: 37.8724, lng: -122.2592, category: 'Landmark', popular: true, undergrad: true, grad: true },
@@ -174,9 +152,7 @@ export const buildings = [
   { id: 'class_of_1914', name: 'Class of 1914 Fountain', lat: 37.8701, lng: -122.2555, category: 'Landmark', popular: false, undergrad: true, grad: true },
   { id: 'west_gate', name: 'West Gate', lat: 37.8721, lng: -122.2659, category: 'Landmark', popular: false, undergrad: true, grad: true },
 
-  // ---------------------------------------------------------
-  // 12. Parking & Transport (交通与停车)
-  // ---------------------------------------------------------
+  // 12. Parking & Transport
   { id: 'lower_sproul_garage', name: 'Lower Sproul Garage', lat: 37.8690, lng: -122.2608, category: 'Parking', popular: false, undergrad: true, grad: true },
   { id: 'rsf_garage', name: 'RSF Garage', lat: 37.8683, lng: -122.2623, category: 'Parking', popular: false, undergrad: true, grad: true },
   { id: 'ellsworth_parking', name: 'Ellsworth Parking Structure', lat: 37.8660, lng: -122.2620, category: 'Parking', popular: false, undergrad: true, grad: true },

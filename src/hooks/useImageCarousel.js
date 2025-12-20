@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 
 /**
- * 图片轮播 Hook
- * 管理图片轮播的状态和逻辑
+ * Image Carousel Hook
+ * Manages state and logic for image carousels
  * 
- * @param {string[]} images - 图片 URL 数组
- * @param {number} intervalMs - 自动轮播间隔（毫秒），默认 5000ms
- * @returns {object} - 当前索引、导航方法
+ * @param {string[]} images - Array of image URLs
+ * @param {number} intervalMs - Auto-rotation interval (ms), default 5000ms
+ * @returns {object} - Current index and navigation methods
  */
 function useImageCarousel(images, intervalMs = 5000) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 自动轮播
+  // Auto-play
   useEffect(() => {
     if (!images || images.length <= 1) return;
 
@@ -22,27 +22,27 @@ function useImageCarousel(images, intervalMs = 5000) {
     return () => clearInterval(interval);
   }, [images, intervalMs]);
 
-  // 下一张
+  // Next slide
   const next = useCallback((e) => {
     if (e) e.stopPropagation();
     if (!images || images.length <= 1) return;
     setCurrentIndex((prev) => (prev + 1) % images.length);
   }, [images]);
 
-  // 上一张
+  // Previous slide
   const prev = useCallback((e) => {
     if (e) e.stopPropagation();
     if (!images || images.length <= 1) return;
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images]);
 
-  // 跳转到指定图片
+  // Jump to specific image
   const goTo = useCallback((index) => {
     if (!images || index < 0 || index >= images.length) return;
     setCurrentIndex(index);
   }, [images]);
 
-  // 重置到第一张
+  // Reset to first slide
   const reset = useCallback(() => {
     setCurrentIndex(0);
   }, []);
