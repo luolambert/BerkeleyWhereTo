@@ -39,12 +39,12 @@ function AppContent({ isLoaded }) {
         href="https://github.com/luolambert/BerkeleyWhereToGo"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-[20px] z-[200] w-10 h-10 bg-white rounded-full shadow-xl border border-neutral-200 flex items-center justify-center"
+        className="absolute bottom-[20px] right-[20px] z-[200] w-10 h-10 bg-white rounded-full shadow-xl border border-neutral-200 flex items-center justify-center"
         title="View on GitHub"
-        initial={{ opacity: 0, right: '60px' }}
+        initial={{ opacity: 0, x: 40 }}
         animate={{ 
           opacity: 1, 
-          right: isNavigation ? '60px' : '20px' 
+          x: isNavigation ? 40 : 0 
         }}
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.3 }}

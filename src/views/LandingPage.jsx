@@ -3,6 +3,7 @@ import { motion, LayoutGroup } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import logoGo from '../assets/WhereToGo_Logo.png';
 import logoKnow from '../assets/WhereToKnow_Logo.png';
+import { FADE_VARIANTS, SPRINGS } from '../constants/animations';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -11,9 +12,10 @@ function LandingPage() {
   return (
     <motion.div 
       className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col md:flex-row"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      variants={FADE_VARIANTS}
+      initial="initial"
+      animate="animate"
+      exit="exit"
     >
       <LayoutGroup>
         {/* Left Side - Where To Go */}

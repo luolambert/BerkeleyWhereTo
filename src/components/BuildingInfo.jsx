@@ -62,7 +62,7 @@ function BuildingInfo({ onBack, currentView }) {
 
   return (
     <div className="w-full h-full relative bg-neutral-50">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         {selectedBuilding ? (
           <>
             {/* Floating Toggle for Detail View */}

@@ -8,6 +8,7 @@ import TravelTimeDisplay from '../components/TravelTimeDisplay';
 import ElevationChart from '../components/ElevationChart';
 import BuildingSelectionPanel from '../components/BuildingSelectionPanel';
 import { EXTERNAL_LINKS } from '../constants/appConfig';
+import { SCALE_VARIANTS } from '../constants/animations';
 
 function NavigationPage({ isLoaded }) {
   const {
@@ -29,10 +30,10 @@ function NavigationPage({ isLoaded }) {
     <motion.div 
         key="navigation"
         className="absolute inset-0 w-full h-full"
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.3 }}
+        variants={SCALE_VARIANTS}
+        initial="initial"
+        animate="animate"
+        exit="exit"
     >
         {/* Map Background */}
         <div className="absolute inset-0 z-0">

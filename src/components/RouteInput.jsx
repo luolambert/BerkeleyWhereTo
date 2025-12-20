@@ -4,6 +4,7 @@ import { Navigation, Map, MapPin, RefreshCw, Globe } from 'lucide-react';
 import BuildingSelect from './BuildingSelect';
 import { useNavigation } from '../context/NavigationContext';
 import useTranslation from '../hooks/useTranslation';
+import { DURATIONS, SPRINGS, SLIDE_VARIANTS } from '../constants/animations';
 
 function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset }) {
   const { isCalculating, language, toggleLanguage } = useNavigation();
@@ -12,9 +13,9 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
   
   return (
     <motion.div 
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      variants={SLIDE_VARIANTS}
+      initial="initial"
+      animate="animate"
       className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 w-full shadow-2xl shadow-neutral-900/20 border border-white/50"
     >
       <div className="flex items-center justify-between mb-6">
@@ -33,10 +34,11 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             <AnimatePresence>
               {isLangHovered && (
                 <motion.button
-                  initial={{ opacity: 0, width: 0, x: 10 }}
-                  animate={{ opacity: 1, width: 'auto', x: 0 }}
-                  exit={{ opacity: 0, width: 0, x: 10 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  exit={{ opacity: 0, scaleX: 0 }}
+                  transition={{ duration: DURATIONS.fast, ease: 'easeOut' }}
+                  style={{ transformOrigin: 'right center' }}
                   onClick={toggleLanguage}
                   className="mr-1 px-2 py-1 rounded-full bg-primary-50 text-primary-600 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-primary-100 transition-colors"
                 >
@@ -59,7 +61,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           {/* Reset Button */}
           <motion.button 
             whileTap={{ rotate: 180 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: DURATIONS.fast }}
             onClick={onReset}
             className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-primary-600 transition-colors"
             title="Clear selection"

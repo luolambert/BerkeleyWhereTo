@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Globe } from 'lucide-react';
 import { useScroll, useTransform } from 'framer-motion';
 import Header from '../Header';
+import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/animations';
 
 /**
  * Building Grid Component
@@ -48,7 +49,7 @@ function BuildingGrid({
     };
   }, []);
 
-  const SCROLL_RANGE = 200;
+  const SCROLL_RANGE = 340;
 
   // Use a single progress value as base
   const scrollProgress = useTransform(scrollY, [0, SCROLL_RANGE], [0, 1]);
@@ -118,9 +119,10 @@ function BuildingGrid({
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      variants={PAGE_VARIANTS}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className="w-full h-full flex flex-col overflow-hidden"
     >
       {/* Scrollable Container */}
@@ -133,6 +135,7 @@ function BuildingGrid({
             height: headerHeight,
             paddingTop: headerPaddingTop,
             paddingBottom: headerPaddingBottom,
+            willChange: 'height, padding',
           }}
         >
           {/* Background Layer */}
@@ -154,7 +157,8 @@ function BuildingGrid({
                  top: logoTop,
                  left: logoLeft,
                  y: logoY,
-                 transformOrigin: '0% 50%'
+                 transformOrigin: '0% 50%',
+                 willChange: 'transform',
                }}
              >
                 <Header 
@@ -207,12 +211,7 @@ function BuildingGrid({
                         <motion.div
                           layoutId="activeSort"
                           className="absolute inset-0 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] rounded-full z-[-1]"
-                          transition={{ 
-                            type: "spring", 
-                            stiffness: 500, 
-                            damping: 35,
-                            mass: 0.8
-                          }}
+                          transition={SPRINGS.stiff}
                         />
                       )}
                       {option.label}
@@ -246,8 +245,8 @@ function BuildingGrid({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -slideDirection * 25 }}
             transition={{ 
-              duration: 0.25, 
-              ease: [0.32, 0.72, 0, 1] // Apple-like ease
+              duration: DURATIONS.fast, 
+              ease: EASINGS.apple
             }}
           >
             {sections.map((section, sectionIndex) => (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, Calendar, User, Info, ExternalLink, 
@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import MarkdownText from '../common/MarkdownText';
 import { buildingImages } from '../../data/buildingImage';
+import useImageCarousel from '../../hooks/useImageCarousel';
+import { DURATIONS, EASINGS, PAGE_VARIANTS } from '../../constants/animations';
 
 /**
  * 建筑详情页组件
@@ -40,48 +42,28 @@ function BuildingDetail({ building, onBack, language }) {
     ? buildingImages[building.id]
     : building.images || [];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Auto-rotation for carousel
-  useEffect(() => {
-    if (images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 5000); // Rotate every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [currentImageIndex, images.length]);
-
-  const nextImage = (e) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = (e) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  // Use centralized carousel hook (with preload and auto-play)
+  const { currentIndex, next, prev, goTo, hasMultiple } = useImageCarousel(images, 5000);
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      variants={PAGE_VARIANTS}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className="fixed inset-0 z-[100] w-full h-full overflow-y-auto bg-white"
     >
       {/* Hero Section - Full Screen Carousel */}
       <div className="relative w-full h-screen group bg-black">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           <motion.img 
-            key={currentImageIndex}
-            src={images[currentImageIndex]} 
-            alt={`${building.title} - Image ${currentImageIndex + 1}`}
+            key={currentIndex}
+            src={images[currentIndex]} 
+            alt={`${building.title} - Image ${currentIndex + 1}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: DURATIONS.carousel, ease: EASINGS.easeInOut }}
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
@@ -90,17 +72,19 @@ function BuildingDetail({ building, onBack, language }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
         
         {/* Navigation Arrows (Only if multiple images) */}
-        {images.length > 1 && (
+        {hasMultiple && (
           <>
             <button 
-              onClick={prevImage}
+              onClick={prev}
               className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
+              aria-label="Previous image"
             >
               <ChevronLeft className="w-8 h-8" />
             </button>
             <button 
-              onClick={nextImage}
+              onClick={next}
               className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
+              aria-label="Next image"
             >
               <ChevronRight className="w-8 h-8" />
             </button>
@@ -110,10 +94,11 @@ function BuildingDetail({ building, onBack, language }) {
               {images.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentImageIndex(idx)}
+                  onClick={() => goTo(idx)}
                   className={`w-2 h-2 rounded-full transition-[width,background-color] duration-200 ${
-                    idx === currentImageIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
+                    idx === currentIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
                   }`}
+                  aria-label={`Go to image ${idx + 1}`}
                 />
               ))}
             </div>

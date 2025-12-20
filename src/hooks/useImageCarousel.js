@@ -20,7 +20,17 @@ function useImageCarousel(images, intervalMs = 5000) {
     }, intervalMs);
 
     return () => clearInterval(interval);
-  }, [images, intervalMs]);
+  }, [images?.length, intervalMs]);
+
+  // Preload next image for smooth transitions
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    
+    const nextIndex = (currentIndex + 1) % images.length;
+    const img = new Image();
+    img.src = images[nextIndex];
+  }, [currentIndex, images]);
+
 
   // Next slide
   const next = useCallback((e) => {
