@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Globe } from 'lucide-react';
+import { LanguageToggle } from './common';
 import { knowLocations as knowLocationsCN } from '../data/buildingInfo_chinese';
 import { knowLocations as knowLocationsEN } from '../data/buildingInfo_english';
 import { sortOrders } from '../data/know_sorting';
@@ -67,15 +67,7 @@ function BuildingInfo({ onBack, currentView }) {
           <>
             {/* Floating Toggle for Detail View */}
             <div className="absolute top-6 right-6 z-[60]">
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 px-3 py-2 bg-white/80 backdrop-blur-md hover:bg-white text-neutral-800 rounded-full shadow-sm hover:shadow-md transition-[background-color,box-shadow] duration-200 border border-neutral-200 group"
-              >
-                <Globe className="w-4 h-4 text-neutral-600 group-hover:text-blue-600 transition-colors" />
-                <span className="text-sm font-medium w-6 text-center">
-                  {language === 'CN' ? 'EN' : '中'}
-                </span>
-              </button>
+              <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="right" />
             </div>
             <BuildingDetail 
               key="detail" 

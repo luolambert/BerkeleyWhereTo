@@ -1,12 +1,15 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { AnimatedText } from './common';
 
-const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActive }) => {
+const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActive, language }) => {
   return (
     <div className="relative group">
       <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1.5 ml-1">
-        {label}
+        <AnimatedText textKey={`label-${label}-${language}`}>
+          {label}
+        </AnimatedText>
       </label>
       
       {/* Trigger Button */}
@@ -22,7 +25,11 @@ const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActi
       <div className="flex items-center gap-3 overflow-hidden">
           {Icon && <Icon size={18} className={isActive || value ? "text-primary-500" : "text-neutral-400"} />}
           <span className={`font-medium truncate ${value ? 'text-neutral-800' : 'text-neutral-400'}`}>
-          {value || placeholder}
+          {value || (
+            <AnimatedText textKey={`placeholder-${placeholder}-${language}`}>
+              {placeholder}
+            </AnimatedText>
+          )}
           </span>
       </div>
       <div className={`text-neutral-400 transition-transform duration-300 ${isActive ? 'rotate-180 text-primary-500' : ''}`}>

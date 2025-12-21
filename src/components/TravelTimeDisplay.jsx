@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Footprints, Bike } from 'lucide-react';
+import { AnimatedText } from './common';
 import { useNavigation } from '../context/NavigationContext';
 import useTranslation from '../hooks/useTranslation';
 
@@ -57,9 +58,13 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
           <Footprints size={24} />
         </div>
         <div className="text-3xl font-bold text-neutral-800 mb-1">
-          {walkingTime}<span className="text-sm font-medium text-neutral-500 ml-1">{t('navigation.min')}</span>
+          {walkingTime}<span className="text-sm font-medium text-neutral-500 ml-1">
+            <AnimatedText textKey={`min-${language}`}>{t('navigation.min')}</AnimatedText>
+          </span>
         </div>
-        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">{t('navigation.walking')}</div>
+        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">
+          <AnimatedText textKey={`walking-${language}`}>{t('navigation.walking')}</AnimatedText>
+        </div>
       </motion.div>
 
       {/* Scooter Card */}
@@ -72,9 +77,13 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
           <Bike size={24} />
         </div>
         <div className="text-3xl font-bold text-neutral-800 mb-1">
-          {scooterTime}<span className="text-sm font-medium text-neutral-500 ml-1">{t('navigation.min')}</span>
+          {scooterTime}<span className="text-sm font-medium text-neutral-500 ml-1">
+            <AnimatedText textKey={`min2-${language}`}>{t('navigation.min')}</AnimatedText>
+          </span>
         </div>
-        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">{t('navigation.scooter')}</div>
+        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">
+          <AnimatedText textKey={`scooter-${language}`}>{t('navigation.scooter')}</AnimatedText>
+        </div>
       </motion.div>
     </motion.div>
   );

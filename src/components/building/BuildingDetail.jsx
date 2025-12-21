@@ -5,7 +5,7 @@ import {
   Camera, BookOpen, Ghost, Accessibility, ChevronDown, 
   Globe, ChevronLeft, ChevronRight 
 } from 'lucide-react';
-import MarkdownText from '../common/MarkdownText';
+import { AnimatedText, MarkdownText } from '../common';
 import { buildingImages } from '../../data/buildingImage';
 import useImageCarousel from '../../hooks/useImageCarousel';
 import { DURATIONS, EASINGS, PAGE_VARIANTS } from '../../constants/animations';
@@ -148,7 +148,9 @@ function BuildingDetail({ building, onBack, language }) {
         {/* Summary & Description */}
         <section>
           <h2 className="text-2xl font-bold text-neutral-900 mb-4 border-l-4 border-blue-500 pl-4">
-            {labels.intro}
+            <AnimatedText textKey={`intro-${language}`}>
+              {labels.intro}
+            </AnimatedText>
           </h2>
           <p className="text-xl text-neutral-800 font-medium mb-6 leading-relaxed">
             <MarkdownText text={building.summary} />
@@ -163,7 +165,11 @@ function BuildingDetail({ building, onBack, language }) {
           <section className="bg-blue-50 rounded-2xl p-8 border border-blue-100">
             <div className="flex items-center gap-3 mb-6">
               <BookOpen className="w-6 h-6 text-blue-600" />
-              <h3 className="text-xl font-bold text-blue-900">{labels.funFacts}</h3>
+              <h3 className="text-xl font-bold text-blue-900">
+                <AnimatedText textKey={`funFacts-${language}`}>
+                  {labels.funFacts}
+                </AnimatedText>
+              </h3>
             </div>
             <ul className="space-y-4">
               {building.funFacts.map((fact, index) => (
@@ -181,7 +187,11 @@ function BuildingDetail({ building, onBack, language }) {
           <section className="bg-amber-50 rounded-2xl p-8 border border-amber-100">
             <div className="flex items-center gap-3 mb-6">
               <Info className="w-6 h-6 text-amber-600" />
-              <h3 className="text-xl font-bold text-amber-900">{labels.studentTips}</h3>
+              <h3 className="text-xl font-bold text-amber-900">
+                <AnimatedText textKey={`studentTips-${language}`}>
+                  {labels.studentTips}
+                </AnimatedText>
+              </h3>
             </div>
             <ul className="space-y-4">
               {building.studentTips.map((tip, index) => (
@@ -200,7 +210,11 @@ function BuildingDetail({ building, onBack, language }) {
             <section className="bg-purple-50 rounded-2xl p-8 border border-purple-100">
               <div className="flex items-center gap-3 mb-4">
                 <Ghost className="w-6 h-6 text-purple-600" />
-                <h3 className="text-lg font-bold text-purple-900">{labels.legend}</h3>
+                <h3 className="text-lg font-bold text-purple-900">
+                  <AnimatedText textKey={`legend-${language}`}>
+                    {labels.legend}
+                  </AnimatedText>
+                </h3>
               </div>
               <p className="text-purple-800 leading-relaxed">
                 <MarkdownText text={building.relatedLegend} />
@@ -212,7 +226,11 @@ function BuildingDetail({ building, onBack, language }) {
             <section className="bg-pink-50 rounded-2xl p-8 border border-pink-100">
               <div className="flex items-center gap-3 mb-4">
                 <Camera className="w-6 h-6 text-pink-600" />
-                <h3 className="text-lg font-bold text-pink-900">{labels.photoSpots}</h3>
+                <h3 className="text-lg font-bold text-pink-900">
+                  <AnimatedText textKey={`photoSpots-${language}`}>
+                    {labels.photoSpots}
+                  </AnimatedText>
+                </h3>
               </div>
               <ul className="space-y-3">
                 {building.photoSpots.map((spot, index) => (
@@ -230,7 +248,11 @@ function BuildingDetail({ building, onBack, language }) {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2 text-neutral-900 font-bold">
               <Accessibility className="w-5 h-5" />
-              <span>{labels.accessibility}</span>
+              <span>
+                <AnimatedText textKey={`accessibility-${language}`}>
+                  {labels.accessibility}
+                </AnimatedText>
+              </span>
             </div>
             <p className="text-neutral-600 text-sm leading-relaxed">
               <MarkdownText text={building.accessibility} />
@@ -245,7 +267,11 @@ function BuildingDetail({ building, onBack, language }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl transition-colors font-medium shadow-lg hover:shadow-xl"
               >
-                <span>{labels.officialWeb}</span>
+                <span>
+                  <AnimatedText textKey={`officialWeb-${language}`}>
+                    {labels.officialWeb}
+                  </AnimatedText>
+                </span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>

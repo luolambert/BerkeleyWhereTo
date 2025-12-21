@@ -1,11 +1,10 @@
 import React from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
-import { AnimatePresence, motion, LayoutGroup } from 'framer-motion';
-import { Github } from 'lucide-react';
+import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { NavigationProvider } from './context/NavigationContext';
 import { PreloadProvider } from './context/PreloadContext';
-import ErrorBoundary from './components/common/ErrorBoundary';
+import { ErrorBoundary, GitHubLink } from './components/common';
 import NavigationPage from './views/NavigationPage';
 import InfoPage from './views/InfoPage';
 import LandingPage from './views/LandingPage';
@@ -14,7 +13,6 @@ const LIBRARIES = ['places', 'geometry'];
 
 function AppContent({ isLoaded }) {
   const location = useLocation();
-  const isNavigation = location.pathname === '/go';
 
   // Metadata updates
   React.useEffect(() => {
@@ -35,22 +33,7 @@ function AppContent({ isLoaded }) {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50">
-      <motion.a
-        href="https://github.com/luolambert/BerkeleyWhereToGo"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-[20px] right-[20px] z-[200] w-10 h-10 bg-white rounded-full shadow-xl border border-neutral-200 flex items-center justify-center"
-        title="View on GitHub"
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ 
-          opacity: 1, 
-          x: isNavigation ? 40 : 0 
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <Github className="w-5 h-5 text-neutral-900" />
-      </motion.a>
+      <GitHubLink />
       <LayoutGroup>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>

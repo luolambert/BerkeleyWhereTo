@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Navigation, Map, MapPin, RefreshCw, Globe } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Navigation, Map, MapPin, RefreshCw } from 'lucide-react';
 import BuildingSelect from './BuildingSelect';
+import { AnimatedText, LanguageToggle } from './common';
 import { useNavigation } from '../context/NavigationContext';
 import useTranslation from '../hooks/useTranslation';
 import { DURATIONS, SPRINGS, SLIDE_VARIANTS } from '../constants/animations';
@@ -9,7 +10,6 @@ import { DURATIONS, SPRINGS, SLIDE_VARIANTS } from '../constants/animations';
 function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset }) {
   const { isCalculating, language, toggleLanguage } = useNavigation();
   const { t } = useTranslation(language);
-  const [isLangHovered, setIsLangHovered] = useState(false);
   
   return (
     <motion.div 
@@ -21,42 +21,13 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-neutral-800 flex items-center gap-2">
           <Navigation className="text-primary-600" size={20} />
-          {t('navigation.planRoute')}
+          <AnimatedText textKey={`planRoute-${language}`}>
+            {t('navigation.planRoute')}
+          </AnimatedText>
         </h2>
         <div className="flex items-center gap-2">
-          {/* Language Toggle Button - Expandable on Hover */}
-          <motion.div
-            className="relative flex items-center"
-            onHoverStart={() => setIsLangHovered(true)}
-            onHoverEnd={() => setIsLangHovered(false)}
-          >
-            {/* Expanded Language Option (slides out on hover) */}
-            <AnimatePresence>
-              {isLangHovered && (
-                <motion.button
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  animate={{ opacity: 1, scaleX: 1 }}
-                  exit={{ opacity: 0, scaleX: 0 }}
-                  transition={{ duration: DURATIONS.fast, ease: 'easeOut' }}
-                  style={{ transformOrigin: 'right center' }}
-                  onClick={toggleLanguage}
-                  className="mr-1 px-2 py-1 rounded-full bg-primary-50 text-primary-600 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-primary-100 transition-colors"
-                >
-                  {language === 'CN' ? 'EN' : '中文'}
-                </motion.button>
-              )}
-            </AnimatePresence>
-            
-            {/* Globe Icon Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleLanguage}
-              className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-primary-600 transition-colors"
-              title={language === 'CN' ? 'Switch to English' : '切换到中文'}
-            >
-              <Globe size={18} />
-            </motion.button>
-          </motion.div>
+          {/* Language Toggle Button */}
+          <LanguageToggle language={language} onToggle={toggleLanguage} variant="default" />
           
           {/* Reset Button */}
           <motion.button 
@@ -82,6 +53,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           isActive={activeField === 'start'}
           placeholder={t('navigation.selectStart')}
           icon={Map}
+          language={language}
         />
 
         {/* End Location */}
@@ -92,6 +64,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           isActive={activeField === 'end'}
           placeholder={t('navigation.selectDestination')}
           icon={MapPin}
+          language={language}
         />
 
         {/* Calculate Button */}
@@ -109,11 +82,15 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           {isCalculating ? (
             <>
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              {t('navigation.calculating')}
+              <AnimatedText textKey={`calculating-${language}`}>
+                {t('navigation.calculating')}
+              </AnimatedText>
             </>
           ) : (
             <>
-              {t('navigation.getDirections')}
+              <AnimatedText textKey={`getDirections-${language}`}>
+                {t('navigation.getDirections')}
+              </AnimatedText>
               <Navigation size={18} className="rotate-90" />
             </>
           )}

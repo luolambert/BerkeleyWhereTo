@@ -125,3 +125,18 @@ export const CAROUSEL_CONFIG = {
   transitionDuration: DURATIONS.carousel,
   preloadCount: 1, // Number of images to preload ahead
 };
+
+// Text switch animation (for language toggle)
+export const TEXT_VARIANTS = {
+  initial: { opacity: 0, y: 3 },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: DURATIONS.fast, ease: EASINGS.easeOut }
+  },
+  exit: { 
+    opacity: 0, 
+    y: -3,
+    transition: { duration: DURATIONS.instant, ease: EASINGS.sharp }
+  },
+};

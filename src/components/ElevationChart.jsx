@@ -1,8 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { AnimatedText } from './common';
+import { useNavigation } from '../context/NavigationContext';
+import useTranslation from '../hooks/useTranslation';
 
 const ElevationChart = ({ data }) => {
+  const { language } = useNavigation();
+  const { t } = useTranslation(language);
+  
   if (!data || data.length === 0) return null;
 
   // Calculate stats
@@ -39,10 +45,20 @@ const ElevationChart = ({ data }) => {
       className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 w-full overflow-hidden"
     >
       <div className="flex justify-between items-end mb-2">
-        <h3 className="text-sm font-bold text-gray-800">Elevation Profile</h3>
+        <h3 className="text-sm font-bold text-gray-800">
+          <AnimatedText textKey={`elevProfile-${language}`}>
+            {t('map.elevationProfile')}
+          </AnimatedText>
+        </h3>
         <div className="text-xs text-gray-500 flex gap-3">
-            <span><span className="font-semibold text-gray-700">↑ {totalClimb.toFixed(0)}m</span> Climb</span>
-            <span><span className="font-semibold text-gray-700">{(maxElevation - minElevation).toFixed(0)}m</span> Range</span>
+            <span>
+              <span className="font-semibold text-gray-700">↑ {totalClimb.toFixed(0)}m</span>{' '}
+              <AnimatedText textKey={`climb-${language}`}>{t('map.climb')}</AnimatedText>
+            </span>
+            <span>
+              <span className="font-semibold text-gray-700">{(maxElevation - minElevation).toFixed(0)}m</span>{' '}
+              <AnimatedText textKey={`range-${language}`}>{t('map.range')}</AnimatedText>
+            </span>
         </div>
       </div>
       

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe } from 'lucide-react';
 import Header from '../Header';
+import { AnimatedText, LanguageToggle } from '../common';
 import useHeaderScrollAnimation from '../../hooks/useHeaderScrollAnimation';
 import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/animations';
 
@@ -122,7 +122,9 @@ function BuildingGrid({
                  y: subtitle.y
                }}
              >
-                {title}
+                <AnimatedText textKey={`subtitle-${language}`}>
+                  {title}
+                </AnimatedText>
              </motion.p>
 
              {/* Controls Row */}
@@ -154,21 +156,15 @@ function BuildingGrid({
                           transition={SPRINGS.stiff}
                         />
                       )}
-                      {option.label}
+                      <AnimatedText textKey={`sort-${option.id}-${language}`}>
+                        {option.label}
+                      </AnimatedText>
                     </button>
                   ))}
                 </div>
                 
                 {/* Language Toggle */}
-                <button
-                    onClick={onToggleLanguage}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-white hover:bg-neutral-50 text-neutral-800 rounded-full shadow-sm hover:shadow border border-neutral-200 group transition-[background-color,box-shadow] duration-200"
-                >
-                    <Globe className="w-3.5 h-3.5 text-neutral-600 group-hover:text-blue-600 transition-colors" />
-                    <span className="text-xs font-medium w-5 text-center">
-                    {language === 'CN' ? 'EN' : '中'}
-                    </span>
-                </button>
+                <LanguageToggle language={language} onToggle={onToggleLanguage} variant="floating" direction="right" />
              </motion.div>
           </div>
         </motion.div>
@@ -193,7 +189,9 @@ function BuildingGrid({
               <div key={sectionIndex}>
                 {section.title && (
                   <h3 className="text-xl font-bold text-neutral-800 mb-6 pl-2 border-l-4 border-blue-500">
-                    {section.title}
+                    <AnimatedText textKey={`sectionTitle-${sectionIndex}-${language}`}>
+                      {section.title}
+                    </AnimatedText>
                   </h3>
                 )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -216,7 +214,9 @@ function BuildingGrid({
                       {/* Hover "View Details" badge */}
                       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
-                            {viewDetailsText}
+                            <AnimatedText textKey={`viewDetails-${language}`}>
+                              {viewDetailsText}
+                            </AnimatedText>
                         </span>
                       </div>
 
@@ -228,7 +228,9 @@ function BuildingGrid({
                           {building.title}
                         </h3>
                         <p className="text-sm text-white/80 line-clamp-1 leading-relaxed font-medium">
-                          {building.summary}
+                          <AnimatedText textKey={`card-summary-${building.id}-${language}`}>
+                            {building.summary}
+                          </AnimatedText>
                         </p>
                       </div>
                     </div>
@@ -243,8 +245,8 @@ function BuildingGrid({
       {/* Disclaimer */}
       <div className="fixed bottom-4 left-4 z-50 pointer-events-none text-left">
         <div className="text-[10px] text-neutral-400 font-medium bg-white/50 backdrop-blur-sm px-2 py-1 rounded-md border border-neutral-100 inline-block">
-          <p>{disclaimerText[0]}</p>
-          <p>{disclaimerText[1]}</p>
+          <p><AnimatedText textKey={`disclaimer1-${language}`}>{disclaimerText[0]}</AnimatedText></p>
+          <p><AnimatedText textKey={`disclaimer2-${language}`}>{disclaimerText[1]}</AnimatedText></p>
         </div>
       </div>
     </motion.div>
