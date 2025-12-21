@@ -18,7 +18,7 @@ export const CAROUSEL = {
 
 // Animation configuration
 export const ANIMATION = {
-  SCROLL_RANGE: 150,  // Scroll animation range (pixels)
+  SCROLL_RANGE: 340,  // Header scroll animation range (pixels)
   SPRING: {
     stiffness: 500,
     damping: 35,

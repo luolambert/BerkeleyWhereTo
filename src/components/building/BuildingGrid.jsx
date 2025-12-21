@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe } from 'lucide-react';
-import { useScroll, useTransform } from 'framer-motion';
 import Header from '../Header';
+import useHeaderScrollAnimation from '../../hooks/useHeaderScrollAnimation';
 import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/animations';
 
 /**
@@ -22,75 +22,16 @@ function BuildingGrid({
   const scrollRef = React.useRef(null);
   const logoRef = React.useRef(null);
   const containerRef = React.useRef(null);
-  const [centerPosition, setCenterPosition] = React.useState(0);
   
-  const { scrollY } = useScroll({ container: scrollRef });
-
-  // Calculate center position in pixels
-  React.useEffect(() => {
-    const calculateCenter = () => {
-      if (containerRef.current && logoRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const logoWidth = logoRef.current.offsetWidth;
-        const center = (containerWidth - logoWidth) / 2;
-        setCenterPosition(center);
-      }
-    };
-
-    calculateCenter();
-    window.addEventListener('resize', calculateCenter);
-    
-    // Recalculate after a short delay to ensure DOM is ready
-    const timer = setTimeout(calculateCenter, 100);
-    
-    return () => {
-      window.removeEventListener('resize', calculateCenter);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const SCROLL_RANGE = 340;
-
-  // Use a single progress value as base
-  const scrollProgress = useTransform(scrollY, [0, SCROLL_RANGE], [0, 1]);
-  
-  // Two-stage animation progress
-  // Stage 1 (0-50%): Header animates, content stays in place
-  // Stage 2 (50%-100%): Header fixed, content scrolls normally
-  const headerAnimationProgress = useTransform(scrollProgress, [0, 0.5], [0, 1], { clamp: true });
-  
-  // Content offset to compensate scroll during header animation
-  // When page scrolls up, content needs to move DOWN (positive y) to stay in place
-  const contentOffsetY = useTransform(scrollProgress, [0, 0.5], [0, 100]);
-  
-  // Header container animations - Based on headerAnimationProgress
-  const headerHeight = useTransform(headerAnimationProgress, [0, 1], [160, 60]);
-  const headerPaddingTop = useTransform(headerAnimationProgress, [0, 1], [24, 12]);
-  const headerPaddingBottom = useTransform(headerAnimationProgress, [0, 1], [16, 12]);
-  
-  // Background effects
-  const bgOpacity = useTransform(headerAnimationProgress, [0, 1], [0, 0.9]);
-
-  // Title fade out faster
-  const titleOpacity = useTransform(headerAnimationProgress, [0, 0.8], [1, 0]);
-
-  // Logo transformations - Use fixed pixel values
-  const logoScale = useTransform(headerAnimationProgress, [0, 1], [1, 0.7]);
-  const logoTop = useTransform(headerAnimationProgress, [0, 1], ["-8px", "50%"]);
-  const logoLeft = useTransform(headerAnimationProgress, [0, 1], [centerPosition, 24]);
-  const logoY = useTransform(headerAnimationProgress, [0, 1], ["0%", "-50%"]);
-
-  // Subtitle transformations
-  const subtitleFontSize = useTransform(headerAnimationProgress, [0, 1], [18, 14]);
-  const subtitleOpacity = useTransform(headerAnimationProgress, [0, 1], [1, 0.85]);
-  const subtitleTop = useTransform(headerAnimationProgress, [0, 1], ["56px", "50%"]);
-  const subtitleY = useTransform(headerAnimationProgress, [0, 1], ["0%", "-50%"]);
-
-  // Controls transformations
-  const controlsTop = useTransform(headerAnimationProgress, [0, 1], ["85px", "50%"]);
-  const controlsLeft = useTransform(headerAnimationProgress, [0, 1], ["50%", "100%"]);
-  const controlsX = useTransform(headerAnimationProgress, [0, 1], ["-50%", "-100%"]);
-  const controlsY = useTransform(headerAnimationProgress, [0, 1], ["0%", "-50%"]);
+  // Use extracted scroll animation hook
+  const {
+    contentOffsetY,
+    header,
+    title: titleStyle,
+    logo,
+    subtitle,
+    controls,
+  } = useHeaderScrollAnimation(scrollRef, containerRef, logoRef);
 
   const title = language === 'CN' 
     ? "探索伯克利校园建筑背后的故事与传说" 
@@ -116,7 +57,6 @@ function BuildingGrid({
     { id: 'popularity', label: 'Popularity' },
   ];
 
-
   return (
     <motion.div 
       variants={PAGE_VARIANTS}
@@ -132,9 +72,9 @@ function BuildingGrid({
         <motion.div 
           className="sticky top-0 z-40 -mx-6 sm:-mx-8 px-8 mb-6"
           style={{
-            height: headerHeight,
-            paddingTop: headerPaddingTop,
-            paddingBottom: headerPaddingBottom,
+            height: header.height,
+            paddingTop: header.paddingTop,
+            paddingBottom: header.paddingBottom,
             willChange: 'height, padding',
           }}
         >
@@ -143,7 +83,7 @@ function BuildingGrid({
             className="absolute inset-0"
             style={{
               backgroundColor: 'rgb(250, 250, 250)',
-              opacity: bgOpacity,
+              opacity: header.bgOpacity,
               boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           />
@@ -153,10 +93,10 @@ function BuildingGrid({
                ref={logoRef}
                className="absolute w-auto"
                style={{
-                 scale: logoScale,
-                 top: logoTop,
-                 left: logoLeft,
-                 y: logoY,
+                 scale: logo.scale,
+                 top: logo.top,
+                 left: logo.left,
+                 y: logo.y,
                  transformOrigin: '0% 50%',
                  willChange: 'transform',
                }}
@@ -164,7 +104,7 @@ function BuildingGrid({
                 <Header 
                     currentView={currentView} 
                     centered={true}
-                    titleOpacity={titleOpacity}
+                    titleOpacity={titleStyle.opacity}
                     compact={true}
                     hideSubtitle={true}
                 />
@@ -174,12 +114,12 @@ function BuildingGrid({
              <motion.p 
                className="absolute text-neutral-600 font-medium text-center whitespace-nowrap w-auto"
                style={{
-                 fontSize: subtitleFontSize,
-                 opacity: subtitleOpacity,
-                 top: subtitleTop,
+                 fontSize: subtitle.fontSize,
+                 opacity: subtitle.opacity,
+                 top: subtitle.top,
                  left: '50%',
                  x: '-50%',
-                 y: subtitleY
+                 y: subtitle.y
                }}
              >
                 {title}
@@ -189,10 +129,10 @@ function BuildingGrid({
              <motion.div 
                className="absolute flex items-center gap-4 w-auto"
                style={{
-                 top: controlsTop,
-                 left: controlsLeft,
-                 x: controlsX,
-                 y: controlsY
+                 top: controls.top,
+                 left: controls.left,
+                 x: controls.x,
+                 y: controls.y
                }}
              >
                 {/* Sort Control - iOS Segmented Control Style */}
