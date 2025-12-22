@@ -1,8 +1,11 @@
-// Common components barrel export
-export { default as AnimatedText } from './AnimatedText';
+// Common components - Re-exports from presentational for backward compatibility
+// Only ErrorBoundary remains here as it's a functional component, not purely visual
+
 export { default as ErrorBoundary } from './ErrorBoundary';
-export { default as GitHubLink } from './GitHubLink';
-export { default as Header } from './Header';
-export { default as ImageCarousel } from './ImageCarousel';
-export { default as LanguageToggle } from './LanguageToggle';
-export { default as MarkdownText } from './MarkdownText';
+
+// Re-exports from presentational (for backward compatibility)
+export { AnimatedText, MarkdownText } from '../presentational/typography';
+export { GitHubLink, LanguageToggle } from '../presentational/buttons';
+export { ImageCarousel } from '../presentational/media';
+// Export Container as the default Header to maintain backward compatibility with business logic
+export { default as Header } from '../containers/HeaderContainer';

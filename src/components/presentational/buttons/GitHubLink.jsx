@@ -1,19 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
-import { DURATIONS, EASINGS } from '../../constants/animations';
+import { DURATIONS, EASINGS } from '../../../constants/animations';
 
 /**
  * GitHubLink Component
  * Fixed-position GitHub icon that adjusts position based on current page
- * - Go page: Moved left to avoid Google Maps zoom controls
- * - Other pages: Standard right corner position
+ * 
+ * @param {boolean} isGoPage - Whether currently on Go page (affects positioning)
  */
-function GitHubLink() {
-  const location = useLocation();
-  const isGoPage = location.pathname === '/go';
-  
+function GitHubLink({ isGoPage = false }) {
   return (
     <motion.a
       href="https://github.com/luolambert/BerkeleyWhereToGo"
@@ -25,7 +21,7 @@ function GitHubLink() {
       animate={{ 
         opacity: 1, 
         scale: 1,
-        right: isGoPage ? 56 : 20  // Just beside map zoom controls
+        right: isGoPage ? 56 : 20
       }}
       whileHover={{ scale: 1.1 }}
       transition={{ 
@@ -40,3 +36,4 @@ function GitHubLink() {
 }
 
 export default GitHubLink;
+

@@ -1,3 +1,3 @@
-// Map components barrel export
-export { default as CustomMarker } from './CustomMarker';
-export { default as MapLegend } from './MapLegend';
+// Map components - Re-exports from presentational for backward compatibility
+export { CustomMarker } from '../presentational/markers';
+export { MapLegend } from '../presentational/panels';

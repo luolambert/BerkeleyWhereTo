@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Header } from '../common';
+import { Header } from '../presentational/layout';
 
 /**
  * HeaderContainer

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe } from 'lucide-react';
-import AnimatedText from './AnimatedText';
-import { DURATIONS } from '../../constants/animations';
+import { AnimatedText } from '../typography';
+import { DURATIONS } from '../../../constants/animations';
 
 /**
  * LanguageToggle Component

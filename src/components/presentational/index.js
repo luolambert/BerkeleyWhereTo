@@ -34,6 +34,9 @@ export * from './layout';
 // Typography
 export * from './typography';
 
+// Markers
+export * from './markers';
+
 // Root level components
 export { default as ElevationChart } from './ElevationChart';
 export { default as TravelTimeDisplay } from './TravelTimeDisplay';

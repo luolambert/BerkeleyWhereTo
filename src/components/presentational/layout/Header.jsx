@@ -1,60 +1,66 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import logoGo from '../../assets/WhereToGo_Logo.png';
-import logoKnow from '../../assets/WhereToKnow_Logo.png';
+import logoGo from '../../../assets/WhereToGo_Logo.png';
+import logoKnow from '../../../assets/WhereToKnow_Logo.png';
 
-function Header({ currentView, hasResults, centered = false, hideTitle = false, hideSubtitle = false, compact = false, titleOpacity = 1, backgroundOpacity = 1 }) {
-  const [isHovering, setIsHovering] = React.useState(false);
-  const closeTimeoutRef = React.useRef(null);
-  const openTimeoutRef = React.useRef(null);
-  const navigate = useNavigate();
-
-  const openMenu = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-    // Add 0.2s delay before opening
-    openTimeoutRef.current = setTimeout(() => {
-        setIsHovering(true);
-    }, 200);
-  };
-
-  const cancelOpen = () => {
-      if (openTimeoutRef.current) {
-          clearTimeout(openTimeoutRef.current);
-          openTimeoutRef.current = null;
-      }
-  };
-
-  const closeMenu = () => {
-    cancelOpen(); // Cancel any pending open
-    closeTimeoutRef.current = setTimeout(() => {
-      setIsHovering(false);
-    }, 200);
-  };
-
+/**
+ * Header Component (Presentational)
+ * Pure visual component - all state and logic handled by HeaderContainer
+ * 
+ * @param {string} currentView - 'navigation' | 'info'
+ * @param {boolean} hasResults - Whether route results are displayed
+ * @param {boolean} centered - Use centered layout (Know page)
+ * @param {boolean} hideTitle - Hide title text
+ * @param {boolean} hideSubtitle - Hide subtitle text
+ * @param {boolean} compact - Use compact layout
+ * @param {number} titleOpacity - Title opacity (0-1)
+ * @param {number} backgroundOpacity - Background opacity (0-1)
+ * @param {boolean} isHovering - Whether dropdown is showing
+ * @param {object} config - View configuration { mainLayoutId, dropdownLayoutId, mainTitle, mainSubtitle, dropdownTitle, dropdownSubtitle, dropdownTargetRoute }
+ * @param {function} onOpenMenu - Callback when hover starts
+ * @param {function} onCancelOpen - Callback when hover cancelled
+ * @param {function} onCloseMenu - Callback when hover ends
+ * @param {function} onNavigate - Callback for navigation (receives route)
+ */
+function Header({ 
+  currentView, 
+  hasResults = false, 
+  centered = false, 
+  hideTitle = false, 
+  hideSubtitle = false, 
+  compact = false, 
+  titleOpacity = 1, 
+  backgroundOpacity = 1,
+  isHovering = false,
+  config,
+  onOpenMenu,
+  onCancelOpen,
+  onCloseMenu,
+  onNavigate
+}) {
   const isNavigation = currentView === 'navigation';
   
-  // Layout IDs for morphing
-  const mainLayoutId = isNavigation ? 'go-header' : 'know-header';
-  const dropdownLayoutId = isNavigation ? 'know-header' : 'go-header';
-
-  // Content
-  const mainTitle = isNavigation ? 'Where To Go' : 'Where To Know';
-  const mainSubtitle = isNavigation ? 'Campus Navigation' : 'Explore Buildings';
-  
-  const dropdownTitle = isNavigation ? 'Where To Know' : 'Where To Go';
-  const dropdownSubtitle = isNavigation ? 'Explore Buildings' : 'Campus Navigation';
-  const dropdownTargetRoute = isNavigation ? '/know' : '/go';
+  // Use config from props or derive from currentView for backward compatibility
+  const mainLayoutId = config?.mainLayoutId || (isNavigation ? 'go-header' : 'know-header');
+  const dropdownLayoutId = config?.dropdownLayoutId || (isNavigation ? 'know-header' : 'go-header');
+  const mainTitle = config?.mainTitle || (isNavigation ? 'Where To Go' : 'Where To Know');
+  const mainSubtitle = config?.mainSubtitle || (isNavigation ? 'Campus Navigation' : 'Explore Buildings');
+  const dropdownTitle = config?.dropdownTitle || (isNavigation ? 'Where To Know' : 'Where To Go');
+  const dropdownSubtitle = config?.dropdownSubtitle || (isNavigation ? 'Explore Buildings' : 'Campus Navigation');
+  const dropdownTargetRoute = config?.dropdownTargetRoute || (isNavigation ? '/know' : '/go');
 
   // Logos
   const mainLogo = isNavigation ? logoGo : logoKnow;
   const dropdownLogo = isNavigation ? logoKnow : logoGo;
 
-  // Helper to determine if subtitle should be gray/arrowless (Explore Buildings)
+  // Helper to determine if subtitle should be gray/arrowless
   const isExploreSubtitle = (subtitle) => subtitle === 'Explore Buildings';
+
+  // Handler wrappers
+  const handleCloseMenu = onCloseMenu || (() => {});
+  const handleOpenMenu = onOpenMenu || (() => {});
+  const handleCancelOpen = onCancelOpen || (() => {});
+  const handleNavigate = onNavigate || (() => {});
 
   return (
     <motion.header 
@@ -65,38 +71,32 @@ function Header({ currentView, hasResults, centered = false, hideTitle = false, 
     >
       <div 
         className={`relative ${centered ? 'inline-flex items-center' : ''} ${compact ? 'flex items-center' : ''}`}
-        onMouseLeave={closeMenu}
+        onMouseLeave={handleCloseMenu}
       >
-        {/* 
-            Background Layer - The "Expanding" Effect 
-            Separated from content to allow it to scale independently
-        */}
+        {/* Background Layer */}
         <motion.div 
             layoutId={`${mainLayoutId}-bg`}
             style={{ opacity: backgroundOpacity }}
             className={
                 (centered || compact)
-                ? "fixed inset-0 w-[150vmax] h-[150vmax] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white/0 z-0 pointer-events-none" // Know View: Massive, transparent, centered
-                : "absolute inset-0 glass rounded-2xl shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20 z-0" // Go View: Standard Panel
+                ? "fixed inset-0 w-[150vmax] h-[150vmax] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white/0 z-0 pointer-events-none"
+                : "absolute inset-0 glass rounded-2xl shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20 z-0"
             }
             transition={{ 
                 duration: 0.8, 
-                ease: [0.16, 1, 0.3, 1] // Smooth "Apple-like" ease
+                ease: [0.16, 1, 0.3, 1]
             }}
         />
 
-        {/* 
-            Content Layer - Smooth Translation
-            Sits on top of the background
-        */}
+        {/* Content Layer */}
         <motion.div 
             layoutId={`${mainLayoutId}-content`}
             className={`relative z-20 transition-[padding] duration-200
                 ${centered 
-                    ? 'flex items-center gap-6 justify-center' // Know View: Row, Centered Content
+                    ? 'flex items-center gap-6 justify-center'
                     : compact 
-                        ? 'flex items-center gap-4' // Compact View: No padding
-                        : 'px-6 py-4 flex items-center gap-4' // Go View: Padding inside the glass panel
+                        ? 'flex items-center gap-4'
+                        : 'px-6 py-4 flex items-center gap-4'
                 }
             `}
         >
@@ -104,8 +104,8 @@ function Header({ currentView, hasResults, centered = false, hideTitle = false, 
             <motion.div 
                 layoutId={`${mainLayoutId}-logo`}
                 className={`flex items-center justify-center shrink-0 cursor-pointer ${centered ? 'w-20 h-20' : 'w-10 h-10'}`}
-                onMouseEnter={openMenu}
-                onMouseLeave={cancelOpen}
+                onMouseEnter={handleOpenMenu}
+                onMouseLeave={handleCancelOpen}
             >
                 <img src={mainLogo} alt="App Logo" className="w-full h-full object-contain drop-shadow-sm" />
             </motion.div>
@@ -149,22 +149,19 @@ function Header({ currentView, hasResults, centered = false, hideTitle = false, 
                         : { opacity: 1, x: 0, scale: 1 }
                     }
                     exit={!centered
-                        ? (hasResults ? { opacity: 0, x: -10 } : { opacity: 0, x: 10 }) // Exit to right (towards logo)
+                        ? (hasResults ? { opacity: 0, x: -10 } : { opacity: 0, x: 10 })
                         : { opacity: 0, x: 10, scale: 0.95 }
                     }
                     transition={!centered ? { duration: 0.2 } : { type: "spring", stiffness: 400, damping: 30 }}
                     
-                    onMouseEnter={openMenu}
-                    onClick={() => {
-                        navigate(dropdownTargetRoute);
-                        setIsHovering(false);
-                    }}
+                    onMouseEnter={handleOpenMenu}
+                    onClick={() => handleNavigate(dropdownTargetRoute)}
                     className={`absolute glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-xl shadow-primary-900/10 bg-white/95 backdrop-blur-md border border-white/20 z-10 text-left hover:bg-white transition-colors
                         ${centered
-                            ? 'right-full top-1/2 -translate-y-1/2 mr-4 w-full max-w-sm' // Know View: Left of content, vertically centered
+                            ? 'right-full top-1/2 -translate-y-1/2 mr-4 w-full max-w-sm'
                             : hasResults 
-                                ? 'top-0 left-full ml-4 w-full' // Go View (Results): Side
-                                : 'bottom-full left-0 mb-2 w-full' // Go View (Default): Above
+                                ? 'top-0 left-full ml-4 w-full'
+                                : 'bottom-full left-0 mb-2 w-full'
                         }
                     `}
                 >

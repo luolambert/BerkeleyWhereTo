@@ -4,7 +4,8 @@ import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { NavigationProvider } from './context/NavigationContext';
 import { PreloadProvider } from './context/PreloadContext';
-import { ErrorBoundary, GitHubLink } from './components/common';
+import { ErrorBoundary } from './components/common';
+import { GitHubLink } from './components/presentational';
 import NavigationPage from './views/NavigationPage';
 import InfoPage from './views/InfoPage';
 import LandingPage from './views/LandingPage';
@@ -33,7 +34,7 @@ function AppContent({ isLoaded }) {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50">
-      <GitHubLink />
+      <GitHubLink isGoPage={location.pathname === '/go'} />
       <LayoutGroup>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>

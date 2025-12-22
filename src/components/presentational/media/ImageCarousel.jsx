@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DURATIONS, EASINGS, GPU_ACCELERATED_STYLE } from '../../constants/animations';
+import { DURATIONS, EASINGS, GPU_ACCELERATED_STYLE } from '../../../constants/animations';
 
 /**
  * ImageCarousel - Reusable image carousel component

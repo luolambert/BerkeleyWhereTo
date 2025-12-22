@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TEXT_VARIANTS } from '../../constants/animations';
+import { TEXT_VARIANTS } from '../../../constants/animations';
 
 /**
  * AnimatedText Component

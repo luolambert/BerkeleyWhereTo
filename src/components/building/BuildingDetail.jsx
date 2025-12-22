@@ -14,11 +14,29 @@ import { MetaBadge, TagList } from '../presentational/badges';
 import { InfoListSection } from '../presentational/sections';
 
 /**
- * 建筑详情页组件
- * 显示单个建筑的完整信息，包括图片轮播、描述、冷知识等
+ * BuildingDetail Component (Presentational)
+ * Displays complete building information with image carousel
+ * 
+ * When used with BuildingDetailContainer, receives images/carousel/labels as props.
+ * Backward compatible: can derive these internally when used standalone.
+ * 
+ * @param {object} building - Building data object
+ * @param {function} onBack - Back button callback
+ * @param {string} language - 'CN' | 'EN'
+ * @param {string[]} images - (Optional) Image URLs from container
+ * @param {object} carousel - (Optional) { currentIndex, next, prev, goTo, hasMultiple } from container
+ * @param {object} labels - (Optional) i18n labels from container
  */
-function BuildingDetail({ building, onBack, language }) {
-  const labels = language === 'CN' ? {
+function BuildingDetail({ 
+  building, 
+  onBack, 
+  language,
+  images: propImages,
+  carousel: propCarousel,
+  labels: propLabels
+}) {
+  // Labels: use props or derive internally for backward compatibility
+  const labels = propLabels || (language === 'CN' ? {
     built: "建成于",
     intro: "简介",
     funFacts: "冷知识",
@@ -38,15 +56,23 @@ function BuildingDetail({ building, onBack, language }) {
     accessibility: "Accessibility",
     officialWeb: "Official Web",
     scroll: "Scroll for details"
-  };
+  });
 
-  // Get images from centralized file, fallback to building.images
-  const images = buildingImages[building.id] && buildingImages[building.id].length > 0
-    ? buildingImages[building.id]
-    : building.images || [];
+  // Images: use props or derive internally for backward compatibility
+  const internalImages = React.useMemo(() => {
+    if (propImages) return propImages;
+    const centralImages = buildingImages[building.id];
+    return centralImages && centralImages.length > 0
+      ? centralImages
+      : building.images || [];
+  }, [propImages, building.id, building.images]);
 
-  // Use centralized carousel hook (with preload and auto-play)
-  const { currentIndex, next, prev, goTo, hasMultiple } = useImageCarousel(images, 5000);
+  // Carousel: use props or derive internally for backward compatibility
+  const internalCarousel = useImageCarousel(propCarousel ? [] : internalImages, 5000);
+  const carousel = propCarousel || internalCarousel;
+  
+  const { currentIndex, next, prev, goTo, hasMultiple } = carousel;
+  const images = propImages || internalImages;
 
   return (
     <motion.div 
@@ -74,7 +100,7 @@ function BuildingDetail({ building, onBack, language }) {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
         
-        {/* Navigation Arrows (Only if multiple images) */}
+        {/* Navigation Arrows */}
         {hasMultiple && (
           <>
             <CarouselArrow
