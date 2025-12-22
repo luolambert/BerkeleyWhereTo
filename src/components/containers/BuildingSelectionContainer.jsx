@@ -20,7 +20,9 @@ function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
   const [activeCategory, setActiveCategory] = React.useState("all");
   const [mode, setMode] = React.useState("freshman");
   
-  // Get categoriesconst categories = getCategoriesByMode(mode);
+  
+  // Get categories based on mode
+  const categories = getCategoriesByMode(mode);
   
   // Get buildings based on mode
   const currentBuildings = mode === 'freshman' ? freshmanBuildings : advancedBuildings;

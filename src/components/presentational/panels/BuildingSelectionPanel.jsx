@@ -1,8 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Search, X } from "lucide-react";
-import { buildings as freshmanBuildings } from "../../../data/buildings";
-import { buildings as advancedBuildings } from "../../../data/advanced_building";
-import { getCategoriesByMode } from "../../../constants/buildingCategories";
+import React, { useRef, useEffect } from "react";
+import { X } from "lucide-react";
 import { SearchInput } from "../inputs";
 import { CategoryPills } from "../controls";
 import { ModeToggle } from "../buttons";
@@ -10,64 +7,28 @@ import { SelectableBuildingCard } from "../cards";
 import GlassPanel from "./GlassPanel";
 
 /**
- * BuildingSelectionPanel - Presentational Component with backwards compatibility
+ * BuildingSelectionPanel - Pure Presentational Component
  * 
- * Can work standalone (with internal state) or as pure presentational (with props from Container)
+ * All data and handlers must be provided via props from Container.
+ * No internal state management - follows strict Container/Presentational pattern.
  */
 const BuildingSelectionPanel = ({ 
-  // Core callbacks (always required)
+  // Core callbacks
   onSelect, 
   onClose, 
   selectedValue,
-  // Optional: for Container mode (pure presentational)
-  filteredBuildings: externalBuildings,
-  categories: externalCategories,
-  searchTerm: externalSearchTerm,
-  activeCategory: externalActiveCategory,
-  mode: externalMode,
+  // Required data from Container
+  filteredBuildings,
+  categories,
+  searchTerm,
+  activeCategory,
+  mode,
+  // Required handlers from Container
   onSearchChange,
   onCategoryChange,
   onModeChange
 }) => {
-  // Internal state (for standalone mode)
-  const [internalSearchTerm, setInternalSearchTerm] = useState("");
-  const [internalActiveCategory, setInternalActiveCategory] = useState("all");
-  const [internalMode, setInternalMode] = useState("freshman");
   const inputRef = useRef(null);
-
-  // Determine if using Container mode or standalone mode
-  const isContainerMode = externalBuildings !== undefined;
-  
-  // Use external or internal values
-  const searchTerm = isContainerMode ? externalSearchTerm : internalSearchTerm;
-  const activeCategory = isContainerMode ? externalActiveCategory : internalActiveCategory;
-  const mode = isContainerMode ? externalMode : internalMode;
-  
-  // Get categories
-  const categories = isContainerMode ? externalCategories : getCategoriesByMode(mode);
-
-  // Get buildings (standalone mode only)
-  const currentBuildings = mode === 'freshman' ? freshmanBuildings : advancedBuildings;
-  
-  // Filter buildings (standalone mode only)
-  const filteredBuildings = isContainerMode ? externalBuildings : currentBuildings.filter((b) => {
-    const matchesSearch = b.name.toLowerCase().includes(searchTerm.toLowerCase());
-    if (activeCategory === "all") return matchesSearch;
-    if (activeCategory === "popular") return matchesSearch && b.popular;
-    const categoryDef = categories.find(c => c.id === activeCategory);
-    if (categoryDef && categoryDef.match) {
-      return matchesSearch && categoryDef.match.includes(b.category);
-    }
-    return matchesSearch && b.category === activeCategory;
-  });
-
-  // Handlers
-  const handleSearchChange = isContainerMode ? onSearchChange : setInternalSearchTerm;
-  const handleCategoryChange = isContainerMode ? onCategoryChange : setInternalActiveCategory;
-  const handleModeChange = isContainerMode ? onModeChange : (newMode) => {
-    setInternalMode(newMode);
-    setInternalActiveCategory("all");
-  };
 
   // Focus search input when mounted
   useEffect(() => {
@@ -94,7 +55,7 @@ const BuildingSelectionPanel = ({
         <SearchInput
           ref={inputRef}
           value={searchTerm}
-          onChange={handleSearchChange}
+          onChange={onSearchChange}
           placeholder="Search for a building..."
           autoFocus
         />
@@ -105,7 +66,7 @@ const BuildingSelectionPanel = ({
             { id: 'advanced', label: 'Advanced' },
           ]}
           activeId={mode}
-          onChange={handleModeChange}
+          onChange={onModeChange}
         />
 
         <button
@@ -121,13 +82,13 @@ const BuildingSelectionPanel = ({
         <CategoryPills
           categories={categories}
           activeId={activeCategory}
-          onChange={handleCategoryChange}
+          onChange={onCategoryChange}
         />
       </div>
 
       {/* Grid Content */}
       <div className="flex-1 overflow-y-auto p-6 bg-neutral-50/50">
-        {filteredBuildings.length > 0 ? (
+        {filteredBuildings && filteredBuildings.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3">
             {filteredBuildings.map((b) => (
               <SelectableBuildingCard

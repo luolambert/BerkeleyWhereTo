@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useCallback } from 'react';
 import { buildings } from '../data/buildings';
 import { buildings as advancedBuildings } from '../data/advanced_building';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants/appConfig';
+import { calculateTravelTime } from '../services/mapService';
 
 // Combine buildings for lookup
 const ALL_BUILDINGS = [...buildings, ...advancedBuildings];
@@ -45,7 +46,7 @@ export function NavigationProvider({ children, isLoaded }) {
     setLanguage(prev => prev === SUPPORTED_LANGUAGES.CN ? SUPPORTED_LANGUAGES.EN : SUPPORTED_LANGUAGES.CN);
   }, []);
 
-  // Calculate route
+  // Calculate route - uses mapService for API calls
   const calculateRoute = useCallback(async () => {
     if (!startLocation || !endLocation || !isLoaded) return;
 
@@ -56,38 +57,22 @@ export function NavigationProvider({ children, isLoaded }) {
     const endBuilding = ALL_BUILDINGS.find(b => b.name === endLocation);
 
     if (!startBuilding || !endBuilding) {
-      alert("Please select valid buildings from the list.");
+      console.error('Invalid building selection');
       setIsCalculating(false);
       return;
     }
 
     setRoutePoints({ start: startBuilding, end: endBuilding });
 
-    const service = new window.google.maps.DistanceMatrixService();
-    
     try {
-      const result = await service.getDistanceMatrix({
-        origins: [{ lat: startBuilding.lat, lng: startBuilding.lng }],
-        destinations: [{ lat: endBuilding.lat, lng: endBuilding.lng }],
-        travelMode: window.google.maps.TravelMode.WALKING,
-      });
-
-      if (result.rows[0].elements[0].status === "OK") {
-        const walkingDuration = result.rows[0].elements[0].duration.value;
-        const walkingMin = Math.round(walkingDuration / 60);
-        const scooterMin = Math.round(walkingMin / 4);
-
-        setTravelTimes({
-          walking: walkingMin,
-          scooter: scooterMin
-        });
-      } else {
-        console.error("Error calculating distance:", result);
-        alert("Could not calculate distance. Please try again.");
-      }
+      // Use mapService to eliminate code duplication
+      const travelTime = await calculateTravelTime(
+        { lat: startBuilding.lat, lng: startBuilding.lng },
+        { lat: endBuilding.lat, lng: endBuilding.lng }
+      );
+      setTravelTimes(travelTime);
     } catch (error) {
-      console.error("Error with Distance Matrix API:", error);
-      alert("Error connecting to Google Maps API.");
+      console.error('Route calculation failed:', error.message);
     } finally {
       setIsCalculating(false);
     }

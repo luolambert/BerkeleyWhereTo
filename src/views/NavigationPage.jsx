@@ -4,9 +4,8 @@ import { useNavigation } from '../context/NavigationContext';
 import { Header } from '../components/common';
 import MapContainer from '../components/MapContainer';
 import { RouteInput } from '../components/presentational/inputs';
-import { TravelTimeDisplay } from '../components/presentational';
-import { ElevationChart } from '../components/presentational';
-import { BuildingSelectionPanel } from '../components/presentational/panels';
+import { TravelTimeDisplay, ElevationChart } from '../components/presentational';
+import { BuildingSelectionContainer } from '../components/containers';
 import { EXTERNAL_LINKS } from '../constants/appConfig';
 import { SCALE_VARIANTS } from '../constants/animations';
 
@@ -106,7 +105,7 @@ function NavigationPage({ isLoaded }) {
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         >
-                            <BuildingSelectionPanel 
+                            <BuildingSelectionContainer 
                                 selectedValue={activeField === 'start' ? startLocation : endLocation}
                                 onSelect={selectBuilding}
                                 onClose={() => toggleField(null)}
