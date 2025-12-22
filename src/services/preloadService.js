@@ -56,11 +56,11 @@ export function preloadImage(url) {
 /**
  * Preload a single image with retry mechanism
  * @param {string} url - Image URL to preload
- * @param {number} maxRetries - Maximum retry attempts (default: 10)
- * @param {number} retryDelay - Delay between retries in ms (default: 2000)
+ * @param {number} maxRetries - Maximum retry attempts (default: 3)
+ * @param {number} retryDelay - Delay between retries in ms (default: 1000)
  * @returns {Promise<{success: boolean, url: string, attempts: number}>}
  */
-export async function preloadImageWithRetry(url, maxRetries = 10, retryDelay = 2000) {
+export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 1000) {
   let attempts = 0;
   
   while (attempts < maxRetries) {

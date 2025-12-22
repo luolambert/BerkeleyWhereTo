@@ -31,19 +31,21 @@ function BuildingCard({
       onClick={onClick}
       className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 overflow-hidden h-[280px]"
     >
-      {/* Full background image */}
-      <img
-        src={imageUrl}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
-      />
+      {/* Full background image - hide when failed to prevent broken image icon */}
+      {!isImageFailed && (
+        <img
+          src={imageUrl}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+        />
+      )}
 
-      {/* Failed image overlay */}
+      {/* Failed image overlay - above gradient, below text (z-5) */}
       {isImageFailed && (
-        <div className="absolute inset-0 bg-neutral-800/90 flex items-center justify-center z-20">
-          <div className="text-center text-white/80">
-            <div className="text-4xl mb-2">⚠️</div>
-            <p className="text-sm font-medium">
+        <div className="absolute inset-0 bg-neutral-700 flex items-center justify-center z-5">
+          <div className="text-center text-white/70">
+            <div className="text-3xl mb-1">⚠️</div>
+            <p className="text-xs font-medium">
               {language === 'CN' ? '图片加载失败' : 'Image Load Failed'}
             </p>
           </div>
