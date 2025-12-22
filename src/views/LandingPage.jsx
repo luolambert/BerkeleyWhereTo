@@ -3,7 +3,9 @@ import { motion, LayoutGroup } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import logoGo from '../assets/WhereToGo_Logo.png';
 import logoKnow from '../assets/WhereToKnow_Logo.png';
-import { FADE_VARIANTS, SPRINGS } from '../constants/animations';
+import { FADE_VARIANTS } from '../constants/animations';
+import { PrimaryButton } from '../components/presentational/buttons';
+import { LogoImage } from '../components/presentational/media';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -37,16 +39,16 @@ function LandingPage() {
           <motion.div 
             className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center"
           >
-            {/* 🚀 优化：调整 Spring 参数减少弹跳 */}
+            {/* Logo with hover animation */}
             <motion.div
               animate={{ 
                 scale: hoveredSide === 'go' ? 1.1 : 1,
                 rotate: hoveredSide === 'go' ? -5 : 0
               }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="w-48 h-48 mb-8 drop-shadow-2xl"
+              className="mb-8"
             >
-              <img src={logoGo} alt="Where To Go" className="w-full h-full object-contain" />
+              <LogoImage src={logoGo} alt="Where To Go" size="large" animated={false} />
             </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight">
@@ -56,14 +58,13 @@ function LandingPage() {
               Navigate the Berkeley campus with ease. Find the quickest routes and estimate travel times.
             </p>
             
-            {/* 🚀 优化：替换 transition-all 为具体属性 */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-12 px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg shadow-blue-600/30 hover:shadow-xl hover:bg-blue-700 transition-colors transition-shadow duration-200"
+            <PrimaryButton
+              variant="blue"
+              className="mt-12"
+              onClick={() => navigate('/go')}
             >
               Start Navigation
-            </motion.button>
+            </PrimaryButton>
           </motion.div>
         </motion.div>
 
@@ -95,16 +96,16 @@ function LandingPage() {
           <motion.div 
             className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center"
           >
-            {/* 🚀 优化：调整 Spring 参数减少弹跳 */}
+            {/* Logo with hover animation */}
             <motion.div
               animate={{ 
                 scale: hoveredSide === 'know' ? 1.1 : 1,
                 rotate: hoveredSide === 'know' ? 5 : 0
               }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="w-48 h-48 mb-8 drop-shadow-2xl"
+              className="mb-8"
             >
-              <img src={logoKnow} alt="Where To Know" className="w-full h-full object-contain" />
+              <LogoImage src={logoKnow} alt="Where To Know" size="large" animated={false} />
             </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight">
@@ -114,14 +115,13 @@ function LandingPage() {
               Discover the stories, history, and secrets behind every building on campus.
             </p>
             
-            {/* 🚀 优化：替换 transition-all 为具体属性 */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-12 px-8 py-3 bg-amber-500 text-white rounded-full font-bold shadow-lg shadow-amber-500/30 hover:shadow-xl hover:bg-amber-600 transition-colors transition-shadow duration-200"
+            <PrimaryButton
+              variant="amber"
+              className="mt-12"
+              onClick={() => navigate('/know')}
             >
               Explore Buildings
-            </motion.button>
+            </PrimaryButton>
           </motion.div>
         </motion.div>
       </LayoutGroup>

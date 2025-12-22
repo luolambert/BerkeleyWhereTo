@@ -1,14 +1,17 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowLeft, Calendar, User, Info, ExternalLink, 
-  Camera, BookOpen, Ghost, Accessibility, ChevronDown, 
-  Globe, ChevronLeft, ChevronRight 
+  Calendar, User, Info, ExternalLink, 
+  Camera, BookOpen, Ghost, Accessibility, ChevronDown
 } from 'lucide-react';
 import { AnimatedText, MarkdownText } from '../common';
 import { buildingImages } from '../../data/buildingImage';
 import useImageCarousel from '../../hooks/useImageCarousel';
 import { DURATIONS, EASINGS, PAGE_VARIANTS } from '../../constants/animations';
+import { BackButton, CarouselArrow } from '../presentational/buttons';
+import { CarouselDots } from '../presentational/media';
+import { MetaBadge, TagList } from '../presentational/badges';
+import { InfoListSection } from '../presentational/sections';
 
 /**
  * 建筑详情页组件
@@ -74,43 +77,31 @@ function BuildingDetail({ building, onBack, language }) {
         {/* Navigation Arrows (Only if multiple images) */}
         {hasMultiple && (
           <>
-            <button 
+            <CarouselArrow
+              direction="left"
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </button>
-            <button 
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-40 opacity-0 group-hover:opacity-100"
+            />
+            <CarouselArrow
+              direction="right"
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full text-white/80 hover:text-white transition-[background-color,color,opacity] duration-200 z-40 opacity-0 group-hover:opacity-100"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </button>
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-40 opacity-0 group-hover:opacity-100"
+            />
 
             {/* Dots Indicator */}
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-              {images.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goTo(idx)}
-                  className={`w-2 h-2 rounded-full transition-[width,background-color] duration-200 ${
-                    idx === currentIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
-                  }`}
-                  aria-label={`Go to image ${idx + 1}`}
-                />
-              ))}
-            </div>
+            <CarouselDots
+              total={images.length}
+              current={currentIndex}
+              onChange={goTo}
+              className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40"
+            />
           </>
         )}
 
-        <button 
+        <BackButton
           onClick={onBack}
-          className="absolute top-6 left-6 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-md rounded-full text-white transition-colors border border-white/10 group z-50"
-        >
-          <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
-        </button>
+          className="absolute top-6 left-6 z-50"
+        />
 
         {/* Bottom Left Info */}
         <div className="absolute bottom-0 left-0 w-full p-6 sm:p-10 z-30 flex flex-col justify-end h-full pb-24 pointer-events-none">
@@ -121,14 +112,8 @@ function BuildingDetail({ building, onBack, language }) {
               {building.title}
             </motion.h1>
             <div className="flex flex-wrap gap-4 text-white/90 text-sm sm:text-base font-medium">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
-                <Calendar className="w-4 h-4" />
-                <span>{labels.built} {building.yearBuilt}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
-                <User className="w-4 h-4" />
-                <span>{building.architect}</span>
-              </div>
+              <MetaBadge icon={Calendar} text={`${labels.built} ${building.yearBuilt}`} />
+              <MetaBadge icon={User} text={building.architect} />
             </div>
           </div>
         </div>
@@ -162,84 +147,50 @@ function BuildingDetail({ building, onBack, language }) {
 
         {/* Fun Facts */}
         {building.funFacts && (
-          <section className="bg-blue-50 rounded-2xl p-8 border border-blue-100">
-            <div className="flex items-center gap-3 mb-6">
-              <BookOpen className="w-6 h-6 text-blue-600" />
-              <h3 className="text-xl font-bold text-blue-900">
-                <AnimatedText textKey={`funFacts-${language}`}>
-                  {labels.funFacts}
-                </AnimatedText>
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {building.funFacts.map((fact, index) => (
-                <li key={index} className="flex gap-3 text-blue-800">
-                  <span className="font-bold text-blue-400 select-none">•</span>
-                  <span><MarkdownText text={fact} /></span>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <InfoListSection
+            icon={BookOpen}
+            title={labels.funFacts}
+            items={building.funFacts}
+            variant="blue"
+            language={language}
+            sectionKey="funFacts"
+          />
         )}
 
         {/* Student Tips */}
         {building.studentTips && (
-          <section className="bg-amber-50 rounded-2xl p-8 border border-amber-100">
-            <div className="flex items-center gap-3 mb-6">
-              <Info className="w-6 h-6 text-amber-600" />
-              <h3 className="text-xl font-bold text-amber-900">
-                <AnimatedText textKey={`studentTips-${language}`}>
-                  {labels.studentTips}
-                </AnimatedText>
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {building.studentTips.map((tip, index) => (
-                <li key={index} className="flex gap-3 text-amber-800">
-                  <span className="font-bold text-amber-400 select-none">•</span>
-                  <span><MarkdownText text={tip} /></span>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <InfoListSection
+            icon={Info}
+            title={labels.studentTips}
+            items={building.studentTips}
+            variant="amber"
+            language={language}
+            sectionKey="studentTips"
+          />
         )}
 
         {/* Legend & Photo Spots Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {building.relatedLegend && (
-            <section className="bg-purple-50 rounded-2xl p-8 border border-purple-100">
-              <div className="flex items-center gap-3 mb-4">
-                <Ghost className="w-6 h-6 text-purple-600" />
-                <h3 className="text-lg font-bold text-purple-900">
-                  <AnimatedText textKey={`legend-${language}`}>
-                    {labels.legend}
-                  </AnimatedText>
-                </h3>
-              </div>
-              <p className="text-purple-800 leading-relaxed">
-                <MarkdownText text={building.relatedLegend} />
-              </p>
-            </section>
+            <InfoListSection
+              icon={Ghost}
+              title={labels.legend}
+              items={[building.relatedLegend]}
+              variant="purple"
+              language={language}
+              sectionKey="legend"
+            />
           )}
 
           {building.photoSpots && (
-            <section className="bg-pink-50 rounded-2xl p-8 border border-pink-100">
-              <div className="flex items-center gap-3 mb-4">
-                <Camera className="w-6 h-6 text-pink-600" />
-                <h3 className="text-lg font-bold text-pink-900">
-                  <AnimatedText textKey={`photoSpots-${language}`}>
-                    {labels.photoSpots}
-                  </AnimatedText>
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {building.photoSpots.map((spot, index) => (
-                  <li key={index} className="text-pink-800 text-sm">
-                    <MarkdownText text={spot} />
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <InfoListSection
+              icon={Camera}
+              title={labels.photoSpots}
+              items={building.photoSpots}
+              variant="pink"
+              language={language}
+              sectionKey="photoSpots"
+            />
           )}
         </div>
 
