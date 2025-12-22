@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnimatedText } from '../../common';
+import { usePreload } from '../../../context/PreloadContext';
 
 /**
  * BuildingCard - Building display card with image background and hover effects
@@ -22,6 +23,9 @@ function BuildingCard({
   language = 'EN',
   buildingId,
 }) {
+  const { failedImages } = usePreload();
+  const isImageFailed = failedImages.includes(imageUrl);
+
   return (
     <div
       onClick={onClick}
@@ -33,6 +37,18 @@ function BuildingCard({
         alt={title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
       />
+
+      {/* Failed image overlay */}
+      {isImageFailed && (
+        <div className="absolute inset-0 bg-neutral-800/90 flex items-center justify-center z-20">
+          <div className="text-center text-white/80">
+            <div className="text-4xl mb-2">⚠️</div>
+            <p className="text-sm font-medium">
+              {language === 'CN' ? '图片加载失败' : 'Image Load Failed'}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />

@@ -54,20 +54,53 @@ export function preloadImage(url) {
 }
 
 /**
- * Preload all images with progress tracking
+ * Preload a single image with retry mechanism
+ * @param {string} url - Image URL to preload
+ * @param {number} maxRetries - Maximum retry attempts (default: 10)
+ * @param {number} retryDelay - Delay between retries in ms (default: 2000)
+ * @returns {Promise<{success: boolean, url: string, attempts: number}>}
+ */
+export async function preloadImageWithRetry(url, maxRetries = 10, retryDelay = 2000) {
+  let attempts = 0;
+  
+  while (attempts < maxRetries) {
+    attempts++;
+    try {
+      // Add cache-busting timestamp on retry
+      const loadUrl = attempts > 1 ? `${url}${url.includes('?') ? '&' : '?'}retry=${Date.now()}` : url;
+      await preloadImage(loadUrl);
+      if (attempts > 1) {
+        console.log(`[Preload] ✓ Loaded after ${attempts} attempts: ${url}`);
+      }
+      return { success: true, url, attempts };
+    } catch (error) {
+      if (attempts < maxRetries) {
+        console.log(`[Preload] Retry ${attempts}/${maxRetries} for: ${url}`);
+        await new Promise(resolve => setTimeout(resolve, retryDelay));
+      }
+    }
+  }
+  
+  console.error(`[Preload] ✗ Failed after ${maxRetries} attempts: ${url}`);
+  return { success: false, url, attempts };
+}
+
+/**
+ * Preload all images with progress tracking and retry mechanism
  * @param {Object} options
  * @param {function(number, number)} options.onProgress - Progress callback (loaded, total)
  * @param {function(string)} options.onError - Error callback for failed images
- * @returns {Promise<{success: number, failed: number}>}
+ * @returns {Promise<{success: number, failed: number, failedUrls: string[]}>}
  */
 export async function preloadAllImages({ onProgress, onError } = {}) {
   const urls = getAllImageUrls();
   const total = urls.length;
   let loaded = 0;
   let failed = 0;
+  const failedUrls = [];
   
   if (total === 0) {
-    return { success: 0, failed: 0 };
+    return { success: 0, failed: 0, failedUrls: [] };
   }
   
   // Log start
@@ -76,24 +109,26 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
   // Use Promise.allSettled to handle all images regardless of individual failures
   const results = await Promise.allSettled(
     urls.map(async (url) => {
-      try {
-        await preloadImage(url);
+      const result = await preloadImageWithRetry(url);
+      if (result.success) {
         loaded++;
-        onProgress?.(loaded + failed, total);
-        return { status: 'success', url };
-      } catch (error) {
+      } else {
         failed++;
+        failedUrls.push(url);
         onError?.(url);
-        onProgress?.(loaded + failed, total);
-        return { status: 'failed', url };
       }
+      onProgress?.(loaded + failed, total);
+      return result;
     })
   );
   
   // Log completion
   console.log(`[Preload] Complete: ${loaded} loaded, ${failed} failed`);
+  if (failedUrls.length > 0) {
+    console.warn('[Preload] Failed images:', failedUrls);
+  }
   
-  return { success: loaded, failed };
+  return { success: loaded, failed, failedUrls };
 }
 
 /**
