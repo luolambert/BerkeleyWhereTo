@@ -42,7 +42,7 @@ function IconButton({
 
   return (
     <motion.button
-      whileTap={!disabled ? { scale: 0.95 } : {}}
+      whileTap={!disabled ? { scale: 0.95, rotate: 45 } : {}}
       onClick={onClick}
       disabled={disabled}
       title={title}

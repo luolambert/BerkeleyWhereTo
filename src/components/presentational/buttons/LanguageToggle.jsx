@@ -15,6 +15,7 @@ import { DURATIONS } from '../../../constants/animations';
  */
 function LanguageToggle({ language, onToggle, variant = 'default', direction = 'left' }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
   
   const alternateLanguage = language === 'CN' ? 'EN' : '中文';
   const title = language === 'CN' ? 'Switch to English' : '切换到中文';
@@ -41,6 +42,12 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
   const positionClass = isLeft 
     ? 'right-full mr-1'  // Expand to left of icon
     : 'left-full ml-1';   // Expand to right of icon
+
+  // Handle click with flip animation
+  const handleClick = () => {
+    setIsFlipped(!isFlipped);
+    onToggle();
+  };
   
   return (
     <motion.div
@@ -51,11 +58,17 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
       {/* Globe Icon Button - Always in flow */}
       <motion.button
         whileTap={{ scale: 0.95 }}
-        onClick={onToggle}
+        onClick={handleClick}
         className={s.iconButton}
         title={title}
       >
-        <Globe size={s.iconSize} />
+        <motion.span
+          animate={{ scaleX: isFlipped ? -1 : 1 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="flex items-center justify-center"
+        >
+          <Globe size={s.iconSize} />
+        </motion.span>
       </motion.button>
       
       {/* Expanded Language Option - Absolutely positioned */}
@@ -67,7 +80,7 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
             exit={{ opacity: 0, scaleX: 0 }}
             transition={{ duration: DURATIONS.fast, ease: 'easeOut' }}
             style={{ transformOrigin }}
-            onClick={onToggle}
+            onClick={handleClick}
             className={`absolute top-1/2 -translate-y-1/2 ${positionClass} ${s.expandedButton}`}
           >
             <AnimatedText textKey={`langOpt-${language}`}>
@@ -81,3 +94,4 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
 }
 
 export default LanguageToggle;
+
