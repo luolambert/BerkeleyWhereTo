@@ -37,8 +37,35 @@ function BuildingGrid({
     controls,
   } = useHeaderScrollAnimation(scrollRef, containerRef, logoRef);
 
-  // Text comes from Container via textConfig prop
-  const { title, viewDetails, disclaimer, sortOptions } = textConfig;
+  // Text config with backwards compatibility (fallback for standalone mode)
+  const defaultTextConfig = React.useMemo(() => {
+    const isCN = language === 'CN';
+    return {
+      title: isCN 
+        ? "探索伯克利校园建筑背后的故事与传说" 
+        : "Discover the stories and legends behind Berkeley's campus buildings",
+      viewDetails: isCN ? "查看详情" : "View Details",
+      disclaimer: isCN ? [
+        "信息为个人收集，可能不准确或过时。",
+        "图片来源于 Google 或加州大学伯克利分校官网。"
+      ] : [
+        "Information collected personally, may be inaccurate or outdated.",
+        "Images sourced from Google or UC Berkeley official website."
+      ],
+      sortOptions: isCN ? [
+        { id: 'students', label: '适合学生' },
+        { id: 'categorical', label: '按类别' },
+        { id: 'popularity', label: '热门程度' },
+      ] : [
+        { id: 'students', label: 'For Students' },
+        { id: 'categorical', label: 'Categorical' },
+        { id: 'popularity', label: 'Popularity' },
+      ]
+    };
+  }, [language]);
+
+  const { title, viewDetails, disclaimer, sortOptions } = textConfig || defaultTextConfig;
+
 
   return (
     <motion.div 

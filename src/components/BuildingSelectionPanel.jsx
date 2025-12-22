@@ -1,5 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Search, X } from "lucide-react";
+import { buildings as freshmanBuildings } from "../data/buildings";
+import { buildings as advancedBuildings } from "../data/advanced_building";
+import { getCategoriesByMode } from "../constants/buildingCategories";
 import { SearchInput } from "./presentational/inputs";
 import { CategoryPills } from "./presentational/controls";
 import { ModeToggle } from "./presentational/buttons";
@@ -7,28 +10,71 @@ import { SelectableBuildingCard } from "./presentational/cards";
 import { GlassPanel } from "./presentational/panels";
 
 /**
- * BuildingSelectionPanel - Pure Presentational Component
+ * BuildingSelectionPanel - Presentational Component with backwards compatibility
  * 
- * Only responsible for UI rendering, receives all data and handlers via props
+ * Can work standalone (with internal state) or as pure presentational (with props from Container)
  */
 const BuildingSelectionPanel = ({ 
-  // Data
-  filteredBuildings,
-  categories,
-  // State
-  searchTerm,
-  activeCategory,
-  mode,
+  // Core callbacks (always required)
+  onSelect, 
+  onClose, 
   selectedValue,
-  // Handlers
+  // Optional: for Container mode (pure presentational)
+  filteredBuildings: externalBuildings,
+  categories: externalCategories,
+  searchTerm: externalSearchTerm,
+  activeCategory: externalActiveCategory,
+  mode: externalMode,
   onSearchChange,
   onCategoryChange,
-  onModeChange,
-  onSelect,
-  onClose
+  onModeChange
 }) => {
+  // Internal state (for standalone mode)
+  const [internalSearchTerm, setInternalSearchTerm] = useState("");
+  const [internalActiveCategory, setInternalActiveCategory] = useState("all");
+  const [internalMode, setInternalMode] = useState("freshman");
   const inputRef = useRef(null);
 
+  // Determine if using Container mode or standalone mode
+  const isContainerMode = externalBuildings !== undefined;
+  
+  // Use external or internal values
+  const searchTerm = isContainerMode ? externalSearchTerm : internalSearchTerm;
+  const activeCategory = isContainerMode ? externalActiveCategory : internalActiveCategory;
+  const mode = isContainerMode ? externalMode : internalMode;
+  
+  // Get categories
+  const categories = isContainerMode ? externalCategories : getCategoriesByMode(mode);
+
+  // Get buildings (standalone mode only)
+  const currentBuildings = mode === 'freshman' ? freshmanBuildings : advancedBuildings;
+  
+  // Filter buildings (standalone mode only)
+  const filteredBuildings = isContainerMode ? externalBuildings : currentBuildings.filter((b) => {
+    const matchesSearch = b.name.toLowerCase().includes(searchTerm.toLowerCase());
+    if (activeCategory === "all") return matchesSearch;
+    if (activeCategory === "popular") return matchesSearch && b.popular;
+    const categoryDef = categories.find(c => c.id === activeCategory);
+    if (categoryDef && categoryDef.match) {
+      return matchesSearch && categoryDef.match.includes(b.category);
+    }
+    return matchesSearch && b.category === activeCategory;
+  });
+
+  // Handlers
+  const handleSearchChange = isContainerMode ? onSearchChange : setInternalSearchTerm;
+  const handleCategoryChange = isContainerMode ? onCategoryChange : setInternalActiveCategory;
+  const handleModeChange = isContainerMode ? onModeChange : (newMode) => {
+    setInternalMode(newMode);
+    setInternalActiveCategory("all");
+  };
+
+  // Focus search input when mounted
+  useEffect(() => {
+    if (inputRef.current) {
+      setTimeout(() => inputRef.current.focus(), 100);
+    }
+  }, []);
 
   // Handle ESC key
   useEffect(() => {
@@ -48,7 +94,7 @@ const BuildingSelectionPanel = ({
         <SearchInput
           ref={inputRef}
           value={searchTerm}
-          onChange={onSearchChange}
+          onChange={handleSearchChange}
           placeholder="Search for a building..."
           autoFocus
         />
@@ -59,22 +105,23 @@ const BuildingSelectionPanel = ({
             { id: 'advanced', label: 'Advanced' },
           ]}
           activeId={mode}
-          onChange={onModeChange}
+          onChange={handleModeChange}
         />
 
         <button
           onClick={onClose}
-          className="p-3 rounded-full hover:bg-neutral-100 text-neutral-500 transition-colors"
+          className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-600 transition-colors shrink-0"
         >
-          <X size={24} />
+          <X size={20} />
         </button>
       </div>
 
+      {/* Categories */}
       <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0">
         <CategoryPills
           categories={categories}
           activeId={activeCategory}
-          onChange={onCategoryChange}
+          onChange={handleCategoryChange}
         />
       </div>
 
@@ -96,10 +143,9 @@ const BuildingSelectionPanel = ({
             ))}
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-neutral-400">
-            <Search size={48} className="mb-4 opacity-20" />
+          <div className="text-center text-neutral-400 py-12">
             <p className="text-lg font-medium">No buildings found</p>
-            <p className="text-sm">Try adjusting your search or category</p>
+            <p className="text-sm mt-1">Try adjusting your search or filters</p>
           </div>
         )}
       </div>
