@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { AnimatedText } from './common';
+import { AnimatedText } from '../../common';
 
 const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActive, language }) => {
   return (

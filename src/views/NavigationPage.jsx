@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigation } from '../context/NavigationContext';
-import Header from '../components/Header';
+import { Header } from '../components/common';
 import MapContainer from '../components/MapContainer';
-import RouteInput from '../components/RouteInput';
-import TravelTimeDisplay from '../components/TravelTimeDisplay';
-import ElevationChart from '../components/ElevationChart';
-import BuildingSelectionPanel from '../components/BuildingSelectionPanel';
+import { RouteInput } from '../components/presentational/inputs';
+import { TravelTimeDisplay } from '../components/presentational';
+import { ElevationChart } from '../components/presentational';
+import { BuildingSelectionPanel } from '../components/presentational/panels';
 import { EXTERNAL_LINKS } from '../constants/appConfig';
 import { SCALE_VARIANTS } from '../constants/animations';
 

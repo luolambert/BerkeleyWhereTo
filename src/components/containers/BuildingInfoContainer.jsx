@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { LanguageToggle } from './common';
-import { knowLocations as knowLocationsCN } from '../data/buildingInfo_chinese';
-import { knowLocations as knowLocationsEN } from '../data/buildingInfo_english';
-import { sortOrders } from '../data/know_sorting';
-import BuildingGrid from './building/BuildingGrid';
-import BuildingDetail from './building/BuildingDetail';
+import { LanguageToggle } from '../common';
+import { knowLocations as knowLocationsCN } from '../../data/buildingInfo_chinese';
+import { knowLocations as knowLocationsEN } from '../../data/buildingInfo_english';
+import { sortOrders } from '../../data/know_sorting';
+import BuildingGrid from '../building/BuildingGrid';
+import BuildingDetail from '../building/BuildingDetail';
 
 /**
- * 建筑信息主组件
- * 负责状态管理和视图切换（网格/详情）
+ * BuildingInfoContainer - Container component for building information
+ * Manages state and view switching (grid/detail)
  */
-function BuildingInfo({ onBack, currentView }) {
+function BuildingInfoContainer({ onBack, currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
   const [language, setLanguage] = useState('EN'); // 'CN' or 'EN'
   const [sortMethod, setSortMethod] = useState('students'); // 'students', 'categorical', 'popularity'
@@ -94,4 +94,4 @@ function BuildingInfo({ onBack, currentView }) {
   );
 }
 
-export default BuildingInfo;
+export default BuildingInfoContainer;

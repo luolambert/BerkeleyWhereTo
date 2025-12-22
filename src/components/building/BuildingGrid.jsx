@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Header from '../Header';
-import { AnimatedText, LanguageToggle } from '../common';
+import { Header, AnimatedText, LanguageToggle } from '../common';
 import useHeaderScrollAnimation from '../../hooks/useHeaderScrollAnimation';
 import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/animations';
 import { BuildingCard } from '../presentational/cards';

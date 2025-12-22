@@ -1,5 +1,5 @@
 import React from 'react';
-import BuildingSelectionPanel from '../BuildingSelectionPanel';
+import { BuildingSelectionPanel } from '../presentational/panels';
 import { buildings as freshmanBuildings } from '../../data/buildings';
 import { buildings as advancedBuildings } from '../../data/advanced_building';
 import { getCategoriesByMode } from '../../constants/buildingCategories';

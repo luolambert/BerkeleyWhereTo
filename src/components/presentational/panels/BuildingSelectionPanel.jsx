@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Search, X } from "lucide-react";
-import { buildings as freshmanBuildings } from "../data/buildings";
-import { buildings as advancedBuildings } from "../data/advanced_building";
-import { getCategoriesByMode } from "../constants/buildingCategories";
-import { SearchInput } from "./presentational/inputs";
-import { CategoryPills } from "./presentational/controls";
-import { ModeToggle } from "./presentational/buttons";
-import { SelectableBuildingCard } from "./presentational/cards";
-import { GlassPanel } from "./presentational/panels";
+import { buildings as freshmanBuildings } from "../../../data/buildings";
+import { buildings as advancedBuildings } from "../../../data/advanced_building";
+import { getCategoriesByMode } from "../../../constants/buildingCategories";
+import { SearchInput } from "../inputs";
+import { CategoryPills } from "../controls";
+import { ModeToggle } from "../buttons";
+import { SelectableBuildingCard } from "../cards";
+import GlassPanel from "./GlassPanel";
 
 /**
  * BuildingSelectionPanel - Presentational Component with backwards compatibility

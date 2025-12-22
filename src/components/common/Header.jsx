@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import logoGo from '../assets/WhereToGo_Logo.png';
-import logoKnow from '../assets/WhereToKnow_Logo.png';
+import logoGo from '../../assets/WhereToGo_Logo.png';
+import logoKnow from '../../assets/WhereToKnow_Logo.png';
 
 function Header({ currentView, hasResults, centered = false, hideTitle = false, hideSubtitle = false, compact = false, titleOpacity = 1, backgroundOpacity = 1 }) {
   const [isHovering, setIsHovering] = React.useState(false);

@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Footprints, Bike } from 'lucide-react';
-import { AnimatedText } from './common';
-import { useNavigation } from '../context/NavigationContext';
-import useTranslation from '../hooks/useTranslation';
-import { TimeCard } from './presentational/cards';
+import { AnimatedText } from '../common';
+import { useNavigation } from '../../context/NavigationContext';
+import useTranslation from '../../hooks/useTranslation';
+import { TimeCard } from './cards';
 
 function TravelTimeDisplay({ walkingTime, scooterTime }) {
   const { language } = useNavigation();

@@ -1,5 +1,5 @@
 import React from 'react';
-import BuildingInfo from '../components/BuildingInfo';
+import BuildingInfoContainer from '../components/containers/BuildingInfoContainer';
 
 function InfoPage() {
   return (
@@ -10,7 +10,7 @@ function InfoPage() {
          <div className="relative z-10 w-full h-full flex flex-col items-center">
              {/* Centered Header */}
              <div className="flex-1 w-full overflow-hidden mx-auto pb-8">
-                <BuildingInfo 
+                <BuildingInfoContainer 
                     currentView="info"
                 />
              </div>
