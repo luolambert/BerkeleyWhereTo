@@ -80,7 +80,7 @@ function Header({
             className={
                 (centered || compact)
                 ? "fixed inset-0 w-[150vmax] h-[150vmax] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white/0 z-0 pointer-events-none"
-                : "absolute inset-0 glass rounded-2xl shadow-xl shadow-primary-900/10 bg-white/90 backdrop-blur-md border border-white/20 z-0"
+                : "absolute inset-0 glass rounded-2xl shadow-2xl shadow-neutral-900/30 bg-white/95 backdrop-blur-xl border border-neutral-200/60 z-0"
             }
             transition={{ 
                 duration: 0.8, 
@@ -156,7 +156,7 @@ function Header({
                     
                     onMouseEnter={handleOpenMenu}
                     onClick={() => handleNavigate(dropdownTargetRoute)}
-                    className={`absolute glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-xl shadow-primary-900/10 bg-white/95 backdrop-blur-md border border-white/20 z-10 text-left hover:bg-white transition-colors
+                    className={`absolute glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-2xl shadow-neutral-900/30 bg-white/95 backdrop-blur-xl border border-neutral-200/60 z-10 text-left hover:bg-white transition-colors
                         ${centered
                             ? 'right-full top-1/2 -translate-y-1/2 mr-4 w-full max-w-sm'
                             : hasResults 

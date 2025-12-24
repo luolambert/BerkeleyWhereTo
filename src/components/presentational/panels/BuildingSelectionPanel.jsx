@@ -87,7 +87,7 @@ const BuildingSelectionPanel = ({
       </div>
 
       {/* Grid Content */}
-      <div className="flex-1 overflow-y-auto p-6 bg-neutral-50/50">
+      <div className="flex-1 overflow-y-auto no-scrollbar p-6 bg-neutral-50/50">
         {filteredBuildings && filteredBuildings.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3">
             {filteredBuildings.map((b) => (

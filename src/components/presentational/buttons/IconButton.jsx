@@ -30,13 +30,13 @@ function IconButton({
 
   const sizeStyles = {
     small: 'p-1.5',
-    default: 'p-2',
+    default: 'p-2.5',
     large: 'p-3',
   };
 
   const iconSizes = {
     small: 14,
-    default: 18,
+    default: 20,
     large: 24,
   };
 

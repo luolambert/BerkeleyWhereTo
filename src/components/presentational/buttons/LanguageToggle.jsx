@@ -15,7 +15,7 @@ import { DURATIONS } from '../../../constants/animations';
  */
 function LanguageToggle({ language, onToggle, variant = 'default', direction = 'left' }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [rotationAngle, setRotationAngle] = useState(0);
   
   const alternateLanguage = language === 'CN' ? 'EN' : '中文';
   const title = language === 'CN' ? 'Switch to English' : '切换到中文';
@@ -25,12 +25,12 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
     default: {
       expandedButton: 'px-2 py-1 rounded-full bg-primary-50 text-primary-600 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-primary-100 transition-colors',
       iconButton: 'p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-primary-600 transition-colors',
-      iconSize: 18,
+      iconSize: 20,
     },
     floating: {
       expandedButton: 'px-2 py-1.5 rounded-full bg-white/90 text-neutral-700 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-white shadow-sm border border-neutral-100 transition-[background-color,box-shadow]',
       iconButton: 'p-2 rounded-full bg-white hover:bg-neutral-50 text-neutral-600 hover:text-blue-600 shadow-sm hover:shadow border border-neutral-200 transition-[background-color,box-shadow,color] duration-200',
-      iconSize: 16,
+      iconSize: 18,
     },
   };
   
@@ -43,9 +43,17 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
     ? 'right-full mr-1'  // Expand to left of icon
     : 'left-full ml-1';   // Expand to right of icon
 
-  // Handle click with flip animation
+  // Handle click with rotation animation
+  // EN -> CN: rotate +180 (clockwise)
+  // CN -> EN: rotate -180 (counter-clockwise)
   const handleClick = () => {
-    setIsFlipped(!isFlipped);
+    if (language === 'EN') {
+      // EN -> CN: rotate clockwise (+180)
+      setRotationAngle(prev => prev + 180);
+    } else {
+      // CN -> EN: rotate counter-clockwise (-180)
+      setRotationAngle(prev => prev - 180);
+    }
     onToggle();
   };
   
@@ -63,8 +71,8 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
         title={title}
       >
         <motion.span
-          animate={{ scaleX: isFlipped ? -1 : 1 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          animate={{ rotate: rotationAngle }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="flex items-center justify-center"
         >
           <Globe size={s.iconSize} />
