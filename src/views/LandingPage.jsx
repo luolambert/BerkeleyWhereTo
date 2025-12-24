@@ -5,6 +5,8 @@ import logoGo from '../assets/WhereToGo_Logo.png';
 import logoKnow from '../assets/WhereToKnow_Logo.png';
 import { FADE_VARIANTS } from '../constants/animations';
 import { LogoImage } from '../components/presentational/media';
+import { ShimmerButton } from '../components/ui/shimmer-button';
+import { AnimatedShinyText } from '../components/ui/animated-shiny-text';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -29,9 +31,9 @@ function LandingPage() {
             flex: hoveredSide === 'go' ? 1.5 : (hoveredSide === 'know' ? 0.8 : 1) 
           }}
           style={{ willChange: 'flex' }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}>
-          {/* Deeper blue gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-slate-50 z-0" />
+          transition={{ type: "spring", stiffness: 210, damping: 20 }}>
+          {/* Deepen blue gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-indigo-100 to-slate-50 z-0" />
           <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-500 z-10" />
           
           <motion.div 
@@ -49,22 +51,33 @@ function LandingPage() {
               <LogoImage src={logoGo} alt="Where To Go" size="large" animated={false} />
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight">
-              Where To <span className="text-blue-600">Go</span>
+            <h2 className="flex items-center justify-center text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight gap-2">
+              Where To 
+              <AnimatedShinyText 
+                className="inline-flex items-center justify-center px-2 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400 font-bold"
+                shimmerWidth={200}
+              >
+                <span className="bg-gradient-to-tl from-sky-300 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">Go</span>
+              </AnimatedShinyText>
             </h2>
-            <p className="text-lg text-neutral-600 font-medium">
+            <p className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4">
               Find the quickest routes across UC Berkeley campus.
             </p>
             
-            {/* Outline button style */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/go')}
-              className="mt-12 px-8 py-3 bg-white rounded-full border border-blue-200 text-blue-600 font-semibold shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200"
-            >
-              Start Navigation
-            </motion.button>
+            {/* Solid Primary Button Style */}
+            <div className="mt-12">
+              <ShimmerButton
+                className="shadow-2xl hover:scale-105 transition-transform"
+                background="#2563eb"
+                shimmerColor="#93c5fd"
+                shimmerDuration="2.5s"
+                onClick={() => navigate('/go')}
+              >
+                <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-white lg:text-lg">
+                  Start Navigation
+                </span>
+              </ShimmerButton>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -85,9 +98,9 @@ function LandingPage() {
             flex: hoveredSide === 'know' ? 1.5 : (hoveredSide === 'go' ? 0.8 : 1) 
           }}
           style={{ willChange: 'flex' }}
-          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}>
-          {/* Cream/yellow gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-bl from-amber-50 via-orange-50/50 to-yellow-50/30 z-0" />
+          transition={{ type: "spring", stiffness: 210, damping: 20 }}>
+          {/* Deepen Cream/yellow gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-bl from-amber-200 via-orange-100 to-yellow-50 z-0" />
           <div className="absolute inset-0 bg-amber-500/0 group-hover:bg-amber-500/5 transition-colors duration-500 z-10" />
           
           <motion.div 
@@ -105,22 +118,33 @@ function LandingPage() {
               <LogoImage src={logoKnow} alt="Where To Know" size="large" animated={false} />
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight">
-              Where To <span className="text-amber-500">Know</span>
+            <h2 className="flex items-center justify-center text-4xl md:text-5xl font-bold text-neutral-800 mb-4 tracking-tight gap-2">
+              Where To 
+              <AnimatedShinyText 
+                className="inline-flex items-center justify-center px-2 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400 font-bold"
+                shimmerWidth={200}
+              >
+                <span className="bg-gradient-to-tl from-amber-300 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-[-1px_-1px_2px_rgba(245,158,11,0.3)]">Know</span>
+              </AnimatedShinyText>
             </h2>
-            <p className="text-lg text-neutral-600 font-medium">
+            <p className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4">
               Uncover the history and secrets of Cal buildings.
             </p>
             
-            {/* Outline button style */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/know')}
-              className="mt-12 px-8 py-3 bg-white rounded-full border border-amber-200 text-amber-500 font-semibold shadow-sm hover:shadow-md hover:border-amber-300 transition-all duration-200"
-            >
-              Explore Buildings
-            </motion.button>
+            {/* Solid Secondary Button Style */}
+            <div className="mt-12">
+              <ShimmerButton
+                className="shadow-2xl hover:scale-105 transition-transform"
+                background="#d97706"
+                shimmerColor="#fcd34d"
+                shimmerDuration="2.5s"
+                onClick={() => navigate('/know')}
+              >
+                <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-white lg:text-lg">
+                  Explore Buildings
+                </span>
+              </ShimmerButton>
+            </div>
           </motion.div>
         </motion.div>
       </LayoutGroup>
