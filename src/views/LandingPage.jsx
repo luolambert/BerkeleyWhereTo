@@ -7,6 +7,7 @@ import { FADE_VARIANTS } from '../constants/animations';
 import { LogoImage } from '../components/presentational/media';
 import { ShimmerButton } from '../components/ui/shimmer-button';
 import { AnimatedShinyText } from '../components/ui/animated-shiny-text';
+import { TextGenerateEffect } from '../components/ui/text-generate-effect';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -60,12 +61,13 @@ function LandingPage() {
                 <span className="bg-gradient-to-tl from-sky-300 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">Go</span>
               </AnimatedShinyText>
             </h2>
-            <p className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4">
-              Find the quickest routes across UC Berkeley campus.
-            </p>
+            <TextGenerateEffect 
+              words="Find the quickest routes across UC Berkeley campus." 
+              className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4"
+            />
             
             {/* Solid Primary Button Style */}
-            <div className="mt-12">
+            <div className="mt-8">
               <ShimmerButton
                 className="shadow-2xl hover:scale-105 transition-transform"
                 background="#2563eb"
@@ -127,12 +129,13 @@ function LandingPage() {
                 <span className="bg-gradient-to-tl from-amber-300 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-[-1px_-1px_2px_rgba(245,158,11,0.3)]">Know</span>
               </AnimatedShinyText>
             </h2>
-            <p className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4">
-              Uncover the history and secrets of Cal buildings.
-            </p>
+            <TextGenerateEffect 
+              words="Uncover the history and secrets of Cal buildings." 
+              className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4"
+            />
             
             {/* Solid Secondary Button Style */}
-            <div className="mt-12">
+            <div className="mt-8">
               <ShimmerButton
                 className="shadow-2xl hover:scale-105 transition-transform"
                 background="#d97706"
