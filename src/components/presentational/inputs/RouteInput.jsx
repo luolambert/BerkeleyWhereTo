@@ -25,9 +25,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
         
         <div className="flex items-center justify-between relative z-10">
           <h2 className="text-2xl font-bold text-neutral-800 flex items-center gap-3">
-            <div className="p-2 bg-primary-50 rounded-xl text-primary-600 shadow-sm">
-                <Navigation size={22} className="fill-current" />
-            </div>
+            <Navigation size={26} strokeWidth={2.5} className="text-primary-600 fill-primary-600/10" />
             <AnimatedText textKey={`planRoute-${language}`}>
               {t('navigation.planRoute')}
             </AnimatedText>
@@ -92,7 +90,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
                     <AnimatedText textKey={`getDirections-${language}`}>
                         {t('navigation.getDirections')}
                     </AnimatedText>
-                    <Navigation size={20} className="rotate-90 fill-white/20" />
+                    <Navigation size={20} className="text-white fill-white/20 rotate-90" />
                     </>
                 )}
             </span>

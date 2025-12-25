@@ -161,7 +161,7 @@ function Header({
                             ? 'right-full top-1/2 -translate-y-1/2 mr-4 w-full max-w-sm'
                             : hasResults 
                                 ? 'top-0 left-full ml-4 w-full'
-                                : 'bottom-full left-0 mb-2 w-full'
+                                : 'bottom-full left-0 mb-4 w-full'
                         }
                     `}
                 >

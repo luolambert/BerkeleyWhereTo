@@ -32,6 +32,7 @@ function SelectableBuildingCard({
         text-left p-3 rounded-2xl border 
         transition-[border-color,box-shadow,transform] duration-200 
         group relative overflow-hidden
+        h-29
         ${isSelected
           ? 'bg-primary-50 border-primary-500 ring-1 ring-primary-500'
           : 'bg-white border-neutral-200 hover:border-primary-300 hover:shadow-md hover:-translate-y-0.5'

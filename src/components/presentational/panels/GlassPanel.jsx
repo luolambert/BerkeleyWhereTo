@@ -17,7 +17,7 @@ function GlassPanel({
 }) {
   const variantStyles = {
     default: 'bg-white/90 backdrop-blur-md border border-neutral-200/50 shadow-xl shadow-neutral-900/25',
-    elevated: 'bg-white/95 backdrop-blur-xl border border-neutral-200/60 shadow-[0_0_25px_-5px_rgba(23,23,23,0.2)]',
+    elevated: 'bg-white/80 backdrop-blur-xl border border-white/60 shadow-[0_12px_28px_-6px_rgba(0,0,0,0.18),0_30px_60px_-12px_rgba(0,0,0,0.14),inset_0_1px_0_0_rgba(255,255,255,0.95)]',
     dark: 'bg-neutral-900/90 backdrop-blur-md border border-white/10 shadow-xl shadow-neutral-900/35',
   };
 

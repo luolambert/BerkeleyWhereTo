@@ -28,7 +28,7 @@ body {
 }
 
 @utility glass-liquid {
-  @apply bg-white/60 backdrop-blur-2xl border border-white/50 shadow-glass-lg shadow-indigo-500/10 rounded-3xl;
+  @apply bg-white/75 backdrop-blur-2xl border border-white/60 shadow-[0_8px_20px_-4px_rgba(0,0,0,0.15),0_24px_48px_-8px_rgba(0,0,0,0.12),inset_0_1px_0_0_rgba(255,255,255,0.9),inset_0_-1px_0_0_rgba(0,0,0,0.02)] rounded-3xl;
 }
 
 @utility glass-pro {
