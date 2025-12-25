@@ -30,18 +30,23 @@ function TimeCard({
   const styles = variantStyles[variant] || variantStyles.primary;
 
   return (
-    <div className="glass rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-white/60 shadow-lg shadow-primary-900/5 relative overflow-hidden group">
-      <div className={`absolute top-0 left-0 w-full h-1 ${styles.gradient}`} />
-      <div className={`mb-2 p-2 ${styles.iconBg} rounded-full ${styles.iconText} group-hover:scale-110 transition-transform duration-300`}>
-        <Icon size={24} />
+    <div className="glass-liquid p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group hover:bg-white/40 transition-colors duration-300">
+      
+      {/* Liquid Gradient Overlay */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${variant === 'primary' ? 'from-indigo-400 to-purple-400' : 'from-teal-400 to-emerald-400'}`} />
+
+      <div className={`mb-3 p-3 ${styles.iconBg} rounded-2xl ${styles.iconText} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm relative z-10`}>
+        <Icon size={26} />
       </div>
-      <div className="text-3xl font-bold text-neutral-800 mb-1">
+      
+      <div className="text-4xl font-bold text-neutral-800 mb-1 tracking-tight relative z-10">
         {time}
-        <span className="text-sm font-medium text-neutral-500 ml-1">
+        <span className="text-sm font-semibold text-neutral-500 ml-1">
           min
         </span>
       </div>
-      <div className="text-xs font-medium text-neutral-400 uppercase tracking-wide">
+      
+      <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wider relative z-10">
         {label}
       </div>
     </div>

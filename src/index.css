@@ -20,11 +20,23 @@ body {
 }
 
 @utility glass {
-  @apply bg-white/90 backdrop-blur-md border border-neutral-200/50 shadow-xl shadow-neutral-900/25;
+  @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-glass-lg shadow-black/5;
 }
 
 @utility glass-dark {
-  @apply bg-neutral-900/80 backdrop-blur-md border border-white/10 shadow-lg;
+  @apply bg-neutral-900/80 backdrop-blur-xl border border-white/10 shadow-lg;
+}
+
+@utility glass-liquid {
+  @apply bg-white/60 backdrop-blur-2xl border border-white/50 shadow-glass-lg shadow-indigo-500/10 rounded-3xl;
+}
+
+@utility glass-pro {
+  @apply bg-white/80 backdrop-blur-3xl border border-white/60 shadow-glass-md shadow-black/5 rounded-3xl;
+}
+
+@utility input-liquid {
+  @apply bg-white/50 border-white/60 backdrop-blur-md focus:bg-white/80 focus:border-indigo-300/50 focus:ring-4 focus:ring-indigo-100/50 transition-all duration-300 rounded-2xl shadow-glass-inner;
 }
 
 @utility text-gradient {

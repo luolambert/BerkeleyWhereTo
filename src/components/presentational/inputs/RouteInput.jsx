@@ -19,76 +19,86 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
       initial="initial"
       animate="animate"
     >
-      <GlassPanel variant="elevated" padding="large" className="w-full rounded-3xl">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-neutral-800 flex items-center gap-2">
-            <Navigation className="text-primary-600" size={20} />
+      <div className="w-full glass-liquid p-6 sm:p-8 space-y-6 relative overflow-hidden">
+        {/* Shine effect for panel */}
+        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+        
+        <div className="flex items-center justify-between relative z-10">
+          <h2 className="text-2xl font-bold text-neutral-800 flex items-center gap-3">
+            <div className="p-2 bg-primary-50 rounded-xl text-primary-600 shadow-sm">
+                <Navigation size={22} className="fill-current" />
+            </div>
             <AnimatedText textKey={`planRoute-${language}`}>
               {t('navigation.planRoute')}
             </AnimatedText>
           </h2>
           <div className="flex items-center gap-2">
-            {/* Language Toggle Button */}
             <LanguageToggle language={language} onToggle={toggleLanguage} variant="default" />
-            
-            {/* Reset Button */}
             <IconButton
               icon={RefreshCw}
               onClick={onReset}
               variant="ghost"
               title="Clear selection"
+              className="hover:bg-neutral-100/50 rounded-full"
             />
           </div>
         </div>
 
+        <div className="space-y-5 relative z-10">
+          <BuildingSelect 
+            label={t('navigation.start')}
+            value={startLocation}
+            onFocus={() => onFieldFocus('start')}
+            isActive={activeField === 'start'}
+            placeholder={t('navigation.selectStart')}
+            icon={Map}
+            language={language}
+          />
 
+          <BuildingSelect 
+            label={t('navigation.destination')}
+            value={endLocation}
+            onFocus={() => onFieldFocus('end')}
+            isActive={activeField === 'end'}
+            placeholder={t('navigation.selectDestination')}
+            icon={MapPin}
+            language={language}
+          />
 
-      <div className="space-y-5">
-        {/* Start Location */}
-        <BuildingSelect 
-          label={t('navigation.start')}
-          value={startLocation}
-          onFocus={() => onFieldFocus('start')}
-          isActive={activeField === 'start'}
-          placeholder={t('navigation.selectStart')}
-          icon={Map}
-          language={language}
-        />
-
-        {/* End Location */}
-        <BuildingSelect 
-          label={t('navigation.destination')}
-          value={endLocation}
-          onFocus={() => onFieldFocus('end')}
-          isActive={activeField === 'end'}
-          placeholder={t('navigation.selectDestination')}
-          icon={MapPin}
-          language={language}
-        />
-
-        {/* Calculate Button */}
-        <PrimaryButton
-          onClick={onCalculate}
-          disabled={isCalculating}
-          loading={isCalculating}
-          className="w-full mt-4"
-          size="large"
-        >
-          {isCalculating ? (
-            <AnimatedText textKey={`calculating-${language}`}>
-              {t('navigation.calculating')}
-            </AnimatedText>
-          ) : (
-            <>
-              <AnimatedText textKey={`getDirections-${language}`}>
-                {t('navigation.getDirections')}
-              </AnimatedText>
-              <Navigation size={18} className="rotate-90" />
-            </>
-          )}
-        </PrimaryButton>
+          <button
+            onClick={onCalculate}
+            disabled={isCalculating}
+            className={`
+                w-full relative group overflow-hidden rounded-full p-4 mt-6
+                transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
+                shadow-lg hover:shadow-primary-500/30
+                ${isCalculating ? 'cursor-not-allowed opacity-80' : ''}
+            `}
+          >
+            {/* Liquid Button Background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 bg-[length:200%_100%] animate-shimmer" />
+            
+            {/* Glossy Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-50" />
+            
+            {/* Content */}
+            <span className="relative z-10 flex items-center justify-center gap-3 text-white font-bold text-lg tracking-wide">
+                {isCalculating ? (
+                    <AnimatedText textKey={`calculating-${language}`}>
+                    {t('navigation.calculating')}
+                    </AnimatedText>
+                ) : (
+                    <>
+                    <AnimatedText textKey={`getDirections-${language}`}>
+                        {t('navigation.getDirections')}
+                    </AnimatedText>
+                    <Navigation size={20} className="rotate-90 fill-white/20" />
+                    </>
+                )}
+            </span>
+          </button>
+        </div>
       </div>
-    </GlassPanel>
     </motion.div>
   );
 }

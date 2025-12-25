@@ -27,9 +27,9 @@ const ElevationChart = ({ data }) => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-2 border border-gray-200 shadow-lg rounded-lg text-xs">
-          <p className="font-bold text-gray-700">{`${payload[0].value.toFixed(1)} m`}</p>
-          <p className="text-gray-500">{`${label.toFixed(0)} m from start`}</p>
+        <div className="glass-pro p-3 text-xs shadow-glass-md border border-white/60">
+          <p className="font-bold text-indigo-600 mb-1">{`${payload[0].value.toFixed(1)} m`}</p>
+          <p className="text-neutral-500 font-medium">{`${label.toFixed(0)} m from start`}</p>
         </div>
       );
     }
@@ -42,21 +42,21 @@ const ElevationChart = ({ data }) => {
       animate={{ opacity: 1, y: 0, height: 'auto' }}
       exit={{ opacity: 0, y: 20, height: 0 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 w-full overflow-hidden"
+      className="glass-liquid p-6 w-full overflow-hidden"
     >
-      <div className="flex justify-between items-end mb-2">
-        <h3 className="text-sm font-bold text-gray-800">
+      <div className="flex justify-between items-end mb-4">
+        <h3 className="text-sm font-bold text-neutral-700/80 uppercase tracking-wide">
           <AnimatedText textKey={`elevProfile-${language}`}>
             {t('map.elevationProfile')}
           </AnimatedText>
         </h3>
-        <div className="text-xs text-gray-500 flex gap-3">
-            <span>
-              <span className="font-semibold text-gray-700">↑ {totalClimb.toFixed(0)}m</span>{' '}
+        <div className="text-xs text-neutral-500 flex gap-4">
+            <span className="bg-white/50 px-2 py-1 rounded-lg backdrop-blur-sm">
+              <span className="font-bold text-indigo-600">↑ {totalClimb.toFixed(0)}m</span>{' '}
               <AnimatedText textKey={`climb-${language}`}>{t('map.climb')}</AnimatedText>
             </span>
-            <span>
-              <span className="font-semibold text-gray-700">{(maxElevation - minElevation).toFixed(0)}m</span>{' '}
+            <span className="bg-white/50 px-2 py-1 rounded-lg backdrop-blur-sm">
+              <span className="font-bold text-indigo-600">{(maxElevation - minElevation).toFixed(0)}m</span>{' '}
               <AnimatedText textKey={`range-${language}`}>{t('map.range')}</AnimatedText>
             </span>
         </div>
@@ -66,36 +66,39 @@ const ElevationChart = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={data}
-            margin={{ top: 5, right: 0, left: -20, bottom: 0 }}
+            margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
           >
             <defs>
               <linearGradient id="colorElevation" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.05}/>
+                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4}/>
+                <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0}/>
               </linearGradient>
             </defs>
             <XAxis 
                 dataKey="distance" 
                 type="number" 
                 unit="m"
-                tick={{fontSize: 10, fill: '#9CA3AF'}}
+                tick={{fontSize: 10, fill: '#94a3b8'}}
                 tickLine={false}
                 axisLine={false}
                 interval="preserveStartEnd"
             />
             <YAxis 
                 domain={['auto', 'auto']} 
-                tick={{fontSize: 10, fill: '#9CA3AF'}}
+                tick={{fontSize: 10, fill: '#94a3b8'}}
                 tickLine={false}
                 axisLine={false}
                 width={30}
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip 
+                cursor={{ stroke: '#6366f1', strokeWidth: 1, strokeDasharray: '3 3' }}
+                content={<CustomTooltip />} 
+            />
             <Area 
                 type="monotone" 
                 dataKey="elevation" 
-                stroke="#3B82F6" 
-                strokeWidth={2}
+                stroke="#6366f1" 
+                strokeWidth={3}
                 fillOpacity={1} 
                 fill="url(#colorElevation)" 
             />

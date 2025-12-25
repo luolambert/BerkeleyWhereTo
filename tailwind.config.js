@@ -39,7 +39,25 @@ export default {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
-        }
+        },
+        glass: {
+          100: 'rgba(255, 255, 255, 0.1)',
+          200: 'rgba(255, 255, 255, 0.2)',
+          300: 'rgba(255, 255, 255, 0.3)',
+          400: 'rgba(255, 255, 255, 0.4)',
+          500: 'rgba(255, 255, 255, 0.5)',
+          600: 'rgba(255, 255, 255, 0.6)',
+          700: 'rgba(255, 255, 255, 0.7)',
+          800: 'rgba(255, 255, 255, 0.8)',
+          900: 'rgba(255, 255, 255, 0.9)',
+        },
+      },
+      boxShadow: {
+        'glass-sm': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'glass-md': '0 8px 30px rgba(0, 0, 0, 0.06)',
+        'glass-lg': '0 20px 40px rgba(0, 0, 0, 0.08)',
+        'glass-inner': 'inset 0 0 20px rgba(255, 255, 255, 0.5)',
+        'glass-highlight': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.4)',
       },
       fontFamily: {
         sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],

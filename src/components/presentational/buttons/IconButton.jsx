@@ -23,7 +23,7 @@ function IconButton({
   disabled = false,
 }) {
   const variantStyles = {
-    ghost: 'hover:bg-neutral-100 text-neutral-400 hover:text-primary-600',
+    ghost: 'hover:bg-amber-50 text-amber-400 hover:text-amber-500',
     filled: 'bg-primary-600 hover:bg-primary-700 text-white',
     glass: 'bg-black/30 hover:bg-black/50 backdrop-blur-md text-white border border-white/10',
   };
@@ -42,7 +42,7 @@ function IconButton({
 
   return (
     <motion.button
-      whileTap={!disabled ? { scale: 0.95, rotate: 45 } : {}}
+      whileTap={!disabled ? { scale: 0.95, rotate: 90 } : {}}
       onClick={onClick}
       disabled={disabled}
       title={title}

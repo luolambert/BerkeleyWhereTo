@@ -23,8 +23,8 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
   // Style variants
   const styles = {
     default: {
-      expandedButton: 'px-2 py-1 rounded-full bg-primary-50 text-primary-600 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-primary-100 transition-colors',
-      iconButton: 'p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-primary-600 transition-colors',
+      expandedButton: 'px-2 py-1 rounded-full bg-amber-50 text-amber-400 text-xs font-bold whitespace-nowrap overflow-hidden hover:bg-amber-100 hover:text-amber-500 transition-colors',
+      iconButton: 'p-2 rounded-full hover:bg-amber-50 text-amber-400 hover:text-amber-500 transition-colors',
       iconSize: 20,
     },
     floating: {
@@ -72,7 +72,7 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
       >
         <motion.span
           animate={{ rotate: rotationAngle }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
           className="flex items-center justify-center"
         >
           <Globe size={s.iconSize} />
