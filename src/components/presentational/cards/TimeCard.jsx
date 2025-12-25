@@ -79,12 +79,12 @@ function TimeCard({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      // Changed base background from white/80 to white/60 + tinted background
-      className={`backdrop-blur-xl border border-white/50 rounded-3xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden group transition-colors duration-300 ${styles.baseBg} ${styles.hoverBg} hover:border-white/80`}
+      // Changed base background to strong white for legibility, moved tint to overlay
+      className="bg-white/90 backdrop-blur-xl border border-white/50 rounded-3xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden group transition-all duration-300 hover:border-white/80 hover:shadow-md"
       style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}
     >
-      {/* Base White Layer for readability, reduced opacity to let tint show */}
-      <div className="absolute inset-0 bg-white/40 pointer-events-none" />
+      {/* Tint Layer - provides the subtle color and hover deepening */}
+      <div className={`absolute inset-0 pointer-events-none transition-colors duration-300 ${styles.baseBg} ${styles.hoverBg}`} />
 
       {/* Spotlight Overlay */}
       <div
