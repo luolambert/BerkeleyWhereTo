@@ -152,8 +152,8 @@ function BuildingGrid({
                   key={`subtitle-typewriter-${language}`}
                   words={subtitleWords}
                   className="translate-x-[0.9mm]"
-                  textClassName="font-medium"
-                  textStyle={{ fontSize: subtitle.fontSize, color: 'rgb(82, 82, 82)' }}
+                  textClassName="font-medium !text-neutral-600"
+                  textStyle={{ fontSize: subtitle.fontSize }}
                   hideCursor={false}
                   cursorClassName="!h-[calc(1.1em+0.1mm)] !w-[2px] bg-amber-500 translate-y-[0.45mm]"
                   duration={1.9}
