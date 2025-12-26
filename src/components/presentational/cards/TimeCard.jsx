@@ -60,11 +60,11 @@ function TimeCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="glass-liquid relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+      className="glass-card relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
     >
       {/* Spotlight Overlay */}
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-0"
+        className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition duration-300 z-0"
         style={{
           opacity,
           background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${styles.spotlight}, transparent 40%)`,
@@ -72,7 +72,7 @@ function TimeCard({
       />
 
       {/* Subtle Gradient Glow on Hover */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${styles.hoverGlow} z-0`} />
+      <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${styles.hoverGlow} z-0`} />
 
       {/* Content */}
       <div className={`mb-2 p-2.5 rounded-2xl ${styles.iconBg} ${styles.iconText} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm relative z-10 ring-1 ring-inset ring-black/5`}>

@@ -45,7 +45,7 @@ const ElevationChart = ({ data }) => {
     >
       {/* Header row: title on left, stats on right */}
       <div className="flex justify-between items-center px-4 pt-4 pb-2">
-        <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest ml-1">
+        <h3 className="text-sm font-bold text-neutral-700 uppercase tracking-widest ml-2">
           <AnimatedText textKey={`elevProfile-${language}`}>
             {t('map.elevationProfile')}
           </AnimatedText>

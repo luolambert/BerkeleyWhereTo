@@ -31,6 +31,10 @@ body {
   @apply bg-white/75 backdrop-blur-2xl border border-white/60 shadow-[0_8px_20px_-4px_rgba(0,0,0,0.15),0_24px_48px_-8px_rgba(0,0,0,0.12),inset_0_1px_0_0_rgba(255,255,255,0.9),inset_0_-1px_0_0_rgba(0,0,0,0.02)] rounded-3xl;
 }
 
+@utility glass-card {
+  @apply bg-white/90 backdrop-blur-xl border border-neutral-200/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),inset_0_-1px_0_0_rgba(0,0,0,0.03)] rounded-3xl;
+}
+
 @utility glass-pro {
   @apply bg-white/80 backdrop-blur-3xl border border-white/60 shadow-glass-md shadow-black/5 rounded-3xl;
 }
