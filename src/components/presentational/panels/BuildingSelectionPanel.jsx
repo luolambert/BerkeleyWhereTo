@@ -79,7 +79,7 @@ const BuildingSelectionPanel = ({
       </div>
 
       {/* Categories */}
-      <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0">
+      <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20">
         <CategoryPills
           categories={categories}
           activeId={activeCategory}
