@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnimatedText } from '../../common';
+import { WobbleCard } from '../../ui/wobble-card';
 import { usePreload } from '../../../context/PreloadContext';
 
 /**
@@ -27,20 +28,21 @@ function BuildingCard({
   const isImageFailed = failedImages.includes(imageUrl);
 
   return (
-    <div
+    <WobbleCard
+      containerClassName="group h-[280px] w-full bg-transparent overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+      className="relative p-0 overflow-hidden"
       onClick={onClick}
-      className="group cursor-pointer relative rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 overflow-hidden h-[280px]"
     >
       {/* Full background image - hide when failed to prevent broken image icon */}
       {!isImageFailed && (
         <img
           src={imageUrl}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.15]" // Existing scale effect might conflict or combine with wobble. Wobble uses 3D transform.
         />
       )}
 
-      {/* Failed image overlay - above gradient, below text (z-5) */}
+      {/* Failed image overlay */}
       {isImageFailed && (
         <div className="absolute inset-0 bg-neutral-700 flex items-center justify-center z-5">
           <div className="text-center text-white/70">
@@ -56,7 +58,7 @@ function BuildingCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
       {/* Hover "View Details" badge */}
-      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
         <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
           <AnimatedText textKey={`viewDetails-${language}`}>
             {viewDetailsText}
@@ -65,7 +67,7 @@ function BuildingCard({
       </div>
 
       {/* Text Content - Overlaid at bottom */}
-      <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
+      <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10 h-full">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm">
           {title}
         </h3>
@@ -75,7 +77,7 @@ function BuildingCard({
           </AnimatedText>
         </p>
       </div>
-    </div>
+    </WobbleCard>
   );
 }
 
