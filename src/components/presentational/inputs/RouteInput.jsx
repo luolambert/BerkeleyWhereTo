@@ -19,7 +19,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
       initial="initial"
       animate="animate"
     >
-      <div className="w-full glass-liquid p-6 sm:p-8 space-y-6 relative overflow-hidden">
+      <div className="w-full glass-liquid p-5 sm:p-6 space-y-4 relative overflow-hidden">
         {/* Shine effect for panel */}
         <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
         
@@ -42,7 +42,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           </div>
         </div>
 
-        <div className="space-y-5 relative z-10">
+        <div className="space-y-4 relative z-10">
           <BuildingSelect 
             label={t('navigation.start')}
             value={startLocation}
@@ -67,7 +67,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             onClick={onCalculate}
             disabled={isCalculating}
             className={`
-                w-full relative group overflow-hidden rounded-full p-4 mt-6
+                w-full relative group overflow-hidden rounded-full p-4 mt-3
                 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
                 shadow-lg hover:shadow-primary-500/30
                 ${isCalculating ? 'cursor-not-allowed opacity-80' : ''}

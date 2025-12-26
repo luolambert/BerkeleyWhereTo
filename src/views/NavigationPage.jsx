@@ -103,7 +103,10 @@ function NavigationPage({ isLoaded }) {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            transition={{ 
+                              x: { type: "spring", stiffness: 300, damping: 30 },
+                              opacity: { duration: 0.15, ease: "easeOut" }
+                            }}
                         >
                             <BuildingSelectionContainer 
                                 selectedValue={activeField === 'start' ? startLocation : endLocation}
