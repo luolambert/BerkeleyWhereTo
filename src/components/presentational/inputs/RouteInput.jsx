@@ -8,6 +8,7 @@ import useTranslation from '../../../hooks/useTranslation';
 import { SLIDE_VARIANTS } from '../../../constants/animations';
 import { GlassPanel } from '../panels';
 import { PrimaryButton, IconButton } from '../buttons';
+import { RippleButton } from '../../ui/ripple-button';
 
 function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset }) {
   const { isCalculating, language, toggleLanguage } = useNavigation();
@@ -63,9 +64,11 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             language={language}
           />
 
-          <button
+          <RippleButton
             onClick={onCalculate}
             disabled={isCalculating}
+            rippleColor="rgba(255, 255, 255, 0.4)"
+            duration="600ms"
             className={`
                 w-full relative group overflow-hidden rounded-full p-4 mt-3
                 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
@@ -94,7 +97,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
                     </>
                 )}
             </span>
-          </button>
+          </RippleButton>
         </div>
       </div>
     </motion.div>

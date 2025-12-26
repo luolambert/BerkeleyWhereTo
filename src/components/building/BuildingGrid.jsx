@@ -6,6 +6,7 @@ import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/anim
 import { BuildingCard } from '../presentational/cards';
 import { SegmentedControl } from '../presentational/controls';
 import { SectionTitle } from '../presentational/sections';
+import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 
 
 /**
@@ -36,6 +37,23 @@ function BuildingGrid({
     subtitle,
     controls,
   } = useHeaderScrollAnimation(scrollRef, containerRef, logoRef);
+
+  // Typewriter words for subtitle - split by language
+  const subtitleWords = React.useMemo(() => {
+    const isCN = language === 'CN';
+    if (isCN) {
+      return [
+        { text: "探索" }, { text: "伯克利" }, { text: "校园" },
+        { text: "建筑" }, { text: "背后的" }, { text: "故事" },
+        { text: "与" }, { text: "传说" },
+      ];
+    }
+    return [
+      { text: "Discover" }, { text: "the" }, { text: "stories" },
+      { text: "and" }, { text: "legends" }, { text: "behind" },
+      { text: "Berkeley's" }, { text: "campus" }, { text: "buildings" },
+    ];
+  }, [language]);
 
   // Text config with backwards compatibility (fallback for standalone mode)
   const defaultTextConfig = React.useMemo(() => {
@@ -120,22 +138,28 @@ function BuildingGrid({
                 />
              </motion.div>
 
-             {/* Subtitle */}
-             <motion.p 
-               className="absolute text-neutral-600 font-medium text-center whitespace-nowrap w-auto"
+             {/* Subtitle with Typewriter Effect */}
+             <motion.div 
+               className="absolute flex justify-center w-full"
                style={{
-                 fontSize: subtitle.fontSize,
                  opacity: subtitle.opacity,
                  top: subtitle.top,
-                 left: '50%',
-                 x: '-50%',
+                 left: 0,
                  y: subtitle.y
                }}
              >
-                <AnimatedText textKey={`subtitle-${language}`}>
-                  {title}
-                </AnimatedText>
-             </motion.p>
+                <TypewriterEffectSmooth
+                  key={`subtitle-typewriter-${language}`}
+                  words={subtitleWords}
+                  className="translate-x-[0.9mm]"
+                  textClassName="font-medium"
+                  textStyle={{ fontSize: subtitle.fontSize, color: 'rgb(82, 82, 82)' }}
+                  hideCursor={false}
+                  cursorClassName="!h-[calc(1.1em+0.1mm)] !w-[2px] bg-amber-500 translate-y-[0.45mm]"
+                  duration={1.9}
+                  delay={0.3}
+                />
+             </motion.div>
 
              {/* Controls Row */}
              <motion.div 

@@ -69,6 +69,7 @@ export default {
         "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         "shimmer": "shimmer 8s infinite",
+        "rippling": "rippling var(--duration) ease-out",
       },
       keyframes: {
         blob: {
@@ -111,6 +112,10 @@ export default {
           "30%, 60%": {
             "background-position": "calc(100% + var(--shimmer-width)) 0",
           },
+        },
+        "rippling": {
+          "0%": { transform: "scale(0)", opacity: "0.35" },
+          "100%": { transform: "scale(2)", opacity: "0" },
         },
       }
     },

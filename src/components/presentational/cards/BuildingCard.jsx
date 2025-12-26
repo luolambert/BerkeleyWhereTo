@@ -29,8 +29,8 @@ function BuildingCard({
 
   return (
     <WobbleCard
-      containerClassName="group h-[280px] w-full bg-transparent overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
-      className="relative p-0 overflow-hidden"
+      containerClassName="group h-full w-full bg-transparent overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+      className="relative h-[280px] p-0 overflow-hidden"
       onClick={onClick}
     >
       {/* Full background image - hide when failed to prevent broken image icon */}

@@ -47,11 +47,9 @@ export const WobbleCard = ({
         <motion.div
           style={{
             transform: isHovering
-              ? `translate3d(calc(-2.5% + ${-mousePosition.x}px), calc(-2.5% + ${-mousePosition.y}px), 0)`
-              : "translate3d(0px, 0px, 0)",
-            width: isHovering ? "105%" : "100%",
-            height: isHovering ? "105%" : "100%",
-            transition: "all 0.1s ease-out",
+              ? `translate3d(${-mousePosition.x}px, ${-mousePosition.y}px, 0) scale3d(1.05, 1.05, 1)`
+              : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
+            transition: "transform 0.1s ease-out",
           }}
           className={cn("h-full px-4 py-20 sm:px-10", className)}>
           <Noise />
