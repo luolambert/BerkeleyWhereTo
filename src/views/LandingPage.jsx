@@ -8,6 +8,7 @@ import { LogoImage } from '../components/presentational/media';
 import { ShimmerButton } from '../components/ui/shimmer-button';
 import { AnimatedShinyText } from '../components/ui/animated-shiny-text';
 import { TextGenerateEffect } from '../components/ui/text-generate-effect';
+import { InteractiveGridPattern } from '../components/ui/interactive-grid-pattern';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -21,6 +22,15 @@ function LandingPage() {
       animate="animate"
       exit="exit"
     >
+      {/* Interactive Grid Pattern Background */}
+      <InteractiveGridPattern
+        className="fixed inset-0 z-[5] opacity-90"
+        width={23}
+        height={23}
+        squares={[90, 50]}
+        hoveredSide={hoveredSide}
+      />
+      
       <LayoutGroup>
         {/* Left Side - Where To Go */}
         <motion.div 
