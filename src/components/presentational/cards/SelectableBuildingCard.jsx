@@ -30,7 +30,7 @@ function SelectableBuildingCard({
       onClick={onClick}
       style={{ height: '116px' }}
       className={`
-        text-left p-3 rounded-2xl border 
+        w-full text-left p-3 rounded-2xl border 
         transition-[border-color,box-shadow,transform] duration-200 
         group relative overflow-hidden
         ${isSelected

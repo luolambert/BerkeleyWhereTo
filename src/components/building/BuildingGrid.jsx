@@ -7,6 +7,7 @@ import { BuildingCard } from '../presentational/cards';
 import { SegmentedControl } from '../presentational/controls';
 import { SectionTitle } from '../presentational/sections';
 
+
 /**
  * Building Grid Component
  * Displays a list of building cards with support for categorization and dynamic scrolling
@@ -186,18 +187,21 @@ function BuildingGrid({
                     </AnimatedText>
                   </SectionTitle>
                 )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 py-0"
+                >
                   {section.buildings.map((building) => (
-                    <BuildingCard
-                      key={building.id}
-                      title={building.title}
-                      summary={building.summary}
-                      imageUrl={building.images[0]}
-                      viewDetailsText={viewDetails}
-                      onClick={() => onSelect(building)}
-                      language={language}
-                      buildingId={building.id}
-                    />
+                    <div className="relative group block h-full w-full" key={building.id}>
+                       <BuildingCard
+                          title={building.title}
+                          summary={building.summary}
+                          imageUrl={building.images[0]}
+                          viewDetailsText={viewDetails}
+                          onClick={() => onSelect(building)}
+                          language={language}
+                          buildingId={building.id}
+                        />
+                    </div>
                   ))}
                 </div>
               </div>

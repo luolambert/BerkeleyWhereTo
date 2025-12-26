@@ -4,8 +4,8 @@ import { Footprints, Bike } from 'lucide-react';
 import { AnimatedText } from '../../common';
 
 /**
- * TimeCard - Travel time display card (placeholder for Phase 3)
- * Used for: TravelTimeDisplay
+ * TimeCard - Travel time display card (Phase 3 Upgrade)
+ * Now uses the premium `glass-liquid` utility for that rich, tactile feel.
  */
 function TimeCard({
   time,
@@ -15,7 +15,6 @@ function TimeCard({
   language = 'EN',
 }) {
   const divRef = React.useRef(null);
-  const [isFocused, setIsFocused] = React.useState(false);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = React.useState(0);
 
@@ -26,16 +25,6 @@ function TimeCard({
     const rect = div.getBoundingClientRect();
 
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(1);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
   };
 
   const handleMouseEnter = () => {
@@ -49,23 +38,17 @@ function TimeCard({
   const variantStyles = {
     primary: {
       // Purple/Indigo theme
-      gradient: 'bg-gradient-to-r from-primary-400 to-primary-600',
-      iconBg: 'bg-primary-50',
-      iconText: 'text-primary-600',
-      // Subtle purple tint by default, darker on hover
-      baseBg: 'bg-indigo-50/30', 
-      hoverBg: 'group-hover:bg-indigo-50/80',
-      spotlight: 'from-indigo-500/20 via-purple-500/5 to-transparent'
+      iconBg: 'bg-indigo-50',
+      iconText: 'text-indigo-600',
+      hoverGlow: 'from-indigo-400/20 to-purple-400/20',
+      spotlight: 'rgba(99, 102, 241, 0.15)'
     },
     secondary: {
       // Teal/Emerald theme
-      gradient: 'bg-gradient-to-r from-secondary-400 to-secondary-600',
-      iconBg: 'bg-secondary-50',
-      iconText: 'text-secondary-600',
-      // Subtle teal tint by default, darker on hover
-      baseBg: 'bg-teal-50/30',
-      hoverBg: 'group-hover:bg-teal-50/80',
-      spotlight: 'from-teal-500/20 via-emerald-500/5 to-transparent' 
+      iconBg: 'bg-teal-50',
+      iconText: 'text-teal-600',
+      hoverGlow: 'from-teal-400/20 to-emerald-400/20',
+      spotlight: 'rgba(20, 184, 166, 0.15)' 
     },
   };
 
@@ -75,50 +58,35 @@ function TimeCard({
     <div
       ref={divRef}
       onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      // Changed base background to strong white for legibility, moved tint to overlay
-      className="bg-white/90 backdrop-blur-xl border border-white/50 rounded-3xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden group transition-all duration-300 hover:border-white/80 hover:shadow-md"
-      style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}
+      className="glass-liquid relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
     >
-      {/* Tint Layer - provides the subtle color and hover deepening */}
-      <div className={`absolute inset-0 pointer-events-none transition-colors duration-300 ${styles.baseBg} ${styles.hoverBg}`} />
-
       {/* Spotlight Overlay */}
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-0"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.4), transparent 40%)`,
-        }}
-      />
-      
-      {/* Colored Spotlight Hint - specific to variant - Made slightly stronger for "deepening" effect */}
-       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-        style={{
-          opacity,
-          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${variant === 'primary' ? 'rgba(99, 102, 241, 0.25)' : 'rgba(20, 184, 166, 0.25)'}, transparent 40%)`,
+          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${styles.spotlight}, transparent 40%)`,
         }}
       />
 
-      {/* Existing Liquid Gradient Overlay - reduced opacity to let spotlight shine */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 bg-gradient-to-br ${variant === 'primary' ? 'from-indigo-400 to-purple-400' : 'from-teal-400 to-emerald-400'}`} />
+      {/* Subtle Gradient Glow on Hover */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${styles.hoverGlow} z-0`} />
 
-      <div className={`mb-2 p-2 ${styles.iconBg} rounded-xl ${styles.iconText} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm relative z-10`}>
-        <Icon size={22} />
+      {/* Content */}
+      <div className={`mb-2 p-2.5 rounded-2xl ${styles.iconBg} ${styles.iconText} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm relative z-10 ring-1 ring-inset ring-black/5`}>
+        <Icon size={22} className="stroke-[2.5px]" />
       </div>
       
-      <div className="text-3xl font-bold text-neutral-800 mb-0.5 tracking-tight relative z-10">
+      <div className="text-3xl font-bold text-neutral-800 mb-0.5 tracking-tight relative z-10 flex items-baseline justify-center">
         {time}
         <span className="text-sm font-semibold text-neutral-500 ml-1">
           min
         </span>
       </div>
       
-      <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wider relative z-10">
+      <div className="text-[11px] font-bold text-neutral-400 uppercase tracking-widest relative z-10">
         {label}
       </div>
     </div>

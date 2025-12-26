@@ -5,6 +5,7 @@ import { CategoryPills } from "../controls";
 import { ModeToggle } from "../buttons";
 import { SelectableBuildingCard } from "../cards";
 import GlassPanel from "./GlassPanel";
+import { HoverEffect } from "../../ui/card-hover-effect";
 
 /**
  * BuildingSelectionPanel - Pure Presentational Component
@@ -89,8 +90,11 @@ const BuildingSelectionPanel = ({
       {/* Grid Content */}
       <div className="flex-1 overflow-y-auto no-scrollbar p-6 bg-neutral-50/50">
         {filteredBuildings && filteredBuildings.length > 0 ? (
-          <div className="grid gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))' }}>
-            {filteredBuildings.map((b) => (
+          <HoverEffect 
+            items={filteredBuildings}
+            className="gap-3 py-0"
+            style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))' }}
+            renderItem={(b) => (
               <SelectableBuildingCard
                 key={b.id}
                 name={b.name}
@@ -101,8 +105,8 @@ const BuildingSelectionPanel = ({
                 isGrad={b.grad}
                 onClick={() => onSelect(b.name)}
               />
-            ))}
-          </div>
+            )}
+          />
         ) : (
           <div className="text-center text-neutral-400 py-12">
             <p className="text-lg font-medium">No buildings found</p>
