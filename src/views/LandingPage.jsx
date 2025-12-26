@@ -64,6 +64,8 @@ function LandingPage() {
             <TextGenerateEffect 
               words="Find the quickest routes across UC Berkeley campus." 
               className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4"
+              duration={0.4}
+              staggerDelay={0.16}
             />
             
             {/* Solid Primary Button Style */}
@@ -132,6 +134,8 @@ function LandingPage() {
             <TextGenerateEffect 
               words="Uncover the history and secrets of Cal buildings." 
               className="text-lg text-neutral-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-full px-4"
+              duration={0.4}
+              staggerDelay={0.16}
             />
             
             {/* Solid Secondary Button Style */}
