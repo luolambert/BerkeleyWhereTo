@@ -7,6 +7,7 @@ import { BuildingCard } from '../presentational/cards';
 import { SegmentedControl } from '../presentational/controls';
 import { SectionTitle } from '../presentational/sections';
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
+import { TracingBeam } from '../ui/tracing-beam';
 
 
 /**
@@ -94,7 +95,7 @@ function BuildingGrid({
       className="w-full h-full flex flex-col overflow-hidden"
     >
       {/* Scrollable Container */}
-      <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden px-6 sm:px-8 pb-12">
+      <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden px-6 sm:px-8 pb-12 no-scrollbar">
         
         {/* Sticky Header Container */}
         <motion.div 
@@ -186,8 +187,9 @@ function BuildingGrid({
           </div>
         </motion.div>
 
-        {/* Content Grid - Slide Transition */}
-        <AnimatePresence mode="wait">
+        {/* Content Grid - Slide Transition with TracingBeam */}
+        <TracingBeam className="!max-w-none w-full" containerRef={scrollRef}>
+          <AnimatePresence mode="wait">
           <motion.div 
             key={sortMethod}
             className="w-[90%] max-w-[1920px] mx-auto pb-12 space-y-12"
@@ -232,6 +234,7 @@ function BuildingGrid({
             ))}
           </motion.div>
         </AnimatePresence>
+        </TracingBeam>
       </div>
       
       {/* Disclaimer */}
