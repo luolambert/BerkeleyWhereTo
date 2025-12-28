@@ -54,7 +54,7 @@ export const TracingBeam = ({
     { stiffness: 500, damping: 90 }
   );
   const gradientEnd = useSpring(
-    useTransform(scrollYProgress, [0, 0.001, 1], [0, 50, effectiveHeight + 60]),
+    useTransform(scrollYProgress, [0, 0.001, 1], [0, 50, effectiveHeight - 40]),
     { stiffness: 500, damping: 90 }
   );
 
@@ -76,14 +76,14 @@ export const TracingBeam = ({
             className="h-2 w-2 rounded-full bg-amber-500" />
         </motion.div>
         <svg
-          viewBox={`0 0 20 ${effectiveHeight + 32}`}
+          viewBox={`0 0 20 ${effectiveHeight - 68}`}
           width="20"
-          height={effectiveHeight + 32}
+          height={effectiveHeight - 68}
           className="ml-4 block"
           aria-hidden="true">
           {/* Background gray line - full length */}
           <motion.path
-            d={`M 19 0V ${effectiveHeight + 60}`}
+            d={`M 19 0V ${effectiveHeight - 40}`}
             fill="none"
             stroke="#D4D4D4"
             strokeOpacity="0.16"
@@ -91,7 +91,7 @@ export const TracingBeam = ({
           />
           {/* Animated progress line - grows with scroll, with gradient beam effect */}
           <motion.path
-            d={`M 19 0V ${effectiveHeight + 60}`}
+            d={`M 19 0V ${effectiveHeight - 40}`}
             fill="none"
             stroke={`url(#${gradientId})`}
             strokeWidth="1.25"

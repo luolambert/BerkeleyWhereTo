@@ -21,13 +21,19 @@ function BuildingGrid({
   onToggleLanguage, 
   sortMethod, 
   onSortChange, 
-  slideDirection, 
+  slideDirection, // Direction is now calculated at click time
   currentView,
   textConfig  // NEW: text configuration from Container
 }) {
   const scrollRef = React.useRef(null);
   const logoRef = React.useRef(null);
   const containerRef = React.useRef(null);
+  
+  // Direction for enter and exit animations
+  // Enter: new content comes from the direction of click (positive = from right)
+  // Exit: old content goes in the opposite direction
+  const enterDirection = slideDirection;
+  const exitDirection = -slideDirection;
   
   // Use extracted scroll animation hook
   const {
@@ -185,54 +191,72 @@ function BuildingGrid({
           </div>
         </motion.div>
 
-        {/* Content Grid - Slide Transition with TracingBeam */}
-        <TracingBeam className="!max-w-none w-full" containerRef={scrollRef}>
-          <AnimatePresence mode="wait">
+        {/* Content Grid - Slide Track Transition with TracingBeam */}
+        <AnimatePresence mode="popLayout" initial={false} custom={enterDirection}>
           <motion.div 
             key={sortMethod}
-            className="w-[90%] max-w-[1920px] mx-auto pb-12 space-y-12"
+            className="w-full"
             style={{
               y: contentOffsetY
             }}
-            initial={{ opacity: 0, x: slideDirection * 25 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -slideDirection * 25 }}
+            custom={enterDirection}
+            variants={{
+              initial: (dir) => ({ 
+                opacity: 1, 
+                x: `calc(${dir * 100}% + ${dir * 120}px)` 
+              }),
+              animate: { 
+                opacity: 1, 
+                x: 0 
+              },
+              exit: (dir) => ({ 
+                opacity: 1, 
+                x: `calc(${-dir * 100}% + ${-dir * 120}px)` 
+              }),
+            }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             transition={{ 
-              duration: DURATIONS.fast, 
-              ease: EASINGS.apple
+              type: 'tween',
+              duration: 0.35,
+              ease: [0.32, 0.72, 0, 1],
             }}
           >
-            {sections.map((section, sectionIndex) => (
-              <div key={sectionIndex}>
-                {section.title && (
-                  <SectionTitle>
-                    <AnimatedText textKey={`sectionTitle-${sectionIndex}-${language}`}>
-                      {section.title}
-                    </AnimatedText>
-                  </SectionTitle>
-                )}
-                <div
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 py-0"
-                >
-                  {section.buildings.map((building) => (
-                    <div className="relative group block h-full w-full" key={building.id}>
-                       <BuildingCard
-                          title={building.title}
-                          summary={building.summary}
-                          imageUrl={building.images[0]}
-                          viewDetailsText={viewDetails}
-                          onClick={() => onSelect(building)}
-                          language={language}
-                          buildingId={building.id}
-                        />
+            <TracingBeam className="!max-w-none w-full" containerRef={scrollRef}>
+              <div className="w-[90%] max-w-[1920px] mx-auto pb-12 space-y-12">
+                {sections.map((section, sectionIndex) => (
+                  <div key={sectionIndex}>
+                    {section.title && (
+                      <SectionTitle>
+                        <AnimatedText textKey={`sectionTitle-${sectionIndex}-${language}`}>
+                          {section.title}
+                        </AnimatedText>
+                      </SectionTitle>
+                    )}
+                    <div
+                      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 py-0"
+                    >
+                      {section.buildings.map((building) => (
+                        <div className="relative group block h-full w-full" key={building.id}>
+                           <BuildingCard
+                              title={building.title}
+                              summary={building.summary}
+                              imageUrl={building.images[0]}
+                              viewDetailsText={viewDetails}
+                              onClick={() => onSelect(building)}
+                              language={language}
+                              buildingId={building.id}
+                            />
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </TracingBeam>
           </motion.div>
         </AnimatePresence>
-        </TracingBeam>
       </div>
       
       {/* Disclaimer */}

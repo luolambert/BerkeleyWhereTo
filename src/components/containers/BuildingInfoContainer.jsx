@@ -15,16 +15,12 @@ function BuildingInfoContainer({ onBack, currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
   const [language, setLanguage] = useState('EN'); // 'CN' or 'EN'
   const [sortMethod, setSortMethod] = useState('students'); // 'students', 'categorical', 'popularity'
-  const [slideDirection, setSlideDirection] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(1);
 
-  // Define the order of tabs to determine slide direction
-  const sortOrder = ['students', 'categorical', 'popularity'];
-
-  const handleSortChange = (newSort) => {
+  // Direction is now calculated at click time and passed from SegmentedControl
+  const handleSortChange = (newSort, direction) => {
     if (newSort === sortMethod) return;
-    const oldIndex = sortOrder.indexOf(sortMethod);
-    const newIndex = sortOrder.indexOf(newSort);
-    setSlideDirection(newIndex > oldIndex ? 1 : -1);
+    setSlideDirection(direction);
     setSortMethod(newSort);
   };
 
