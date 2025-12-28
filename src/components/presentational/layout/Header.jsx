@@ -99,6 +99,7 @@ function Header({
                         : 'px-6 py-4 flex items-center gap-4'
                 }
             `}
+            style={centered ? { marginLeft: '-1.5mm' } : undefined}
         >
             {/* Logo - Hover Trigger */}
             <motion.div 

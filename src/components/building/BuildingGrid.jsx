@@ -44,9 +44,7 @@ function BuildingGrid({
     const isCN = language === 'CN';
     if (isCN) {
       return [
-        { text: "探索" }, { text: "伯克利" }, { text: "校园" },
-        { text: "建筑" }, { text: "背后的" }, { text: "故事" },
-        { text: "与" }, { text: "传说" },
+        { text: "探索伯克利校园建筑背后的故事与传说" },
       ];
     }
     return [
