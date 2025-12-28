@@ -2,6 +2,7 @@
 // Only ErrorBoundary remains here as it's a functional component, not purely visual
 
 export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as SlideTransition } from './SlideTransition';
 
 // Re-exports from presentational (for backward compatibility)
 export { AnimatedText, MarkdownText } from '../presentational/typography';

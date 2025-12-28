@@ -12,6 +12,7 @@ import useBuildingFilter from '../../hooks/useBuildingFilter';
  * - Data fetching (buildings based on mode)
  * - Filter logic (via useBuildingFilter hook)
  * - State management (searchTerm, activeCategory, mode)
+ * - Separate slide directions for mode and category transitions
  * 
  * BuildingSelectionPanel becomes a pure Presentational component
  */
@@ -19,6 +20,10 @@ function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("all");
   const [mode, setMode] = React.useState("freshman");
+  
+  // Separate direction states for different animation scopes
+  const [modeSlideDirection, setModeSlideDirection] = React.useState(1);
+  const [categorySlideDirection, setCategorySlideDirection] = React.useState(1);
   
   
   // Get categories based on mode
@@ -30,10 +35,17 @@ function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
   // Filter buildings using business logic hook
   const filteredBuildings = useBuildingFilter(currentBuildings, searchTerm, activeCategory, categories);
   
-  // Handle mode change
-  const handleModeChange = React.useCallback((newMode) => {
+  // Handle mode change - affects categories + cards
+  const handleModeChange = React.useCallback((newMode, direction) => {
+    setModeSlideDirection(direction);
     setMode(newMode);
     setActiveCategory("all"); // Reset category on mode change
+  }, []);
+  
+  // Handle category change - affects cards only
+  const handleCategoryChange = React.useCallback((newCategory, direction) => {
+    setCategorySlideDirection(direction);
+    setActiveCategory(newCategory);
   }, []);
   
   return (
@@ -47,10 +59,12 @@ function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
       activeCategory={activeCategory}
       mode={mode}
       selectedValue={selectedValue}
+      modeSlideDirection={modeSlideDirection}
+      categorySlideDirection={categorySlideDirection}
       
       // Handlers
       onSearchChange={setSearchTerm}
-      onCategoryChange={setActiveCategory}
+      onCategoryChange={handleCategoryChange}
       onModeChange={handleModeChange}
       onSelect={onSelect}
       onClose={onClose}

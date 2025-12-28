@@ -24,19 +24,26 @@ function CategoryPills({
   return (
     <div className={`overflow-x-auto overflow-y-visible no-scrollbar ${className}`}>
       <Dock
-        magnification={1.12}
+        magnification={1.15}
         distance={100}
         direction="middle"
         className="flex gap-2 overflow-visible py-2 relative z-50 w-max"
       >
-      {categories.map((cat) => {
+      {categories.map((cat, index) => {
         const Icon = cat.icon;
         const isActive = activeId === cat.id;
+        
+        // Calculate direction on click
+        const handleClick = () => {
+          const currentIndex = categories.findIndex(c => c.id === activeId);
+          const direction = index > currentIndex ? 1 : -1;
+          onChange(cat.id, direction);
+        };
         
         return (
           <DockIcon key={cat.id}>
             <motion.button
-              onClick={() => onChange(cat.id)}
+              onClick={handleClick}
               whileTap={{ scale: 0.95 }}
               className={`
                 relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold 
@@ -51,7 +58,7 @@ function CategoryPills({
               {isActive && (
                 <motion.div
                   layoutId={layoutId}
-                  className="absolute inset-0 bg-primary-600 rounded-xl shadow-lg shadow-primary-500/30 z-10"
+                  className="absolute inset-0 bg-primary-600 rounded-xl shadow-sm shadow-primary-500/20 z-10"
                   transition={SPRINGS.stiff}
                 />
               )}

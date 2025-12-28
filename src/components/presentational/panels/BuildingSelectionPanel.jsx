@@ -6,12 +6,14 @@ import { ModeToggle } from "../buttons";
 import { SelectableBuildingCard } from "../cards";
 import GlassPanel from "./GlassPanel";
 import { HoverEffect } from "../../ui/card-hover-effect";
+import { SlideTransition } from "../../common";
 
 /**
  * BuildingSelectionPanel - Pure Presentational Component
  * 
- * All data and handlers must be provided via props from Container.
- * No internal state management - follows strict Container/Presentational pattern.
+ * Uses two nested SlideTransitions:
+ * - Outer: triggered by mode change (animates categories + cards)
+ * - Inner: triggered by category change (animates cards only)
  */
 const BuildingSelectionPanel = ({ 
   // Core callbacks
@@ -24,6 +26,8 @@ const BuildingSelectionPanel = ({
   searchTerm,
   activeCategory,
   mode,
+  modeSlideDirection,
+  categorySlideDirection,
   // Required handlers from Container
   onSearchChange,
   onCategoryChange,
@@ -51,7 +55,7 @@ const BuildingSelectionPanel = ({
 
   return (
     <GlassPanel variant="elevated" padding="none" className="h-full w-full flex flex-col overflow-hidden rounded-3xl">
-      {/* Header */}
+      {/* Header - Fixed, not animated */}
       <div className="p-6 border-b border-neutral-100 flex items-center gap-4 bg-white/50 shrink-0">
         <SearchInput
           ref={inputRef}
@@ -78,41 +82,60 @@ const BuildingSelectionPanel = ({
         </button>
       </div>
 
-      {/* Categories */}
-      <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20">
-        <CategoryPills
-          categories={categories}
-          activeId={activeCategory}
-          onChange={onCategoryChange}
-        />
-      </div>
-
-      {/* Grid Content */}
-      <div className="flex-1 overflow-y-auto no-scrollbar p-6 bg-neutral-50/50">
-        {filteredBuildings && filteredBuildings.length > 0 ? (
-          <HoverEffect 
-            items={filteredBuildings}
-            className="gap-3 py-0"
-            style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))' }}
-            renderItem={(b) => (
-              <SelectableBuildingCard
-                key={b.id}
-                name={b.name}
-                category={b.category}
-                isSelected={selectedValue === b.name}
-                isPopular={b.popular}
-                isUndergrad={b.undergrad}
-                isGrad={b.grad}
-                onClick={() => onSelect(b.name)}
-              />
-            )}
-          />
-        ) : (
-          <div className="text-center text-neutral-400 py-12">
-            <p className="text-lg font-medium">No buildings found</p>
-            <p className="text-sm mt-1">Try adjusting your search or filters</p>
+      {/* Mode Transition: Categories + Cards */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <SlideTransition
+          activeKey={mode}
+          direction={modeSlideDirection}
+          gap={70}
+          className="flex-1 flex flex-col overflow-hidden"
+        >
+          {/* Categories - Only animated by mode change */}
+          <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20">
+            <CategoryPills
+              categories={categories}
+              activeId={activeCategory}
+              onChange={onCategoryChange}
+            />
           </div>
-        )}
+
+          {/* Category Transition: Cards only */}
+          <div className="flex-1 overflow-hidden">
+            <SlideTransition
+              activeKey={activeCategory}
+              direction={categorySlideDirection}
+              gap={70}
+              className="h-full"
+            >
+              <div className="h-full overflow-y-auto no-scrollbar p-6 bg-neutral-50/50">
+                {filteredBuildings && filteredBuildings.length > 0 ? (
+                  <HoverEffect 
+                    items={filteredBuildings}
+                    className="gap-3 py-0"
+                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))' }}
+                    renderItem={(b) => (
+                      <SelectableBuildingCard
+                        key={b.id}
+                        name={b.name}
+                        category={b.category}
+                        isSelected={selectedValue === b.name}
+                        isPopular={b.popular}
+                        isUndergrad={b.undergrad}
+                        isGrad={b.grad}
+                        onClick={() => onSelect(b.name)}
+                      />
+                    )}
+                  />
+                ) : (
+                  <div className="text-center text-neutral-400 py-12">
+                    <p className="text-lg font-medium">No buildings found</p>
+                    <p className="text-sm mt-1">Try adjusting your search or filters</p>
+                  </div>
+                )}
+              </div>
+            </SlideTransition>
+          </div>
+        </SlideTransition>
       </div>
     </GlassPanel>
   );
