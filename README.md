@@ -140,10 +140,11 @@ Covers **139 campus buildings** (Advanced Mode), including:
 
 ### 🎨 Modern UI Design
 
-- **Glassmorphism Effects** - Elegant blurred backgrounds
-- **Smooth Animations** - Silky interactions powered by Framer Motion
+- **Glassmorphism 2.0** - Refined glass-effect design system with unified Tailwind utilities
+- **Premium Animations** - 10 animation components from Magic UI & Aceternity UI
+- **Smooth Transitions** - Powered by Framer Motion with centralized animation tokens
+- **Interactive Elements** - Dock fisheye, WobbleCard, TracingBeam, TypewriterEffect
 - **Responsive Design** - Perfect for desktop, tablet, and mobile
-
 - **Floating Panel Design** - All UI elements with shadow effects, clear hierarchy
 - **GitHub Integration** - Quick access to source code via the floating GitHub button
 
@@ -254,35 +255,71 @@ npm run preview
 berkeley-where-to-go/
 ├── src/
 │   ├── components/                    # 🧩 React Components
-│   │   ├── building/                 # 🏢 Building-related components (Grid, Detail)
-│   │   ├── common/                   # 🛠️ Common UI components
-│   │   ├── Header.jsx                # 🧭 Page header & navigation
-│   │   ├── RouteInput.jsx            # ✏️ Route input form
-│   │   ├── BuildingSelect.jsx        # 🏢 Building input component
-│   │   ├── BuildingSelectionPanel.jsx # 🪟 Building selection panel
-│   │   ├── MapContainer.jsx          # 🗺️ Map container & route rendering
-│   │   ├── TravelTimeDisplay.jsx     # ⏱️ Travel time display
-│   │   ├── ElevationChart.jsx        # 📊 Elevation profile chart
-│   │   └── BuildingInfo.jsx          # ℹ️ Building details & stories (Deprecated)
-│   ├── views/                         # 🖼️ Page-level components
-│   │   ├── LandingPage.jsx           # 👋 Landing Page
-│   │   ├── NavigationPage.jsx        # 🚀 Navigation Page (Go)
-│   │   └── InfoPage.jsx              # 📖 Information Page (Know)
-│   ├── locales/                       # 🌍 Internationalization bundles
-│   │   ├── zh.js                     # 🇨🇳 Chinese
-│   │   └── en.js                     # 🇺🇸 English
-│   ├── context/                       # 💡 Global state management
+│   │   ├── building/                 # 🏢 Building components (Grid, Detail)
+│   │   ├── common/                   # 🛠️ Shared utilities (SlideTransition)
+│   │   ├── containers/               # 📦 Container components (state + logic)
+│   │   │   ├── HeaderContainer
+│   │   │   ├── BuildingSelectionContainer
+│   │   │   ├── BuildingGridContainer
+│   │   │   ├── BuildingInfoContainer
+│   │   │   └── BuildingDetailContainer
+│   │   ├── presentational/           # 🎨 Pure UI components
+│   │   │   ├── buttons/              # Button variants (8 components)
+│   │   │   ├── cards/                # Card components (4 components)
+│   │   │   ├── controls/             # Interactive controls
+│   │   │   ├── inputs/               # Form inputs
+│   │   │   ├── layout/               # Layout components
+│   │   │   ├── media/                # Media display
+│   │   │   ├── panels/               # Panel components
+│   │   │   └── typography/           # Text components
+│   │   ├── map/                      # 🗺️ Map-related components
+│   │   ├── ui/                       # ✨ Animation library (10 components)
+│   │   │   ├── animated-shiny-text   # Shimmer text effect
+│   │   │   ├── dock                  # Fisheye dock animation
+│   │   │   ├── interactive-grid-pattern # Mouse-following grid
+│   │   │   ├── ripple-button         # Click ripple effect
+│   │   │   ├── shimmer-button        # Shimmer button
+│   │   │   ├── text-generate-effect  # Text reveal animation
+│   │   │   ├── tracing-beam          # Scroll tracking beam
+│   │   │   ├── typewriter-effect     # Typewriter animation
+│   │   │   └── wobble-card           # Card wobble effect
+│   │   └── MapContainer.jsx          # Map wrapper
+│   ├── constants/                     # ⚙️ Configuration
+│   │   ├── animations.js             # Animation design system
+│   │   ├── appConfig.js              # App configuration
+│   │   ├── buildingCategories.js     # Category definitions
+│   │   ├── mapConfig.js              # Map settings
+│   │   └── uiColors.js               # Color tokens
+│   ├── context/                       # 💡 React Context (state management)
 │   ├── data/                          # 📊 Static data files
 │   ├── hooks/                         # ⚓ Custom Hooks
-│   ├── App.jsx                       # ⚛️ Main app component
-│   ├── main.jsx                      # 🚪 App entry point
+│   │   ├── useBuildingFilter         # Building filtering logic
+│   │   ├── useBuildingGridText       # Grid text configuration
+│   │   ├── useBuildingSorter         # Sorting logic
+│   │   ├── useHeaderScrollAnimation  # Scroll-based animations
+│   │   ├── useImageCarousel          # Image carousel logic
+│   │   ├── useMapRoute               # Route calculation
+│   │   └── useTranslation            # i18n hook
+│   ├── locales/                       # 🌍 Internationalization
+│   │   ├── zh.js                     # 🇨🇳 Chinese
+│   │   └── en.js                     # 🇺🇸 English
+│   ├── services/                      # 🔧 Business services
+│   │   ├── mapService.js             # Map API abstraction
+│   │   └── preloadService.js         # Image preloading with retry
+│   ├── views/                         # 🖼️ Page-level components
+│   │   ├── LandingPage.jsx           # 👋 Landing Page
+│   │   ├── NavigationPage.jsx        # 🚀 Navigation (Go)
+│   │   └── InfoPage.jsx              # 📖 Information (Know)
+│   ├── App.jsx                       # ⚛️ Main app
+│   ├── main.jsx                      # 🚪 Entry point
 │   └── index.css                     # 🎨 Global styles
 ├── public/                           # 📦 Static assets
+├── skills/                           # 📚 Development guidelines
 ├── .env                              # 🔐 Environment variables
-├── package.json                      # 📦 Project dependencies
-├── vite.config.js                   # ⚡️ Vite configuration
-├── tailwind.config.js               # 🌬️ Tailwind configuration
-└── README.md                        # 📖 Project documentation
+├── package.json                      # 📦 Dependencies
+├── vite.config.js                    # ⚡️ Vite config
+├── tailwind.config.js                # 🌬️ Tailwind config
+└── README.md                         # 📖 Documentation
 ```
 
 ---
@@ -312,6 +349,16 @@ berkeley-where-to-go/
 
 - ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) - Code quality assurance
 - ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) - CSS processing and compatibility
+
+### UI Component Libraries
+
+- ![Magic UI](https://img.shields.io/badge/Magic_UI-Components-9333EA?style=flat-square) - Premium animation components
+- ![Aceternity UI](https://img.shields.io/badge/Aceternity_UI-Components-06B6D4?style=flat-square) - Modern interaction effects
+
+### Utilities
+
+- ![clsx](https://img.shields.io/badge/clsx-2.1.1-gray?style=flat-square) - Conditional class utility
+- ![tailwind-merge](https://img.shields.io/badge/tailwind--merge-3.4.0-38B2AC?style=flat-square) - Tailwind class merging
 
 ---
 
@@ -411,6 +458,11 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 - [x] Markdown Text Rendering
 - [x] GitHub Repository Link
 - [x] Know Interface Language Switch
+- [x] Container/Presentational Architecture
+- [x] Animation Design System
+- [x] Premium Animation Components (Magic UI / Aceternity UI)
+- [x] Image Preload Service with Retry
+- [x] Custom Hooks Library
 
 ### 🚧 Planned
 
@@ -445,6 +497,24 @@ Issues and Pull Requests are welcome!
 ---
 
 ## 📝 Changelog
+
+### v1.6.0 (2025-12)
+
+- ✨ **UI Component Library** - Integrated 10 animation components from Magic UI & Aceternity UI
+  - Interactive Grid Pattern, Dock, WobbleCard, TracingBeam, TypewriterEffect
+  - ShimmerButton, AnimatedShinyText, TextGenerateEffect, RippleButton, CardHoverEffect
+- ✨ **Architecture Refactor** - Adopted Container/Presentational pattern for better maintainability
+  - Separated business logic (containers) from pure UI (presentational)
+  - Created 5 container components and 50+ presentational components
+- ✨ **Animation Design System** - Centralized animation tokens in `/constants/animations.js`
+  - Duration tokens, easing functions, spring physics, motion-safe variants
+- ✨ **Landing Page 2.0** - Complete redesign with interactive grid background, flex hover animations
+- ✨ **Go Page Enhancements** - Dock fisheye effect, card hover animations, ripple click on "Get Directions"
+- ✨ **Know Page Enhancements** - WobbleCard, TracingBeam scroll visualization, typewriter subtitle
+- ✨ **Custom Hooks** - Extracted 8 reusable hooks (useBuildingSorter, useHeaderScrollAnimation, etc.)
+- ✨ **Service Layer** - Added mapService for API abstraction, preloadService with retry mechanism
+- 🔧 **Structural Reorganization** - Reorganized components into presentational/container directories
+- 🐛 **Bug Fixes** - Fixed panel overflow, animation lag, shadow issues, Chinese subtitle problems
 
 ### v1.5.0 (2025-12)
 

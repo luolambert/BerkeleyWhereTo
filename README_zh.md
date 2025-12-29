@@ -140,10 +140,11 @@
 
 ### 🎨 现代化 UI 设计
 
-- **毛玻璃效果** - 优雅的模糊背景
-- **流畅动画** - 基于 Framer Motion 的丝滑交互
+- **Glassmorphism 2.0** - 精细化玻璃态设计系统，统一 Tailwind 工具类
+- **高级动画** - 10 个来自 Magic UI 和 Aceternity UI 的动画组件
+- **流畅过渡** - 基于 Framer Motion，集中化动画配置
+- **交互元素** - Dock 鱼眼、WobbleCard、TracingBeam、TypewriterEffect
 - **响应式布局** - 完美适配桌面、平板和手机
-
 - **浮动面板设计** - 所有 UI 元素带阴影效果，层次分明
 - **GitHub 集成** - 通过浮动 GitHub 按钮快速访问源代码
 
@@ -254,35 +255,71 @@ npm run preview
 berkeley-where-to-go/
 ├── src/
 │   ├── components/                    # 🧩 React 组件
-│   │   ├── building/                 # 🏢 建筑相关组件 (Grid, Detail)
-│   │   ├── common/                   # 🛠️ 通用 UI 组件
-│   │   ├── Header.jsx                # 🧭 页面标题与导航
-│   │   ├── RouteInput.jsx            # ✏️ 路线输入表单
-│   │   ├── BuildingSelect.jsx        # 🏢 建筑输入组件
-│   │   ├── BuildingSelectionPanel.jsx # 🪟 建筑选择面板
-│   │   ├── MapContainer.jsx          # 🗺️ 地图容器和路线渲染
-│   │   ├── TravelTimeDisplay.jsx     # ⏱️ 时间显示卡片
-│   │   ├── ElevationChart.jsx        # 📊 海拔剖面图
-│   │   └── BuildingInfo.jsx          # ℹ️ 建筑详情与故事页 (Deprecated)
+│   │   ├── building/                 # 🏢 建筑组件 (Grid, Detail)
+│   │   ├── common/                   # 🛠️ 共享工具 (SlideTransition)
+│   │   ├── containers/               # 📦 容器组件 (状态 + 逻辑)
+│   │   │   ├── HeaderContainer
+│   │   │   ├── BuildingSelectionContainer
+│   │   │   ├── BuildingGridContainer
+│   │   │   ├── BuildingInfoContainer
+│   │   │   └── BuildingDetailContainer
+│   │   ├── presentational/           # 🎨 纯展示组件
+│   │   │   ├── buttons/              # 按钮变体 (8 个组件)
+│   │   │   ├── cards/                # 卡片组件 (4 个组件)
+│   │   │   ├── controls/             # 交互控件
+│   │   │   ├── inputs/               # 表单输入
+│   │   │   ├── layout/               # 布局组件
+│   │   │   ├── media/                # 媒体展示
+│   │   │   ├── panels/               # 面板组件
+│   │   │   └── typography/           # 排版组件
+│   │   ├── map/                      # 🗺️ 地图相关组件
+│   │   ├── ui/                       # ✨ 动画库 (10 个组件)
+│   │   │   ├── animated-shiny-text   # 闪光文字效果
+│   │   │   ├── dock                  # 鱼眼 Dock 动画
+│   │   │   ├── interactive-grid-pattern # 鼠标跟随网格
+│   │   │   ├── ripple-button         # 点击涟漪效果
+│   │   │   ├── shimmer-button        # 微光按钮
+│   │   │   ├── text-generate-effect  # 文字揭示动画
+│   │   │   ├── tracing-beam          # 滚动追踪光束
+│   │   │   ├── typewriter-effect     # 打字机动画
+│   │   │   └── wobble-card           # 卡片摇摆效果
+│   │   └── MapContainer.jsx          # 地图容器
+│   ├── constants/                     # ⚙️ 配置常量
+│   │   ├── animations.js             # 动画设计系统
+│   │   ├── appConfig.js              # 应用配置
+│   │   ├── buildingCategories.js     # 类别定义
+│   │   ├── mapConfig.js              # 地图设置
+│   │   └── uiColors.js               # 颜色 tokens
+│   ├── context/                       # 💡 React Context (状态管理)
+│   ├── data/                          # 📊 静态数据文件
+│   ├── hooks/                         # ⚓ 自定义 Hooks
+│   │   ├── useBuildingFilter         # 建筑筛选逻辑
+│   │   ├── useBuildingGridText       # Grid 文本配置
+│   │   ├── useBuildingSorter         # 排序逻辑
+│   │   ├── useHeaderScrollAnimation  # 滚动动画
+│   │   ├── useImageCarousel          # 图片轮播逻辑
+│   │   ├── useMapRoute               # 路线计算
+│   │   └── useTranslation            # 国际化 hook
+│   ├── locales/                       # 🌍 国际化语言包
+│   │   ├── zh.js                     # 🇨🇳 中文
+│   │   └── en.js                     # 🇺🇸 英文
+│   ├── services/                      # 🔧 业务服务
+│   │   ├── mapService.js             # 地图 API 抽象
+│   │   └── preloadService.js         # 图片预加载 (带重试)
 │   ├── views/                         # 🖼️ 页面级组件
 │   │   ├── LandingPage.jsx           # 👋 欢迎页
 │   │   ├── NavigationPage.jsx        # 🚀 导航页 (Go)
 │   │   └── InfoPage.jsx              # 📖 信息页 (Know)
-│   ├── locales/                       # 🌍 国际化语言包
-│   │   ├── zh.js                     # 🇨🇳 中文
-│   │   └── en.js                     # 🇺🇸 英文
-│   ├── context/                       # 💡 全局状态管理
-│   ├── data/                          # 📊 静态数据文件
-│   ├── hooks/                         # ⚓ 常用 Hooks
-│   ├── App.jsx                       # ⚛️ 主应用组件
-│   ├── main.jsx                      # 🚪 应用入口
+│   ├── App.jsx                       # ⚛️ 主应用
+│   ├── main.jsx                      # 🚪 入口文件
 │   └── index.css                     # 🎨 全局样式
 ├── public/                           # 📦 静态资源
+├── skills/                           # 📚 开发规范
 ├── .env                              # 🔐 环境变量
 ├── package.json                      # 📦 项目依赖
-├── vite.config.js                   # ⚡️ Vite 配置
-├── tailwind.config.js               # 🌬️ Tailwind 配置
-└── README.md                        # 📖 项目文档
+├── vite.config.js                    # ⚡️ Vite 配置
+├── tailwind.config.js                # 🌬️ Tailwind 配置
+└── README.md                         # 📖 项目文档
 ```
 
 ---
@@ -312,6 +349,16 @@ berkeley-where-to-go/
 
 - ![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4B32C3?style=flat-square&logo=eslint&logoColor=white) - 代码质量保证
 - ![PostCSS](https://img.shields.io/badge/PostCSS-8.5.6-DD3A0A?style=flat-square&logo=postcss&logoColor=white) - CSS 处理和兼容性
+
+### UI 组件库
+
+- ![Magic UI](https://img.shields.io/badge/Magic_UI-Components-9333EA?style=flat-square) - 高级动画组件库
+- ![Aceternity UI](https://img.shields.io/badge/Aceternity_UI-Components-06B6D4?style=flat-square) - 现代交互效果组件
+
+### 工具库
+
+- ![clsx](https://img.shields.io/badge/clsx-2.1.1-gray?style=flat-square) - 条件类名工具
+- ![tailwind-merge](https://img.shields.io/badge/tailwind--merge-3.4.0-38B2AC?style=flat-square) - Tailwind 类名合并
 
 ---
 
@@ -411,6 +458,11 @@ npm run build
 - [x] Markdown 富文本支持
 - [x] GitHub 快捷访问
 - [x] Know 界面中英文切换
+- [x] Container/Presentational 架构
+- [x] 动画设计系统
+- [x] 高级动画组件 (Magic UI / Aceternity UI)
+- [x] 图片预加载服务（带重试）
+- [x] 自定义 Hooks 库
 
 ### 🚧 规划中
 
@@ -445,6 +497,24 @@ npm run build
 ---
 
 ## 📝 更新日志
+
+### v1.6.0 (2025-12)
+
+- ✨ **UI 组件库** - 集成 10 个来自 Magic UI 和 Aceternity UI 的动画组件
+  - Interactive Grid Pattern、Dock、WobbleCard、TracingBeam、TypewriterEffect
+  - ShimmerButton、AnimatedShinyText、TextGenerateEffect、RippleButton、CardHoverEffect
+- ✨ **架构重构** - 采用 Container/Presentational 模式提升可维护性
+  - 业务逻辑 (containers) 与纯 UI (presentational) 分离
+  - 创建 5 个容器组件和 50+ 个展示组件
+- ✨ **动画设计系统** - 在 `/constants/animations.js` 集中动画配置
+  - 时长 tokens、缓动函数、弹簧物理、减弱动效变体
+- ✨ **Landing Page 2.0** - 全新设计，交互式网格背景，弹性悬停动画
+- ✨ **Go 界面增强** - Dock 鱼眼效果、卡片悬停动画、"Get Directions" 涟漪点击
+- ✨ **Know 界面增强** - WobbleCard、TracingBeam 滚动追踪、打字机副标题
+- ✨ **自定义 Hooks** - 提取 8 个可复用 hooks（useBuildingSorter、useHeaderScrollAnimation 等）
+- ✨ **服务层** - 新增 mapService API 抽象、preloadService 带重试机制
+- 🔧 **结构重组** - 将组件重新组织为 presentational/container 目录结构
+- 🐛 **Bug 修复** - 修复面板溢出、动画卡顿、阴影问题、中文副标题问题
 
 ### v1.5.0 (2025-12)
 
