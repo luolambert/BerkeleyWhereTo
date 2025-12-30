@@ -21,7 +21,7 @@ export function InteractiveGridPattern({
   const [horizontal, vertical] = squares;
   const [currentSquare, setCurrentSquare] = useState(null);
   // Map<index, { active: boolean, timestamp: number }>
-  const [squares_state, setSquaresState] = useState(new Map());
+  const [squaresState, setSquaresState] = useState(new Map());
   const [viewportWidth, setViewportWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1920);
   const svgRef = useRef(null);
   const rafRef = useRef(null);
@@ -130,7 +130,7 @@ export function InteractiveGridPattern({
 
   // Clean up faded squares after animation completes (1000ms)
   useEffect(() => {
-    if (squares_state.size === 0) return;
+    if (squaresState.size === 0) return;
     
     const timer = setInterval(() => {
       const now = Date.now();
@@ -156,7 +156,7 @@ export function InteractiveGridPattern({
     }, 200);
     
     return () => clearInterval(timer);
-  }, [squares_state.size]);
+  }, [squaresState.size]);
 
   // Determine if square is on left or right
   const isLeftSide = useCallback((col) => {
@@ -194,7 +194,7 @@ export function InteractiveGridPattern({
       <rect width="100%" height="100%" fill={`url(#${patternId})`} />
       
       {/* Render all tracked squares with CSS transitions */}
-      {Array.from(squares_state.entries()).map(([index, data]) => {
+      {Array.from(squaresState.entries()).map(([index, data]) => {
         const col = index % horizontal;
         const row = Math.floor(index / horizontal);
         const x = col * width;

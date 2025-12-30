@@ -6,7 +6,7 @@ import { AnimatedText, LanguageToggle } from '../../common';
 import { useNavigation } from '../../../context/NavigationContext';
 import useTranslation from '../../../hooks/useTranslation';
 import { SLIDE_VARIANTS } from '../../../constants/animations';
-import { GlassPanel } from '../panels';
+
 import { PrimaryButton, IconButton } from '../buttons';
 import { RippleButton } from '../../ui/ripple-button';
 

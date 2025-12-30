@@ -9,8 +9,7 @@ import { GitHubLink } from './components/presentational';
 import NavigationPage from './views/NavigationPage';
 import InfoPage from './views/InfoPage';
 import LandingPage from './views/LandingPage';
-
-const LIBRARIES = ['places', 'geometry'];
+import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
 
 function AppContent({ isLoaded }) {
   const location = useLocation();
@@ -80,7 +79,7 @@ function App() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: LIBRARIES
+    libraries: GOOGLE_MAPS_LIBRARIES
   });
 
   return (

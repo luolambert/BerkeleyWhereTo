@@ -63,3 +63,6 @@ export const MAP_PADDING = {
   tablet: { top: 50, right: 50, bottom: 50, left: 430 },
   mobile: { top: 200, right: 50, bottom: 50, left: 50 },
 };
+
+// Google Maps API libraries configuration
+export const GOOGLE_MAPS_LIBRARIES = ['places', 'geometry'];

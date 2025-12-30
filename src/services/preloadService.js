@@ -69,13 +69,9 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
       // Add cache-busting timestamp on retry
       const loadUrl = attempts > 1 ? `${url}${url.includes('?') ? '&' : '?'}retry=${Date.now()}` : url;
       await preloadImage(loadUrl);
-      if (attempts > 1) {
-        console.log(`[Preload] ✓ Loaded after ${attempts} attempts: ${url}`);
-      }
       return { success: true, url, attempts };
     } catch (error) {
       if (attempts < maxRetries) {
-        console.log(`[Preload] Retry ${attempts}/${maxRetries} for: ${url}`);
         await new Promise(resolve => setTimeout(resolve, retryDelay));
       }
     }
@@ -103,9 +99,6 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
     return { success: 0, failed: 0, failedUrls: [] };
   }
   
-  // Log start
-  console.log(`[Preload] Starting to preload ${total} images...`);
-  
   // Use Promise.allSettled to handle all images regardless of individual failures
   const results = await Promise.allSettled(
     urls.map(async (url) => {
@@ -121,9 +114,6 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
       return result;
     })
   );
-  
-  // Log completion
-  console.log(`[Preload] Complete: ${loaded} loaded, ${failed} failed`);
   if (failedUrls.length > 0) {
     console.warn('[Preload] Failed images:', failedUrls);
   }
