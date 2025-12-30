@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Header, AnimatedText, LanguageToggle } from '../common';
 import useHeaderScrollAnimation from '../../hooks/useHeaderScrollAnimation';
 import { DURATIONS, EASINGS, SPRINGS, PAGE_VARIANTS } from '../../constants/animations';
@@ -28,6 +28,18 @@ function BuildingGrid({
   const scrollRef = React.useRef(null);
   const logoRef = React.useRef(null);
   const containerRef = React.useRef(null);
+  
+  // Track if scrolled to bottom for disclaimer visibility
+  const [isAtBottom, setIsAtBottom] = React.useState(false);
+  
+  // Use Framer Motion's useScroll to track scroll progress
+  const { scrollYProgress } = useScroll({ container: scrollRef });
+  
+  // Listen for scroll progress changes to detect bottom
+  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
+    // Show disclaimer when scrolled past 95% of the content
+    setIsAtBottom(progress > 0.95);
+  });
   
   // Direction for enter and exit animations
   // Enter: new content comes from the direction of click (positive = from right)
@@ -259,13 +271,23 @@ function BuildingGrid({
         </AnimatePresence>
       </div>
       
-      {/* Disclaimer */}
-      <div className="fixed bottom-4 left-4 z-50 pointer-events-none text-left">
-        <div className="text-[10px] text-neutral-400 font-medium bg-white/50 backdrop-blur-sm px-2 py-1 rounded-md border border-neutral-100 inline-block">
-          <p><AnimatedText textKey={`disclaimer1-${language}`}>{disclaimer[0]}</AnimatedText></p>
-          <p><AnimatedText textKey={`disclaimer2-${language}`}>{disclaimer[1]}</AnimatedText></p>
-        </div>
-      </div>
+      {/* Disclaimer - slides up from bottom when scrolled to end */}
+      <AnimatePresence>
+        {isAtBottom && (
+          <motion.div 
+            className="fixed bottom-4 left-4 z-50 pointer-events-none text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+          >
+            <div className="text-[10px] text-neutral-400 font-medium bg-white/50 backdrop-blur-sm px-2 py-1 rounded-md border border-neutral-100 inline-block">
+              <p><AnimatedText textKey={`disclaimer1-${language}`}>{disclaimer[0]}</AnimatedText></p>
+              <p><AnimatedText textKey={`disclaimer2-${language}`}>{disclaimer[1]}</AnimatedText></p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
