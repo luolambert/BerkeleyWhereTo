@@ -192,6 +192,34 @@ npm run build
 npm run preview
 ```
 
+### Testing
+
+```bash
+# Run unit tests
+npm test
+
+# Run tests once (no watch mode)
+npm run test:unit
+
+# View test coverage
+npm run test:coverage
+
+# Interactive test UI
+npm run test:ui
+
+# End-to-end tests (Playwright)
+npm run test:e2e
+
+# E2E tests with UI
+npm run test:e2e:ui
+```
+
+**Test Coverage:**
+
+- ✅ 27 unit tests (100% passing)
+- ✅ Services, Context, Hooks, Components
+- ✅ 4 viewports E2E testing (Desktop, Mobile, iPad Portrait/Landscape)
+
 ---
 
 ## 📖 Usage Guide

@@ -192,6 +192,34 @@ npm run build
 npm run preview
 ```
 
+### 测试
+
+```bash
+# 运行单元测试
+npm test
+
+# 单次运行（无watch模式）
+npm run test:unit
+
+# 查看测试覆盖率
+npm run test:coverage
+
+# 可视化测试界面
+npm run test:ui
+
+# End-to-end测试（Playwright）
+npm run test:e2e
+
+# E2E测试UI模式
+npm run test:e2e:ui
+```
+
+**测试覆盖:**
+
+- ✅ 27 个单元测试（100%通过）
+- ✅ Services、Context、Hooks、Components 全覆盖
+- ✅ 4 种视口 E2E 测试（桌面端、手机、iPad 竖屏/横屏）
+
 ---
 
 ## 📖 使用指南
