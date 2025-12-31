@@ -72,6 +72,18 @@ function SegmentedControl({
     return () => window.removeEventListener('resize', updateIndicatorPosition);
   }, [updateIndicatorPosition]);
 
+  // ResizeObserver: detect button size changes from language/text changes
+  useEffect(() => {
+    const activeButton = buttonRefs.current[activeId];
+    if (!activeButton) return;
+    
+    const observer = new ResizeObserver(() => {
+      updateIndicatorPosition();
+    });
+    observer.observe(activeButton);
+    return () => observer.disconnect();
+  }, [activeId, updateIndicatorPosition]);
+
   return (
     <div 
       ref={containerRef}
