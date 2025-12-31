@@ -61,7 +61,6 @@ function BuildingInfoContainer({ onBack, currentView }) {
       <AnimatePresence mode="sync">
         {selectedBuilding ? (
           <>
-            {/* Floating Toggle for Detail View */}
             <div className="absolute top-6 right-6 z-[60]">
               <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="right" />
             </div>

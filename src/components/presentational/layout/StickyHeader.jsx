@@ -25,7 +25,6 @@ function StickyHeader({
         willChange: 'height, padding',
       }}
     >
-      {/* Background Layer */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -34,7 +33,6 @@ function StickyHeader({
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         }}
       />
-      {/* Content */}
       <div className="mx-auto w-full max-w-[1920px] h-full relative z-10">
         {children}
       </div>

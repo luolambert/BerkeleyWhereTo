@@ -45,7 +45,6 @@ function MapContainer({ isLoaded, routePoints, onElevationLoaded }) {
       onUnmount={onUnmount}
       options={MAP_OPTIONS}
     >
-      {/* Route Markers */}
       {directions && routePoints && (
         <>
           <CustomMarker 
@@ -63,12 +62,10 @@ function MapContainer({ isLoaded, routePoints, onElevationLoaded }) {
         </>
       )}
       
-      {/* Slope Legend */}
       {coloredSegments.length > 0 && (
         <MapLegend language={language} />
       )}
 
-      {/* Error Display */}
       {error && (
         <div className="absolute top-4 left-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded z-50">
           <strong className="font-bold">Error: </strong>

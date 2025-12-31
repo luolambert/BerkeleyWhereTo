@@ -39,7 +39,6 @@ function SelectableBuildingCard({
         ${className}
       `}
     >
-      {/* Header Row */}
       <div className="flex items-start justify-between">
         <div
           className={`
@@ -59,17 +58,14 @@ function SelectableBuildingCard({
         )}
       </div>
 
-      {/* Building Name */}
       <h3 className="text-lg font-bold text-neutral-900 leading-tight break-words">
         {name}
       </h3>
       
-      {/* Category */}
       <p className="text-sm text-neutral-600">
         {category}
       </p>
       
-      {/* Student Type Tags */}
       <div className="absolute bottom-2 right-2 flex gap-1">
         {isUndergrad && (
           <Badge variant="blue" size="small">

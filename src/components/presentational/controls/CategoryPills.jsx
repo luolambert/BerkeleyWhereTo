@@ -54,7 +54,6 @@ function CategoryPills({
                 }
               `}
             >
-              {/* Animated background for active state - z-index above other buttons */}
               {isActive && (
                 <motion.div
                   layoutId={layoutId}

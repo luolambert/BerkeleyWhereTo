@@ -63,7 +63,6 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      {/* Globe Icon Button - Always in flow */}
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={handleClick}
@@ -79,7 +78,6 @@ function LanguageToggle({ language, onToggle, variant = 'default', direction = '
         </motion.span>
       </motion.button>
       
-      {/* Expanded Language Option - Absolutely positioned */}
       <AnimatePresence>
         {isHovered && (
           <motion.button

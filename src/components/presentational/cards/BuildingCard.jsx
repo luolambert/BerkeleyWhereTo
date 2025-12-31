@@ -33,16 +33,14 @@ function BuildingCard({
       className="relative h-[280px] p-0 overflow-hidden"
       onClick={onClick}
     >
-      {/* Full background image - hide when failed to prevent broken image icon */}
       {!isImageFailed && (
         <img
           src={imageUrl}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.15]" // Existing scale effect might conflict or combine with wobble. Wobble uses 3D transform.
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.15]"
         />
       )}
 
-      {/* Failed image overlay */}
       {isImageFailed && (
         <div className="absolute inset-0 bg-neutral-700 flex items-center justify-center z-5">
           <div className="text-center text-white/70">

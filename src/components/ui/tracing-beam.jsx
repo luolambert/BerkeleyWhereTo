@@ -81,7 +81,6 @@ export const TracingBeam = ({
           height={effectiveHeight - 68}
           className="ml-4 block"
           aria-hidden="true">
-          {/* Background gray line - full length */}
           <motion.path
             d={`M 19 0V ${effectiveHeight - 40}`}
             fill="none"
@@ -89,7 +88,6 @@ export const TracingBeam = ({
             strokeOpacity="0.16"
             strokeWidth="1.25"
           />
-          {/* Animated progress line - grows with scroll, with gradient beam effect */}
           <motion.path
             d={`M 19 0V ${effectiveHeight - 40}`}
             fill="none"

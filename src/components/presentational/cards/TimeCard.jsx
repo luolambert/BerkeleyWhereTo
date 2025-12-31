@@ -62,7 +62,6 @@ function TimeCard({
       onMouseLeave={handleMouseLeave}
       className="glass-card relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
     >
-      {/* Spotlight Overlay */}
       <div
         className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition duration-300 z-0"
         style={{

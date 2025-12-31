@@ -73,7 +73,6 @@ function Header({
         className={`relative ${centered ? 'inline-flex items-center' : ''} ${compact ? 'flex items-center' : ''}`}
         onMouseLeave={handleCloseMenu}
       >
-        {/* Background Layer */}
         <motion.div 
             layoutId={`${mainLayoutId}-bg`}
             style={{ opacity: backgroundOpacity }}
@@ -88,7 +87,6 @@ function Header({
             }}
         />
 
-        {/* Content Layer */}
         <motion.div 
             layoutId={`${mainLayoutId}-content`}
             className={`relative z-20 transition-[padding] duration-200
@@ -101,7 +99,6 @@ function Header({
             `}
             style={centered ? { marginLeft: '-1.5mm' } : undefined}
         >
-            {/* Logo - Hover Trigger */}
             <motion.div 
                 layoutId={`${mainLayoutId}-logo`}
                 className={`flex items-center justify-center shrink-0 cursor-pointer ${centered ? 'w-20 h-20' : 'w-10 h-10'}`}
@@ -136,7 +133,6 @@ function Header({
             </motion.div>
         </motion.div>
 
-        {/* Dropdown Bar */}
         <AnimatePresence>
             {isHovering && (
                 <motion.button

@@ -108,10 +108,8 @@ function BuildingGrid({
       exit="exit"
       className="w-full h-full flex flex-col overflow-hidden"
     >
-      {/* Scrollable Container */}
       <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden px-6 sm:px-8 pb-12 no-scrollbar">
         
-        {/* Sticky Header Container */}
         <motion.div 
           className="sticky top-0 z-40 -mx-6 sm:-mx-8 px-8 mb-6"
           style={{
@@ -121,7 +119,6 @@ function BuildingGrid({
             willChange: 'height, padding',
           }}
         >
-          {/* Background Layer */}
           <motion.div 
             className="absolute inset-0"
             style={{
@@ -196,7 +193,6 @@ function BuildingGrid({
           </div>
         </motion.div>
 
-        {/* Content Grid - Slide Track Transition with TracingBeam */}
         <AnimatePresence mode="popLayout" initial={false} custom={enterDirection}>
           <motion.div 
             key={sortMethod}
@@ -264,7 +260,6 @@ function BuildingGrid({
         </AnimatePresence>
       </div>
       
-      {/* Disclaimer - slides up from bottom when scrolled to end */}
       <AnimatePresence>
         {isAtBottom && (
           <motion.div 

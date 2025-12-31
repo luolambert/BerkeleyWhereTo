@@ -33,7 +33,6 @@ function NavigationPage({ isLoaded }) {
         animate="animate"
         exit="exit"
     >
-        {/* Map Background */}
         <div className="absolute inset-0 z-0">
             <MapContainer 
                 isLoaded={isLoaded} 
@@ -50,7 +49,6 @@ function NavigationPage({ isLoaded }) {
             />
         </div>
 
-        {/* Floating Panel Container */}
         <div className="absolute inset-0 z-10 pointer-events-none flex flex-col sm:flex-row p-4 sm:p-6 gap-4 sm:gap-6">
             <div className="relative w-full sm:w-[400px] lg:w-[450px] shrink-0 flex flex-col justify-center pointer-events-auto">
                 <div className="w-full space-y-3">

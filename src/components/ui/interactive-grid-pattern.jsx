@@ -193,7 +193,6 @@ export function InteractiveGridPattern({
       
       <rect width="100%" height="100%" fill={`url(#${patternId})`} />
       
-      {/* Render all tracked squares with CSS transitions */}
       {Array.from(squaresState.entries()).map(([index, data]) => {
         const col = index % horizontal;
         const row = Math.floor(index / horizontal);

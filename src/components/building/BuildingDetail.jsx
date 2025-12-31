@@ -82,7 +82,6 @@ function BuildingDetail({
       exit="exit"
       className="fixed inset-0 z-[100] w-full h-full overflow-y-auto bg-white"
     >
-      {/* Hero Section - Full Screen Carousel */}
       <div className="relative w-full h-screen group bg-black">
         <AnimatePresence mode="wait">
           <motion.img 
@@ -148,7 +147,6 @@ function BuildingDetail({
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
         
         <section>
@@ -255,7 +253,7 @@ function BuildingDetail({
           </div>
         )}
 
-        <div className="h-20" /> {/* Bottom spacer */}
+        <div className="h-20" />
       </div>
     </motion.div>
   );

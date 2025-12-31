@@ -21,7 +21,6 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
       animate="animate"
     >
       <div className="w-full glass-liquid p-5 sm:p-6 space-y-4 relative overflow-hidden">
-        {/* Shine effect for panel */}
         <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
         
         <div className="flex items-center justify-between relative z-10">
@@ -76,10 +75,8 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
                 ${isCalculating ? 'cursor-not-allowed opacity-80' : ''}
             `}
           >
-            {/* Liquid Button Background */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 bg-[length:200%_100%] animate-shimmer" />
             
-            {/* Glossy Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-50" />
             
             <span className="relative z-10 flex items-center justify-center gap-3 text-white font-bold text-lg tracking-wide">

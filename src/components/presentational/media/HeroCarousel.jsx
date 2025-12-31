@@ -52,7 +52,6 @@ function HeroCarousel({
       
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
 
-      {/* Navigation Arrows */}
       {hasMultiple && (
         <>
           <CarouselArrow

@@ -27,7 +27,6 @@ function ModeToggle({ options = [], activeId, onChange, className = '', layoutId
               : 'text-neutral-500 hover:text-neutral-700'
           }`}
         >
-          {/* Animated background for active state */}
           {activeId === option.id && (
             <motion.div
               layoutId={layoutId}

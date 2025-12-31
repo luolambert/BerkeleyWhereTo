@@ -43,36 +43,30 @@ class ErrorBoundary extends React.Component {
         return fallback;
       }
 
-      // Default error UI
       return (
         <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-6">
           <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-            {/* Icon */}
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <AlertTriangle className="w-8 h-8 text-red-600" />
+            <div className="rounded-full bg-gradient-to-br from-red-500 to-red-600 p-4 mb-6 shadow-2xl mx-auto">
+              <AlertTriangle className="w-10 h-10 text-white" />
             </div>
-            
-            {/* Title */}
-            <h1 className="text-2xl font-bold text-neutral-900 mb-2">
+          
+            <h2 className="text-2xl font-bold text-neutral-900 mb-4">
               Oops! Something went wrong
-            </h1>
-            
-            {/* Description */}
-            <p className="text-neutral-600 mb-6">
+            </h2>
+          
+            <p className="text-neutral-600 mb-6 max-w-md text-center mx-auto">
               We're sorry, but something unexpected happened. Please try again or return to the home page.
             </p>
-            
-            {/* Error details (Development environment only) */}
-            {showDetails && this.state.error && (
+          
+            {process.env.NODE_ENV === 'development' && showDetails && this.state.error && (
               <div className="bg-red-50 rounded-lg p-4 mb-6 text-left">
                 <p className="text-sm font-mono text-red-800 break-all">
                   {this.state.error.toString()}
                 </p>
               </div>
             )}
-            
-            {/* Action Buttons */}
-            <div className="flex gap-3 justify-center">
+          
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={this.handleRetry}
                 className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-medium transition-colors"

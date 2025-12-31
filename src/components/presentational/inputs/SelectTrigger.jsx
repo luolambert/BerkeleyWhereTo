@@ -28,14 +28,12 @@ function SelectTrigger({
 }) {
   return (
     <div className="flex flex-col space-y-2">
-      {/* Label */}
       <label className="text-neutral-600 text-sm font-medium flex items-center gap-2">
         <AnimatedText textKey={`label-${label}-${language}`}>
           {label}
         </AnimatedText>
       </label>
 
-      {/* Trigger Button */}
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

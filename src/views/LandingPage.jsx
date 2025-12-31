@@ -22,7 +22,6 @@ function LandingPage() {
       animate="animate"
       exit="exit"
     >
-      {/* Interactive Grid Pattern Background */}
       <InteractiveGridPattern
         className="fixed inset-0 z-[5] opacity-90"
         width={23}
@@ -32,7 +31,6 @@ function LandingPage() {
       />
       
       <LayoutGroup>
-        {/* Left Side - Where To Go */}
         <motion.div 
           className="relative group overflow-hidden"
           onMouseEnter={() => setHoveredSide('go')}
@@ -43,7 +41,6 @@ function LandingPage() {
           }}
           style={{ willChange: 'flex' }}
           transition={{ type: "spring", stiffness: 210, damping: 20 }}>
-          {/* Deepen blue gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-indigo-100 to-slate-50 z-0" />
           <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-500 z-10" />
           
@@ -93,14 +90,12 @@ function LandingPage() {
           </motion.div>
         </motion.div>
 
-        {/* Divider (Desktop) */}
         <div className="hidden md:block w-px bg-neutral-200/50 relative z-30">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-3 py-2 rounded-full border border-neutral-200 shadow-sm">
             <span className="text-neutral-400 font-bold text-xs">OR</span>
           </div>
         </div>
 
-        {/* Right Side - Where To Know */}
         <motion.div 
           className="relative group overflow-hidden"
           onMouseEnter={() => setHoveredSide('know')}
@@ -111,7 +106,6 @@ function LandingPage() {
           }}
           style={{ willChange: 'flex' }}
           transition={{ type: "spring", stiffness: 210, damping: 20 }}>
-          {/* Deepen Cream/yellow gradient background */}
           <div className="absolute inset-0 bg-gradient-to-bl from-amber-200 via-orange-100 to-yellow-50 z-0" />
           <div className="absolute inset-0 bg-amber-500/0 group-hover:bg-amber-500/5 transition-colors duration-500 z-10" />
           
