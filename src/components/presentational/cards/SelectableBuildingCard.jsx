@@ -30,16 +30,17 @@ function SelectableBuildingCard({
       onClick={onClick}
       style={{ height: '116px' }}
       className={`
-        flex flex-col gap-3 p-4 bg-white rounded-2xl border-2 
-        transition-all duration-200 cursor-pointer
+        w-full text-left p-3 rounded-2xl border 
+        transition-[border-color,box-shadow,transform] duration-200 
+        group relative overflow-hidden
         ${isSelected
-          ? 'border-primary-500 shadow-md'
-          : 'border-neutral-200 hover:border-primary-400 hover:shadow-lg'
+          ? 'bg-primary-50 border-primary-500 ring-1 ring-primary-500'
+          : 'bg-white border-neutral-200 hover:border-primary-300 hover:shadow-md hover:-translate-y-0.5'
         }
         ${className}
       `}
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between mb-2">
         <div
           className={`
             p-1.5 rounded-xl transition-colors
@@ -58,14 +59,14 @@ function SelectableBuildingCard({
         )}
       </div>
 
-      <h3 className="text-lg font-bold text-neutral-900 leading-tight break-words">
+      <div className="font-bold text-neutral-800 group-hover:text-primary-700 transition-colors text-sm leading-tight break-words">
         {name}
-      </h3>
-      
-      <p className="text-sm text-neutral-600">
+      </div>
+
+      <div className="text-xs text-neutral-500 mt-1 font-medium">
         {category}
-      </p>
-      
+      </div>
+
       <div className="absolute bottom-2 right-2 flex gap-1">
         {isUndergrad && (
           <Badge variant="blue" size="small">

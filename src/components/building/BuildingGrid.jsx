@@ -38,7 +38,7 @@ function BuildingGrid({
   // Listen for scroll progress changes to detect bottom
   useMotionValueEvent(scrollYProgress, 'change', (progress) => {
     // Show disclaimer when scrolled past 95% of the content
-    setIsAtBottom(progress > 0.95);
+    setIsAtBottom(progress > 0.985);
   });
   
   // Direction for enter and exit animations
