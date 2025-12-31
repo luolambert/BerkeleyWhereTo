@@ -74,7 +74,6 @@ function ImageCarousel({
 
   return (
     <div className={`relative group ${className}`}>
-      {/* Image display with crossfade and GPU acceleration */}
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -89,7 +88,6 @@ function ImageCarousel({
         />
       </AnimatePresence>
 
-      {/* Navigation arrows */}
       {showControls && hasMultiple && (
         <>
           <button
@@ -109,7 +107,6 @@ function ImageCarousel({
         </>
       )}
 
-      {/* Dot indicators */}
       {showDots && hasMultiple && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-40">
           {images.map((_, idx) => (

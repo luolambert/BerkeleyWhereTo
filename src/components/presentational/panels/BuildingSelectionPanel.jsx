@@ -53,9 +53,10 @@ const BuildingSelectionPanel = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  const modeDirection = modeSlideDirection === 'left' ? -1 : 1;
+
   return (
     <GlassPanel variant="elevated" padding="none" className="h-full w-full flex flex-col overflow-hidden rounded-3xl">
-      {/* Header - Fixed, not animated */}
       <div className="p-6 border-b border-neutral-100 flex items-center gap-4 bg-white/50 shrink-0">
         <SearchInput
           ref={inputRef}
@@ -82,7 +83,6 @@ const BuildingSelectionPanel = ({
         </button>
       </div>
 
-      {/* Mode Transition: Categories + Cards */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <SlideTransition
           activeKey={mode}
@@ -90,7 +90,6 @@ const BuildingSelectionPanel = ({
           gap={70}
           className="flex-1 flex flex-col overflow-hidden"
         >
-          {/* Categories - Only animated by mode change */}
           <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20">
             <CategoryPills
               categories={categories}
@@ -99,7 +98,6 @@ const BuildingSelectionPanel = ({
             />
           </div>
 
-          {/* Category Transition: Cards only */}
           <div className="flex-1 overflow-hidden">
             <SlideTransition
               activeKey={activeCategory}

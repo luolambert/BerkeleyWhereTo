@@ -16,18 +16,15 @@ function useBuildingFilter(buildings, searchTerm, activeCategory, categories) {
     if (!buildings || buildings.length === 0) return [];
 
     return buildings.filter((b) => {
-      // Search filter
       const matchesSearch = b.name
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
       if (!matchesSearch) return false;
 
-      // Category filter
       if (activeCategory === "all") return true;
       if (activeCategory === "popular") return b.popular;
 
-      // Find category definition
       const categoryDef = categories.find(c => c.id === activeCategory);
       if (categoryDef && categoryDef.match) {
         return categoryDef.match.includes(b.category);

@@ -12,7 +12,6 @@ const BuildingSelect = ({ label, value, onFocus, placeholder, icon: Icon, isActi
         </AnimatedText>
       </label>
       
-      {/* Trigger Button */}
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}

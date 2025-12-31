@@ -53,21 +53,18 @@ function BuildingCard({
           </div>
         </div>
       )}
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-
-      {/* Hover "View Details" badge */}
-      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
+      <div className="absolute bottom-3 left-0 right-0 px-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 group-hover:translate-y-0">
         <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
           <AnimatedText textKey={`viewDetails-${language}`}>
             {viewDetailsText}
           </AnimatedText>
         </span>
       </div>
-
-      {/* Text Content - Overlaid at bottom */}
-      <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10 h-full">
+      
+      <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm">
           {title}
         </h3>

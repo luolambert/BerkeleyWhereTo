@@ -50,7 +50,6 @@ function LandingPage() {
           <motion.div 
             className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center"
           >
-            {/* Logo with hover animation */}
             <motion.div
               animate={{ 
                 scale: hoveredSide === 'go' ? 1.1 : 1,
@@ -78,7 +77,6 @@ function LandingPage() {
               staggerDelay={0.16}
             />
             
-            {/* Solid Primary Button Style */}
             <div className="mt-8">
               <ShimmerButton
                 className="shadow-2xl hover:scale-105 transition-transform"
@@ -120,7 +118,6 @@ function LandingPage() {
           <motion.div 
             className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center"
           >
-            {/* Logo with hover animation */}
             <motion.div
               animate={{ 
                 scale: hoveredSide === 'know' ? 1.1 : 1,
@@ -148,7 +145,6 @@ function LandingPage() {
               staggerDelay={0.16}
             />
             
-            {/* Solid Secondary Button Style */}
             <div className="mt-8">
               <ShimmerButton
                 className="shadow-2xl hover:scale-105 transition-transform"

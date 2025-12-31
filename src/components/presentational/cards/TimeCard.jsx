@@ -71,10 +71,8 @@ function TimeCard({
         }}
       />
 
-      {/* Subtle Gradient Glow on Hover */}
       <div className={`absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${styles.hoverGlow} z-0`} />
 
-      {/* Content */}
       <div className={`mb-2 p-2.5 rounded-2xl ${styles.iconBg} ${styles.iconText} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm relative z-10 ring-1 ring-inset ring-black/5`}>
         <Icon size={22} className="stroke-[2.5px]" />
       </div>

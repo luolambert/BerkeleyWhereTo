@@ -61,8 +61,7 @@ function InfoListSection({
 
   return (
     <section className={`${styles.bg} rounded-2xl p-8 border ${styles.border}`}>
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-2 mb-4">
         {Icon && <Icon className={`w-6 h-6 ${styles.iconColor}`} />}
         <h3 className={`text-xl font-bold ${styles.titleColor}`}>
           <AnimatedText textKey={`${sectionKey}-title-${language}`}>
@@ -71,8 +70,7 @@ function InfoListSection({
         </h3>
       </div>
 
-      {/* List */}
-      <ul className="space-y-4">
+      <ul className="space-y-3">
         {items.map((item, index) => (
           <li key={index} className={`flex gap-3 ${styles.textColor}`}>
             <span className={`font-bold ${styles.bulletColor} select-none`}>•</span>

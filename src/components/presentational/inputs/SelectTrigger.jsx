@@ -27,9 +27,9 @@ function SelectTrigger({
   className = '',
 }) {
   return (
-    <div className={`relative group ${className}`}>
+    <div className="flex flex-col space-y-2">
       {/* Label */}
-      <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1.5 ml-1">
+      <label className="text-neutral-600 text-sm font-medium flex items-center gap-2">
         <AnimatedText textKey={`label-${label}-${language}`}>
           {label}
         </AnimatedText>

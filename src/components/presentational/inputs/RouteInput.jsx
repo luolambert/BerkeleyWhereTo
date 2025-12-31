@@ -82,7 +82,6 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             {/* Glossy Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-50" />
             
-            {/* Content */}
             <span className="relative z-10 flex items-center justify-center gap-3 text-white font-bold text-lg tracking-wide">
                 {isCalculating ? (
                     <AnimatedText textKey={`calculating-${language}`}>

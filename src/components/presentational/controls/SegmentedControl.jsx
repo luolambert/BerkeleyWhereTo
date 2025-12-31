@@ -77,7 +77,6 @@ function SegmentedControl({
       ref={containerRef}
       className="flex items-center p-1 bg-neutral-100/95 backdrop-blur-md rounded-full border border-neutral-200/60 shadow-inner relative"
     >
-      {/* Liquid Glass Sliding Indicator - Container Level */}
       <motion.div
         className="absolute top-1 bottom-1 rounded-full pointer-events-none"
         style={{
@@ -98,7 +97,6 @@ function SegmentedControl({
         transition={isInitialized ? LIQUID_GLASS_SPRING : { duration: 0 }}
       />
       
-      {/* Option Buttons */}
       {options.map((option, index) => {
         const isActive = activeId === option.id;
         

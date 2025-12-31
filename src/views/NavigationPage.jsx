@@ -42,7 +42,6 @@ function NavigationPage({ isLoaded }) {
             />
         </div>
 
-        {/* Berkeley Seal (Top Right) */}
         <div className="absolute top-4 right-4 z-20 pointer-events-auto">
             <img 
                 src={EXTERNAL_LINKS.BERKELEY_SEAL}
@@ -53,7 +52,6 @@ function NavigationPage({ isLoaded }) {
 
         {/* Floating Panel Container */}
         <div className="absolute inset-0 z-10 pointer-events-none flex flex-col sm:flex-row p-4 sm:p-6 gap-4 sm:gap-6">
-            {/* Left Panel - Route Input */}
             <div className="relative w-full sm:w-[400px] lg:w-[450px] shrink-0 flex flex-col justify-center pointer-events-auto">
                 <div className="w-full space-y-3">
                 <Header 
@@ -69,7 +67,6 @@ function NavigationPage({ isLoaded }) {
                     onReset={resetNavigation}
                 />
                 
-                {/* Results Area */}
                 <div className="relative min-h-[100px] space-y-2">
                     <AnimatePresence mode="wait">
                         {travelTimes && (
@@ -92,7 +89,6 @@ function NavigationPage({ isLoaded }) {
                 </div>
             </div>
 
-            {/* Right Panel - Building Selection (Floating) */}
             <AnimatePresence>
                 {activeField && (
                     <div className="flex-1 relative min-w-0 pointer-events-none">

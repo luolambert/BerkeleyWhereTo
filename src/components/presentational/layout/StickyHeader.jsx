@@ -17,7 +17,7 @@ function StickyHeader({
 }) {
   return (
     <motion.div
-      className={`sticky top-0 z-40 -mx-6 sm:-mx-8 px-8 mb-6 ${className}`}
+      className={`sticky top-0 z-50 -mx-6 sm:-mx-8 px-6 sm:px-8 mb-6 ${className}`}
       style={{
         height: style.height,
         paddingTop: style.paddingTop,
@@ -35,7 +35,7 @@ function StickyHeader({
         }}
       />
       {/* Content */}
-      <div className="mx-auto w-full max-w-[1920px] h-full relative">
+      <div className="mx-auto w-full max-w-[1920px] h-full relative z-10">
         {children}
       </div>
     </motion.div>

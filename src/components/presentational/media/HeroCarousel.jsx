@@ -36,8 +36,7 @@ function HeroCarousel({
   }
 
   return (
-    <div className="relative w-full h-screen group bg-black">
-      {/* Image with crossfade */}
+    <div className="relative w-full h-screen overflow-hidden bg-neutral-100 group">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -50,9 +49,8 @@ function HeroCarousel({
           className="absolute inset-0 w-full h-full object-cover"
         />
       </AnimatePresence>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
 
       {/* Navigation Arrows */}
       {hasMultiple && (
@@ -68,7 +66,6 @@ function HeroCarousel({
             className="absolute right-4 top-1/2 -translate-y-1/2 z-40 opacity-0 group-hover:opacity-100"
           />
 
-          {/* Dots Indicator */}
           <CarouselDots
             total={images.length}
             current={currentIndex}
@@ -77,8 +74,7 @@ function HeroCarousel({
           />
         </>
       )}
-
-      {/* Scroll Indicator */}
+      
       <div className="absolute bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
         <div className="flex flex-col items-center gap-2 text-white/80 animate-bounce">
           <span className="text-xs font-medium tracking-widest uppercase">{scrollText}</span>

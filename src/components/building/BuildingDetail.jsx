@@ -97,10 +97,8 @@ function BuildingDetail({
           />
         </AnimatePresence>
         
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
         
-        {/* Navigation Arrows */}
         {hasMultiple && (
           <>
             <CarouselArrow
@@ -114,7 +112,6 @@ function BuildingDetail({
               className="absolute right-4 top-1/2 -translate-y-1/2 z-40 opacity-0 group-hover:opacity-100"
             />
 
-            {/* Dots Indicator */}
             <CarouselDots
               total={images.length}
               current={currentIndex}
@@ -129,7 +126,6 @@ function BuildingDetail({
           className="absolute top-6 left-6 z-50"
         />
 
-        {/* Bottom Left Info */}
         <div className="absolute bottom-0 left-0 w-full p-6 sm:p-10 z-30 flex flex-col justify-end h-full pb-24 pointer-events-none">
           <div className="max-w-7xl mx-auto w-full pointer-events-auto">
             <motion.h1 
@@ -144,7 +140,6 @@ function BuildingDetail({
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
             <div className="flex flex-col items-center gap-2 text-white/80 animate-bounce">
                 <span className="text-xs font-medium tracking-widest uppercase">{labels.scroll}</span>
@@ -156,7 +151,6 @@ function BuildingDetail({
       {/* Content Section */}
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
         
-        {/* Summary & Description */}
         <section>
           <h2 className="text-2xl font-bold text-neutral-900 mb-4 border-l-4 border-blue-500 pl-4">
             <AnimatedText textKey={`intro-${language}`}>
@@ -171,7 +165,6 @@ function BuildingDetail({
           </div>
         </section>
 
-        {/* Fun Facts */}
         {building.funFacts && (
           <InfoListSection
             icon={BookOpen}
@@ -183,7 +176,6 @@ function BuildingDetail({
           />
         )}
 
-        {/* Student Tips */}
         {building.studentTips && (
           <InfoListSection
             icon={Info}
@@ -195,7 +187,6 @@ function BuildingDetail({
           />
         )}
 
-        {/* Legend & Photo Spots Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {building.relatedLegend && (
             <InfoListSection
@@ -220,7 +211,6 @@ function BuildingDetail({
           )}
         </div>
 
-        {/* Accessibility & Link */}
         <div className="flex flex-col sm:flex-row gap-6 pt-8 border-t border-neutral-100">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2 text-neutral-900 font-bold">
@@ -255,7 +245,6 @@ function BuildingDetail({
           )}
         </div>
 
-        {/* Tags */}
         {building.tags && (
           <div className="flex flex-wrap gap-2 pt-4">
             {building.tags.map((tag, index) => (

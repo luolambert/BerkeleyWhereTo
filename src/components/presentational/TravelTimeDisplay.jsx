@@ -49,7 +49,6 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
       exit="exit"
       className="grid grid-cols-2 gap-3 mt-3 overflow-hidden"
     >
-      {/* Walking Card */}
       <motion.div variants={item}>
         <TimeCard
           icon={Footprints}
@@ -63,7 +62,6 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
         />
       </motion.div>
 
-      {/* Scooter Card */}
       <motion.div variants={item}>
         <TimeCard
           icon={Bike}

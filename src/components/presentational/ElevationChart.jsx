@@ -40,10 +40,9 @@ const ElevationChart = ({ data }) => {
       initial={{ opacity: 0, y: 10, height: 0 }}
       animate={{ opacity: 1, y: 0, height: 'auto' }}
       exit={{ opacity: 0, y: 10, height: 0 }}
-      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }} // smooth easeOutQuint-ish
+      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }} 
       className="glass-liquid w-full overflow-hidden"
     >
-      {/* Header row: title on left, stats on right */}
       <div className="flex justify-between items-center px-4 pt-4 pb-2">
         <h3 className="text-sm font-bold text-neutral-700 uppercase tracking-widest ml-2">
           <AnimatedText textKey={`elevProfile-${language}`}>
@@ -66,7 +65,6 @@ const ElevationChart = ({ data }) => {
         </div>
       </div>
       
-      {/* Chart area - expanded height */}
       <div className="h-32 w-full -ml-[6px] relative z-0">
         <ResponsiveContainer width="101%" height="100%">
           <AreaChart

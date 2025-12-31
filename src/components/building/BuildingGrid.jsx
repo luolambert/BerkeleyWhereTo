@@ -23,7 +23,7 @@ function BuildingGrid({
   onSortChange, 
   slideDirection, // Direction is now calculated at click time
   currentView,
-  textConfig  // NEW: text configuration from Container
+  textConfig
 }) {
   const scrollRef = React.useRef(null);
   const logoRef = React.useRef(null);
@@ -47,7 +47,6 @@ function BuildingGrid({
   const enterDirection = slideDirection;
   const exitDirection = -slideDirection;
   
-  // Use extracted scroll animation hook
   const {
     contentOffsetY,
     header,
@@ -57,7 +56,6 @@ function BuildingGrid({
     controls,
   } = useHeaderScrollAnimation(scrollRef, containerRef, logoRef);
 
-  // Typewriter words for subtitle - split by language
   const subtitleWords = React.useMemo(() => {
     const isCN = language === 'CN';
     if (isCN) {
@@ -133,7 +131,6 @@ function BuildingGrid({
             }}
           />
           <div ref={containerRef} className="mx-auto w-full max-w-[1920px] h-full relative">
-             {/* Main Header Component (Logo) */}
              <motion.div 
                ref={logoRef}
                className="absolute w-auto"
@@ -155,7 +152,6 @@ function BuildingGrid({
                 />
              </motion.div>
 
-             {/* Subtitle with Typewriter Effect */}
              <motion.div 
                className="absolute flex justify-center w-full"
                style={{
@@ -178,7 +174,6 @@ function BuildingGrid({
                 />
              </motion.div>
 
-             {/* Controls Row */}
              <motion.div 
                className="absolute flex items-center gap-4 w-auto"
                style={{
@@ -188,7 +183,6 @@ function BuildingGrid({
                  y: controls.y
                }}
              >
-                {/* Sort Control - iOS Segmented Control Style */}
                 <SegmentedControl
                   options={sortOptions}
                   activeId={sortMethod}
@@ -197,7 +191,6 @@ function BuildingGrid({
                   language={language}
                 />
                 
-                {/* Language Toggle */}
                 <LanguageToggle language={language} onToggle={onToggleLanguage} variant="floating" direction="right" />
              </motion.div>
           </div>

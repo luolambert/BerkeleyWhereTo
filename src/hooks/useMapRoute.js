@@ -109,7 +109,6 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
       setColoredSegments([]);
       if (onElevationLoaded) onElevationLoaded(null);
       
-      // Reset map view
       if (map) {
         map.panTo(BERKELEY_CENTER);
         map.setZoom(DEFAULT_ZOOM);
@@ -146,7 +145,6 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
   useEffect(() => {
     if (!map) return;
 
-    // Initialize renderer
     if (!directionsRendererRef.current) {
       directionsRendererRef.current = new window.google.maps.DirectionsRenderer({
         suppressMarkers: true,
@@ -169,13 +167,11 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
       renderer.setDirections({ routes: [] });
     }
 
-    // Clear existing polylines
     if (polylinesRef.current) {
       polylinesRef.current.forEach(polyline => polyline.setMap(null));
       polylinesRef.current = [];
     }
 
-    // Draw colored segments
     if (coloredSegments.length > 0) {
       const newPolylines = coloredSegments.map(segment => {
         return new window.google.maps.Polyline({
