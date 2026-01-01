@@ -1,7 +1,7 @@
 // TypeA LandingPage - Optimized for mobile portrait + iPad portrait (< 1024px)
 // Layout: Vertical stacking (flex-col), supports both hover and tap interactions
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, LayoutGroup } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import logoGo from '../../assets/WhereToGo_Logo.png';
@@ -16,15 +16,12 @@ import { InteractiveGridPattern } from '../../components/ui/interactive-grid-pat
 function LandingPage() {
   const navigate = useNavigate();
   const [activeSide, setActiveSide] = useState(null); // 'go' | 'know' | null
-
-  // Unified handler for both hover and tap interactions
-  const handleInteraction = (side) => {
-    setActiveSide(prev => prev === side ? null : side);
-  };
+  const containerRef = useRef(null);
 
   return (
     <motion.div 
-      className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col"
+      ref={containerRef}
+      className="relative w-full h-screen overflow-hidden bg-neutral-50 flex flex-col touch-none"
       variants={FADE_VARIANTS}
       initial="initial"
       animate="animate"
@@ -34,17 +31,17 @@ function LandingPage() {
         className="fixed inset-0 z-[5] opacity-90"
         width={20}
         height={20}
-        squares={[60, 40]}
+        squares={[60, 80]}
         hoveredSide={activeSide}
+        layout="vertical"
+        containerRef={containerRef}
       />
       
       <LayoutGroup>
         {/* Go Section - Top Half */}
         <motion.div 
           className="relative group overflow-hidden cursor-pointer"
-          onMouseEnter={() => setActiveSide('go')}
-          onMouseLeave={() => setActiveSide(null)}
-          onClick={() => handleInteraction('go')}
+          onPointerDown={() => setActiveSide('go')}
           initial={false}
           animate={{ 
             flex: activeSide === 'go' ? 1.3 : (activeSide === 'know' ? 0.7 : 1) 
@@ -125,9 +122,7 @@ function LandingPage() {
         {/* Know Section - Bottom Half */}
         <motion.div 
           className="relative group overflow-hidden cursor-pointer"
-          onMouseEnter={() => setActiveSide('know')}
-          onMouseLeave={() => setActiveSide(null)}
-          onClick={() => handleInteraction('know')}
+          onPointerDown={() => setActiveSide('know')}
           initial={false}
           animate={{ 
             flex: activeSide === 'know' ? 1.3 : (activeSide === 'go' ? 0.7 : 1) 

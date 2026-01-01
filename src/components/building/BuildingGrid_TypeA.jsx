@@ -127,11 +127,11 @@ function BuildingGrid_TypeA({
             {/* Expanded State: Centered vertical layout */}
             {!isScrolled && (
               <motion.div 
-                className="flex flex-col items-center gap-1 w-full"
+                className="flex flex-col items-center gap-1 w-full -mt-[25px]"
                 style={{ opacity: fadeOut.opacity, scale: fadeOut.scale }}
               >
                 {/* Row 1: Logo + Title */}
-                <motion.div style={{ scale: logoScale }}>
+                <motion.div style={{ scale: logoScale }} className="-mt-[2px]">
                   <Header 
                     currentView={currentView} 
                     centered={true}
@@ -140,20 +140,20 @@ function BuildingGrid_TypeA({
                   />
                 </motion.div>
                 
-                {/* Row 2: Subtitle - text-[14px] (×1.1 from 13px), -mt-[1px] for tighter spacing */}
+                {/* Row 2: Subtitle - enlarged 1.1x to 15.4px, raised 4mm */}
                 <TypewriterEffectSmooth
                   key={`subtitle-typewriter-${language}`}
                   words={subtitleWords}
-                  className="px-2 -mt-[1px]"
-                  textClassName="font-medium !text-neutral-600 !text-[14px]"
+                  className="px-2 -mt-[15px]"
+                  textClassName="font-medium !text-neutral-600 !text-[15.4px]"
                   hideCursor={false}
                   cursorClassName="!h-[calc(1.1em+0.1mm)] !w-[2px] bg-amber-500 translate-y-[0.45mm]"
                   duration={1.9}
                   delay={0.3}
                 />
                 
-                {/* Row 3: Controls + Language - scale-90 for controls */}
-                <div className="flex items-center justify-center gap-3 mt-1">
+                {/* Row 3: Controls + Language - raised 7mm total */}
+                <div className="flex items-center justify-center gap-3 mt-[4px]">
                   <div className="scale-90 origin-center">
                     <SegmentedControl
                       options={sortOptions}
@@ -174,16 +174,16 @@ function BuildingGrid_TypeA({
               </motion.div>
             )}
             
-            {/* Collapsed State: Grid layout for reliable positioning */}
+            {/* Collapsed State: Grid layout with 1.5mm upward shift */}
             {isScrolled && (
               <motion.div 
-                className="grid grid-cols-[auto_1fr_auto] items-center w-full gap-2"
+                className="grid grid-cols-[auto_1fr_auto] items-center w-full gap-2 -translate-y-[2px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
                 {/* Left: Logo only (hideTitle for narrow screens) */}
-                <motion.div style={{ scale: logoScale }} className="flex-shrink-0">
+                <motion.div style={{ scale: logoScale }} className="flex-shrink-0 scale-150 origin-left">
                   <Header 
                     currentView={currentView} 
                     centered={false}
@@ -221,8 +221,8 @@ function BuildingGrid_TypeA({
           </div>
         </motion.div>
 
-        {/* Scrollable Content */}
-        <div className="px-4">
+        {/* Scrollable Content - raised 5mm */}
+        <div className="px-4 -mt-[19px]">
           <AnimatePresence mode="popLayout" initial={false} custom={enterDirection}>
             <motion.div 
               key={sortMethod}

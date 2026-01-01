@@ -90,7 +90,7 @@ function SegmentedControl({
       className="flex items-center p-1 bg-neutral-100/95 backdrop-blur-md rounded-full border border-neutral-200/60 shadow-inner relative"
     >
       <motion.div
-        className="absolute top-1 bottom-1 rounded-full pointer-events-none"
+        className="absolute inset-1 rounded-full pointer-events-none"
         style={{
           background: 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,250,250,0.95) 100%)',
           boxShadow: `

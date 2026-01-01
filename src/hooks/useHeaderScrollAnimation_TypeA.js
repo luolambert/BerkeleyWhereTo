@@ -25,8 +25,8 @@ function useHeaderScrollAnimation_TypeA(scrollRef) {
     bgOpacity: useTransform(headerAnimationProgress, [0, 1], [0, 0.95]),
   };
 
-  // Logo scale - adjusted for TypeA (0.85x of original)
-  const logoScale = useTransform(headerAnimationProgress, [0, 1], [0.68, 0.55]);
+  // Logo scale - enlarged 1.1x for TypeA
+  const logoScale = useTransform(headerAnimationProgress, [0, 1], [0.75, 0.60]);
 
   // Elements that fade out during scroll
   const fadeOut = {
