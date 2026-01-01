@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { SearchInput } from "../inputs";
 import { CategoryPills } from "../controls";
 import { ModeToggle } from "../buttons";
@@ -31,7 +32,9 @@ const BuildingSelectionPanel = ({
   // Required handlers from Container
   onSearchChange,
   onCategoryChange,
-  onModeChange
+  onModeChange,
+  // Layout variant
+  compact = false
 }) => {
   const inputRef = useRef(null);
 
@@ -57,7 +60,10 @@ const BuildingSelectionPanel = ({
 
   return (
     <GlassPanel variant="elevated" padding="none" className="h-full w-full flex flex-col overflow-hidden rounded-3xl">
-      <div className="p-6 border-b border-neutral-100 flex items-center gap-4 bg-white/50 shrink-0">
+      <div className={cn(
+        "border-b border-neutral-100 flex items-center gap-4 bg-white/50 shrink-0",
+        compact ? "p-3" : "p-6"
+      )}>
         <SearchInput
           ref={inputRef}
           value={searchTerm}
@@ -90,7 +96,10 @@ const BuildingSelectionPanel = ({
           gap={70}
           className="flex-1 flex flex-col overflow-hidden"
         >
-          <div className="px-6 py-3 border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20">
+          <div className={cn(
+            "border-b border-neutral-100 bg-white/50 shrink-0 overflow-hidden relative z-20",
+            compact ? "px-3 py-2" : "px-6 py-3"
+          )}>
             <CategoryPills
               categories={categories}
               activeId={activeCategory}
@@ -105,12 +114,19 @@ const BuildingSelectionPanel = ({
               gap={70}
               className="h-full"
             >
-              <div className="h-full overflow-y-auto no-scrollbar p-6 bg-neutral-50/50">
+              <div className={cn(
+                "h-full overflow-y-auto no-scrollbar bg-neutral-50/50",
+                compact ? "p-3" : "p-6"
+              )}>
                 {filteredBuildings && filteredBuildings.length > 0 ? (
                   <HoverEffect 
                     items={filteredBuildings}
-                    className="gap-3 py-0"
-                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))' }}
+                    className={compact ? "gap-2 py-0" : "gap-3 py-0"}
+                    style={{ 
+                      gridTemplateColumns: compact 
+                        ? 'repeat(2, 1fr)' 
+                        : 'repeat(auto-fill, minmax(185px, 1fr))' 
+                    }}
                     renderItem={(b) => (
                       <SelectableBuildingCard
                         key={b.id}

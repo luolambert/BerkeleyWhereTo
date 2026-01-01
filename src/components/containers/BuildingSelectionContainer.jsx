@@ -16,7 +16,7 @@ import useBuildingFilter from '../../hooks/useBuildingFilter';
  * 
  * BuildingSelectionPanel becomes a pure Presentational component
  */
-function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
+function BuildingSelectionContainer({ onSelect, onClose, selectedValue, compact = false }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("all");
   const [mode, setMode] = React.useState("freshman");
@@ -68,6 +68,7 @@ function BuildingSelectionContainer({ onSelect, onClose, selectedValue }) {
       onModeChange={handleModeChange}
       onSelect={onSelect}
       onClose={onClose}
+      compact={compact}
     />
   );
 }
