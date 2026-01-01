@@ -28,17 +28,19 @@ function BuildingGrid({
   const scrollRef = React.useRef(null);
   const logoRef = React.useRef(null);
   const containerRef = React.useRef(null);
-  
-  // Track if scrolled to bottom for disclaimer visibility
-  const [isAtBottom, setIsAtBottom] = React.useState(false);
+  const disclaimerRef = React.useRef(null);
   
   // Use Framer Motion's useScroll to track scroll progress
   const { scrollYProgress } = useScroll({ container: scrollRef });
   
-  // Listen for scroll progress changes to detect bottom
+  // Directly manipulate DOM to avoid React re-render that triggers Header animation
   useMotionValueEvent(scrollYProgress, 'change', (progress) => {
-    // Show disclaimer when scrolled past 95% of the content
-    setIsAtBottom(progress > 0.985);
+    if (disclaimerRef.current) {
+      const isAtBottom = progress > 0.985;
+      disclaimerRef.current.style.opacity = isAtBottom ? '1' : '0';
+      disclaimerRef.current.style.transform = isAtBottom ? 'translateY(0)' : 'translateY(20px)';
+      disclaimerRef.current.style.pointerEvents = isAtBottom ? 'auto' : 'none';
+    }
   });
   
   // Direction for enter and exit animations
@@ -260,22 +262,16 @@ function BuildingGrid({
         </AnimatePresence>
       </div>
       
-      <AnimatePresence>
-        {isAtBottom && (
-          <motion.div 
-            className="fixed bottom-4 left-4 z-50 pointer-events-none text-left"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <div className="text-[10px] text-neutral-400 font-medium bg-white/50 backdrop-blur-sm px-2 py-1 rounded-md border border-neutral-100 inline-block">
-              <p><AnimatedText textKey={`disclaimer1-${language}`}>{disclaimer[0]}</AnimatedText></p>
-              <p><AnimatedText textKey={`disclaimer2-${language}`}>{disclaimer[1]}</AnimatedText></p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Disclaimer - controlled via ref to avoid re-renders */}
+      <div 
+        ref={disclaimerRef}
+        className="fixed bottom-8 left-4 z-50 text-left transition-all duration-300 ease-out opacity-0 translate-y-5 pointer-events-none"
+      >
+        <div className="text-[10px] text-neutral-400 font-medium bg-white/50 backdrop-blur-sm px-2 py-1 rounded-md border border-neutral-100 inline-block">
+          <p><AnimatedText textKey={`disclaimer1-${language}`}>{disclaimer[0]}</AnimatedText></p>
+          <p><AnimatedText textKey={`disclaimer2-${language}`}>{disclaimer[1]}</AnimatedText></p>
+        </div>
+      </div>
     </motion.div>
   );
 }

@@ -1,18 +1,22 @@
 import React from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { AnimatePresence, LayoutGroup } from 'framer-motion';
-import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { NavigationProvider } from './context/NavigationContext';
 import { PreloadProvider } from './context/PreloadContext';
 import { ErrorBoundary } from './components/common';
 import { GitHubLink } from './components/presentational';
-import NavigationPage from './views/NavigationPage';
-import InfoPage from './views/InfoPage';
-import LandingPage from './views/LandingPage';
+import { useDeviceType } from './hooks/useDeviceType';
+import * as TypeAViews from './views/typeA';
+import * as TypeBViews from './views/typeB';
 import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
 
 function AppContent({ isLoaded }) {
   const location = useLocation();
+  const deviceType = useDeviceType();
+  
+  // Select views based on device type
+  const Views = deviceType === 'typeA' ? TypeAViews : TypeBViews;
 
   // Metadata updates
   React.useEffect(() => {
@@ -36,21 +40,21 @@ function AppContent({ isLoaded }) {
       <GitHubLink isGoPage={location.pathname === '/go'} />
       <LayoutGroup>
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<RootRedirector />} />
+          <Routes location={location} key={`${location.pathname}-${deviceType}`}>
+            <Route path="/" element={<RootRedirector Views={Views} />} />
             <Route 
               path="/go" 
               element={
                 <ErrorBoundary>
                   <NavigationProvider isLoaded={isLoaded}>
-                    <NavigationPage isLoaded={isLoaded} />
+                    <Views.NavigationPage isLoaded={isLoaded} />
                   </NavigationProvider>
                 </ErrorBoundary>
               } 
             />
             <Route path="/know" element={
               <ErrorBoundary>
-                <InfoPage />
+                <Views.InfoPage />
               </ErrorBoundary>
             } />
             <Route path="*" element={<Navigate to="/" replace />} />
@@ -61,7 +65,7 @@ function AppContent({ isLoaded }) {
   );
 }
 
-function RootRedirector() {
+function RootRedirector({ Views }) {
   const hostname = window.location.hostname;
   
   if (hostname.includes('berkeleywheretogo')) {
@@ -72,7 +76,7 @@ function RootRedirector() {
     return <Navigate to="/know" replace />;
   }
   
-  return <LandingPage />;
+  return <Views.LandingPage />;
 }
 
 function App() {
