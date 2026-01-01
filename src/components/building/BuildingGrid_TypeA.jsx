@@ -29,13 +29,19 @@ function BuildingGrid_TypeA({
   textConfig
 }) {
   const scrollRef = React.useRef(null);
-  const [isAtBottom, setIsAtBottom] = React.useState(false);
+  const disclaimerRef = React.useRef(null);
   const [isScrolled, setIsScrolled] = React.useState(false);
   
   const { scrollYProgress } = useScroll({ container: scrollRef });
   
+  // Directly manipulate DOM to avoid React re-render that triggers Header animation
   useMotionValueEvent(scrollYProgress, 'change', (progress) => {
-    setIsAtBottom(progress > 0.985);
+    if (disclaimerRef.current) {
+      const isAtBottom = progress > 0.985;
+      disclaimerRef.current.style.opacity = isAtBottom ? '1' : '0';
+      disclaimerRef.current.style.transform = isAtBottom ? 'translateY(0)' : 'translateY(20px)';
+      disclaimerRef.current.style.pointerEvents = isAtBottom ? 'auto' : 'none';
+    }
   });
 
   // Use simplified header animation hook
@@ -222,7 +228,7 @@ function BuildingGrid_TypeA({
         </motion.div>
 
         {/* Scrollable Content - raised 5mm */}
-        <div className="px-4 -mt-[19px]">
+        <div className="px-4 -mt-[11px]">
           <AnimatePresence mode="popLayout" initial={false} custom={enterDirection}>
             <motion.div 
               key={sortMethod}
@@ -287,23 +293,16 @@ function BuildingGrid_TypeA({
         </div>
       </div>
       
-      {/* Disclaimer - bottom-3 for closer to bottom edge */}
-      <AnimatePresence>
-        {isAtBottom && (
-          <motion.div 
-            className="fixed bottom-3 left-4 right-4 z-50 pointer-events-none"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <div className="text-[9px] text-neutral-400 font-medium bg-white/70 backdrop-blur-sm px-3 py-2 rounded-lg border border-neutral-100 text-center">
-              <p>{disclaimer[0]}</p>
-              <p>{disclaimer[1]}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Disclaimer - controlled via ref to avoid re-renders */}
+      <div 
+        ref={disclaimerRef}
+        className="fixed bottom-[39px] left-4 right-4 z-50 pointer-events-none transition-all duration-300 ease-out opacity-0 translate-y-5"
+      >
+        <div className="text-[9px] text-neutral-400 font-medium bg-white/70 backdrop-blur-sm px-3 py-2 rounded-lg border border-neutral-100 text-center">
+          <p>{disclaimer[0]}</p>
+          <p>{disclaimer[1]}</p>
+        </div>
+      </div>
     </motion.div>
   );
 }

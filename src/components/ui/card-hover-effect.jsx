@@ -30,9 +30,10 @@ export const HoverEffect = ({
       {items.map((item, idx) => (
         <div
           key={item?.id || idx}
-          className="relative group block h-full w-full"
+          className="relative group block h-full w-full cursor-pointer"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onTouchStart={() => setHoveredIndex(idx)}
         >
           <AnimatePresence mode="sync">
             {hoveredIndex === idx && (

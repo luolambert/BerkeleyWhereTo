@@ -10,7 +10,7 @@ import { SLIDE_VARIANTS } from '../../../constants/animations';
 import { PrimaryButton, IconButton } from '../buttons';
 import { RippleButton } from '../../ui/ripple-button';
 
-function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset }) {
+function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset, compact = false }) {
   const { isCalculating, language, toggleLanguage } = useNavigation();
   const { t } = useTranslation(language);
   
@@ -20,12 +20,20 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
       initial="initial"
       animate="animate"
     >
-      <div className="w-full glass-liquid p-5 sm:p-6 space-y-4 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+      <div className={compact 
+        ? "w-full p-0 space-y-3 relative" 
+        : "w-full glass-liquid p-5 sm:p-6 space-y-4 relative overflow-hidden"
+      }>
+        {!compact && (
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+        )}
         
         <div className="flex items-center justify-between relative z-10">
-          <h2 className="text-2xl font-bold text-neutral-800 flex items-center gap-3">
-            <Navigation size={26} strokeWidth={2.5} className="text-primary-600 fill-primary-600/10" />
+          <h2 className={compact 
+            ? "text-lg font-bold text-neutral-800 flex items-center gap-2"
+            : "text-2xl font-bold text-neutral-800 flex items-center gap-3"
+          }>
+            <Navigation size={compact ? 20 : 26} strokeWidth={2.5} className="text-primary-600 fill-primary-600/10" />
             <AnimatedText textKey={`planRoute-${language}`}>
               {t('navigation.planRoute')}
             </AnimatedText>
@@ -42,7 +50,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
           </div>
         </div>
 
-        <div className="space-y-4 relative z-10">
+        <div className={compact ? "space-y-3 relative z-10" : "space-y-4 relative z-10"}>
           <BuildingSelect 
             label={t('navigation.start')}
             value={startLocation}
@@ -69,7 +77,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             rippleColor="rgba(255, 255, 255, 0.4)"
             duration="600ms"
             className={`
-                w-full relative group overflow-hidden rounded-full p-4 mt-3
+                w-full relative group overflow-hidden rounded-full ${compact ? 'p-3 mt-2' : 'p-4 mt-3'}
                 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
                 shadow-lg hover:shadow-primary-500/30
                 ${isCalculating ? 'cursor-not-allowed opacity-80' : ''}
@@ -79,7 +87,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
             
             <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-50" />
             
-            <span className="relative z-10 flex items-center justify-center gap-3 text-white font-bold text-lg tracking-wide">
+            <span className={`relative z-10 flex items-center justify-center gap-3 text-white font-bold ${compact ? 'text-base' : 'text-lg'} tracking-wide`}>
                 {isCalculating ? (
                     <AnimatedText textKey={`calculating-${language}`}>
                     {t('navigation.calculating')}

@@ -110,8 +110,26 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
       if (onElevationLoaded) onElevationLoaded(null);
       
       if (map) {
-        map.panTo(BERKELEY_CENTER);
-        map.setZoom(DEFAULT_ZOOM);
+        // Adjust for mobile Drawer offset
+        const isMobile = window.innerWidth < 640;
+        if (isMobile) {
+          // Create bounds around Berkeley center to use fitBounds with padding
+          const bounds = new window.google.maps.LatLngBounds();
+          bounds.extend(BERKELEY_CENTER);
+          bounds.extend({ lat: BERKELEY_CENTER.lat + 0.005, lng: BERKELEY_CENTER.lng + 0.005 });
+          bounds.extend({ lat: BERKELEY_CENTER.lat - 0.005, lng: BERKELEY_CENTER.lng - 0.005 });
+          
+          const viewportHeight = window.innerHeight;
+          map.fitBounds(bounds, {
+            top: 80,
+            right: 50,
+            bottom: Math.round(viewportHeight * 0.55) + 50,
+            left: 50
+          });
+        } else {
+          map.panTo(BERKELEY_CENTER);
+          map.setZoom(DEFAULT_ZOOM);
+        }
       }
     }
 
@@ -124,9 +142,10 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
       const bounds = new window.google.maps.LatLngBounds();
       directions.routes[0].overview_path.forEach(point => bounds.extend(point));
       
-      // Responsive padding
+      // Responsive padding considering UI overlays
       const isDesktop = window.innerWidth >= 1024;
       const isTablet = window.innerWidth >= 640;
+      const viewportHeight = window.innerHeight;
 
       let padding = { top: 50, right: 50, bottom: 50, left: 50 };
       if (isDesktop) {
@@ -134,7 +153,9 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
       } else if (isTablet) {
         padding.left = 430;
       } else {
-        padding.top = 200;
+        // Mobile: bottom Drawer takes ~55vh, add extra padding
+        padding.bottom = Math.round(viewportHeight * 0.55) + 50;
+        padding.top = 80;
       }
 
       map.fitBounds(bounds, padding);

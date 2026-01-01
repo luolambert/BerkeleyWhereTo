@@ -13,8 +13,10 @@ const containerStyle = {
 /**
  * MapContainer Component
  * Displays Google Map with route visualization and elevation-based coloring
+ * 
+ * @param {boolean} hideLegend - Hide the slope legend (for TypeA where legend is in Drawer)
  */
-function MapContainer({ isLoaded, routePoints, onElevationLoaded }) {
+function MapContainer({ isLoaded, routePoints, onElevationLoaded, hideLegend = false }) {
   const { language } = useNavigation();
   
   const {
@@ -62,7 +64,8 @@ function MapContainer({ isLoaded, routePoints, onElevationLoaded }) {
         </>
       )}
       
-      {coloredSegments.length > 0 && (
+      {/* Only show legend when not hidden and has colored segments */}
+      {!hideLegend && directions && coloredSegments.length > 0 && (
         <MapLegend language={language} />
       )}
 
