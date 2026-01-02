@@ -47,7 +47,7 @@ function TravelTimeDisplay({ walkingTime, scooterTime }) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="grid grid-cols-2 gap-3 mt-3 overflow-hidden"
+      className="grid grid-cols-2 gap-3 mt-1 overflow-hidden p-1 pb-4 -m-1 -mb-4"
     >
       <motion.div variants={item}>
         <TimeCard

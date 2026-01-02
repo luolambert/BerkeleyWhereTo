@@ -47,12 +47,11 @@ function SegmentedControl({
     const activeButton = buttonRefs.current[activeId];
     
     if (container && activeButton) {
-      const containerRect = container.getBoundingClientRect();
-      const buttonRect = activeButton.getBoundingClientRect();
-      
+      // Use offsetLeft/offsetWidth instead of getBoundingClientRect
+      // to get layout coordinates unaffected by CSS transforms (e.g., scale-90)
       setIndicatorStyle({
-        left: buttonRect.left - containerRect.left,
-        width: buttonRect.width,
+        left: activeButton.offsetLeft,
+        width: activeButton.offsetWidth,
       });
       
       if (!isInitialized) {
@@ -90,8 +89,10 @@ function SegmentedControl({
       className="flex items-center p-1 bg-neutral-100/95 backdrop-blur-md rounded-full border border-neutral-200/60 shadow-inner relative"
     >
       <motion.div
-        className="absolute inset-1 rounded-full pointer-events-none"
+        className="absolute rounded-full pointer-events-none"
         style={{
+          top: '0.25rem',
+          bottom: '0.25rem',
           background: 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,250,250,0.95) 100%)',
           boxShadow: `
             0 1px 3px rgba(0,0,0,0.06),

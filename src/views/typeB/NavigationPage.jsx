@@ -65,7 +65,7 @@ function NavigationPage({ isLoaded }) {
                     onReset={resetNavigation}
                 />
                 
-                <div className="relative min-h-[100px] space-y-2">
+                <div className="relative min-h-[100px] space-y-2 p-2 -m-2">
                     <AnimatePresence mode="wait">
                         {travelTimes && (
                             <TravelTimeDisplay 
@@ -77,10 +77,12 @@ function NavigationPage({ isLoaded }) {
                     </AnimatePresence>
                     <AnimatePresence>
                         {elevationData && (
-                            <ElevationChart 
-                                key="elevation-chart"
-                                data={elevationData} 
-                            />
+                            <div className="mt-4">
+                                <ElevationChart 
+                                    key="elevation-chart"
+                                    data={elevationData} 
+                                />
+                            </div>
                         )}
                     </AnimatePresence>
                 </div>

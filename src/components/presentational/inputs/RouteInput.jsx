@@ -30,7 +30,7 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
         
         <div className="flex items-center justify-between relative z-10">
           <h2 className={compact 
-            ? "text-lg font-bold text-neutral-800 flex items-center gap-2"
+            ? "text-xl font-bold text-neutral-800 flex items-center gap-2"
             : "text-2xl font-bold text-neutral-800 flex items-center gap-3"
           }>
             <Navigation size={compact ? 20 : 26} strokeWidth={2.5} className="text-primary-600 fill-primary-600/10" />

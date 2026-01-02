@@ -1,9 +1,11 @@
 // TypeA BuildingGrid - Optimized for mobile portrait + iPad portrait (< 1024px)
 // V3: Fixed header layout using flex instead of absolute positioning
 
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Header, AnimatedText, LanguageToggle } from '../common';
+import { useNavigate } from 'react-router-dom';
+import { AnimatedText, LanguageToggle } from '../common';
+import { Header } from '../presentational/layout';
 import useHeaderScrollAnimation_TypeA from '../../hooks/useHeaderScrollAnimation_TypeA';
 import { PAGE_VARIANTS } from '../../constants/animations';
 import { BuildingCard } from '../presentational/cards';
@@ -31,6 +33,39 @@ function BuildingGrid_TypeA({
   const scrollRef = React.useRef(null);
   const disclaimerRef = React.useRef(null);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [showGoHeader, setShowGoHeader] = useState(false);
+  const navigate = useNavigate();
+  
+  // Toggle Go header visibility
+  const handleHeaderClick = useCallback((e) => {
+    e.stopPropagation();
+    setShowGoHeader(prev => !prev);
+  }, []);
+  
+  // Navigate to Go page
+  const handleNavigateToGo = useCallback((e) => {
+    e.stopPropagation();
+    navigate('/go');
+  }, [navigate]);
+  
+  // Close header when clicking outside
+  useEffect(() => {
+    if (!showGoHeader) return;
+    
+    const handleClickOutside = () => {
+      setShowGoHeader(false);
+    };
+    
+    // Delay to avoid immediate close from the same click
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 10);
+    
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showGoHeader]);
   
   const { scrollYProgress } = useScroll({ container: scrollRef });
   
@@ -136,15 +171,50 @@ function BuildingGrid_TypeA({
                 className="flex flex-col items-center gap-1 w-full -mt-[25px]"
                 style={{ opacity: fadeOut.opacity, scale: fadeOut.scale }}
               >
-                {/* Row 1: Logo + Title */}
-                <motion.div style={{ scale: logoScale }} className="-mt-[2px]">
-                  <Header 
-                    currentView={currentView} 
-                    centered={true}
-                    compact={true}
-                    hideSubtitle={true}
-                  />
-                </motion.div>
+                {/* Row 1: Logo + Title - clickable to toggle Go header */}
+                <div className="relative">
+                  <motion.div 
+                    style={{ scale: logoScale }} 
+                    className="-mt-[2px] cursor-pointer"
+                    onClick={handleHeaderClick}
+                  >
+                    <Header 
+                      currentView={currentView} 
+                      centered={true}
+                      compact={true}
+                      hideSubtitle={true}
+                      isHovering={false}
+                    />
+                  </motion.div>
+                  
+                  {/* Go Header - pops up below Know Header */}
+                  <AnimatePresence>
+                    {showGoHeader && (
+                      <motion.div
+                        className="absolute top-full left-1/2 -translate-x-1/2 -mt-[4mm] z-50"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.12, ease: 'easeOut' }}
+                      >
+                        <div 
+                          className="px-4 py-3 bg-white rounded-2xl cursor-pointer 
+                                     hover:bg-neutral-50 transition-colors border border-neutral-200
+                                     w-fit"
+                          style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08)' }}
+                          onClick={handleNavigateToGo}
+                        >
+                          <Header 
+                            currentView="navigation" 
+                            compact={true}
+                            hideSubtitle={false}
+                            isHovering={false}
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
                 
                 {/* Row 2: Subtitle - enlarged 1.1x to 15.4px, raised 4mm */}
                 <TypewriterEffectSmooth
@@ -188,14 +258,19 @@ function BuildingGrid_TypeA({
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
-                {/* Left: Logo only (hideTitle for narrow screens) */}
-                <motion.div style={{ scale: logoScale }} className="flex-shrink-0 scale-150 origin-left">
+                {/* Left: Logo only - clickable to toggle Go header */}
+                <motion.div 
+                  style={{ scale: logoScale }} 
+                  className="flex-shrink-0 scale-150 origin-left cursor-pointer"
+                  onClick={handleHeaderClick}
+                >
                   <Header 
                     currentView={currentView} 
                     centered={false}
                     compact={true}
                     hideTitle={true}
                     hideSubtitle={true}
+                    isHovering={false}
                   />
                 </motion.div>
                 
@@ -238,7 +313,7 @@ function BuildingGrid_TypeA({
               variants={{
                 initial: (dir) => ({ 
                   opacity: 0.8, 
-                  x: `${dir * 50}%` 
+                  x: `calc(${dir * 100}% + ${dir * 80}px)` 
                 }),
                 animate: { 
                   opacity: 1, 
@@ -246,7 +321,7 @@ function BuildingGrid_TypeA({
                 },
                 exit: (dir) => ({ 
                   opacity: 0.8, 
-                  x: `${-dir * 50}%` 
+                  x: `calc(${-dir * 100}% + ${-dir * 80}px)` 
                 }),
               }}
               initial="initial"

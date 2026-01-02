@@ -43,13 +43,13 @@ const ElevationChart = ({ data }) => {
       transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }} 
       className="glass-liquid w-full overflow-hidden"
     >
-      <div className="flex justify-between items-center px-4 pt-4 pb-2">
-        <h3 className="text-sm font-bold text-neutral-700 uppercase tracking-widest ml-2">
+      <div className="flex justify-between items-center px-4 pt-4 pb-2 scale-[0.95] origin-top-left">
+        <h3 className="text-sm font-bold text-neutral-700 uppercase tracking-widest whitespace-nowrap mr-4">
           <AnimatedText textKey={`elevProfile-${language}`}>
             {t('map.elevationProfile')}
           </AnimatedText>
         </h3>
-        <div className="flex gap-2">
+        <div className="flex gap-2 mr-1">
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50/50 border border-indigo-100/50">
             <span className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">
               <AnimatedText textKey={`climb-${language}`}>{t('map.climb')}</AnimatedText>
@@ -65,7 +65,7 @@ const ElevationChart = ({ data }) => {
         </div>
       </div>
       
-      <div className="h-32 w-full -ml-[6px] relative z-0">
+      <div className="h-32 w-full relative z-0 scale-[0.95] origin-top-left -ml-1">
         <ResponsiveContainer width="101%" height="100%">
           <AreaChart
             data={data}

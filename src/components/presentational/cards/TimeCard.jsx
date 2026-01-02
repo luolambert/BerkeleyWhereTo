@@ -13,6 +13,7 @@ function TimeCard({
   icon: Icon = Footprints,
   variant = 'primary', // 'primary' | 'secondary'
   language = 'EN',
+  labelKey = 'default',
 }) {
   const divRef = React.useRef(null);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
@@ -60,7 +61,7 @@ function TimeCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="glass-card relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+      className="glass-card shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08),0_8px_24px_-4px_rgba(0,0,0,0.06)] relative w-full p-4 flex flex-col items-center justify-center text-center overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
     >
       <div
         className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition duration-300 z-0"
@@ -84,7 +85,9 @@ function TimeCard({
       </div>
       
       <div className="text-[11px] font-bold text-neutral-400 uppercase tracking-widest relative z-10">
-        {label}
+        <AnimatedText textKey={`timecard-${labelKey}-${language}`}>
+          {label}
+        </AnimatedText>
       </div>
     </div>
   );

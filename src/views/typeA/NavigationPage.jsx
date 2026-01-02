@@ -2,11 +2,12 @@
 // Full-screen map with bottom Drawer, click-to-toggle header switch
 // Fixed: Drawer overlay, map centering, slope legend in drawer
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useNavigation } from '../../context/NavigationContext';
-import { Header, LanguageToggle } from '../../components/common';
+import { LanguageToggle } from '../../components/common';
+import { Header } from '../../components/presentational/layout';
 import MapContainer from '../../components/MapContainer';
 import { RouteInput } from '../../components/presentational/inputs';
 import { TravelTimeDisplay, ElevationChart } from '../../components/presentational';
@@ -96,14 +97,35 @@ function NavigationPage({ isLoaded }) {
   }, []);
 
   // Toggle Know header on click
-  const handleHeaderClick = useCallback(() => {
+  const handleHeaderClick = useCallback((e) => {
+    e.stopPropagation();
     setShowKnowHeader(prev => !prev);
   }, []);
 
   // Navigate to Know page
-  const handleNavigateToKnow = useCallback(() => {
+  const handleNavigateToKnow = useCallback((e) => {
+    e.stopPropagation();
     navigate('/know');
   }, [navigate]);
+  
+  // Close header when clicking outside
+  useEffect(() => {
+    if (!showKnowHeader) return;
+    
+    const handleClickOutside = () => {
+      setShowKnowHeader(false);
+    };
+    
+    // Delay to avoid immediate close from the same click
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 10);
+    
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showKnowHeader]);
 
   // Check if we have results
   const hasResults = !!travelTimes;
@@ -138,56 +160,65 @@ function NavigationPage({ isLoaded }) {
           showOverlay={false}
         >
           {/* Header Row - click to toggle Know header */}
-          <div className="px-6 py-3 flex items-center justify-between">
-            <div className="cursor-pointer" onClick={handleHeaderClick}>
-              <Header 
-                currentView="navigation" 
-                hasResults={hasResults}
-                hideSubtitle={true}
-                compact={true}
-              />
-            </div>
-            
-            {/* Show Language + Refresh next to Header when has results */}
-            {hasResults && (
-              <div className="flex items-center gap-2">
-                <LanguageToggle language={language} onToggle={toggleLanguage} variant="default" />
-                <IconButton
-                  icon={RefreshCw}
-                  onClick={resetNavigation}
-                  variant="ghost"
-                  title="Clear selection"
-                  className="hover:bg-neutral-100/50 rounded-full"
-                />
-              </div>
-            )}
-          </div>
-          
-          {/* Expandable Know Header */}
-          <AnimatePresence>
-            {showKnowHeader && (
-              <motion.div
-                className="px-6 py-2 bg-white/80 border-b border-neutral-100"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div 
-                  className="p-3 bg-neutral-50 rounded-xl cursor-pointer hover:bg-neutral-100 transition-colors"
-                  onClick={handleNavigateToKnow}
-                >
+          <div className="px-6 py-2 flex items-center justify-center">
+            <div className="relative flex-1 max-w-md">
+              {/* Main row: Go Header + Controls */}
+              <div className="flex items-center justify-center">
+                <div className="cursor-pointer" onClick={handleHeaderClick} style={{ marginLeft: '-2mm' }}>
                   <Header 
-                    currentView="info" 
+                    currentView="navigation" 
+                    hasResults={hasResults}
+                    hideSubtitle={true}
                     compact={true}
-                    hideSubtitle={false}
+                    isHovering={false}
                   />
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                
+                {/* Language + Refresh buttons */}
+                {hasResults && (
+                  <div className="flex items-center gap-[1mm] ml-[5mm]">
+                    <LanguageToggle language={language} onToggle={toggleLanguage} variant="default" />
+                    <IconButton
+                      icon={RefreshCw}
+                      onClick={resetNavigation}
+                      variant="ghost"
+                      title="Clear selection"
+                      className="hover:bg-neutral-100/50 rounded-full"
+                    />
+                  </div>
+                )}
+              </div>
+              
+              {/* Know Header - pops up above Go Header */}
+              <AnimatePresence>
+                {showKnowHeader && (
+                  <motion.div
+                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                  >
+                    <div 
+                      className="px-4 py-3 bg-white rounded-2xl shadow-lg cursor-pointer 
+                                 hover:bg-neutral-50 transition-colors border border-neutral-100
+                                 w-fit"
+                      onClick={handleNavigateToKnow}
+                    >
+                      <Header 
+                        currentView="info" 
+                        compact={true}
+                        hideSubtitle={false}
+                        isHovering={false}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
           
-          <div className="px-6 pb-3 space-y-3 overflow-y-auto flex-1">
+          <div className="px-[30px] pb-3 space-y-3 overflow-y-auto flex-1">
             {!hasResults ? (
               <RouteInput 
                 startLocation={startLocation}
@@ -199,15 +230,16 @@ function NavigationPage({ isLoaded }) {
                 compact={true}
               />
             ) : (
-              /* Results view */
-              <div className="space-y-3">
+              <div>
                 <TravelTimeDisplay 
                   walkingTime={travelTimes.walking}
                   scooterTime={travelTimes.scooter}
                 />
                 
                 {elevationData && (
-                  <ElevationChart data={elevationData} />
+                  <div className="mt-4">
+                    <ElevationChart data={elevationData} />
+                  </div>
                 )}
               </div>
             )}
@@ -242,7 +274,7 @@ function NavigationPage({ isLoaded }) {
       <AnimatePresence>
         {showBuildingPanel && (
           <motion.div 
-            className="fixed inset-0 z-[60] flex items-stretch justify-center p-3"
+            className="fixed inset-0 z-[60] flex items-stretch justify-center p-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

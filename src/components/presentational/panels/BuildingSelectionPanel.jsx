@@ -61,7 +61,7 @@ const BuildingSelectionPanel = ({
   return (
     <GlassPanel variant="elevated" padding="none" className="h-full w-full flex flex-col overflow-hidden rounded-3xl">
       <div className={cn(
-        "border-b border-neutral-100 flex items-center gap-4 bg-white/50 shrink-0",
+        "border-b border-neutral-100 bg-white/50 shrink-0 flex items-center gap-2",
         compact ? "p-3" : "p-6"
       )}>
         <SearchInput
@@ -71,7 +71,6 @@ const BuildingSelectionPanel = ({
           placeholder="Search for a building..."
           autoFocus
         />
-        
         <ModeToggle
           options={[
             { id: 'freshman', label: 'Freshman' },
@@ -80,10 +79,9 @@ const BuildingSelectionPanel = ({
           activeId={mode}
           onChange={onModeChange}
         />
-
         <button
           onClick={onClose}
-          className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-600 transition-colors shrink-0"
+          className="p-1.5 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-600 transition-colors shrink-0"
         >
           <X size={20} />
         </button>
@@ -116,7 +114,7 @@ const BuildingSelectionPanel = ({
             >
               <div className={cn(
                 "h-full overflow-y-auto no-scrollbar bg-neutral-50/50",
-                compact ? "p-3" : "p-6"
+                compact ? "p-0.5" : "p-6"
               )}>
                 {filteredBuildings && filteredBuildings.length > 0 ? (
                   <HoverEffect 
