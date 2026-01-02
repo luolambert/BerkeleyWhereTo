@@ -327,7 +327,8 @@ berkeley-where-to-go/
 │   │   ├── useHeaderScrollAnimation  # Scroll-based animations
 │   │   ├── useImageCarousel          # Image carousel logic
 │   │   ├── useMapRoute               # Route calculation
-│   │   └── useTranslation            # i18n hook
+│   │   ├── useTranslation            # i18n hook
+│   │   └── useDeviceType             # Device detection hook
 │   ├── locales/                       # 🌍 Internationalization
 │   │   ├── zh.js                     # 🇨🇳 Chinese
 │   │   └── en.js                     # 🇺🇸 English
@@ -335,9 +336,17 @@ berkeley-where-to-go/
 │   │   ├── mapService.js             # Map API abstraction
 │   │   └── preloadService.js         # Image preloading with retry
 │   ├── views/                         # 🖼️ Page-level components
-│   │   ├── LandingPage.jsx           # 👋 Landing Page
-│   │   ├── NavigationPage.jsx        # 🚀 Navigation (Go)
-│   │   └── InfoPage.jsx              # 📖 Information (Know)
+│   │   ├── LandingPage.jsx           # 👋 Landing Page (router)
+│   │   ├── NavigationPage.jsx        # 🚀 Navigation (router)
+│   │   ├── InfoPage.jsx              # 📖 Information (router)
+│   │   ├── typeA/                    # 📱 Mobile-optimized views
+│   │   │   ├── LandingPage.jsx       # Mobile Landing
+│   │   │   ├── InfoPage.jsx          # Mobile Know
+│   │   │   └── NavigationPage.jsx    # Mobile Go
+│   │   └── typeB/                    # 🖥️ Desktop views
+│   │       ├── LandingPage.jsx       # Desktop Landing
+│   │       ├── InfoPage.jsx          # Desktop Know
+│   │       └── NavigationPage.jsx    # Desktop Go
 │   ├── App.jsx                       # ⚛️ Main app
 │   ├── main.jsx                      # 🚪 Entry point
 │   └── index.css                     # 🎨 Global styles
@@ -459,14 +468,14 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 
 ## 📊 Performance Metrics
 
-| Metric                 | Value           |
-| ---------------------- | --------------- |
-| Initial Load Time      | < 3s            |
-| Route Calculation Time | < 2s            |
-| Elevation Data Fetch   | < 1s            |
-| Mobile Compatibility   | 🚧 In Progress  |
-| Responsive Layout      | 🖥️ Desktop Only |
-| PWA Support            | 🔄 Extensible   |
+| Metric                 | Value          |
+| ---------------------- | -------------- |
+| Initial Load Time      | < 3s           |
+| Route Calculation Time | < 2s           |
+| Elevation Data Fetch   | < 1s           |
+| Mobile Compatibility   | ✅ Responsive  |
+| Responsive Layout      | ✅ All Devices |
+| PWA Support            | 🔄 Extensible  |
 
 ---
 
@@ -491,10 +500,11 @@ When deploying to production, ensure `VITE_GOOGLE_MAPS_API_KEY` is configured in
 - [x] Premium Animation Components (Magic UI / Aceternity UI)
 - [x] Image Preload Service with Retry
 - [x] Custom Hooks Library
+- [x] Mobile Responsive Design
+- [x] Multi-Device Layout Support (TypeA/TypeB)
 
 ### 🚧 Planned
 
-- [ ] Mobile Support
 - [ ] Dark Mode
 - [ ] PWA Offline Support
 - [ ] User Comments and Suggestions
@@ -525,6 +535,16 @@ Issues and Pull Requests are welcome!
 ---
 
 ## 📝 Changelog
+
+### v2.0.0 (2026-01)
+
+- ✨ **Mobile Adaptation** - Full responsive design support for Go & Know interfaces
+  - Multi-device layout system with TypeA (mobile) and TypeB (desktop) variants
+  - Device-aware routing via new `useDeviceType` hook
+  - Optimized touch interactions for mobile devices
+- ✨ **Enhanced Landing Page** - Improved user interaction animations and UI layout
+- **Bug Fixes** - Resolved category selection freeze, building card alignment, hover animation issues
+- 🔧 **Code Cleanup** - Removed 200+ redundant comments for better maintainability
 
 ### v1.6.0 (2025-12)
 

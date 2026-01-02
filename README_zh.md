@@ -327,7 +327,8 @@ berkeley-where-to-go/
 │   │   ├── useHeaderScrollAnimation  # 滚动动画
 │   │   ├── useImageCarousel          # 图片轮播逻辑
 │   │   ├── useMapRoute               # 路线计算
-│   │   └── useTranslation            # 国际化 hook
+│   │   ├── useTranslation            # 国际化 hook
+│   │   └── useDeviceType             # 设备检测 hook
 │   ├── locales/                       # 🌍 国际化语言包
 │   │   ├── zh.js                     # 🇨🇳 中文
 │   │   └── en.js                     # 🇺🇸 英文
@@ -335,9 +336,17 @@ berkeley-where-to-go/
 │   │   ├── mapService.js             # 地图 API 抽象
 │   │   └── preloadService.js         # 图片预加载 (带重试)
 │   ├── views/                         # 🖼️ 页面级组件
-│   │   ├── LandingPage.jsx           # 👋 欢迎页
-│   │   ├── NavigationPage.jsx        # 🚀 导航页 (Go)
-│   │   └── InfoPage.jsx              # 📖 信息页 (Know)
+│   │   ├── LandingPage.jsx           # 👋 欢迎页 (路由)
+│   │   ├── NavigationPage.jsx        # 🚀 导航页 (路由)
+│   │   ├── InfoPage.jsx              # 📖 信息页 (路由)
+│   │   ├── typeA/                    # 📱 移动端优化视图
+│   │   │   ├── LandingPage.jsx       # 移动端欢迎页
+│   │   │   ├── InfoPage.jsx          # 移动端 Know
+│   │   │   └── NavigationPage.jsx    # 移动端 Go
+│   │   └── typeB/                    # 🖥️ 桌面端视图
+│   │       ├── LandingPage.jsx       # 桌面端欢迎页
+│   │       ├── InfoPage.jsx          # 桌面端 Know
+│   │       └── NavigationPage.jsx    # 桌面端 Go
 │   ├── App.jsx                       # ⚛️ 主应用
 │   ├── main.jsx                      # 🚪 入口文件
 │   └── index.css                     # 🎨 全局样式
@@ -464,8 +473,8 @@ npm run build
 | 首屏加载时间 | < 3s      |
 | 路线计算时间 | < 2s      |
 | 海拔数据获取 | < 1s      |
-| 移动端适配   | 🚧 开发中 |
-| 响应式布局   | 🖥️ 电脑端 |
+| 移动端适配   | ✅ 响应式 |
+| 响应式布局   | ✅ 全设备 |
 | PWA 支持     | 🔄 可扩展 |
 
 ---
@@ -491,10 +500,11 @@ npm run build
 - [x] 高级动画组件 (Magic UI / Aceternity UI)
 - [x] 图片预加载服务（带重试）
 - [x] 自定义 Hooks 库
+- [x] 移动端响应式设计
+- [x] 多设备布局支持 (TypeA/TypeB)
 
 ### 🚧 规划中
 
-- [ ] 移动端适配
 - [ ] 夜间模式
 - [ ] PWA 离线支持
 - [ ] 用户评论和建议功能
@@ -525,6 +535,16 @@ npm run build
 ---
 
 ## 📝 更新日志
+
+### v2.0.0 (2026-01)
+
+- ✨ **移动端适配** - Go 和 Know 界面全面支持响应式设计
+  - TypeA（移动端）和 TypeB（桌面端）多设备布局系统
+  - 新增 `useDeviceType` hook 实现设备感知路由
+  - 针对移动设备优化触摸交互体验
+- ✨ **Landing Page 优化** - 改进用户交互动画和 UI 布局
+- **Bug 修复** - 解决分类选择卡住、建筑卡片对齐、悬停动画误触发等问题
+- 🔧 **代码清理** - 移除 200+ 冗余注释，提升代码可维护性
 
 ### v1.6.0 (2025-12)
 
