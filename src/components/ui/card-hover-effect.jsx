@@ -9,12 +9,14 @@ import { useState } from "react";
  * @param {Function} renderItem - A function that returns the React element for each item. (item, index) => ReactNode
  * @param {string} className - Additional classes for the grid container.
  * @param {string} layoutId - Unique ID for the layout animation to prevent conflict between multiple grids.
+ * @param {boolean} disableTouch - If true, disable touch-triggered hover effects (for mobile navigation/info pages).
  */
 export const HoverEffect = ({
   items,
   renderItem,
   className,
   layoutId = "hoverBackground",
+  disableTouch = false,
   ...props
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
@@ -33,7 +35,9 @@ export const HoverEffect = ({
           className="relative group block h-full w-full cursor-pointer"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
-          onTouchStart={() => setHoveredIndex(idx)}
+          onTouchStart={disableTouch ? undefined : () => setHoveredIndex(idx)}
+          onTouchEnd={disableTouch ? undefined : () => setHoveredIndex(null)}
+          onTouchCancel={disableTouch ? undefined : () => setHoveredIndex(null)}
         >
           <AnimatePresence mode="sync">
             {hoveredIndex === idx && (

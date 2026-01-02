@@ -120,6 +120,7 @@ const BuildingSelectionPanel = ({
                   <HoverEffect 
                     items={filteredBuildings}
                     className={compact ? "gap-2 py-0" : "gap-3 py-0"}
+                    disableTouch={true}
                     style={{ 
                       gridTemplateColumns: compact 
                         ? 'repeat(2, 1fr)' 
