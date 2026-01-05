@@ -69,7 +69,6 @@ const BuildingSelectionPanel = ({
           value={searchTerm}
           onChange={onSearchChange}
           placeholder="Search for a building..."
-          autoFocus
         />
         <ModeToggle
           options={[

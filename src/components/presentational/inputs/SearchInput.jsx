@@ -1,15 +1,13 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useId } from 'react';
 import { Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 /**
- * SearchInput - Search input with icon and focus styling
+ * SearchInput - Search input with floating label animation
  * Used for: BuildingSelectionPanel
  * 
- * @param {string} value - Current input value
- * @param {function} onChange - Change handler (receives value string)
- * @param {string} placeholder - Placeholder text
- * @param {boolean} autoFocus - Auto focus on mount
- * @param {string} className - Additional CSS classes
+ * Features a floating label that animates up when focused or has value,
+ * with glassmorphism styling that supports future theme switching.
  */
 const SearchInput = forwardRef(function SearchInput({
   value,
@@ -18,21 +16,60 @@ const SearchInput = forwardRef(function SearchInput({
   autoFocus = false,
   className = '',
 }, ref) {
+  const [isFocused, setIsFocused] = useState(autoFocus);
+  const inputId = useId();
+  
+  // Label floats when focused or has input value
+  const isActive = isFocused || value.length > 0;
+
   return (
-    <div className={`relative flex-1 ${className}`}>
+    <div className={cn('relative flex-1', className)}>
       <Search
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"
+        className={cn(
+          'absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-250',
+          isActive ? 'text-primary-500' : 'text-neutral-400'
+        )}
         size={20}
       />
+      
       <input
         ref={ref}
+        id={inputId}
         type="text"
-        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         autoFocus={autoFocus}
-        className="w-full bg-neutral-100 hover:bg-neutral-50 focus:bg-white border-2 border-transparent focus:border-primary-500 rounded-2xl pl-12 pr-4 py-3 text-lg font-medium transition-[background-color,border-color] duration-200 outline-none"
+        className={cn(
+          'w-full rounded-2xl pl-12 pr-4 py-3 text-lg font-medium outline-none',
+          'border-2 transition-all duration-250',
+          isActive
+            ? 'bg-white border-primary-500'
+            : 'bg-neutral-100 border-transparent hover:bg-neutral-50'
+        )}
       />
+      
+      {/* Floating label with glassmorphism effect */}
+      <label
+        htmlFor={inputId}
+        className={cn(
+          'absolute left-12 pointer-events-none select-none origin-left',
+          'transition-all duration-250 ease-[cubic-bezier(0.4,0,0.2,1)]',
+          isActive ? [
+            'top-0 -translate-y-1/2 scale-[0.85]',
+            'text-primary-500 font-medium',
+            'px-2 py-0.5 rounded-md',
+            'bg-white/90 backdrop-blur-sm',
+            'shadow-[0_1px_3px_rgba(0,0,0,0.08)]'
+          ] : [
+            'top-1/2 -translate-y-1/2 scale-100',
+            'text-neutral-400'
+          ]
+        )}
+      >
+        {placeholder}
+      </label>
     </div>
   );
 });
