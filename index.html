@@ -2,12 +2,93 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/WhereToGo_Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BerkeleyWhereToGo</title>
+
+    <!-- Core SEO Meta Tags -->
+    <title>Berkeley Where To Go | UC Berkeley Campus Navigation & Building Guide</title>
+    <meta
+      name="description"
+      content="Plan your routes across UC Berkeley campus with smart navigation. Discover building histories, elevation profiles, and estimated walking times. Perfect for freshmen orientation and daily commutes."
+    />
+    <meta
+      name="keywords"
+      content="UC Berkeley, Berkeley campus, campus navigation, Berkeley map, route planner, Berkeley buildings, walking time, elevation route, bike route, freshman guide, orientation, class commute, Berkeley Time, Soda Hall, Cory Hall, Dwinelle, Wheeler, VLSB, Moffitt, Doe Library, RSF, Sather Gate, Campanile, 伯克利, 加州大学伯克利分校, 校园导航, 伯克利地图, 路线规划, 建筑介绍, 新生指南, 伯克利校园怎么走"
+    />
+    <meta name="author" content="Berkeley Where To Go Team" />
+
+    <!-- Language and Region -->
+    <link rel="alternate" hreflang="en" href="https://berkeleywhereto.vercel.app/" />
+    <link rel="alternate" hreflang="zh" href="https://berkeleywhereto.vercel.app/" />
+    <meta name="language" content="en, zh" />
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Berkeley Where To Go | Smart Campus Navigation" />
+    <meta
+      property="og:description"
+      content="Navigate UC Berkeley campus with elevation-aware routes, walking time estimates, and discover building histories."
+    />
+    <meta property="og:image" content="https://berkeleywhereto.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://berkeleywhereto.vercel.app/" />
+    <meta property="og:site_name" content="Berkeley Where To Go" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Berkeley Where To Go | Smart Campus Navigation" />
+    <meta
+      name="twitter:description"
+      content="Navigate UC Berkeley campus with elevation-aware routes and discover building histories."
+    />
+    <meta name="twitter:image" content="https://berkeleywhereto.vercel.app/og-image.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://berkeleywhereto.vercel.app/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/WhereToGo_Logo.png" />
+    <link rel="apple-touch-icon" href="/WhereToGo_Logo.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Berkeley Where To Go",
+        "alternateName": ["Berkeley Where To Know", "伯克利校园导航"],
+        "description": "Smart campus navigation tool for UC Berkeley students with route planning, elevation profiles, and building information.",
+        "url": "https://berkeleywhereto.vercel.app/",
+        "applicationCategory": "Navigation",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Berkeley Where To Go Team"
+        },
+        "about": {
+          "@type": "EducationalOrganization",
+          "name": "University of California, Berkeley",
+          "alternateName": "UC Berkeley"
+        },
+        "keywords": [
+          "UC Berkeley",
+          "campus navigation",
+          "route planner",
+          "Berkeley buildings",
+          "伯克利",
+          "校园导航"
+        ]
+      }
+    </script>
   </head>
   <body class="bg-neutral-50 text-neutral-900 antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+

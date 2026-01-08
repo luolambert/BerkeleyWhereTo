@@ -1,0 +1,9 @@
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://berkeleywhereto.vercel.app/sitemap.xml
+
+# Crawl delay (optional, be polite to search engines)
+Crawl-delay: 1
