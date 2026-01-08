@@ -7,6 +7,7 @@ import { PreloadProvider } from './context/PreloadContext';
 import { ErrorBoundary } from './components/common';
 import { GitHubLink } from './components/presentational';
 import { useDeviceType } from './hooks/useDeviceType';
+import { useSEO } from './hooks/useSEO';
 import * as TypeAViews from './views/typeA';
 import * as TypeBViews from './views/typeB';
 import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
@@ -15,25 +16,11 @@ function AppContent({ isLoaded }) {
   const location = useLocation();
   const deviceType = useDeviceType();
   
+  // Dynamic SEO updates based on current route
+  useSEO();
+  
   // Select views based on device type
   const Views = deviceType === 'typeA' ? TypeAViews : TypeBViews;
-
-  // Metadata updates
-  React.useEffect(() => {
-    if (location.pathname === '/know') {
-      document.title = 'BerkeleyWhereToKnow';
-      const link = document.querySelector("link[rel~='icon']");
-      if (link) link.href = '/WhereToKnow_Logo.png';
-    } else if (location.pathname === '/go') {
-      document.title = 'BerkeleyWhereToGo';
-      const link = document.querySelector("link[rel~='icon']");
-      if (link) link.href = '/WhereToGo_Logo.png';
-    } else {
-      document.title = 'Berkeley Where To';
-      const link = document.querySelector("link[rel~='icon']");
-      if (link) link.href = '/WhereToGo_Logo.png';
-    }
-  }, [location.pathname]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50">
