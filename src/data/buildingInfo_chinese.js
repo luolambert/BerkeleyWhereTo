@@ -1040,4 +1040,1444 @@ export const knowLocations = [
     officialLink: 'https://art.berkeley.edu/spaces',
     tags: ['Arts', 'History', 'Renamed', 'Museum']
   },
+
+  {
+    images: [],
+    id: 'south_hall',
+    title: 'South Hall (I-School)',
+    yearBuilt: '1873',
+    architect: 'David Farquharson',
+    summary: '校园最古老的建筑,信息学院的豪华老宅 📚',
+    description: `
+      欢迎来到伯克利最古老的建筑——South Hall！这栋1873年的老楼不仅是校园的"元老",更是**全美第一个物理实验室(1879)**的诞生地。
+
+      这座罕见的**第二帝国/拿破仑三世风格**建筑,有着标志性的曼萨德屋顶和精美的砖砌外墙,在加州西海岸独树一帜。它曾经是农学院、物理实验室、商学院、图书馆....几乎轮流干过所有活。现在,它是**信息学院(I-School)**的专属地盘,2020年刚做完外墙翻修,焕然一新。
+
+      别看它古老,内部已经现代化:CoLab创新空间、学生休息室、最新的教室设备。走在里面,你能感受到历史与科技的完美融合。
+    `,
+    funFacts: [
+      '它是UC Berkeley六栋原始建筑中**唯一幸存的一栋**,见证了1906年旧金山大地震。',
+      '美国第一个物理实验室(1879)就在这栋楼里诞生,比很多常春藤学校都早。',
+      '建筑师David Farquharson也设计了加州第一个州议会大厦,妥妥的"大佬建筑师"。',
+      '2020年的外墙翻修花了5个月,专门修复了屋顶的铁艺装饰和曼萨德屋顶瓦片。'
+    ],
+    studentTips: [
+      '🏛️ **历史感拉满**:这是校园里最适合拍"我在名校读书"照片的地方,复古砖墙+现代学生的反差感无敌。',
+      '💻 **CoLab空间**:I-School学生专属,有3D打印机、激光切割机等设备,非I-School学生可以参加开放日活动。',
+      '🚽 **厕所评级A**:作为翻新过的老建筑,洗手间设施现代且干净,远超那些"祖传厕所"。',
+      '♿ **无障碍入口**:东侧主入口有轮椅坡道,内部有电梯通往所有楼层(1980年代加装)。',
+      '📚 **安静学习**:虽然主要是I-School专属,但楼内休息区氛围很好,如果你有I-School朋友可以蹭个位置。'
+    ],
+    relatedLegend: '传说1906年大地震时,South Hall是校园里唯一没有严重受损的建筑,被认为是"受到历史庇护"的幸运儿。',
+    photoSpots: [
+      '从Sather Gate看向South Hall的角度,可以拍到完整的第二帝国风格立面。',
+      '东侧主入口的玻璃纤维混凝土门廊(1997年重建),是经典的打卡点。'
+    ],
+    accessibility: '东侧主入口设有轮椅坡道,内部有电梯连接所有楼层。1980年代进行过抗震加固,无障碍设施完善。',
+    officialLink: 'https://www.ischool.berkeley.edu/about/southhall',
+    tags: ['History', 'Landmark', 'I-School', 'Architecture']
+  },
+
+  {
+    images: [],
+    id: 'cal_hall',
+    title: 'California Hall',
+    yearBuilt: '1905',
+    architect: 'John Galen Howard',
+    summary: '校长办公室所在地,权力的象征与抗议的靶子 🏛️',
+    description: `
+      California Hall,简称Cal Hall,是伯克利的"权力中心"——校长办公室就在这里。这栋1905年的Beaux-Arts古典建筑,最初就是为行政办公设计的,后来短暂改成教室,现在又回归了本职工作。
+
+      **实时动态(2026)**:目前正常运营,没有施工或关闭。作为**行政大楼**,Cal Hall主要服务校长办公室、副校长办公室等高层行政部门,普通学生一般不会频繁进出(除非你要去抗议或者被叫去喝茶)。
+
+      它在1982年被列入**国家历史遗迹名录**,建筑本身充满了庄重感。不过在学生眼里,这里更多是"大Boss办公室"的代名词,经常成为校园抗议活动的"打卡点"。
+    `,
+    funFacts: [
+      '它是伯克利的官方邮寄地址:"200 California Hall, Berkeley, CA 94720",所有正式文件都用这个地址。',
+      '1982年被列入国家历史遗迹名录,是校园核心Beaux-Arts建筑群的一员。',
+      '虽然看起来很严肃,但楼里也有学生服务办公室,比如学术事务申诉处理。',
+      '建筑外观经常出现在新闻报道和官方宣传片里,是伯克利的"门面担当"之一。'
+    ],
+    studentTips: [
+      '🚫 **不是学生活动楼**:这里主要是行政办公,没有自习室、休息区或食堂,别指望来这里hang out。',
+      '📝 **需要预约**:如果你有事要见校长办公室或其他高层,记得提前预约,前台会让你登记。',
+      '📢 **抗议地标**:因为是"权力象征",Cal Hall门口经常是学生抗议的集会点,路过时可能会遇到游行。',
+      '🏛️ **建筑欣赏**:作为John Galen Howard的经典作品,值得从外面欣赏它的古典柱廊和对称设计。'
+    ],
+    photoSpots: [
+      '从中央草坪(Memorial Glade)拍摄Cal Hall正面,可以拍到完整的Beaux-Arts立面。',
+      '侧面的古典柱廊,适合拍建筑细节或"在名校读书"系列照片。'
+    ],
+    accessibility: '主入口设有坡道,内部有电梯。作为历史建筑,后期加装了无障碍设施。',
+    officialLink: 'https://dac.berkeley.edu/navigating-cal/buildings/california-hall',
+    tags: ['Admin', 'History', 'Architecture', 'Landmark']
+  },
+
+  {
+    images: [],
+    id: 'durant',
+    title: 'Durant Hall',
+    yearBuilt: '早期20世纪',
+    architect: '未详细记录',
+    summary: '文理学院行政楼,URAP学生的必经之地 📋',
+    description: `
+      Durant Hall原名**Boalt Memorial Hall of Law**,曾经是法学院的老家,后来法学院搬走了,这栋楼就成了**文理学院(College of Letters & Science)**的行政办公楼。现在它以伯克利第一任校长**Henry Durant(1870-72)**命名。
+
+      **实时动态(2026)**:正常开放,没有施工或关闭通知。这里主要是行政办公室,处理学生的petition(学术申诉)、课程审批、转专业申请等事务,另外也是**URAP(本科生研究项目)**的行政办公地点。
+
+      对于普通学生来说,这里不是"日常闲逛"的地方,更多是"有事才来"——比如你要drop一门课但过了deadline,或者想申请late add,那就得来Durant Hall找advisor谈人生了。
+    `,
+    funFacts: [
+      '原名Boalt Memorial Hall of Law,是法学院的第一个家(后来法学院搬到了更大的地方)。',
+      '以Henry Durant命名,他是UC Berkeley的第一任校长(1870-1872),也是学校早期发展的关键人物。',
+      '虽然是行政楼,但外观是经典的Beaux-Arts/古典复兴风格,与周围的Doe Library、Wheeler Hall风格一致。',
+      'URAP(本科生研究项目)的行政办公室在这里,如果你想找教授做research,可能需要来这里办手续。'
+    ],
+    studentTips: [
+      '📝 **Petition圣地**:如果你要提交学术申诉(比如晚选/退课、成绩复议),这里是文理学院petition的处理中心。',
+      '🔬 **URAP办公室**:想申请本科生研究项目?来这里找URAP的advisor,他们会帮你匹配教授和项目。',
+      '🚽 **普通厕所**:作为行政楼,洗手间设施一般,没有特别惊艳,但通常人少且干净。',
+      '⏰ **工作时间限定**:这里是行政办公楼,通常只在工作日的office hours开放(周一至周五9-5点),别周末跑来。',
+      '🏛️ **等待区很小**:内部主要是办公室,等待区/休息区很少,不适合作为自习或闲逛的地方。'
+    ],
+    photoSpots: [
+      '建筑正面的古典柱廊,适合拍"我在处理学术事务"的严肃照片。',
+      '从Sather Gate附近看Durant Hall,可以拍到它与周围历史建筑群的和谐画面。'
+    ],
+    accessibility: '主入口设有无障碍通道,内部有电梯连接各楼层。作为早期建筑,后期进行了ADA改造。',
+    officialLink: 'https://www.berkeley.edu/map/durant-hall/',
+    tags: ['Admin', 'L&S', 'History', 'URAP']
+  },
+
+  {
+    images: [],
+    id: 'anthony',
+    title: 'Anthony Hall (Pelican Building)',
+    yearBuilt: '1953-1956',
+    architect: 'Joseph Esherick',
+    summary: '鹈鹕雕像镇守的小楼,研究生会的秘密基地 🐦',
+    description: `
+      欢迎来到**Pelican Building**!这栋小巧的单层建筑有个更正式的名字叫Anthony Hall,但几乎所有人都叫它"Pelican Building",因为它是为校园幽默杂志***The California Pelican***专门建造的。
+
+      **实时动态(2026)**:正常开放。这栋楼现在主要是**研究生会(Graduate Student Assembly, GSA)**的办公室和会议空间,不是教室楼,也没有公共自习区。建筑外有一只标志性的**青铜鹈鹕雕像**,是校园里的隐藏打卡点。
+
+      建筑由**Joseph Esherick**设计,刻意模仿了Bernard Maybeck的风格,带有加州Arts and Crafts运动的影子。虽然小,但很精致。
+    `,
+    funFacts: [
+      '建筑是由富豪校友Earle C. Anthony捐赠的,他在1903年创办了校园幽默杂志*The California Pelican*。',
+      'Anthony捐款时明确要求:"这栋楼永远只能给Pelican杂志用",所以才叫Pelican Building。',
+      '建筑外的青铜鹈鹕雕像是这栋楼的灵魂,很多人专门来合影(虽然大多数人不知道这栋楼是干嘛的)。',
+      '建筑师Joseph Esherick是著名建筑师,他后来还设计了Wurster Hall(虽然那栋楼风评不太好)。'
+    ],
+    studentTips: [
+      '🐦 **打卡点**:门口的青铜鹈鹕雕像是隐藏的拍照圣地,比起那些热门景点,这里人少景美。',
+      '🚫 **不对外开放**:主要是研究生会的办公空间,本科生基本用不到(除非你参加GSA的活动)。',
+      '🚻 **没有公共厕所**:官方信息显示"No Public Restroom",别指望在这里解决生理问题。',
+      '♿ **无障碍入口**:东侧有无障碍入口,单层建筑无需电梯。',
+      '🏞️ **位置绝佳**:就在Strawberry Creek南岸,靠近Sather Gate,周围环境很美,适合课间散步路过。'
+    ],
+    relatedLegend: '传说只要摸一下鹈鹕雕像的喙,你的幽默感就会提升(虽然这个传说可能是我编的)。',
+    photoSpots: [
+      '青铜鹈鹕雕像是必拍点,可以拍出"我找到隐藏宝藏"的感觉。',
+      '从Strawberry Creek对岸拍摄整栋建筑,可以拍到它与溪流、绿植的和谐画面。'
+    ],
+    accessibility: '东侧有无障碍入口,单层建筑,无需电梯。无公共洗手间。',
+    officialLink: 'https://dac.berkeley.edu/navigating-cal/buildings/anthony-hall',
+    tags: ['History', 'Graduate', 'Hidden Gem', 'Architecture']
+  },
+
+  {
+    images: [],
+    id: 'sproul',
+    title: 'Sproul Hall (Admin)',
+    yearBuilt: '1961',
+    architect: 'Welton Becket & Associates',
+    summary: '行政核心与抗议圣地,1964言论自由运动的主战场 📢',
+    description: `
+      Sproul Hall是伯克利的**行政心脏**,几乎所有重要的学生服务办公室都在这里:招生办、经济资助、注册办公室、校长办公室...如果你要办理入学、选课、交学费、申请奖学金,大概率需要来Sproul Hall。
+
+      **实时动态(2026年1月)**:正常开放。经过2025-26冬季假期(12月22日-1月2日),Sproul Hall的各办公室已于**1月12日恢复正常运营**。Cal Student Central(120 Sproul)、本科招生办(110 Sproul)、研究生招生办(318 Sproul)均已开放,工作时间为周一至周五9am-4pm。
+
+      Sproul Hall和门前的**Sproul Plaza**是1964年**自由言论运动(Free Speech Movement)**的核心地点,当年学生占领Sproul Hall的静坐抗议改变了美国大学的历史。直到今天,Sproul Plaza依然是校园抗议、集会、演讲的主要场所。
+    `,
+    funFacts: [
+      '1964年12月,超过800名学生占领Sproul Hall抗议言论限制,最终迫使校方让步,这场运动影响了全美大学的言论自由政策。',
+      '建筑以UC第12任校长Robert Gordon Sproul命名,他任期长达28年(1930-1958)。',
+      '这里是伯克利"最忙"的建筑之一,几乎每个学生都至少来过一次办手续。',
+      'Sproul Plaza门前常年有各种学生组织摆摊、演讲、表演,被称为"校园民主广场"。'
+    ],
+    studentTips: [
+      '📝 **办事指南**:Cal Student Central(120 Sproul)处理经济资助、学费、注册;本科招生办(110 Sproul)处理录取相关;研究生招生(318 Sproul)有drop box可以投递材料。',
+      '⏰ **避开高峰期**:开学前两周和交学费deadline前,Sproul Hall人山人海,建议错峰或提前线上预约。',
+      '🚻 **厕所指南**:一楼洗手间人多且经常排队,建议去高楼层或者隔壁Eshleman Hall。',
+      '📢 **抗议观察点**:如果你对学生运动感兴趣,Sproul Plaza几乎每周都有集会或演讲,可以围观(或参与)。',
+      '🎫 **游客中心**:101 Sproul Hall是校园游客信息中心,可以拿地图、报名校园tour。'
+    ],
+    relatedLegend: '传说如果你在Sproul Hall待够一定时间,你会自然获得"伯克利激进主义buff",开始关心社会议题(这个buff是永久的)。',
+    photoSpots: [
+      '从Sproul Plaza仰拍Sproul Hall,可以拍到"我在抗议现场"的历史感。',
+      '一楼大厅的"1964 Free Speech Movement"纪念牌匾,是打卡必拍点。'
+    ],
+    accessibility: '主入口设有无障碍通道,内部有多部电梯连接所有楼层。各办公室均可无障碍到达。',
+    officialLink: 'https://studentcentral.berkeley.edu/',
+    tags: ['Admin', 'History', 'Free Speech', 'Student Services']
+  },
+
+  {
+    images: [],
+    id: 'sutardja_dai',
+    title: 'Sutardja Dai Hall (CITRIS)',
+    yearBuilt: '2009',
+    architect: 'Johnson Fain & SmithGroup',
+    summary: '纳米实验室+网络咖啡厅,硅谷校友砸钱建的科技大楼 💻',
+    description: `
+      Sutardja Dai Hall 是 **CITRIS(信息技术研究中心)** 和 **Marvell 纳米制造实验室** 的主场。CITRIS 全称是 "Center for Information Technology Research in the Interest of Society"(为社会服务的信息技术研究中心),听起来就很硅谷精英。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。这栋楼是 2009 年由几位伯克利校友——Weili Dai、Sehat Sutardja 和 Pantas Sutardja(都是半导体行业大佬)捐赠 1.27 亿美元建成的。楼里有约 14.1 万平方英尺的实验室、办公室、礼堂、会议室和教室。
+
+      一楼有个 **Cyber Café**(网络咖啡厅),是工程学生喜欢蹲的地方——笔记本 + 拿铁 + 改代码,氛围拉满。楼里还有顶级的纳米制造实验室,如果你做芯片相关研究,这里就是你的朝圣地。
+    `,
+    funFacts: [
+      'CITRIS 的使命是用科技解决社会问题,从能源到医疗到交通,都有研究项目在进行。',
+      'Marvell Nanolab 是全校共享的洁净室,支持纳米级芯片制造和研究,需要授权和培训才能进入。',
+      '建筑师是 Johnson Fain 和 SmithGroup 联合设计的,外观现代感十足,玻璃幕墙+简约线条。',
+      '楼里有一个 256 座的礼堂,经常举办科技讲座和行业活动,有时能见到硅谷大佬来演讲。'
+    ],
+    studentTips: [
+      '💻 **Cyber Café**:一楼的咖啡厅是非正式学习/讨论的好地方,有桌椅和插座,适合小组协作或赶 ddl。',
+      '🔬 **Nanolab 参观**:虽然洁净室需要授权,但 CITRIS 偶尔会举办开放日,可以参观纳米实验室(记得关注官网通知)。',
+      '🏢 **EECS/工程学生主场**:这里主要是研究生和教授的地盘,本科生来得少,除非你在这里上课或做 research。',
+      '🚽 **洗手间**:设施现代且干净,比那些老工程楼好太多。',
+      '📚 **不是自习楼**:这里更像"协作空间"而非"安静图书馆",想要绝对安静的话去 Main Stacks 或 Bechtel。'
+    ],
+    photoSpots: [
+      '玻璃幕墙外立面在阳光下特别好看,适合拍"我在科技大楼搞科研"的照片。',
+      'Cyber Café 内部的工业风装修,拍出来很 Instagram-friendly。'
+    ],
+    accessibility: '主入口完全无障碍,内部有电梯连接所有楼层。公共区域(咖啡厅、大厅、展览区)对校园开放,实验室需授权。',
+    officialLink: 'https://citris-uc.org/about/sutardja-dai-hall/',
+    tags: ['STEM', 'Research', 'CITRIS', 'Modern']
+  },
+
+  {
+    images: [],
+    id: 'hesse',
+    title: 'Hesse Hall',
+    yearBuilt: '1924',
+    architect: 'John Galen Howard',
+    summary: '机械工程的老巢,BEST Lab 的家 ⚙️',
+    description: `
+      Hesse Hall 是 **机械工程系(Mechanical Engineering)** 和 **BEST Lab(Berkeley Expert Systems Technologies Lab)** 的大本营。这栋楼建于 1924 年,是 John Galen Howard(伯克利校园建筑大师)的作品,最初是为了给工程学院提供电机、发电机、无线电实验室和测试室。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里主要是办公室、实验室和教学空间,氛围比较"硬核工程",没有那种高大上的咖啡厅或休息区,纯纯的"干活楼"。
+
+      以 **Frederick Godfrey Hesse** 命名,他是普鲁士裔的伯克利工程学院创始人,1875 年被任命为第一位工程教员,1896 年成为第一任机械学院院长。
+    `,
+    funFacts: [
+      '建筑师 John Galen Howard 是伯克利校园的"御用设计师",Doe Library、Sather Gate、Hearst Mining 等都是他的作品。',
+      'BEST Lab 全称是 Berkeley Expert Systems Technologies Lab,专注机器人、控制系统和智能制造。',
+      '这栋楼最初是为了容纳不断增长的工程学院,当时的重点是电机、发电机和无线电技术——那可是 1920 年代的尖端科技。',
+      '虽然是老楼,但设施一直在更新,实验室设备相对现代化。'
+    ],
+    studentTips: [
+      '⚙️ **MechE 学生主场**:如果你是机械工程专业,这里是你的"家",办公室、实验室、advisor office 都在这。',
+      '🔧 **BEST Lab**:做机器人或控制系统研究的学生会经常来这里,实验室设备很齐全。',
+      '📚 **不适合自习**:这里主要是工作/实验空间,自习的话建议去 Bechtel Engineering Library 或 Main Stacks。',
+      '🚽 **普通洗手间**:设施一般,没有特别亮眼,但也没有特别糟糕。',
+      '🏛️ **历史感**:作为 1924 年的建筑,走在里面能感受到工程学院的历史沉淀感。'
+    ],
+    accessibility: '主入口设有无障碍通道,内部有电梯连接各楼层。作为核心校园建筑,符合 ADA 无障碍标准。',
+    officialLink: 'https://engineering.berkeley.edu/about/facilities/',
+    tags: ['STEM', 'Engineering', 'History', 'MechE']
+  },
+
+  {
+    images: [],
+    id: 'mccone',
+    title: 'McCone Hall',
+    yearBuilt: '1961',
+    architect: 'John Warnecke',
+    summary: '地球与行星科学大本营,地震监测中心就在地下 🌍',
+    description: `
+      McCone Hall 是 **地球与行星科学系(Earth & Planetary Science)**、**地理系(Geography)** 和 **地球科学与地图图书馆** 的家。这栋楼建于 1961 年,以伯克利校友、前 CIA 局长 **John McCone** 命名。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里最酷的是地下的 **伯克利地震实验室(Berkeley Seismological Laboratory)**,这是世界上最顶尖的地震研究中心之一。加州地震频繁,这里的科学家们就是监测和研究地震的"守护者"。
+
+      五楼有个阳台,可以俯瞰校园和湾区景色,是地理系和 EPS 学生的隐藏宝藏——可预约使用,适合开小组会或者发呆。
+    `,
+    funFacts: [
+      '地下的伯克利地震实验室是全球最重要的地震研究机构之一,实时监测加州和全球的地震活动。',
+      '以 John McCone 命名,他是伯克利校友,曾任美国 CIA 局长(1961-1965),也是原子能委员会主席。',
+      '这栋楼虽然叫 McCone Hall,但跟"太空科学"的联系主要是通过地球与行星科学系的"行星科学"部分——真正的太空科学实验室(Space Sciences Lab)在校园北边的山上。',
+      '五楼阳台的景色很棒,但只有地理系和 EPS 的学生/教职工可以预约使用。'
+    ],
+    studentTips: [
+      '🌍 **EPS/Geography 学生主场**:如果你学地球科学、地质、地理或行星科学,这里是你的大本营,有专属的 Ramsden Study Room(需要 declare major 才能用)。',
+      '📚 **地球科学图书馆**:楼里有专门的地图和地球科学资料库,适合做相关领域研究。',
+      '🚽 **洗手间一般**:设施中规中矩,没有特别惊艳,但也不糟糕。',
+      '🏔️ **五楼阳台**:如果你认识地理系或 EPS 的学生,可以让他们带你去五楼阳台看景色(非公开,但偶尔开放)。',
+      '🔬 **地震实验室**:虽然地下实验室不对外开放,但有时会有公开讲座或参观活动,可以关注 EPS 官网。'
+    ],
+    relatedLegend: '传说如果你在 McCone Hall 感觉到地面轻微震动,不用慌——可能只是地下的地震仪在记录远方的地震信号(或者真的地震了,那就真的要慌了)。',
+    photoSpots: [
+      '五楼阳台(如果你能进去)可以拍到湾区景色,是隐藏的拍照宝地。',
+      '建筑外观的 1960 年代现代主义风格,适合拍建筑摄影。'
+    ],
+    accessibility: '主入口设有无障碍入口,内部有电梯连接所有楼层。地下一层有应急等待区。',
+    officialLink: 'https://eps.berkeley.edu/',
+    tags: ['STEM', 'Earth Science', 'Geography', 'Research']
+  },
+
+  {
+    images: [],
+    id: 'the_gateway',
+    title: 'The Gateway (CDSS)',
+    yearBuilt: '施工中 (预计2026春季)',
+    architect: 'Weiss/Manfredi + Gensler',
+    summary: '计算与数据科学学院的未来之家,伯克利北门新地标 🚧',
+    description: `
+      **⚠️ 施工中警告**: The Gateway 目前仍在建设中,预计 **2026 年春季开放**。这栋楼是 **计算、数据科学与社会学院(CDSS)** 的未来主场,也是伯克利北入口(Hearst Ave & Arch St)的新地标。
+
+      这栋楼取代了已拆除的 Brutalist 风格 Tolman Hall(2018-2019 拆除),总面积约 36.7 万平方英尺,可容纳约 1,300 名教职工、学生和研究人员。建筑设计成 **S 形**,横跨一条连接 Northside 社区和校园的通道,象征"桥梁"和"门户"。
+
+      **实时动态(2026 年 1 月)**:钢结构已于 2024 年 6 月封顶,目前处于内部装修和设备安装阶段,计划在 2025-26 学年内开放。楼里将包含教室、实验室、数据科学工作空间、社交厨房、公共咖啡厅、画廊和 **顶层活动空间**。
+    `,
+    funFacts: [
+      '施工始于 2022 年 9 月,预计 2026 年春季开放,届时将成为 CDSS 的永久家园。',
+      '建筑由纽约设计公司 Weiss/Manfredi 和加州 Gensler 联合设计,是现代学术建筑的典范。',
+      '取代了 Tolman Hall——那栋被称为"校园最丑建筑"的 Brutalist 混凝土怪物(虽然也有人觉得它有粗野主义美学)。',
+      'S 形设计不仅是为了美观,还为了最大化内部空间利用和自然光线进入。',
+      '中央有巨大的中庭和内部"景观",设计理念是鼓励跨学科交流和偶遇式互动。'
+    ],
+    studentTips: [
+      '🚧 **2026 春季前别来**:目前还在施工,无法进入。如果你是 CDSS 学生,暂时还得在 Evans Hall 等临时地点上课。',
+      '🏗️ **施工观光**:如果你对建筑感兴趣,可以从外面看施工进度——钢结构很壮观,能看到伯克利如何"长出"新建筑。',
+      '📚 **未来的学习空间**:开放后,地下层将有专门的学生自习区,还有各种协作空间和社交区域。',
+      '☕ **公共咖啡厅**:计划中包含一个公共咖啡厅,应该会成为新的"蹭咖啡+改代码"圣地。',
+      '🌉 **校园新门户**:位于 Hearst Ave 和 Arch St 交汇处,开放后会成为伯克利北入口的显眼地标。'
+    ],
+    photoSpots: [
+      '施工期间可以从外面拍摄钢结构框架,很有工业感和"见证历史"的氛围。',
+      '开放后,内部中庭和顶层活动空间预计会成为新的拍照热点。'
+    ],
+    accessibility: '设计为完全符合现代 ADA 无障碍标准,包括电梯、坡道和无障碍洗手间。双地面入口设计方便多方向进入。',
+    officialLink: 'https://cdss.berkeley.edu/gateway',
+    tags: ['STEM', 'CDSS', 'Under Construction', 'Modern', 'Data Science']
+  },
+
+  {
+    images: [],
+    id: 'berkeley_way_west',
+    title: 'Berkeley Way West',
+    yearBuilt: '2018',
+    architect: 'WRNS Studio',
+    summary: '公卫、教育、心理学三合一大楼,校园里的"新贵" 🏢',
+    description: `
+      Berkeley Way West 是 2018 年启用的现代学术大楼,容纳了 **公共卫生学院(School of Public Health)**、**教育学院(School of Education)** 和 **心理学系(Department of Psychology)**。这栋楼取代了地震隐患严重的 Tolman Hall,也给公共卫生学院提供了永久的家(之前他们一直在 University Hall 的临时空间)。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里约 32.5 万平方英尺,平均每天有 900 人在这里办公、上课和学习。有趣的是,为了最大化投资回报,伯克利把部分楼层 **租给了私营企业**(比如微软),租金收入补贴学校运营,等未来学校需要时再收回。
+
+      建筑设计非常现代,强调自然光、天窗中庭和各种协作空间,获得了 **LEED Gold 绿色建筑认证**。
+    `,
+    funFacts: [
+      '这栋楼是 WRNS Studio 设计的,强调"多层次中庭"和"民主化的光线与视野"——翻译过来就是:楼里到处都亮堂堂的,不压抑。',
+      '为了省钱和增加收入,伯克利把部分楼层租给了微软等公司,租金用来补贴学校运营(资本主义智慧)。',
+      '取代了 Tolman Hall,那栋楼因地震风险太高被拆除,现在原址正在建 The Gateway。',
+      '获得 LEED Gold 认证,采用高效 HVAC、照明和可持续材料,环保又舒适。'
+    ],
+    studentTips: [
+      '🏫 **公卫/教育/心理学主场**:如果你学这三个专业,这里是你的大本营——办公室、教室、学习空间都在这。',
+      '📚 **自习空间**:楼里有不少协作和自习区域,自然光充足,氛围不错,比老楼强太多。',
+      '🚽 **现代化洗手间**:作为 2018 年新楼,洗手间设施非常好,干净现代。',
+      '🌳 **校园位置**:位于校园西北边缘,靠近 Hearst Ave,离主校区核心有点远,但环境相对安静。',
+      '💼 **偶遇科技公司员工**:因为楼里有租给私企的楼层,你可能会在电梯里遇到微软员工(虽然他们一般不串楼层)。'
+    ],
+    photoSpots: [
+      '多层天窗中庭,仰拍天空和建筑线条,非常有设计感。',
+      '外立面的现代玻璃幕墙,适合拍"我在新楼读书"系列。'
+    ],
+    accessibility: '完全符合现代 ADA 标准,所有楼层电梯可达,入口设有坡道,洗手间和通道设计完全无障碍。',
+    officialLink: 'https://capitalstrategies.berkeley.edu/berkeley-way-west',
+    tags: ['Modern', 'Public Health', 'Education', 'Psychology', 'LEED']
+  },
+
+  {
+    images: [],
+    id: 'koshland',
+    title: 'Koshland Hall',
+    yearBuilt: '1990',
+    architect: '未详细记录',
+    summary: '分子细胞生物学和植物微生物学的实验室大本营 🧬',
+    description: `
+      Koshland Hall 是 **分子与细胞生物学系 (MCB)** 和 **植物与微生物生物学系 (PMB)** 的重要实验室所在地。以著名生物化学教授 **Daniel Koshland** 命名,这里是伯克利生命科学研究的核心据点之一。
+
+      **实时动态(2026)**:正常开放,无大规模施工或关闭。楼里有一些设施老化问题(如高压灭菌器老化、偶尔漏水),但不影响正常使用。微生物学研究生项目(Graduate Group in Microbiology)的行政办公室也在这里(111 Koshland Hall)。
+
+      如果你是生物专业学生,这里可能是你上实验课、做研究的地方。整体氛围是"实验室+办公室",不是休闲自习空间。
+    `,
+    funFacts: [
+      '以 Daniel Koshland 命名,他是伯克利著名的生物化学教授,在酶学和信号转导领域有重大贡献。',
+      'MCB(分子与细胞生物学)是伯克利最大的生物相关院系之一,研究范围从基因组学到神经科学。',
+      'PMB(植物与微生物生物学)专注植物科学和微生物学,是加州乃至全美顶尖的植物研究项目之一。',
+      '楼里的高压灭菌器设备有些老化,研究人员偶尔会吐槽——但这也是老楼的"魅力"。'
+    ],
+    studentTips: [
+      '🧬 **MCB/PMB 学生主场**:如果你学分子生物、细胞生物或植物微生物专业,这里是你的实验室大本营。',
+      '🔬 **实验室为主**:这里主要是研究实验室,不是休闲自习场所。想自习的话去 VLSB 或 Main Stacks。',
+      '🚽 **洗手间一般**:设施中规中矩,不算新但也不糟糕。',
+      '📍 **位置**:靠近 VLSB 和 GPB,属于生物楼群的一部分,方便在不同生物楼之间穿梭。',
+      '⚠️ **设施老化**:偶尔会有小问题(漏水、设备故障),但不影响日常使用。'
+    ],
+    accessibility: '主入口设有无障碍通道,内部有电梯连接各楼层。符合 ADA 标准。',
+    officialLink: 'https://mcb.berkeley.edu/',
+    tags: ['STEM', 'Biology', 'MCB', 'PMB', 'Research']
+  },
+
+  {
+    images: [],
+    id: 'genetics',
+    title: 'Genetics and Plant Biology Building (GPB)',
+    yearBuilt: '1990',
+    architect: '未详细记录',
+    summary: '植物与微生物生物学系的教学与实验中心 🌱',
+    description: `
+      Genetics and Plant Biology Building(GPB)是伯克利生物科学的核心建筑之一,主要服务于 **植物与微生物生物学系 (PMB)** 的教学和研究。楼里有教室、实验室和办公空间,是学习遗传学和植物生物学的学生必经之地。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里还有 **Pat Brown's Grill**(一个小型餐饮点),方便学生和教职工解决饮食问题。
+
+      值得注意的是,伯克利将在 2026 年秋季转为三学期制,可能会影响课程安排,但 GPB 楼本身的功能和部门归属保持不变。
+    `,
+    funFacts: [
+      '这栋楼是 PMB 系的核心教学楼,几乎所有遗传学和植物生物学课程都在这里上。',
+      '楼里有 Pat Brown\'s Grill,是这一区域少数几个可以买吃的的地方之一。',
+      '建于 1990 年左右,是伯克利生物楼群(VLSB、Barker、Koshland)的一部分。',
+      '伯克利的"遗传学和植物生物学"本科专业就是 PMB 系提供的,毕业生在生物技术和农业科学领域很吃香。'
+    ],
+    studentTips: [
+      '🌱 **PMB 学生主场**:如果你学植物生物学、微生物学或遗传学,这里是你的大本营。',
+      '🍔 **Pat Brown\'s Grill**:楼里有个小餐厅,课间可以买个三明治或咖啡,方便但选择不多。',
+      '📚 **教室为主**:有不少教学空间,但自习建议去 VLSB 或 Main Stacks。',
+      '🚽 **洗手间一般**:普通设施,不算新但够用。',
+      '🔗 **与其他生物楼连通**:GPB 和 VLSB、Koshland 等楼靠得很近,方便在不同楼之间上课。'
+    ],
+    accessibility: '主入口设有无障碍通道,内部有电梯。符合 ADA 无障碍标准。',
+    officialLink: 'https://plantandmicrobiology.berkeley.edu/',
+    tags: ['STEM', 'Biology', 'PMB', 'Genetics', 'Research']
+  },
+
+  {
+    images: [],
+    id: 'barker',
+    title: 'Barker Hall',
+    yearBuilt: '1930s (具体年份未确认)',
+    architect: '未详细记录',
+    summary: '分子细胞生物学和神经科学的实验室基地 🧠',
+    description: `
+      Barker Hall 主要为 **分子与细胞生物学系 (MCB)** 和 **Helen Wills 神经科学研究所** 提供实验室空间。这里是神经科学和分子生物学研究的重要据点,适合对大脑和细胞研究感兴趣的学生。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼曾在过去进行过抗震加固,结构安全性良好。
+
+      注意:Barker Hall **不是**整合生物学系 (IB) 的主基地——IB 主要在 VLSB。
+    `,
+    funFacts: [
+      'Helen Wills 神经科学研究所是伯克利顶尖的神经科学研究机构,研究范围从分子神经科学到认知科学。',
+      '曾进行过抗震加固,确保建筑符合加州的地震安全标准。',
+      'MCB 系的一部分实验室在这里,但 MCB 办公室分布在多个楼里(包括 LSA、Koshland 等)。',
+      '这栋楼比较"低调",不像 VLSB 那么有名,但对神经科学专业来说是重要基地。'
+    ],
+    studentTips: [
+      '🧠 **神经科学学生**:如果你对神经科学感兴趣,Helen Wills 研究所在这里,可以关注他们的讲座和研究机会。',
+      '🔬 **实验室为主**:这里主要是研究实验室,不是自习或休闲空间。',
+      '📍 **位置**:靠近 VLSB 和其他生物楼,方便在生物楼群之间移动。',
+      '🚽 **普通洗手间**:设施一般,中规中矩。',
+      '♿ **无障碍设施**:有电梯和无障碍入口,符合 ADA 标准。'
+    ],
+    accessibility: '入口设有无障碍坡道,有电梯连接各楼层。已进行抗震加固。',
+    officialLink: 'https://mcb.berkeley.edu/',
+    tags: ['STEM', 'Biology', 'Neuroscience', 'MCB', 'Research']
+  },
+
+  {
+    images: [],
+    id: 'morgan',
+    title: 'Morgan Hall',
+    yearBuilt: '1953',
+    architect: '未详细记录',
+    summary: '营养科学与毒理学系的大本营 🥗',
+    description: `
+      Morgan Hall 以 **Agnes Fay Morgan** 命名,她是伯克利传奇的营养学教授。这栋楼是 **营养科学与毒理学系 (Nutritional Sciences & Toxicology)** 的主基地,研究范围从食品科学到毒理学。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。这里主要是办公室和实验室,不是大规模的教学楼。
+
+      注意:昆虫学研究 **不在** Morgan Hall——Essig 昆虫博物馆在 VLSB,昆虫学相关课程归 ESPM 系管,办公室主要在 Mulford Hall。
+    `,
+    funFacts: [
+      '以 Agnes Fay Morgan 命名,她是伯克利营养学领域的开创者,1938 年成为美国科学院院士。',
+      '营养科学与毒理学系研究食品如何影响人体健康,从维生素代谢到环境毒素都有涉及。',
+      '这栋楼相对"小众",不是热门打卡点,但对营养学专业学生很重要。',
+      '建于 1953 年,是伯克利中期现代建筑风格的代表之一。'
+    ],
+    studentTips: [
+      '🥗 **营养学学生主场**:如果你学营养科学或毒理学,这里是你的系楼,办公室和实验室都在这。',
+      '🔬 **研究导向**:这里主要是研究空间,不太适合自习。',
+      '🚽 **普通设施**:洗手间和设施中规中矩,没什么特别的。',
+      '📍 **位置**:在校园东侧,靠近 Giannini Hall 和农学区的其他建筑。',
+      '❌ **不是昆虫学楼**:如果你找昆虫学相关的东西,去 VLSB(Essig 博物馆)或 Mulford Hall(ESPM 系)。'
+    ],
+    accessibility: '设有无障碍入口和电梯,符合 ADA 标准。',
+    officialLink: 'https://nst.berkeley.edu/',
+    tags: ['STEM', 'Nutrition', 'Toxicology', 'Rausser College', 'Research']
+  },
+
+  {
+    images: [],
+    id: 'mulford',
+    title: 'Mulford Hall',
+    yearBuilt: '1948',
+    architect: '未详细记录',
+    summary: '环境科学与林学的大本营,加州唯一林学硕士项目 🌲',
+    description: `
+      Mulford Hall 是 **环境科学、政策与管理系 (ESPM)** 的核心所在地,隶属于 **Rausser 自然资源学院**。以加州第一任林学院院长 **Walter Mulford** 命名,这里是加州唯一提供林学硕士 (Master of Forestry) 学位的地方。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼内装饰非常有特色——木墙和木板均来自加州本地树种(还有一些外国树种),很多是 1915 年巴拿马太平洋博览会的捐赠品。
+
+      Rausser 学院学生资源中心和计算机实验室也在这里(260 Mulford),是本科生的重要据点。
+    `,
+    funFacts: [
+      '以 Walter Mulford 命名,他是 1914-1947 年间加州林学院的首任院长,是加州林业教育的奠基人。',
+      '室内木饰板来自加州本地树种,甚至有 1915 年世博会捐赠的木材——走进去就像进入一座"木头博物馆"。',
+      '这里提供加州唯一的林学硕士 (M.F.) 学位,毕业生可以参加加州注册专业林业师考试。',
+      'ESPM 系是交叉学科,涵盖生态学、林学、野生动物管理、环境政策等多个方向。'
+    ],
+    studentTips: [
+      '🌲 **ESPM/林学学生主场**:如果你学环境科学、林学或野生动物管理,这里是你的大本营。',
+      '📚 **学生资源中心**:260 Mulford 有 Rausser 学院的学生资源中心和计算机实验室,是本科生做作业、打印的好地方。',
+      '🏛️ **木质内饰**:楼内装饰真的很特别,值得花点时间欣赏那些加州本地木材的纹理和标志牌。',
+      '🚽 **普通设施**:洗手间一般,没什么特别的。',
+      '📍 **位置**:在 Giannini Hall 对面,属于农学区域的核心位置。'
+    ],
+    accessibility: '主入口设有无障碍坡道,有电梯连接各楼层。符合 ADA 标准。',
+    officialLink: 'https://ourenvironment.berkeley.edu/',
+    tags: ['STEM', 'ESPM', 'Forestry', 'Rausser College', 'Environment']
+  },
+
+  {
+    images: [],
+    id: 'hilgard',
+    title: 'Hilgard Hall',
+    yearBuilt: '1917',
+    architect: 'John Galen Howard',
+    summary: '"现代土壤科学之父"的楼,Rausser学院历史建筑 🌍',
+    description: `
+      Hilgard Hall 以 **Eugene W. Hilgard** 命名,他被称为"现代土壤科学之父",也是伯克利农学院的首任院长。这栋楼建于 1917 年,和 Wellman、Giannini 一起构成了 Rausser 自然资源学院的历史核心建筑群。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里主要是 **环境科学、政策与管理系 (ESPM)** 的办公室和教学空间,是 Rausser 学院的重要组成部分。
+
+      ESPM 是一个交叉学科系,涵盖生态系统科学、生物与环境、社会与环境三大方向,研究范围从土壤科学延续到现代环境政策。
+    `,
+    funFacts: [
+      '以 Eugene W. Hilgard 命名,他是"现代土壤科学之父",1874 年来到伯克利,奠定了加州农业研究的基础。',
+      '建于 1917 年,是 John Galen Howard 设计的经典校园建筑之一,与 Wellman 和 Giannini 形成农学区三巨头。',
+      '最初楼里有"土壤技术"部门,专门研究加州的土壤类型和农业应用。',
+      'Rausser 自然资源学院是伯克利最古老的学院,1868 年建校时就叫"农学院"。'
+    ],
+    studentTips: [
+      '🌍 **ESPM 学生主场**:如果你学环境科学、生态学或环境政策,这里是你的大本营之一(另一个是 Mulford)。',
+      '🏛️ **历史建筑**:作为 1917 年的建筑,走在里面能感受到伯克利农学的历史底蕴。',
+      '🚽 **普通设施**:洗手间和设施中规中矩,老楼风格。',
+      '📍 **位置**:在农学区核心,靠近 Wellman、Giannini 和 Mulford,方便在这几栋楼之间穿梭。',
+      '📚 **办公室为主**:教学空间有限,主要是教授办公室——自习的话去 Mulford 或 Main Stacks。'
+    ],
+    accessibility: '主入口设有无障碍坡道,有电梯连接各楼层。作为历史建筑,符合 ADA 标准。',
+    officialLink: 'https://ourenvironment.berkeley.edu/',
+    tags: ['STEM', 'ESPM', 'History', 'Rausser College', 'Soil Science']
+  },
+
+  {
+    images: [],
+    id: 'wellman',
+    title: 'Wellman Hall (原 Agriculture Hall)',
+    yearBuilt: '1912',
+    architect: 'John Galen Howard',
+    summary: 'Essig 昆虫博物馆所在地,农学区元老建筑 🐞',
+    description: `
+      Wellman Hall 原名 Agriculture Hall,是伯克利农学区的历史核心建筑之一。现在楼里主要是 **ESPM 系** 的部分办公室,以及著名的 **Essig 昆虫博物馆**——一个收藏超过 500 万件昆虫标本的研究博物馆。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。虽然楼名叫 Wellman,但昆虫学相关课程和研究其实归 ESPM 系管理。
+
+      如果你对昆虫感兴趣,Essig 博物馆绝对值得一看——虽然不是公共展览馆,但偶尔会有开放日和科普活动。
+    `,
+    funFacts: [
+      'Essig 昆虫博物馆收藏超过 500 万件陆生节肢动物标本,是西海岸最重要的昆虫研究机构之一。',
+      '原名 Agriculture Hall,是伯克利农学院的第一批建筑之一。',
+      '建于 1912 年,是 John Galen Howard 的作品,与 Hilgard 和 Giannini 形成农学区三巨头。',
+      '虽然叫 Wellman Hall,但植物病理学等相关研究其实在 Koshland Hall 的 PMB 系。'
+    ],
+    studentTips: [
+      '🐞 **Essig 博物馆**:如果你对昆虫感兴趣,可以预约参观 Essig 博物馆——虽然不是常规对外开放,但研究人员很友好。',
+      '🔬 **ESPM 学生**:部分 ESPM 办公室在这里,但主要办公区在 Mulford 和 Hilgard。',
+      '📍 **位置**:农学区核心,靠近 Hilgard、Giannini 和 Mulford。',
+      '🚽 **普通设施**:老楼风格,设施一般但够用。',
+      '🏛️ **历史建筑**:1912 年的建筑,有那种"百年老校"的氛围。'
+    ],
+    accessibility: '主入口设有无障碍坡道,有电梯连接各楼层。符合 ADA 标准。',
+    officialLink: 'https://essig.berkeley.edu/',
+    tags: ['STEM', 'ESPM', 'Entomology', 'Rausser College', 'Museum']
+  },
+
+  {
+    images: [],
+    id: 'giannini',
+    title: 'Giannini Hall',
+    yearBuilt: '1930',
+    architect: 'Warren Perry',
+    summary: '农业与资源经济系大本营,Rausser院长办公室所在地 📊',
+    description: `
+      Giannini Hall 是 **农业与资源经济系 (ARE)** 的大本营,也是 **Rausser 自然资源学院院长办公室** 的所在地(101 Giannini Hall)。ARE 系在全球农业经济学领域排名顶尖,研究范围涵盖农业政策、发展经济学、环境经济学和国际贸易。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里有教室、办公室和会议室,是 Rausser 学院的行政中心之一。
+
+      以意大利裔美国银行家 **Amadeo Giannini** 命名,他是美国银行(Bank of America)的创始人,曾向伯克利捐赠大量资金支持农学研究。
+    `,
+    funFacts: [
+      'ARE 系是全球顶尖的农业经济学项目之一,研究范围从发展经济学到环境政策。',
+      '以 Amadeo Giannini 命名,他是美国银行(Bank of America)的创始人,也是伯克利农学研究的重要赞助人。',
+      'Rausser 学院院长办公室就在 101 Giannini Hall——这里是整个学院的行政中心。',
+      '环境经济与政策 (EEP) 本科专业就是 ARE 系提供的,同时对 Rausser 学院和文理学院学生开放。'
+    ],
+    studentTips: [
+      '📊 **ARE/EEP 学生主场**:如果你学农业经济、环境经济或资源政策,这里是你的大本营。',
+      '🏛️ **院长办公室**:101 Giannini Hall 是 Rausser 学院院长办公室,有行政事务可以来这里咨询。',
+      '📚 **教室和办公室**:楼里有一些教室,但主要是办公空间——自习去 Mulford 或 Main Stacks。',
+      '🚽 **普通设施**:设施中规中矩,没什么特别的。',
+      '📍 **位置**:农学区核心,Mulford Hall 对面,靠近 Hilgard 和 Wellman。'
+    ],
+    accessibility: '主入口设有无障碍坡道,有电梯连接各楼层。符合 ADA 标准。',
+    officialLink: 'https://are.berkeley.edu/',
+    tags: ['STEM', 'Economics', 'ARE', 'Rausser College', 'Admin']
+  },
+
+  {
+    images: [],
+    id: 'weill',
+    title: 'Weill Hall (Li Ka Shing Center)',
+    yearBuilt: '2012',
+    architect: 'ZGF Architects',
+    summary: '生物医学研究中心,Neurohub 和脑成像中心所在地 🧠',
+    description: `
+      Weill Hall,也被称为 **Li Ka Shing Center for Biomedical and Health Sciences**,是伯克利最先进的生物医学研究设施之一。这栋楼汇集了计算机科学、生物学、物理学、工程学、化学和数学等多个学科,专注于干细胞研究、传染病、癌症和神经科学。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里有 **Helen Wills 神经科学研究所 (HWNI)** 和 **Henry H. Wheeler Jr. 脑成像中心**,是伯克利神经科学研究的核心据点。
+
+      还有 **Weill Neurohub**——一个由 Weill 家族基金会捐赠 1.06 亿美元启动的跨校研究网络,连接伯克利、UCSF 和华盛顿大学,专注开发脑疾病新疗法。
+    `,
+    funFacts: [
+      'Li Ka Shing(李嘉诚)捐赠建造了这栋楼,是香港首富对伯克利的重大贡献之一。',
+      'Weill Neurohub 是一个 1.06 亿美元的跨校研究项目,专注用 CRISPR 基因编辑和新一代神经成像技术开发脑疾病疗法。',
+      'Helen Wills 神经科学研究所 (HWNI) 有超过 70 位来自不同院系的教授,是伯克利神经科学的中枢。',
+      '楼里的脑成像中心有高端 MRI 设备,用于研究人类认知和神经疾病。'
+    ],
+    studentTips: [
+      '🧠 **神经科学学生**:如果你对神经科学感兴趣,HWNI 在这里——可以关注他们的研讨会和研究机会。',
+      '🔬 **生物医学研究**:这里是跨学科研究的核心,汇集了 MCB、物理、工程等多个系的实验室。',
+      '🚽 **现代设施**:作为 2012 年新建的楼,洗手间和设施都很现代化。',
+      '📍 **位置**:靠近 Stanley Hall,在校园东北侧的生物科学区域。',
+      '❌ **不是普通自习点**:这里主要是研究实验室,不适合一般学生自习。'
+    ],
+    accessibility: '完全符合现代 ADA 标准,有电梯、坡道和无障碍洗手间。',
+    officialLink: 'https://neuroscience.berkeley.edu/',
+    tags: ['STEM', 'Neuroscience', 'Research', 'MCB', 'Modern']
+  },
+
+  {
+    images: [],
+    id: 'campbell',
+    title: 'Campbell Hall',
+    yearBuilt: '2015 (重建)',
+    architect: 'Ratcliff Architects',
+    summary: '天文系大本营,屋顶有天文台可以看星星 🔭',
+    description: `
+      Campbell Hall 是 **天文系** 的大本营,这栋楼在 2015 年重建后重新开放,同时服务于天文和物理教学研究。楼顶有一个配备 **17 英寸 Richard Treffers 望远镜** 的天文台,用于学生教学、研究和公众观星活动。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。天文系定期举办 **"Astro Night"** 公众观星活动,包括天文讲座和导览观星,是伯克利最酷的免费活动之一。
+
+      注意:Campbell Hall **没有天文馆**——如果你想看天文馆,去 Lawrence Hall of Science(他们有一个正在升级的天文馆)。
+    `,
+    funFacts: [
+      '屋顶的 17 英寸 Richard Treffers 望远镜是以伯克利天文学家 Treffers 命名的,学生可以用它做观测作业。',
+      '2015 年重建后重新开放,是伯克利天文系的现代化大本营。',
+      '"Astro Night" 是伯克利最受欢迎的公众科学活动之一——免费观星 + 天文讲座,不容错过。',
+      '天文系正在接受 2026 年秋季研究生申请,截止日期是 2025 年 12 月 1 日。'
+    ],
+    studentTips: [
+      '🔭 **Astro Night**:强烈推荐参加"Astro Night"公众观星活动——免费,有讲座,还能用真正的望远镜看星星。',
+      '🌟 **天文系学生**:如果你学天文或天体物理,这里是你的大本营——办公室、教室和天文台都在这。',
+      '📚 **教学空间**:楼里有教室和实验室,同时服务于天文和物理课程。',
+      '🚽 **现代设施**:2015 年重建后,设施都很现代化。',
+      '❌ **没有天文馆**:天文馆在 Lawrence Hall of Science,不在这里。'
+    ],
+    relatedLegend: '传说在晴朗的夜晚,如果你在 Campbell Hall 屋顶看到流星并许愿,GPA 会神奇地上涨(未经证实,但值得一试)。',
+    photoSpots: [
+      '屋顶天文台(如果能进去)是拍摄"仰望星空"系列照片的绝佳地点。',
+      '建筑外观的现代设计配合夜空很有科幻感。'
+    ],
+    accessibility: '完全符合现代 ADA 标准,有电梯、坡道和无障碍洗手间。屋顶天文台可能有无障碍限制,建议提前咨询。',
+    officialLink: 'https://astro.berkeley.edu/',
+    tags: ['STEM', 'Astronomy', 'Physics', 'Observatory', 'Modern']
+  },
+
+  {
+    images: [],
+    id: 'tan',
+    title: 'Tan Hall (陈嘉庚楼)',
+    yearBuilt: '1997',
+    architect: 'MBT Architecture',
+    summary: '化学院现代实验室大楼,7 层研究空间 🧪',
+    description: `
+      Tan Hall,全名 **Tan Kah Kee Hall(陈嘉庚楼)**,是伯克利化学院的核心研究设施之一。1997 年建成,专门支持生物技术、制药、电子材料、燃料、化学和环境研究领域的研究和研究生教育。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里有 7 层实验室空间、本科生计算机室和一个演讲厅。化学系和化学与生物分子工程系的教授和研究人员都在这里有实验室。
+
+      值得一提的是,化学院正在旁边建造 **Heathcock Hall**,预计 2027 年初开放——届时化学区域会更加壮观。
+    `,
+    funFacts: [
+      '以陈嘉庚命名,他是著名华侨企业家和慈善家,也是厦门大学的创办人。',
+      '1997 年建成,是化学院 90 年代现代化的重要一步。',
+      '楼里有 7 层实验室空间,从生物技术到材料科学都有涉及。',
+      'Heathcock Hall 正在旁边建造,预计 2027 年开放——化学区域会变得更强大。'
+    ],
+    studentTips: [
+      '🧪 **化学/化工学生**:如果你在化学院,这里可能是你做研究或上实验课的地方。',
+      '💻 **本科计算机室**:楼里有本科生计算机室,适合做作业和查资料。',
+      '📚 **不是自习区**:这里主要是研究实验室,自习建议去 Hildebrand 或 Main Stacks。',
+      '🚽 **现代设施**:作为 1997 年的建筑,设施比老化学楼好很多。',
+      '📍 **位置**:在化学区核心,靠近 Gilman、Hildebrand 和 Lewis。'
+    ],
+    accessibility: '完全符合 ADA 标准,有电梯连接各楼层,无障碍入口。',
+    officialLink: 'https://chemistry.berkeley.edu/',
+    tags: ['STEM', 'Chemistry', 'ChemE', 'Research', 'Modern']
+  },
+
+  {
+    images: [],
+    id: 'gilman',
+    title: 'Gilman Hall',
+    yearBuilt: '1917',
+    architect: 'John Galen Howard',
+    summary: '钚元素发现地,曼哈顿计划历史见证 ☢️',
+    description: `
+      Gilman Hall 是伯克利化学史上最具传奇色彩的建筑。1941 年 2 月 23 日,**Glenn Seaborg** 和他的同事在这栋楼的 **307 室** 首次鉴定了钚元素——这一发现直接推动了曼哈顿计划和原子弹的开发。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里现在主要是化学与生物分子工程系的办公室、教室和小型实验室。307 室已于 1966 年被列为 **国家历史地标**,整栋楼在 1997 年获得 **国家历史化学地标** 荣誉。
+
+      二战期间,这栋楼的顶层曾被用于机密核化学研究,区域被围栏封锁。战后,1976-1983 年间能源部对楼里的铀污染区进行了修复。
+    `,
+    funFacts: [
+      '307 室是钚元素的发现地,1966 年被列为国家历史地标。',
+      '建于 1916-1917 年,由 John Galen Howard 设计,专攻物理化学、无机化学和核化学。',
+      '与这栋楼相关的研究获得了两个诺贝尔化学奖:William Giauque(1949,低温研究)和 Glenn Seaborg(1951,超铀元素)。',
+      '二战期间楼顶曾进行机密核化学研究,通风设备专门升级以支持这项工作。'
+    ],
+    studentTips: [
+      '☢️ **历史爱好者必来**:如果你对核科学史或曼哈顿计划感兴趣,这栋楼值得专门来看看。',
+      '🔬 **化工系办公室**:现在主要是化学与生物分子工程系的办公区域。',
+      '📸 **307 室**:可以去看看门口的历史标牌,感受"这里发现了钚"的震撼。',
+      '🏛️ **百年老楼**:建于 1917 年,典型的 John Galen Howard 风格,很有历史感。',
+      '🚽 **老式设施**:作为百年老楼,设施比较老旧,但干净够用。'
+    ],
+    relatedLegend: '传说走进 Gilman Hall 时默念"Pu"(钚的元素符号),考核化学期末会有好运(适用于化学专业学生,效果未经证实)。',
+    photoSpots: [
+      '307 室门口的国家历史地标标牌——"在这里发现了钚"。',
+      '建筑外观的古典风格,配合化学区的氛围很有学术感。'
+    ],
+    accessibility: '主入口设有无障碍坡道,有电梯连接各楼层。作为历史建筑,符合 ADA 标准。',
+    officialLink: 'https://chemistry.berkeley.edu/',
+    tags: ['STEM', 'Chemistry', 'History', 'Nuclear', 'National Landmark']
+  },
+
+  {
+    images: [],
+    id: 'giauque',
+    title: 'Giauque Hall',
+    yearBuilt: '1954',
+    architect: '未详细记录',
+    summary: '低温化学实验室,以诺贝尔奖得主命名 🧊',
+    description: `
+      Giauque Hall 以 **William F. Giauque** 命名,他因低温物质研究于 1949 年获得诺贝尔化学奖。这栋楼建于 1954 年,专门用于研究超低温条件下的物质性质,是化学院的专业研究设施。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里有专门的低温实验室,研究接近绝对零度的物质行为——这是 Giauque 开创的领域。
+
+      Giauque 是伯克利化学的传奇人物,从 1922 年获得博士学位到 1981 年退休,整个学术生涯都在伯克利度过。
+    `,
+    funFacts: [
+      '以 William Giauque 命名,他因研究接近绝对零度的物质性质获得 1949 年诺贝尔化学奖。',
+      'Giauque 开创了"绝热去磁"方法,可以达到极低温度,这是低温物理学的重要里程碑。',
+      '这栋楼专门用于低温研究——楼里的设备可以创造接近绝对零度的环境。',
+      'Giauque 终身在伯克利工作,从学生到教授到退休,整整 60 年。'
+    ],
+    studentTips: [
+      '🧊 **低温研究**:如果你对低温物理或化学感兴趣,这里是伯克利的核心设施之一。',
+      '🔬 **专业实验室**:这里主要是研究设施,不是教学楼——普通学生很少来。',
+      '📍 **位置**:在化学区,靠近 Hildebrand 和 Lewis。',
+      '🚽 **普通设施**:1954 年的楼,设施中规中矩。',
+      '📚 **不适合自习**:这是专业研究楼,自习去 Hildebrand 化学图书馆。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。',
+    officialLink: 'https://chemistry.berkeley.edu/',
+    tags: ['STEM', 'Chemistry', 'Research', 'Nobel', 'Low Temperature']
+  },
+
+  {
+    images: [],
+    id: 'hildebrand',
+    title: 'Hildebrand Hall',
+    yearBuilt: '1966',
+    architect: '未详细记录',
+    summary: '化学院核心,内设化学/天文/物理图书馆 📚',
+    description: `
+      Hildebrand Hall 是伯克利化学院的核心建筑之一,以著名化学教授和前院长 **Joel Hildebrand** 命名。楼里有研究生研究实验室、本科教学实验室,以及重要的 **化学、天文与物理图书馆**(100 Hildebrand Hall)。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。图书馆不仅服务化学院,还为天文系、物理系和空间科学实验室提供支持。部分图书馆空间已翻新,增加了三个学生研讨室。
+
+      这栋楼是化学区的"中枢",无论你是找实验室、图书馆还是办公室,都会频繁经过这里。
+    `,
+    funFacts: [
+      '以 Joel Hildebrand 命名,他是伯克利化学的传奇教授,活到 101 岁,学术生涯跨越 70 年。',
+      '100 Hildebrand Hall 是化学/天文/物理图书馆,是理科学生的重要资源。',
+      '楼里同时有研究生研究实验室和本科教学实验室,是教学和研究的枢纽。',
+      '图书馆最近翻新增加了三个学生研讨室——开会讨论可以预约。'
+    ],
+    studentTips: [
+      '📚 **化学图书馆**:100 Hildebrand Hall 的图书馆是化学/物理/天文专业学生必去的地方,资源丰富且有专业馆员。',
+      '🧪 **化学学生核心**:如果你在化学院,这里是你的大本营——实验室、办公室、图书馆都在这。',
+      '📖 **研讨室**:图书馆有可预约的研讨室,小组讨论或备考很方便。',
+      '🚽 **普通设施**:1966 年的楼,设施一般但图书馆区域维护良好。',
+      '📍 **位置**:化学区中心,靠近 Gilman、Tan、Lewis 等化学楼。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。图书馆区域完全无障碍。',
+    officialLink: 'https://www.lib.berkeley.edu/libraries/chemistry-astronomy-physics-library',
+    tags: ['STEM', 'Chemistry', 'Library', 'Physics', 'Astronomy']
+  },
+
+  {
+    images: [],
+    id: 'stanley',
+    title: 'Stanley Hall',
+    yearBuilt: '2007',
+    architect: 'ZGF Architects',
+    summary: '生物工程系大本营,QB3 创业孵化器 🧬',
+    description: `
+      Stanley Hall 是伯克利跨学科研究的标杆建筑,也是 **生物工程系** 和 **QB3(加州定量生物科学研究所)** 的核心所在地。这栋 285,000 平方英尺的建筑汇集了生物科学、物理科学和工程学的尖端研究。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。楼里有教室、礼堂、教授实验室,以及核心研究设施如 **生物分子纳米技术中心**、组织工程设施、专业光学套件和区域 NMR 设施。还有 **QB3 Garage@Berkeley**——一个生物技术创业孵化器。
+
+      很多楼层将实验台和计算室结合在一起,鼓励实验与理论方法的融合。
+    `,
+    funFacts: [
+      '以诺贝尔奖得主 Wendell Stanley 命名,他因病毒结晶化研究于 1946 年获奖。',
+      'QB3 Garage@Berkeley 是一个生物技术创业孵化器,帮助研究人员将实验室成果转化为公司。',
+      '楼里有生物分子纳米技术中心——可以在这里做纳米级的生物实验。',
+      '设计强调跨学科合作——不同领域的实验室共享设备和公共工作区,鼓励碰撞出新想法。'
+    ],
+    studentTips: [
+      '🧬 **生物工程学生**:这是你的大本营——办公室、实验室、核心设施都在这。',
+      '🚀 **创业资源**:QB3 Garage 提供创业孵化支持,如果你有生物技术创业想法可以关注。',
+      '📚 **教室和礼堂**:楼里有教学空间,但主要是研究导向。',
+      '🚽 **现代设施**:2007 年新建,设施非常现代化。',
+      '📍 **位置**:靠近 Weill Hall(Li Ka Shing Center),在校园东北侧的生物科学区域。'
+    ],
+    accessibility: '完全符合现代 ADA 标准,有电梯、坡道和无障碍洗手间。所有核心设施均可无障碍访问。',
+    officialLink: 'https://bioeng.berkeley.edu/',
+    tags: ['STEM', 'Bioengineering', 'QB3', 'Research', 'Modern', 'Startup']
+  },
+
+  {
+    images: [],
+    id: 'mclaughlin',
+    title: 'McLaughlin Hall',
+    yearBuilt: '1931',
+    architect: 'John Galen Howard',
+    summary: '工程学院院长办公室和 CDSS 学院所在地 🏗️',
+    description: `
+      McLaughlin Hall 建于 1931 年,是伯克利工程学院的历史核心建筑之一。楼里现在是 **工程学院院长办公室** 和 **计算、数据科学与社会学院 (CDSS) 院长办公室** 的所在地。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。虽然土木与环境工程系 (CEE) 的教授曾在 1931 年搬入这里,但现在 CEE 的主要办公室已转移到 Davis Hall。
+
+      这栋楼是工程区的行政中心,而不是主要的教学或研究空间。
+    `,
+    funFacts: [
+      '1931 年建成时是土木工程系的大本营,教授和学生在这里研究结构工程和材料力学。',
+      '现在是工程学院和 CDSS 学院的行政中心,院长办公室都在这里。',
+      '由 John Galen Howard 设计,是伯克利校园建筑群的经典代表。',
+      'CEE 系的主要实验室(如结构实验室)现在在 Davis Hall,但历史根源在 McLaughlin。'
+    ],
+    studentTips: [
+      '🏗️ **行政中心**:如果你需要找工程学院或 CDSS 学院的行政事务,院长办公室在这里。',
+      '📚 **不是教学楼**:这里主要是办公室,不是教室或研究实验室——上课和做研究去 Davis 或其他工程楼。',
+      '🏛️ **历史建筑**:1931 年的 John Galen Howard 作品,走在里面能感受到工程学院的历史底蕴。',
+      '🚽 **老式设施**:作为 90 年老楼,设施比较传统但维护良好。',
+      '📍 **位置**:工程区核心,靠近 Davis Hall、Hearst Mining 等工程楼。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。作为历史建筑,部分区域可能有无障碍限制。',
+    officialLink: 'https://engineering.berkeley.edu/',
+    tags: ['Engineering', 'Admin', 'History', 'CDSS', 'CEE']
+  },
+
+  {
+    images: [],
+    id: 'obrien',
+    title: "O'Brien Hall",
+    yearBuilt: '1960s',
+    architect: '未详细记录',
+    summary: '环境工程所在地,即将被拆除重建 🚧',
+    description: `
+      O'Brien Hall 主要用于环境工程研究和教学,楼里还有 **水资源中心档案馆**。但由于抗震问题,这栋楼已被列入拆除重建计划。
+
+      **实时动态(2026)**:⚠️ **即将被拆除重建**。伯克利正在规划 "Hesse-O'Brien Halls Seismic Replacement" 项目,将拆除现有的 Hesse Hall 和 O'Brien Hall,建造一座全新的 6 层跨学科工程大楼——"Engineering Crossroads"。新楼预计耗资 4 亿美元,将包含研究和教学实验室、办公室、教室和协作空间。
+
+      如果你在这栋楼上课或做研究,关注校方的搬迁和替代安排通知。
+    `,
+    funFacts: [
+      '这栋楼因抗震问题被列入拆除计划——加州对地震安全要求很严格。',
+      '新建的 "Engineering Crossroads" 将是一座现代化的跨学科工程枢纽,设计目标是促进不同工程学科之间的合作。',
+      '楼里有水资源中心档案馆,收藏了大量关于加州水资源管理的历史文献。',
+      '新楼预算 4 亿美元——这将是伯克利工程区最大的建设项目之一。'
+    ],
+    studentTips: [
+      '🚧 **即将拆除**:如果你在这栋楼有课或研究,密切关注校方的搬迁通知,提前了解替代安排。',
+      '🔬 **环境工程**:这里目前是环境工程的重要据点,但功能将转移到新楼。',
+      '📚 **水资源档案**:如果你对加州水资源历史感兴趣,可以来水资源中心档案馆查阅资料。',
+      '🚽 **老旧设施**:抗震问题意味着设施比较老旧——这也是要拆除的原因。',
+      '📍 **位置**:工程区,靠近 Hesse Hall 和 Davis Hall。'
+    ],
+    accessibility: '有基本无障碍设施,但由于建筑老旧,部分区域可能有限制。建议联系系办确认具体情况。',
+    officialLink: 'https://ce.berkeley.edu/',
+    tags: ['Engineering', 'Environmental', 'Water Resources', 'Under Construction']
+  },
+
+  {
+    images: [],
+    id: 'blulm',
+    title: 'Blum Hall',
+    yearBuilt: '2010 (翻新)',
+    architect: '翻新项目',
+    summary: '全球贫困与实践中心,社会影响创新基地 🌍',
+    description: `
+      Blum Hall 是 **Blum Center for Developing Economies** 的所在地,专注于通过跨学科教育和研究解决全球贫困问题。这里是伯克利社会影响和发展经济学研究的核心据点。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。Blum Center 提供著名的 **Global Poverty & Practice (GPP) Minor**——这是伯克利最受欢迎的辅修专业之一,让学生通过理论学习和实地实习研究贫困、财富和不平等问题。
+
+      如果你对社会创业、国际发展或全球贫困问题感兴趣,这里是必去之地。
+    `,
+    funFacts: [
+      'GPP Minor(全球贫困与实践辅修)是伯克利最受欢迎的辅修专业之一,吸引来自各个学院的学生。',
+      'Blum Center 提供 "Practice Experience" 奖学金,资助学生到全球各地的扶贫机构实习。',
+      '以 Richard Blum 命名,他是著名投资家和慈善家,也是参议员黛安·范斯坦的丈夫。',
+      '这里举办 "Big Ideas" 创新竞赛,支持解决全球挑战的学生项目。'
+    ],
+    studentTips: [
+      '🌍 **GPP Minor**:如果你对全球贫困、社会创业或国际发展感兴趣,GPP Minor 是必修——来这里了解更多。',
+      '💰 **Practice Experience 奖学金**:Blum Center 提供资金支持学生到扶贫机构实习,申请截止日期通常在 9 月底。',
+      '🚀 **社会创业资源**:如果你有解决社会问题的创业想法,"Big Ideas" 竞赛可能是你的起步平台。',
+      '🚽 **现代设施**:作为翻新后的建筑,设施比较现代化。',
+      '📍 **位置**:校园中心区域,方便从各个方向到达。'
+    ],
+    accessibility: '符合现代 ADA 标准,有电梯和无障碍入口。',
+    officialLink: 'https://blumcenter.berkeley.edu/',
+    tags: ['Social Impact', 'Global Poverty', 'GPP', 'Development', 'Interdisciplinary']
+  },
+
+  {
+    images: [],
+    id: 'north_gate',
+    title: 'North Gate Hall (原名 The Ark)',
+    yearBuilt: '1904',
+    architect: 'John Galen Howard',
+    summary: '新闻学院大本营,培养未来的记者和媒体人 📰',
+    description: `
+      North Gate Hall 是 **UC Berkeley 新闻研究生院** 的所在地,位于校园北缘,Euclid 和 Hearst 大道交叉口。这栋楼原名 **"The Ark"(方舟)**,1904 年建成时曾是建筑学院的家,1981 年新闻学院搬入。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。新闻学院提供两年制的 **Master of Journalism (MJ)** 学位,培养下一代记者、媒体制作人和新闻创业者。
+
+      如果你对新闻、媒体或传播学感兴趣,这里是必访之地。
+    `,
+    funFacts: [
+      '原名 "The Ark"(方舟),因为建筑外观有点像一艘大船。',
+      '1904 年建成时是建筑学院的家,1981 年新闻学院搬入——这栋楼见证了伯克利两个顶尖专业的历史。',
+      '由 John Galen Howard 设计,是伯克利早期校园建筑的代表作之一。',
+      '新闻学院的 2026 年秋季申请截止日期是 2025 年 12 月 1 日(优先)和 2026 年 1 月 15 日(最终)。'
+    ],
+    studentTips: [
+      '📰 **新闻学生**:如果你在新闻学院或对新闻感兴趣,这里是你的大本营——教室、工作室、编辑室都在这。',
+      '🎥 **媒体制作**:楼里有视频制作和编辑设施,新闻学生可以使用。',
+      '📍 **位置**:校园北缘,Euclid 和 Hearst 交叉口——从北门进校园会经过这里。',
+      '🏛️ **历史建筑**:120 年历史的 John Galen Howard 作品,很有学术氛围。',
+      '🚽 **老式设施**:作为百年老楼,设施比较传统但够用。'
+    ],
+    accessibility: '有无障碍入口,内部有电梯。作为历史建筑,部分区域可能有无障碍限制(如楼梯)。',
+    officialLink: 'https://journalism.berkeley.edu/',
+    tags: ['Journalism', 'Media', 'History', 'Graduate School', 'The Ark']
+  },
+
+  {
+    images: [],
+    id: 'hertz',
+    title: 'Hertz Hall',
+    yearBuilt: '1958',
+    architect: '未详细记录',
+    summary: '伯克利最美的音乐厅,免费午间音乐会不容错过 🎵',
+    description: `
+      Hertz Hall 是伯克利音乐系的核心演出场地,可容纳 678 人。以旧金山交响乐团前指挥 **Alfred Hertz** 命名,他将遗产捐给伯克利用于音乐教育。这里是古典音乐、室内乐和当代音乐演出的主要场所。
+
+      **实时动态(2026)**:正常开放,演出活动丰富。2026 年春季的演出包括 **Takács Quartet**、**Eco Ensemble** 等世界级团体。学期中每周都有 **免费午间音乐会**——是伯克利最好的免费活动之一。
+
+      楼里还收藏了音乐系的历史管风琴,是管风琴爱好者必看的地方。
+    `,
+    funFacts: [
+      '以 Alfred Hertz 命名,他是旧金山交响乐团 1915-1930 年的指挥,将遗产捐给伯克利用于音乐教育。',
+      '学期内每周有免费午间音乐会——不需要门票,直接来听就行。',
+      'Eco Ensemble 是伯克利著名的当代音乐团体,经常在这里首演新作品。',
+      '通过走廊与 Morrison Hall(音乐系)相连,是音乐区的核心。'
+    ],
+    studentTips: [
+      '🎵 **免费午间音乐会**:学期中每周都有免费音乐会,是放松和欣赏古典音乐的绝佳机会——强烈推荐。',
+      '🎫 **Cal Performances**:很多世界级演出通过 Cal Performances 在这里举办,学生票通常有折扣。',
+      '🎹 **音乐系学生**:如果你学音乐,这里是你的主要演出场地——独奏会和合奏都在这。',
+      '📍 **位置**:与 Morrison Hall 相连,在音乐区核心。',
+      '🚽 **普通设施**:音乐厅设施维护良好,整体环境很适合听音乐。'
+    ],
+    accessibility: '有无障碍入口和轮椅座位。建议提前联系确认无障碍座位。',
+    officialLink: 'https://music.berkeley.edu/',
+    tags: ['Music', 'Performance', 'Concert Hall', 'Cal Performances', 'Arts']
+  },
+
+  {
+    images: [],
+    id: 'morrison',
+    title: 'Morrison Hall',
+    yearBuilt: '1958',
+    architect: '未详细记录',
+    summary: '音乐系大本营,33 间琴房等你来练琴 🎹',
+    description: `
+      Morrison Hall 是 **音乐系** 的核心所在地,包含教授办公室、教室、练习室和学生休息室。楼里有 **33 间小型练习室**(大多配有钢琴)和 **5 间大型"Grand Rooms"**(也用作教学工作室)。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。2004 年 Hargrove 音乐图书馆搬到隔壁后,Morrison Hall 进行了翻新,增加了 125 座位的演讲/独奏厅和民族音乐学研究室。
+
+      如果你是音乐专业学生,这里就是你的家——从琴房到办公室到课堂都在这。
+    `,
+    funFacts: [
+      '楼里有 33 间小型练习室和 5 间大型 Grand Rooms——练琴需要 Cal 1 Card。',
+      '音乐系有不同的用户组(A、B、C),练习室使用时间和权限有所不同。',
+      '2004 年翻新后增加了 125 座位的演讲/独奏空间和民族音乐学研究室。',
+      '教授办公室在顶楼,系办公室在一楼,学生休息室在底楼。'
+    ],
+    studentTips: [
+      '🎹 **练习室**:底楼有 33 间练习室,需要 Cal 1 Card 才能进入——练琴高峰期可能需要排队。',
+      '📚 **音乐系学生**:这里是你的大本营——办公室、教室、练习室都在这。',
+      '☕ **学生休息室**:底楼有学生休息室,可以在课间休息或吃东西。',
+      '📍 **位置**:与 Hertz Hall 相连,靠近 Hargrove 音乐图书馆。',
+      '🚽 **普通设施**:设施中规中矩,但维护良好。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。',
+    officialLink: 'https://music.berkeley.edu/',
+    tags: ['Music', 'Practice Rooms', 'Department', 'Teaching', 'Arts']
+  },
+
+  {
+    images: [],
+    id: 'hargrove',
+    title: 'Jean Gray Hargrove Music Library',
+    yearBuilt: '2004',
+    architect: '未详细记录(翻新/新建)',
+    summary: '西海岸最重要的音乐图书馆之一 📚🎼',
+    description: `
+      Hargrove 音乐图书馆是伯克利音乐系的核心学术资源,拥有数十万册图书、乐谱和档案。这里有西海岸最重要的音乐特藏之一,包括原始乐谱手稿、稀有文献和地区音乐档案。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。图书馆提供 RILM、Music Index Online、JSTOR 等关键数据库访问,是音乐学、民族音乐学和作曲专业学生的必去之地。
+
+      以 Jean Gray Hargrove 命名,她是伯克利音乐项目的重要支持者。
+    `,
+    funFacts: [
+      '收藏数十万册乐谱和图书,是西海岸最重要的学术音乐图书馆之一。',
+      '特藏包括 1852-1900 年加州出版的乐谱、17-18 世纪意大利歌剧剧本等珍贵文献。',
+      '还有爵士钢琴家 Earl "Fatha" Hines 的纪念品和档案。',
+      '2004 年从 Morrison Hall 搬到独立建筑,空间大大扩展。'
+    ],
+    studentTips: [
+      '📚🎼 **音乐学生必去**:如果你学音乐,这里是你的学术大本营——乐谱、研究资料、数据库都在这。',
+      '🔍 **特藏**:如果你对音乐史或稀有乐谱感兴趣,可以预约查看特藏——馆员很专业。',
+      '💻 **数据库**:RILM、Music Index 等关键数据库在这里可以访问——对研究论文很有帮助。',
+      '📍 **位置**:靠近 Morrison Hall 和 Hertz Hall,在音乐区核心。',
+      '🚽 **现代设施**:2004 年新建/翻新,设施比较现代化。'
+    ],
+    accessibility: '完全符合 ADA 标准,有电梯和无障碍入口。',
+    officialLink: 'https://www.lib.berkeley.edu/libraries/music-library',
+    tags: ['Music', 'Library', 'Research', 'Special Collections', 'Arts']
+  },
+
+  {
+    images: [],
+    id: 'bampfa',
+    title: 'BAMPFA (伯克利艺术博物馆与太平洋电影资料馆)',
+    yearBuilt: '2016 (新馆)',
+    architect: 'Diller Scofidio + Renfro',
+    summary: '世界级艺术博物馆,每月第一个周四免费入场 🎨🎬',
+    description: `
+      **BAMPFA**(UC Berkeley Art Museum and Pacific Film Archive)是伯克利的艺术和电影中心,2016 年迁入现址的新馆。这里同时是一座艺术博物馆和电影资料馆,收藏涵盖从古代到当代的全球艺术作品。
+
+      **实时动态(2026)**:2025-2026 年展览丰富多彩,包括 **Lee ShinJa: Drawing with Thread**(韩国纺织艺术)、**Theresa Hak Kyung Cha 回顾展** 等重磅展览。每月第一个周四 **免费入场**。
+
+      如果你对艺术、电影或视觉文化感兴趣,这里绝对是伯克利必去之地。
+    `,
+    funFacts: [
+      '每月第一个周四免费入场——学生省钱看展的好机会。',
+      '2016 年新馆由 Diller Scofidio + Renfro 设计,建筑本身就是一件艺术品。',
+      '不仅是艺术博物馆,还有太平洋电影资料馆——定期放映经典电影和独立影片。',
+      '2026 年即将展出 Theresa Hak Kyung Cha 25 年来的首次回顾展——她是伯克利传奇校友。'
+    ],
+    studentTips: [
+      '🎨 **免费入场**:每月第一个周四免费——省钱看展,强烈推荐。',
+      '🎬 **电影放映**:太平洋电影资料馆定期放映经典电影和独立影片,票价便宜,是电影爱好者的天堂。',
+      '📸 **拍照打卡**:建筑设计非常独特,是校园附近最佳拍照点之一。',
+      '📍 **位置**:在校园南侧,靠近 Downtown Berkeley 和 Oxford/Center 街区。',
+      '🚽 **现代设施**:2016 年新建,设施非常现代化,咖啡厅和礼品店也很不错。'
+    ],
+    photoSpots: [
+      '博物馆外观的现代建筑设计——尤其是金属外墙和玻璃结构。',
+      '室内的开放式空间和艺术装置,配合自然光很适合拍照。'
+    ],
+    accessibility: '完全符合现代 ADA 标准,有电梯、坡道和无障碍洗手间。轮椅可用。',
+    officialLink: 'https://bampfa.org/',
+    tags: ['Art', 'Museum', 'Film', 'Modern', 'Free Thursdays']
+  },
+
+  {
+    images: [],
+    id: 'cheit',
+    title: 'Cheit Hall',
+    yearBuilt: '1995',
+    architect: 'Moore Ruble Yudell',
+    summary: 'Haas 商学院教学中心,MBA 学生的大本营 💼',
+    description: `
+      Cheit Hall 是 **Haas 商学院** 的核心教学楼,以前商学院高管 **Earl F. Cheit** 命名。楼里有众多演讲厅、灵活教室和研讨室,配备最先进的教学技术,是 MBA 课程的主要上课地点。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。2026 年春季各种研讨会和课程在这里进行,包括管理与组织(MORS)研讨系列。
+
+      如果你想旁听商学院的讲座或参加活动,很多都在这里举办。
+    `,
+    funFacts: [
+      '以 Earl F. Cheit 命名,他是 Haas 商学院的前高管,对商学院的教学和研究项目贡献巨大。',
+      '楼里有多个经典教室:C110、C122、C220、C330 等,还有 Wells Fargo Room。',
+      'Haas MBA 2025-2026 申请第一轮截止日期是 2025 年 9 月,第二轮是 2026 年 1 月。',
+      'Haas 商学院强调创新、创业和社会影响——这是硅谷基因的体现。'
+    ],
+    studentTips: [
+      '💼 **MBA学生大本营**:如果你在 Haas 读 MBA,这里是你主要的上课地点——演讲厅、研讨室都在这。',
+      '📚 **旁听机会**:有些讲座和活动对非商学院学生开放,可以来体验一下商学院的氛围。',
+      '☕ **Haas氛围**:商学院区域整体氛围很 professional,可以来感受一下。',
+      '📍 **位置**:Haas 商学院区,靠近 Haas Pavilion 和 Faculty Club。',
+      '🚽 **现代设施**:1995 年建成,设施现代化。'
+    ],
+    accessibility: '完全符合 ADA 标准,有电梯和无障碍入口。',
+    officialLink: 'https://haas.berkeley.edu/',
+    tags: ['Business', 'Haas', 'MBA', 'Teaching', 'Professional']
+  },
+
+  {
+    images: [],
+    id: 'law_building',
+    title: 'The Law Building (原 Boalt Hall)',
+    yearBuilt: '1951 (主楼) / 2011 (南馆)',
+    architect: 'Various',
+    summary: '伯克利法学院所在地,培养未来法律精英 ⚖️',
+    description: `
+      **Berkeley Law** 法学院的主要教学和研究大楼。历史上曾被称为 "Boalt Hall",但由于原命名者 John Henry Boalt 的种族主义言论,该名称已于 **2020 年 1 月被正式移除**。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。法学院提供 JD、LLM、JSD 和 PhD 学位,有超过 25 个研究中心和诊所。2011 年扩建的南馆增加了图书馆空间、教室和学生设施。
+
+      法学院专注于宪法、刑事司法、环境法、国际法、法律与技术等多个领域。
+    `,
+    funFacts: [
+      '2020 年 1 月正式移除 "Boalt Hall" 名称,因为 John Henry Boalt 持有种族主义观点。',
+      '有超过 25 个研究中心和诊所,包括法律与技术中心、人权中心等。',
+      '2011 年的南馆扩建显著改善了法学院的设施。',
+      '法学院学生可以参与各种诊所项目,获得实际法律实践经验。'
+    ],
+    studentTips: [
+      '⚖️ **法学院学生**:这里是你的大本营——教室、图书馆、诊所、学生设施都在这。',
+      '📚 **法律图书馆**:法学院有专门的法律图书馆,法律研究资源丰富。',
+      '🏛️ **诊所经验**:如果你对法律实践感兴趣,法学院的诊所项目提供真实的法律工作经验。',
+      '📍 **位置**:校园东北区域,有点独立于主校区。',
+      '🚽 **现代/老旧混合**:主楼较老但南馆很现代。'
+    ],
+    accessibility: '符合 ADA 标准,南馆有现代无障碍设施。主楼部分区域可能有限制。',
+    officialLink: 'https://www.law.berkeley.edu/',
+    tags: ['Law', 'Graduate School', 'Professional', 'Boalt', 'Justice']
+  },
+
+  {
+    images: [],
+    id: 'minor',
+    title: 'Minor Hall (视光学院)',
+    yearBuilt: '1941 (扩建 1953, 1978)',
+    architect: 'Various',
+    summary: 'Herbert Wertheim 视光与视觉科学学院所在地 👁️',
+    description: `
+      Minor Hall 是 **Herbert Wertheim School of Optometry & Vision Science** 的所在地。楼里有视光诊所(Meredith W. Morgan University Eye Center)、行政办公室和研究实验室。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。视光学院 2026 年秋季入学申请从 2025 年 7 月至 12 月滚动进行。OD 项目是四年制,每年招收约 65-70 名学生。
+
+      如果你需要做眼科检查,楼里的 Eye Center 对公众开放。
+    `,
+    funFacts: [
+      '1941 年建成,1953 年专门为视光学院改造,1978 年再次扩建。',
+      'Class of 2030 申请者可以不提交 OAT/DAT/MCAT 成绩,但之后的申请周期将要求标准化考试。',
+      '2025-2026 学年学费:加州居民约 $42,695,非居民约 $54,940。',
+      '楼里的 Eye Center 提供全套眼科服务,对公众开放——可以来这里做眼科检查。'
+    ],
+    studentTips: [
+      '👁️ **视光学生**:这里是你的大本营——诊所、实验室、办公室都在这。',
+      '🏥 **Eye Center**:如果你需要做眼科检查,Eye Center 对公众开放,学生可能有折扣。',
+      '📚 **专业项目**:OD 是四年制专业学位,竞争激烈但回报丰厚。',
+      '📍 **位置**:校园西北区域,相对独立。',
+      '🚽 **老旧设施**:作为 1941 年的老楼,设施比较老旧但维护良好。'
+    ],
+    accessibility: '有无障碍入口和电梯,Eye Center 完全无障碍。',
+    officialLink: 'https://optometry.berkeley.edu/',
+    tags: ['Optometry', 'Vision Science', 'Health', 'Professional', 'Clinic']
+  },
+
+  {
+    images: [],
+    id: 'haviland',
+    title: 'Haviland Hall',
+    yearBuilt: '1924',
+    architect: 'John Galen Howard',
+    summary: '社会福利学院所在地,培养社会工作者 🤝',
+    description: `
+      Haviland Hall 自 1963 年起就是 **社会福利学院(School of Social Welfare)** 的所在地。这栋 1924 年的建筑包含大部分社会福利课程的教室、行政和教授办公室,以及社会研究图书馆。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。社会福利学院提供 BA、MSW 和 PhD 学位,培养学生从事直接实践、机构管理、政策制定和研究工作。
+
+      如果你对社会工作、社会正义或社区服务感兴趣,这里是你的起点。
+    `,
+    funFacts: [
+      '1924 年由 John Galen Howard 设计,是伯克利校园经典建筑之一。',
+      '1963 年社会福利学院搬入,此后一直是学院的家。',
+      'MSW(社会福利硕士)项目培养学生成为专业社会工作者。',
+      '楼里有社会研究图书馆,收藏丰富的社会福利和社会工作文献。'
+    ],
+    studentTips: [
+      '🤝 **社会福利学生**:这里是你的大本营——教室、办公室、图书馆都在这。',
+      '📚 **社会研究图书馆**:楼里有专门的社会研究图书馆,对社会福利和政策研究很有帮助。',
+      '🏛️ **历史建筑**:1924 年的 John Galen Howard 作品,很有历史感。',
+      '📍 **位置**:校园东北区域,靠近 Hearst Gym。',
+      '🚽 **老式设施**:百年老楼,设施比较老旧。'
+    ],
+    accessibility: '有无障碍入口,作为历史建筑部分区域可能有限制。建议提前咨询。',
+    officialLink: 'https://socialwelfare.berkeley.edu/',
+    tags: ['Social Welfare', 'Graduate School', 'History', 'Social Work', 'Justice']
+  },
+
+  {
+    images: [],
+    id: 'goldman_school',
+    title: 'Goldman School of Public Policy',
+    yearBuilt: '1993',
+    architect: 'Moore Ruble Yudell',
+    summary: '公共政策学院,培养未来政策制定者 📊',
+    description: `
+      **Goldman School of Public Policy (GSPP)** 是伯克利的公共政策学院,提供 MPP(公共政策硕士)、MPA(公共事务硕士)、MDP(发展实践硕士)和 PhD 学位,以及本科辅修项目。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。GSPP 2026 年秋季申请截止日期是 2025 年 12 月 1 日。MPP 是两年全日制项目,MPA 是针对中层职业專業人士的一年制项目。
+
+      如果你想在政府、非营利组织或公共部门工作,这里提供必要的政策分析和领导力培训。
+    `,
+    funFacts: [
+      'MPP 是两年全日制项目,包括暑期实习和二年级政策分析项目。',
+      'MPA 针对有 7 年以上工作经验的中层职业专业人士,是一年制加速项目。',
+      '2026 年秋季申请截止日期是 2025 年 12 月 1 日,需要 GRE 成绩。',
+      '学校强调社会科学方法、经济分析、定量方法和政治制度分析。'
+    ],
+    studentTips: [
+      '📊 **政策学生**:如果你在 GSPP,这里是你的大本营——所有课程和研讨会都在这。',
+      '🎓 **本科辅修**:GSPP 提供公共政策辅修,让本科生也能接触政策分析。',
+      '💼 **职业发展**:GSPP 校友网络强大,在政府、智库和非营利组织都有广泛联系。',
+      '📍 **位置**:校园中心区域,靠近 Bancroft 和 Barrows。',
+      '🚽 **现代设施**:1993 年建成,设施现代化。'
+    ],
+    accessibility: '完全符合 ADA 标准,有电梯和无障碍入口。',
+    officialLink: 'https://gspp.berkeley.edu/',
+    tags: ['Public Policy', 'GSPP', 'Graduate School', 'MPP', 'Government']
+  },
+
+  {
+    images: [],
+    id: 'eshleman',
+    title: 'Eshleman Hall',
+    yearBuilt: '1965',
+    architect: '未详细记录',
+    summary: 'ASUC 学生会,1000+ 学生社团的大本营 🏛️',
+    description: `
+      Eshleman Hall 是 **ASUC(本科生学生会)** 的所在地,也是伯克利学生组织的核心枢纽。楼里有 OASIS(学生组织咨询与参与服务)、学生会财务团队、公共服务中心等关键部门。
+
+      **实时动态(2026)**:正常开放,无施工或关闭。伯克利有超过 1000 个注册学生组织,它们的支持和管理很多都在这里进行。2025 年秋季新社团注册时间是 9 月 2 日至 26 日。
+
+      如果你想加入社团或组织活动,这里是你的第一站。
+    `,
+    funFacts: [
+      'OASIS(312 Eshleman)帮助学生组织注册、咨询、资金申请和活动策划。',
+      '学生会财务团队(4 楼)为 ASUC 和超过 1500 个学生团体提供财务服务。',
+      '公共服务中心(218 Eshleman)支持 16 个专注社区服务的学生组织联盟。',
+      '楼里还有 The Daily Californian(校报)、研究生会、多元文化资源中心等。'
+    ],
+    studentTips: [
+      '🏛️ **社团中心**:如果你想注册社团或了解现有社团,先来 OASIS(312 Eshleman)。',
+      '💰 **资金申请**:学生组织可以通过 ASUC 申请资金,财务团队在 4 楼。',
+      '📰 **Daily Cal**:伯克利的独立学生报纸办公室也在这里——有新闻可以爆料。',
+      '📍 **位置**:靠近 Sproul Plaza,在学生活动的核心区域。',
+      '🚽 **普通设施**:1965 年的楼,设施比较老旧但功能齐全。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。',
+    officialLink: 'https://asuc.org/',
+    tags: ['Student Union', 'ASUC', 'Organizations', 'Student Life', 'OASIS']
+  },
+
+  {
+    images: [],
+    id: 'cesar_chavez',
+    title: 'César E. Chávez Student Center',
+    yearBuilt: '1960s (翻新中)',
+    architect: 'Various',
+    summary: '学生服务中心,Golden Bear Cafe 所在地 🥗',
+    description: `
+      César Chávez Student Center 是伯克利学生生活的重要枢纽,内设咨询服务、转学生中心、学生艺术组织和 **Golden Bear Cafe**。这里和 MLK Jr. Student Union 一起构成伯克利的学生会设施。
+
+      **实时动态(2026)**:正常开放。值得注意的是,根据伯克利 2022 年发布的校园总体规划,这栋楼未来可能会被一座全新的、更具包容性的"校园生活大楼"取代,以更好地满足学生组织和社区活动的需求。
+
+      如果你需要快速吃点东西或找学生服务,来这里准没错。
+    `,
+    funFacts: [
+      '以农场工人领袖 César E. Chávez 命名,体现社会正义和劳工权益。',
+      '校园总体规划提议未来用一座新的"校园生活大楼"取代这栋楼。',
+      'Golden Bear Cafe 是学生常去的快餐选择之一。',
+      '楼里有转学生、返校生和学生家长资源中心。'
+    ],
+    studentTips: [
+      '🥗 **Golden Bear Cafe**:快速吃个午餐或下午茶的好地方。',
+      '📚 **学生服务**:转学生中心、咨询服务等都在这里——有需要可以来咨询。',
+      '🎨 **学生艺术**:楼里有学生艺术组织,如果你对艺术创作感兴趣可以关注。',
+      '📍 **位置**:靠近 MLK Jr. Student Union,在学生活动核心区。',
+      '🚽 **普通设施**:设施一般,但功能齐全。'
+    ],
+    accessibility: '有无障碍入口和电梯,符合 ADA 标准。',
+    officialLink: 'https://studentunion.berkeley.edu/',
+    tags: ['Student Union', 'Dining', 'Student Services', 'Golden Bear Cafe']
+  },
+
+  {
+    images: [],
+    id: 'zellerbach',
+    title: 'Zellerbach Hall',
+    yearBuilt: '1968',
+    architect: 'Vernon DeMars',
+    summary: 'Cal Performances 主场,世界级舞蹈和戏剧表演 🎭',
+    description: `
+      Zellerbach Hall 是 **Cal Performances** 的主要演出场地,每年约 100 场世界级表演在这里上演。2025-2026 季主题是"流亡与庇护",将有巴黎歌剧院芭蕾舞团、Alvin Ailey 美国舞蹈剧院、玛莎·格雷厄姆舞团等顶级团体演出。
+
+      **实时动态(2026)**:2025-2026 演出季精彩纷呈,包括:
+      - 巴黎歌剧院芭蕾舞团(10月)
+      - Mark Morris Dance Group "Moon"(1月)
+      - Alvin Ailey(4月)
+      - Joffrey 芭蕾舞团(4月)
+
+      戏剧、舞蹈与表演研究系的学生演出也在 Zellerbach Playhouse 进行。
+    `,
+    funFacts: [
+      'Cal Performances 每年呈现约 100场演出,横跨音乐、舞蹈、戏剧等领域。',
+      '2025-2026 季主题是"Exile & Sanctuary"(流亡与庇护)。',
+      'Zellerbach Playhouse 是较小的演出厅,适合学生戏剧和实验作品。',
+      '学生票通常有优惠——是以便宜价格看世界级演出的好机会。'
+    ],
+    studentTips: [
+      '🎭 **看演出**:Cal Performances 有学生票优惠,世界级舞蹈和戏剧值得一看。',
+      '🎟️ **提前购票**:热门演出很快售罄,建议提前在网上购票。',
+      '📚 **TDPS学生**:如果你学戏剧或舞蹈,这里是你的主要演出场地之一。',
+      '📍 **位置**:校园中心,靠近 Sproul Plaza。',
+      '🚽 **现代设施**:作为大型表演场馆,设施完善。'
+    ],
+    accessibility: '完全符合 ADA 标准,有轮椅座位和无障碍设施。建议提前联系确认无障碍座位。',
+    officialLink: 'https://calperformances.org/',
+    tags: ['Performance', 'Cal Performances', 'Dance', 'Theater', 'Arts']
+  },
+
+  {
+    images: [],
+    id: 'alumni_house',
+    title: 'Alumni House',
+    yearBuilt: '1928',
+    architect: 'Walter Ratcliff',
+    summary: 'Cal Alumni Association 总部,校友活动中心 🐻',
+    description: `
+      Alumni House 是 **Cal Alumni Association (CAA)** 的总部,也是校友活动的核心场地。这栋 1928 年的建筑见证了无数伯克利校友的重聚和庆典。
+
+      **实时动态(2026)**:正常开放,活动丰富。即将举办的活动包括:
+      - 毕业庆祝活动(12月20日)
+      - House to Haas 篮球赛前派对(多场)
+
+      如果你即将毕业,这里是连接校友网络的起点。
+    `,
+    funFacts: [
+      '1928 年由 Walter Ratcliff 设计,是校园经典建筑之一。',
+      'CAA 举办的年度活动包括 Cal Day、Caltopia、Homecoming 等。',
+      'House to Haas 系列活动让校友在篮球比赛前在这里相聚。',
+      '毕业生庆祝活动让新校友正式加入 Cal Alumni 大家庭。'
+    ],
+    studentTips: [
+      '🐻 **即将毕业?**:来参加毕业庆祝活动,正式加入校友网络。',
+      '🏀 **篮球比赛前**:House to Haas 派对让你在比赛前和校友一起热身。',
+      '🎓 **校友资源**:CAA 提供职业发展、终身学习等资源——毕业前就可以开始了解。',
+      '📍 **位置**:靠近 Faculty Glade,环境优美。',
+      '🏛️ **历史建筑**:1928 年的建筑,很有校园历史感。'
+    ],
+    accessibility: '有无障碍入口,部分区域可能有限制。建议联系 CAA 确认。',
+    officialLink: 'https://alumni.berkeley.edu/',
+    tags: ['Alumni', 'CAA', 'Events', 'History', 'Networking']
+  },
+
+  {
+    images: [],
+    id: 'faculty_club',
+    title: 'Faculty Club',
+    yearBuilt: '1902 (多次扩建)',
+    architect: 'Bernard Maybeck (原始设计)',
+    summary: '教职员专属俱乐部,优雅餐饮和活动场地 🍷',
+    description: `
+      Faculty Club 是伯克利教职员工的专属俱乐部,提供优雅的餐饮服务和活动场地。这栋建筑由著名建筑师 **Bernard Maybeck** 设计,坐落在 Faculty Glade 旁边,环境优美。
+
+      **实时动态(2026)**:正常开放。餐厅提供早餐、午餐和晚餐,有正式的 Kerr Dining Room 和休闲的 Great Hall 午餐线。主厨 Carl Cheney 强调使用本地和有机食材。
+
+      这里也是婚礼、会议、招待会等私人活动的热门场地。
+    `,
+    funFacts: [
+      '由 Bernard Maybeck 设计,是伯克利最美丽的历史建筑之一。',
+      '环绕着红杉、橡树和枫树,室外用餐区俯瞰 Faculty Glade。',
+      '主厨 Carl Cheney 强调本地和有机食材——餐饮质量很高。',
+      '会员可以使用餐厅、酒吧和各种社交活动——教职员的"私人领地"。'
+    ],
+    studentTips: [
+      '🍷 **教职员专属**:这是教职员俱乐部,学生通常不能直接进入——但如果被教授邀请可以来体验。',
+      '💒 **活动场地**:如果你毕业后想办婚礼或活动,这里是一个优雅的选择。',
+      '🏛️ **建筑欣赏**:Bernard Maybeck 的设计值得一看——可以从外面欣赏建筑。',
+      '📍 **位置**:Faculty Glade 旁边,环境非常优美。',
+      '📸 **拍照打卡**:周围的红杉和草地是拍照的好背景。'
+    ],
+    photoSpots: [
+      '建筑外观配合 Faculty Glade 的草地和大树。',
+      '户外露台区域,尤其是在金色阳光下。'
+    ],
+    accessibility: '有无障碍入口,部分历史区域可能有限制。',
+    officialLink: 'https://berkeleyfacultyclub.com/',
+    tags: ['Faculty', 'Dining', 'Events', 'History', 'Maybeck']
+  },
 ];
