@@ -1,0 +1,21 @@
+{
+  "name": "Berkeley Where To Go",
+  "short_name": "WhereToGo",
+  "description": "Smart campus navigation & building guide for UC Berkeley",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF9",
+  "theme_color": "#FAFAF9",
+  "icons": [
+    {
+      "src": "/WhereToGo_Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/WhereToGo_Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
