@@ -12,9 +12,6 @@ export { buildings as advancedBuildings } from './advanced_building';
 export { knowLocations as knowLocationsCN } from './buildingInfo_chinese';
 export { knowLocations as knowLocationsEN } from './buildingInfo_english';
 
-// Image mappings
-export { buildingImages } from './buildingImage';
-
 // Sorting orders
 export { sortOrders } from './know_sorting';
 

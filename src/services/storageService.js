@@ -53,3 +53,18 @@ export async function uploadImage(buildingId, file, filename) {
   return getImageUrl(buildingId, filename);
 }
 
+export async function deleteImage(buildingId, filename) {
+  if (!supabase) return { success: false, error: "Supabase not initialized" };
+  
+  const path = `${buildingId}/${filename}`;
+  const { error } = await supabase.storage
+    .from(BUCKET_NAME)
+    .remove([path]);
+
+  if (error) {
+    console.error(`Failed to delete ${path}:`, error);
+    return { success: false, error };
+  }
+
+  return { success: true };
+}

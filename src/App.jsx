@@ -10,6 +10,7 @@ import { useDeviceType } from './hooks/useDeviceType';
 import { useSEO } from './hooks/useSEO';
 import * as TypeAViews from './views/typeA';
 import * as TypeBViews from './views/typeB';
+import AdminPage from './views/AdminPage';
 import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
 
 function AppContent({ isLoaded }) {
@@ -21,6 +22,15 @@ function AppContent({ isLoaded }) {
   
   // Select views based on device type
   const Views = deviceType === 'typeA' ? TypeAViews : TypeBViews;
+
+  // Admin page has its own layout
+  if (location.pathname.startsWith('/admin')) {
+    return (
+      <Routes location={location}>
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    );
+  }
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-neutral-50">

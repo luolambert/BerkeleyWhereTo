@@ -1,7 +1,6 @@
 import React from 'react';
 import BuildingDetail from '../building/BuildingDetail';
-import { buildingImages } from '../../data/buildingImage';
-import { getSupabaseImageUrl } from '../../services/preloadService';
+import { useBuildingImages } from '../../hooks/useBuildingImages';
 import useImageCarousel from '../../hooks/useImageCarousel';
 
 /**
@@ -9,23 +8,20 @@ import useImageCarousel from '../../hooks/useImageCarousel';
  * Container component that manages state and business logic for BuildingDetail
  * 
  * Responsibilities:
- * - Image source selection (from centralized file or building data)
+ * - Image source selection (dynamically from Supabase Storage)
  * - Carousel state management via useImageCarousel hook
  * - Label text configuration based on language
  * 
  * The BuildingDetail component receives all data as props and focuses on rendering.
  */
 function BuildingDetailContainer({ building, onBack, language }) {
-  // Get images from centralized file, convert filenames to Supabase URLs
+  // Get images dynamically from Supabase Storage
+  const { images: dynamicImages } = useBuildingImages(building.id);
+  
   const images = React.useMemo(() => {
-    const filenames = buildingImages[building.id];
-    if (filenames && filenames.length > 0) {
-      return filenames
-        .map(filename => getSupabaseImageUrl(building.id, filename))
-        .filter(Boolean);
-    }
+    if (dynamicImages.length > 0) return dynamicImages;
     return building.images || [];
-  }, [building.id, building.images]);
+  }, [dynamicImages, building.images]);
 
   // Use centralized carousel hook
   const carousel = useImageCarousel(images, 5000);

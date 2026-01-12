@@ -5,8 +5,7 @@ import {
   Camera, BookOpen, Ghost, Accessibility, ChevronDown
 } from 'lucide-react';
 import { AnimatedText, MarkdownText } from '../common';
-import { buildingImages } from '../../data/buildingImage';
-import { getSupabaseImageUrl } from '../../services/preloadService';
+import { useBuildingImages } from '../../hooks/useBuildingImages';
 import useImageCarousel from '../../hooks/useImageCarousel';
 import { DURATIONS, EASINGS, PAGE_VARIANTS } from '../../constants/animations';
 import { BackButton, CarouselArrow } from '../presentational/buttons';
@@ -59,17 +58,13 @@ function BuildingDetail({
     scroll: "Scroll for details"
   });
 
-  // Images: use props or derive internally for backward compatibility
+  // Images: use props or dynamic fetch for real-time updates
+  const { images: dynamicImages } = useBuildingImages(building.id);
   const internalImages = React.useMemo(() => {
     if (propImages) return propImages;
-    const filenames = buildingImages[building.id];
-    if (filenames && filenames.length > 0) {
-      return filenames
-        .map(filename => getSupabaseImageUrl(building.id, filename))
-        .filter(Boolean);
-    }
+    if (dynamicImages.length > 0) return dynamicImages;
     return building.images || [];
-  }, [propImages, building.id, building.images]);
+  }, [propImages, dynamicImages, building.images]);
 
   // Carousel: use props or derive internally for backward compatibility
   const internalCarousel = useImageCarousel(propCarousel ? [] : internalImages, 5000);

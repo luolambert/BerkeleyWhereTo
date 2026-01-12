@@ -3,7 +3,8 @@
  * Handles preloading of images and other resources for better UX
  */
 
-import { buildingImages } from '../data/buildingImage';
+import { advancedBuildings } from '../data';
+import { listBuildingImages } from './storageService';
 
 const SUPABASE_STORAGE_URL = import.meta.env.VITE_SUPABASE_URL 
   ? `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/building-images`
@@ -24,28 +25,25 @@ export function getSupabaseImageUrl(buildingId, filename) {
 }
 
 /**
- * Collect all unique image URLs from buildingImage.js (single source of truth)
- * @returns {string[]} Array of unique Supabase image URLs
+ * Collect all unique image URLs dynamically from Supabase Storage
+ * @returns {Promise<string[]>} Array of unique Supabase image URLs
  */
-export function getAllImageUrls() {
-  const urls = new Set();
-  
+export async function getAllImageUrls() {
   if (!SUPABASE_STORAGE_URL) {
     console.warn('[Preload] Supabase URL not configured, skipping image preload');
     return [];
   }
   
-  Object.entries(buildingImages).forEach(([buildingId, filenames]) => {
-    if (Array.isArray(filenames)) {
-      filenames.forEach(filename => {
-        if (filename && typeof filename === 'string') {
-          urls.add(getSupabaseImageUrl(buildingId, filename));
-        }
-      });
-    }
-  });
+  const urls = [];
   
-  return Array.from(urls).filter(Boolean);
+  await Promise.all(
+    advancedBuildings.map(async (building) => {
+      const images = await listBuildingImages(building.id);
+      urls.push(...images);
+    })
+  );
+  
+  return urls;
 }
 
 /**
@@ -98,7 +96,7 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
  * @returns {Promise<{success: number, failed: number, failedUrls: string[]}>}
  */
 export async function preloadAllImages({ onProgress, onError } = {}) {
-  const urls = getAllImageUrls();
+  const urls = await getAllImageUrls();
   const total = urls.length;
   let loaded = 0;
   let failed = 0;

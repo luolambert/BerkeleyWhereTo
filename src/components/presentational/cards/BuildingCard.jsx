@@ -2,6 +2,7 @@ import React from 'react';
 import { AnimatedText } from '../../common';
 import { WobbleCard } from '../../ui/wobble-card';
 import { usePreload } from '../../../context/PreloadContext';
+import { useBuildingImages } from '../../../hooks/useBuildingImages';
 
 /**
  * BuildingCard - Building display card with image background and hover effects
@@ -9,7 +10,7 @@ import { usePreload } from '../../../context/PreloadContext';
  * 
  * @param {string} title - Building name
  * @param {string} summary - Brief description
- * @param {string} imageUrl - Background image URL
+ * @param {string} imageUrl - Background image URL (optional, will auto-fetch if not provided)
  * @param {string} viewDetailsText - Hover badge text (e.g., "View Details")
  * @param {function} onClick - Click handler
  * @param {string} language - Current language for animation key
@@ -18,14 +19,17 @@ import { usePreload } from '../../../context/PreloadContext';
 function BuildingCard({
   title,
   summary,
-  imageUrl,
+  imageUrl: propImageUrl,
   viewDetailsText = 'View Details',
   onClick,
   language = 'EN',
   buildingId,
 }) {
   const { failedImages } = usePreload();
-  const isImageFailed = failedImages.includes(imageUrl);
+  const { images: dynamicImages } = useBuildingImages(buildingId);
+  
+  const imageUrl = propImageUrl || dynamicImages[0] || null;
+  const isImageFailed = imageUrl && failedImages.includes(imageUrl);
 
   return (
     <WobbleCard
@@ -33,12 +37,23 @@ function BuildingCard({
       className="relative h-[280px] p-0 overflow-hidden"
       onClick={onClick}
     >
-      {!isImageFailed && (
+      {imageUrl && !isImageFailed && (
         <img
           src={imageUrl}
           alt={title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.15]"
         />
+      )}
+
+      {!imageUrl && (
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-600 to-neutral-800 flex items-center justify-center z-5">
+          <div className="text-center text-white/50">
+            <div className="text-4xl mb-2">🏛️</div>
+            <p className="text-xs font-medium">
+              {language === 'CN' ? '暂无图片' : 'No Image'}
+            </p>
+          </div>
+        </div>
       )}
 
       {isImageFailed && (
@@ -77,3 +92,4 @@ function BuildingCard({
 }
 
 export default BuildingCard;
+
