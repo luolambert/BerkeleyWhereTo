@@ -1,7 +1,6 @@
 export const knowLocations = [
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/5/5d/Dwinelle_hall_uc_berkeley.jpg'],
     id: 'dwinelle',
     title: 'Dwinelle Hall',
     yearBuilt: '1952',
@@ -39,7 +38,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wheeler_Hall--UC_Berkeley--Panoramic.jpg/2560px-Wheeler_Hall--UC_Berkeley--Panoramic.jpg'],
     id: 'wheeler',
     title: 'Wheeler Hall',
     yearBuilt: '1917',
@@ -74,7 +72,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://chemistry.berkeley.edu/sites/default/files/styles/panopoly_image_original/public/pimentel_hall_photo_yijian-shan-_staff.jpg?itok=ch5N3vzl&timestamp=1572625477'],
     id: 'pimentel',
     title: 'Pimentel Hall',
     yearBuilt: '1964',
@@ -108,7 +105,6 @@ export const knowLocations = [
   },
   
   {
-    images: ['https://people.eecs.berkeley.edu/~sequin/soda/NewPhotos/SodaW.JPG'],
     id: 'soda',
     title: 'Soda Hall',
     yearBuilt: '1994',
@@ -143,7 +139,6 @@ export const knowLocations = [
   },  
 
   {
-    images: ['https://engineering.berkeley.edu/wp-content/uploads/2020/01/1950cory_aerial.jpg'],
     id: 'cory',
     title: 'Cory Hall',
     yearBuilt: '1950',
@@ -178,7 +173,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Etcheverry_Hall.jpg/2560px-Etcheverry_Hall.jpg'],
     id: 'etcheverry',
     title: 'Etcheverry Hall',
     yearBuilt: '1964',
@@ -213,7 +207,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://engineering.berkeley.edu/wp-content/uploads/files/images/news/top/2016/12/jacobs1.jpg'],
     id: 'jacobs',
     title: 'Jacobs Hall (Design)',
     yearBuilt: '2015',
@@ -248,7 +241,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://engineering.berkeley.edu/wp-content/uploads/2023/07/facilities-davis.jpg'],
     id: 'davis',
     title: 'Davis Hall',
     yearBuilt: '1968',
@@ -283,7 +275,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://funginstitute.berkeley.edu/wp-content/uploads/2015/06/vlsb.jpg'],
   id: 'valley_life',
   title: 'Valley Life Sciences Building (VLSB)',
   yearBuilt: '1930',
@@ -315,7 +306,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://bloximages.chicago2.vip.townnews.com/dailycal.org/content/tncms/assets/v3/editorial/4/ae/4ae9190c-2f4f-11ef-a3fa-838acad1d195/6674a48d2a90f.image.jpg'],
   id: 'evans',
   title: 'Evans Hall',
   yearBuilt: '1971',
@@ -350,7 +340,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://dac.berkeley.edu/sites/default/files/styles/openberkeley_widgets_spotlight_full/public/buildings-2/buildings-2/Leconte-Building.jpg?itok=GKbRHrAN'],
   id: 'physics',
   title: 'Physics Building (North & South)',
   yearBuilt: '1924',
@@ -385,7 +374,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.usnews.com/cmsmedia/b2/f7/0776ad8f4bdb81e93fd317995d14/hero-azh-511m-1920x760.jpg'],
   id: 'haas',
   title: 'Haas School of Business',
   yearBuilt: '1995',
@@ -420,7 +408,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://images.squarespace-cdn.com/content/v1/5d5b8ebf066cad00017d0b0f/1618700101777-VPK9BBKN6GWAJZAKWDB3/UCB+Latimer+Hall+Renovations+1.png?format=2500w'],
   id: 'latimer',
   title: 'Latimer Hall',
   yearBuilt: '1963',
@@ -453,7 +440,6 @@ export const knowLocations = [
   },
   
   {
-  images: ['https://eventservices.berkeley.edu/wp-content/uploads/2022/10/Social-Sciences-C.-3.jpg'],
   id: 'social_sciences',
   title: 'The Social Sciences Building',
   yearBuilt: '1964',
@@ -486,7 +472,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.sosbrutalism.org/sixcms/media.php/1685/thumbnails/Wurster%20Hall%20-%20UC%20Berkeley%20%28Vernon%20De%20Mars%2C%20Donald%20Olsen%2C%20Joseph%20Esherick%2C%201964%29%2C%20Berkeley.jpg.3065879.jpg'],
   id: 'bauer_wurster',
   title: 'Bauer Wurster Hall',
   yearBuilt: '1964',
@@ -519,7 +504,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.usgbc.org/sites/default/files/chou-hall-v2.jpg'],
   id: 'chou',
   title: 'Chou Hall',
   yearBuilt: '2017',
@@ -552,7 +536,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.ckh.com.hk/upload/en/media/press/n111022d_dpi.jpg'],
   id: 'lks',
   title: 'Li Ka Shing Center (LKS)',
   yearBuilt: '2011',
@@ -587,7 +570,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://www.lib.berkeley.edu/sites/default/files/inline-images/Mitchell_Moffitt%20Library_20.jpg'],
     id: 'moffitt',
     title: 'Moffitt Library',
     yearBuilt: '1970',
@@ -621,7 +603,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/9/9a/Doe_Library%2C_main_facade%2C_July_2018.jpg'],
     id: 'doe',
     title: 'Doe Memorial Library',
     yearBuilt: '1911',
@@ -658,7 +639,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-6/481044662_1207552781218380_7311915614725282251_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=PbuuwH_5-gEQ7kNvwGDPSGc&_nc_oc=Adl59X11cySSx8ijgM_5ur-SUpmaDbbVsmy7edIUO7XcegUhcXE6qlfmhLsM4752j4mJqTw4Jt1zrriFzxxOONtO&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&_nc_gid=7ujKEvUpqz9ekiFcgPFpkQ&oh=00_AfjSwQox5gFF43LxxiUa5LMJ5q4d1zfjiPcR87yBUCc64Q&oe=692AB8E7'],
   id: 'mlk',
   title: 'Martin Luther King Jr. Student Union',
   yearBuilt: '1961 (Original) / 2015 (Renovated)',
@@ -693,7 +673,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.mccarthy.com/sites/default/files/styles/hero_slide_md_desktop_1x/public/2023-03/UC-Berkeley-Library-32.jpg?h=9782657d&itok=EIoZaxws'],
   id: 'east_asian',
   title: 'C.V. Starr East Asian Library',
   yearBuilt: '2008',
@@ -728,7 +707,6 @@ export const knowLocations = [
   },
 
   {
-  images: ['https://www.berkeley.edu/wp-content/uploads/2024/04/Grimes-magcover_20250512.jpg'],
   id: 'grimes',
   title: 'Grimes Engineering Center',
   yearBuilt: '1980 (Original) / 2025 (Renovation)',
@@ -761,7 +739,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://www.visitberkeley.com/imager/files_idss_com/C199/d7cb8adb-9092-42e0-a284-47bb62f8e13e_930104bc5592b0f48aa7a928055610d9.jpg'],
     id: 'bancroft',
     title: 'Bancroft Library',
     yearBuilt: '1949',
@@ -793,7 +770,6 @@ export const knowLocations = [
   },
   
   {
-    images: ['https://www.berkeley.edu/wp-content/uploads/2024/04/lewis.jpg'],
     id: 'lewis',
     title: 'Lewis Hall',
     yearBuilt: '1948',
@@ -824,7 +800,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://i0.wp.com/alterengineers.com/wp-content/uploads/2022/11/IMG_2652.jpg?fit=2716%2C2037&ssl=1'],
     id: 'hildebrand',
     title: 'Hildebrand Hall',
     yearBuilt: '1966',
@@ -856,7 +831,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://chemistry.berkeley.edu/sites/default/files/styles/panopoly_image_original/public/tan_hall_2022.jpg?itok=oNFqJvNS&timestamp=1665500323'],
     id: 'tan',
     title: 'Tan Kah Kee Hall (Tan Hall)',
     yearBuilt: '1997',
@@ -888,7 +862,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gilman_Hall_from_Sather_Tower_%2852080995298%29.jpg/2560px-Gilman_Hall_from_Sather_Tower_%2852080995298%29.jpg'],
     id: 'gilman',
     title: 'Gilman Hall',
     yearBuilt: '1917',
@@ -920,7 +893,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Hearst_Memorial_Mining_Building_at_UC_Berkeley_%2852081227414%29.jpg/2560px-Hearst_Memorial_Mining_Building_at_UC_Berkeley_%2852081227414%29.jpg'],
     id: 'hearst_mining',
     title: 'Hearst Memorial Mining Building',
     yearBuilt: '1907',
@@ -952,7 +924,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://dac.berkeley.edu/sites/default/files/styles/openberkeley_widgets_spotlight_full/public/general/stephens.jpg?itok=Gd3ngg37'],
     id: 'stephens',
     title: 'Stephens Hall',
     yearBuilt: '1923',
@@ -982,7 +953,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ErwLiX8Ag5OBvbvFSBlhfA.png'],
     id: 'philosophy',
     title: 'Philosophy Hall',
     yearBuilt: '1931',
@@ -1012,7 +982,6 @@ export const knowLocations = [
   },
 
   {
-    images: ['https://art.berkeley.edu/sites/default/files/styles/openberkeley_image_full/public/general/anthropology_art_practice_building.jpg?itok=ocZrL1ja&timestamp=1724787106'],
     id: 'aapb',
     title: 'Anth & Art Practice Building',
     yearBuilt: '1959',
@@ -1039,5 +1008,35 @@ export const knowLocations = [
     ],
     officialLink: 'https://art.berkeley.edu/spaces',
     tags: ['Arts', 'History', 'Renamed', 'Museum']
+  },
+
+  {
+    id: 'hertz',
+    title: 'Hertz Hall',
+    yearBuilt: '1958',
+    architect: 'Gardner A. Dailey',
+    summary: 'A hidden acoustic gem nestled in the trees, home to free noon concerts 🎶',
+    description: `
+      Hertz Hall is one of the premier concert venues on campus, boasting exceptional acoustics designed specifically for musical performance. It serves as the main stage for the University Symphony Orchestra, Chorus, and visiting world-class artists. Connected to Morrison Hall (the Music Department HQ) by an elegant breezeway, it feels a bit secluded, tucked away nicely near Faculty Glade.
+
+      The star of the show here is the organ collection. The massive Noack organ looming over the stage was actually transported all the way from a church in Delaware! For the average student, the best part about Hertz is the **Noon Concert Series**—totally free, high-quality performances right in the middle of your day. 🎼
+    `,
+    funFacts: [
+      'Named after the legendary conductor of the San Francisco Symphony, Alfred Hertz, who left his estate to Cal. The hall wasn\'t built until years after his death.',
+      'It houses a magnificent Noack organ built in 1982, which was essentially "thrifter" from a church in Delaware and refurbished to look brand new ✨.',
+      'There\'s a classic pun on Yelp about this place: "Hertz me now...or Hertz me never!"'
+    ],
+    studentTips: [
+      '💡 Pro Tip: The Noon Concerts (usually Wednesdays/Fridays) are FREE. It’s the perfect way to dissociate from GPA stress during lunch.',
+      '🎹 Looking for practice rooms? They are technically in Morrison Hall next door, but you enter via the east side of the "Hertz Breezeway" with your keycard.',
+      '🚽 Restrooms are on the ground floor and are generally much cleaner than the chaotic ones in Sproul or Dwinelle.',
+      '🎓 Some breadth courses (like Music 27) are held here. Lectures feel way more epic when you\'re sitting in red velvet concert hall seats.'
+    ],
+    photoSpots: [
+      'The Breezeway connecting Hertz and Morrison: Great lighting and framing for portraits.',
+      'View from Faculty Glade: The brutalist concrete lines contrasting with the redwoods makes for a moody shot.'
+    ],
+    officialLink: 'https://music.berkeley.edu/hertz-concert-hall',
+    tags: ['Arts', 'Music', 'Concert Hall', 'Hidden Gem']
   }
 ];

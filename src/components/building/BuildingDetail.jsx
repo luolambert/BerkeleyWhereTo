@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { AnimatedText, MarkdownText } from '../common';
 import { buildingImages } from '../../data/buildingImage';
+import { getSupabaseImageUrl } from '../../services/preloadService';
 import useImageCarousel from '../../hooks/useImageCarousel';
 import { DURATIONS, EASINGS, PAGE_VARIANTS } from '../../constants/animations';
 import { BackButton, CarouselArrow } from '../presentational/buttons';
@@ -61,10 +62,13 @@ function BuildingDetail({
   // Images: use props or derive internally for backward compatibility
   const internalImages = React.useMemo(() => {
     if (propImages) return propImages;
-    const centralImages = buildingImages[building.id];
-    return centralImages && centralImages.length > 0
-      ? centralImages
-      : building.images || [];
+    const filenames = buildingImages[building.id];
+    if (filenames && filenames.length > 0) {
+      return filenames
+        .map(filename => getSupabaseImageUrl(building.id, filename))
+        .filter(Boolean);
+    }
+    return building.images || [];
   }, [propImages, building.id, building.images]);
 
   // Carousel: use props or derive internally for backward compatibility

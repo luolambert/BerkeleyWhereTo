@@ -8,6 +8,8 @@ import { SegmentedControl } from '../presentational/controls';
 import { SectionTitle } from '../presentational/sections';
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 import { TracingBeam } from '../ui/tracing-beam';
+import { buildingImages } from '../../data/buildingImage';
+import { getSupabaseImageUrl } from '../../services/preloadService';
 
 
 /**
@@ -240,19 +242,26 @@ function BuildingGrid({
                     <div
                       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 py-0"
                     >
-                      {section.buildings.map((building) => (
-                        <div className="relative group block h-full w-full" key={building.id}>
-                           <BuildingCard
-                              title={building.title}
-                              summary={building.summary}
-                              imageUrl={building.images[0]}
-                              viewDetailsText={viewDetails}
-                              onClick={() => onSelect(building)}
-                              language={language}
-                              buildingId={building.id}
-                            />
-                        </div>
-                      ))}
+                      {section.buildings.map((building) => {
+                        const filenames = buildingImages[building.id];
+                        const imageUrl = filenames && filenames.length > 0
+                          ? getSupabaseImageUrl(building.id, filenames[0])
+                          : (building.images && building.images[0]) || null;
+                        
+                        return (
+                          <div className="relative group block h-full w-full" key={building.id}>
+                             <BuildingCard
+                                title={building.title}
+                                summary={building.summary}
+                                imageUrl={imageUrl}
+                                viewDetailsText={viewDetails}
+                                onClick={() => onSelect(building)}
+                                language={language}
+                                buildingId={building.id}
+                              />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}

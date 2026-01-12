@@ -1,6 +1,7 @@
 import React from 'react';
 import BuildingDetail from '../building/BuildingDetail';
 import { buildingImages } from '../../data/buildingImage';
+import { getSupabaseImageUrl } from '../../services/preloadService';
 import useImageCarousel from '../../hooks/useImageCarousel';
 
 /**
@@ -15,12 +16,15 @@ import useImageCarousel from '../../hooks/useImageCarousel';
  * The BuildingDetail component receives all data as props and focuses on rendering.
  */
 function BuildingDetailContainer({ building, onBack, language }) {
-  // Get images from centralized file, fallback to building.images
+  // Get images from centralized file, convert filenames to Supabase URLs
   const images = React.useMemo(() => {
-    const centralImages = buildingImages[building.id];
-    return centralImages && centralImages.length > 0
-      ? centralImages
-      : building.images || [];
+    const filenames = buildingImages[building.id];
+    if (filenames && filenames.length > 0) {
+      return filenames
+        .map(filename => getSupabaseImageUrl(building.id, filename))
+        .filter(Boolean);
+    }
+    return building.images || [];
   }, [building.id, building.images]);
 
   // Use centralized carousel hook

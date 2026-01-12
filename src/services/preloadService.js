@@ -4,39 +4,48 @@
  */
 
 import { buildingImages } from '../data/buildingImage';
-import { knowLocations as knowLocationsCN } from '../data/buildingInfo_chinese';
-import { knowLocations as knowLocationsEN } from '../data/buildingInfo_english';
+
+const SUPABASE_STORAGE_URL = import.meta.env.VITE_SUPABASE_URL 
+  ? `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/building-images`
+  : null;
 
 /**
- * Collect all unique image URLs from building data
- * @returns {string[]} Array of unique image URLs
+ * Get full Supabase Storage URL for a building image
+ * @param {string} buildingId - Building identifier
+ * @param {string} filename - Image filename (e.g., '1.jpg')
+ * @returns {string} Full Supabase Storage URL
+ */
+export function getSupabaseImageUrl(buildingId, filename) {
+  if (!SUPABASE_STORAGE_URL) {
+    console.warn('[Preload] Supabase URL not configured');
+    return null;
+  }
+  return `${SUPABASE_STORAGE_URL}/${buildingId}/${filename}`;
+}
+
+/**
+ * Collect all unique image URLs from buildingImage.js (single source of truth)
+ * @returns {string[]} Array of unique Supabase image URLs
  */
 export function getAllImageUrls() {
   const urls = new Set();
   
-  // Collect from centralized buildingImages
-  Object.values(buildingImages).forEach(images => {
-    if (Array.isArray(images)) {
-      images.forEach(url => {
-        if (url && typeof url === 'string') {
-          urls.add(url);
+  if (!SUPABASE_STORAGE_URL) {
+    console.warn('[Preload] Supabase URL not configured, skipping image preload');
+    return [];
+  }
+  
+  Object.entries(buildingImages).forEach(([buildingId, filenames]) => {
+    if (Array.isArray(filenames)) {
+      filenames.forEach(filename => {
+        if (filename && typeof filename === 'string') {
+          urls.add(getSupabaseImageUrl(buildingId, filename));
         }
       });
     }
   });
   
-  // Collect from building info (CN + EN)
-  [...knowLocationsCN, ...knowLocationsEN].forEach(building => {
-    if (building.images && Array.isArray(building.images)) {
-      building.images.forEach(url => {
-        if (url && typeof url === 'string') {
-          urls.add(url);
-        }
-      });
-    }
-  });
-  
-  return Array.from(urls);
+  return Array.from(urls).filter(Boolean);
 }
 
 /**

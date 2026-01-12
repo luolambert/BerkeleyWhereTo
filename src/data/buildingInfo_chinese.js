@@ -1040,4 +1040,35 @@ export const knowLocations = [
     officialLink: 'https://art.berkeley.edu/spaces',
     tags: ['Arts', 'History', 'Renamed', 'Museum']
   },
+  
+  {
+    images: [],
+    id: 'hertz',
+    title: 'Hertz Hall',
+    yearBuilt: '1958',
+    architect: 'Gardner A. Dailey',
+    summary: '隐藏在树丛中的音乐殿堂，午间免费音乐会的宝藏地 🎶',
+    description: `
+      Hertz Hall 是伯克利校园内最专业的音乐厅之一，拥有极其出色的声学设计，是校内交响乐团、合唱团以及世界级客座艺术家的主要演出场地。它和 Morrison Hall (音乐系大本营) 通过一个优雅的拱廊相连，位置稍微有点隐蔽，藏在 Faculty Glade 附近的树荫里。
+      
+      这里的重头戏是“管风琴”。Hertz Hall 收藏了多架珍贵的历史管风琴，其中舞台上方那架巨大的 Noack 管风琴是从特拉华州一个教堂“搬”过来的，音色绝美。对于普通学生来说，这里最亲民的时刻是学期中的**午间音乐会 (Noon Concerts)**，完全免费！🎼
+    `,
+    funFacts: [
+      '它的名字来自旧金山交响乐团的传奇指挥家 Alfred Hertz，他把遗产捐给了伯克利，但这栋楼直到他去世十几年后才建成。',
+      '这里收藏了一架来自1982年的 Noack 管风琴，是从特拉华州“二手”买来的，但经过翻新后像新的一样✨。',
+      'Yelp上有一个著名的谐音梗评论："Hertz me now...or Hertz me never!" (Hertz = Hurts)。'
+    ],
+    studentTips: [
+      '💡 薅羊毛必看：每周三（有时是周五）中午的 Noon Concerts 是免费的！这绝对是逃离学术压力、在午饭时间陶冶情操的最佳方式。',
+      '🎹 练琴房其实在隔壁的 Morrison Hall，但你需要通过 "Hertz Breezeway" (连接两栋楼的走廊) 东侧入口进去刷卡。',
+      '🚽 洗手间在底楼，通常比 Sproul Hall 这种人流密集的地方干净很多。',
+      '🎓 某些通识课（如 Music 27）会在这里上，坐在专业音乐厅的红丝绒座椅上听课，体验感秒杀普通阶梯教室。'
+    ],
+    photoSpots: [
+      '连接 Hertz 和 Morrison 的拱形回廊 (Breezeway)：光影效果极佳，自带复古滤镜。',
+      'Faculty Glade 一侧：从草坪上看 Hertz Hall 的野兽派线条与周围红木的对比。'
+    ],
+    officialLink: 'https://music.berkeley.edu/hertz-concert-hall',
+    tags: ['Arts', 'Music', 'Concert Hall', 'Hidden Gem']
+  },
 ];
