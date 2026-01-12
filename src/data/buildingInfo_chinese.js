@@ -455,7 +455,7 @@ export const knowLocations = [
   {
   images: ['https://eventservices.berkeley.edu/wp-content/uploads/2022/10/Social-Sciences-C.-3.jpg'],
   id: 'social_sciences',
-  title: 'The Social Sciences Building (Old Barrows)',
+  title: 'The Social Sciences Building',
   yearBuilt: '1964',
   architect: 'Aleck Wilson',
   summary: '曾经的 Barrows Hall，社会学的据点，以涂鸦和幽灵电梯闻名 👻',

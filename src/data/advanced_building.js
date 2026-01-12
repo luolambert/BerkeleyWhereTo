@@ -2,18 +2,18 @@ export const buildings = [
 // 1. Academic - General & Humanities
   { id: 'dwinelle', name: 'Dwinelle Hall', lat: 37.8706, lng: -122.2605, category: 'Humanities', popular: true, undergrad: true, grad: true },
   { id: 'wheeler', name: 'Wheeler Hall', lat: 37.8713, lng: -122.2580, category: 'Humanities', popular: true, undergrad: true, grad: true },
-  { id: 'social_sciences', name: 'The Social Sciences Building (Old Barrows)', lat: 37.8700, lng: -122.2579, category: 'Humanities', popular: true, undergrad: true, grad: true },
+  { id: 'social_sciences', name: 'The Social Sciences Building', lat: 37.8700, lng: -122.2579, category: 'Humanities', popular: true, undergrad: true, grad: true },
   { id: 'evans', name: 'Evans Hall', lat: 37.8736, lng: -122.2578, category: 'Humanities', popular: true, undergrad: true, grad: true },
   { id: 'stephens', name: 'Stephens Hall', lat: 37.8706, lng: -122.2567, category: 'Humanities', popular: false, undergrad: true, grad: true },
-  { id: 'philosophy', name: 'Philosophy Hall (Old Moses)', lat: 37.8707, lng: -122.2563, category: 'Humanities', popular: false, undergrad: true, grad: true },
+  { id: 'philosophy', name: 'Philosophy Hall', lat: 37.8707, lng: -122.2563, category: 'Humanities', popular: false, undergrad: true, grad: true },
   { id: 'south_hall', name: 'South Hall (I-School)', lat: 37.8716, lng: -122.2583, category: 'Humanities', popular: false, undergrad: true, grad: true },
   { id: 'cal_hall', name: 'California Hall', lat: 37.8713, lng: -122.2593, category: 'Admin', popular: false, undergrad: true, grad: true },
   { id: 'durant', name: 'Durant Hall', lat: 37.8718, lng: -122.2595, category: 'Humanities', popular: false, undergrad: true, grad: true },
   { id: 'anthony', name: 'Anthony Hall', lat: 37.8707, lng: -122.2560, category: 'Humanities', popular: false, undergrad: true, grad: true },
 
   // 2. Academic - STEM (Engineering, Physics, Bio, Chem)
-  { id: 'soda', name: 'Soda Hall (CS)', lat: 37.8756, lng: -122.2588, category: 'STEM', popular: true, undergrad: true, grad: true },
-  { id: 'cory', name: 'Cory Hall (EE)', lat: 37.8752, lng: -122.2576, category: 'STEM', popular: true, undergrad: true, grad: true },
+  { id: 'soda', name: 'Soda Hall', lat: 37.8756, lng: -122.2588, category: 'STEM', popular: true, undergrad: true, grad: true },
+  { id: 'cory', name: 'Cory Hall', lat: 37.8752, lng: -122.2576, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'etcheverry', name: 'Etcheverry Hall', lat: 37.8759, lng: -122.2593, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'jacobs', name: 'Jacobs Hall', lat: 37.8760, lng: -122.2588, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'valley_life', name: 'Valley Life Sciences Building (VLSB)', lat: 37.8715, lng: -122.2620, category: 'STEM', popular: true, undergrad: true, grad: true },
@@ -36,7 +36,7 @@ export const buildings = [
   { id: 'sutardja_dai', name: 'Sutardja Dai Hall (CITRIS)', lat: 37.8749, lng: -122.2585, category: 'STEM', popular: false, undergrad: true, grad: true },
   { id: 'hesse', name: 'Hesse Hall', lat: 37.8747, lng: -122.2590, category: 'STEM', popular: false, undergrad: true, grad: true },
   { id: 'mccone', name: 'McCone Hall', lat: 37.8742, lng: -122.2581, category: 'STEM', popular: false, undergrad: true, grad: true },
-  { id: 'the_gateway', name: 'The Gateway (CDSS)', lat: 37.8745, lng: -122.2608, category: 'STEM', popular: false, undergrad: true, grad: true },
+  { id: 'the_gateway', name: 'The Gateway', lat: 37.8745, lng: -122.2608, category: 'STEM', popular: false, undergrad: true, grad: true },
   { id: 'berkeley_way_west', name: 'Berkeley Way West', lat: 37.8723, lng: -122.2670, category: 'STEM', popular: true, undergrad: true, grad: true },
   { id: 'koshland', name: 'Koshland Hall', lat: 37.8739, lng: -122.2648, category: 'STEM', popular: false, undergrad: true, grad: true },
   { id: 'genetics', name: 'Genetics and Plant Biology', lat: 37.8742, lng: -122.2643, category: 'STEM', popular: false, undergrad: true, grad: true },
@@ -52,7 +52,7 @@ export const buildings = [
   { id: 'bauer_wurster', name: 'Bauer Wurster Hall', lat: 37.8704, lng: -122.2546, category: 'Arts & Design', popular: true, undergrad: true, grad: true },
   { id: 'hertz', name: 'Hertz Hall', lat: 37.8703, lng: -122.2559, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
   { id: 'morrison', name: 'Morrison Hall', lat: 37.8702, lng: -122.2562, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
-  { id: 'aapb', name: 'Anth & Art Practice (Old Kroeber)', lat: 37.8699, lng: -122.2552, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
+  { id: 'aapb', name: 'Anth & Art Practice', lat: 37.8699, lng: -122.2552, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
   { id: 'north_gate', name: 'North Gate Hall (Journalism)', lat: 37.8743, lng: -122.2597, category: 'Arts & Design', popular: false, undergrad: true, grad: true },
   { id: 'bampfa', name: 'Berkeley Art Museum and Pacific Film Archive (BAMPFA)', lat: 37.8709, lng: -122.2664, category: 'Arts & Design', popular: true, undergrad: true, grad: true },
 
@@ -60,9 +60,9 @@ export const buildings = [
   { id: 'haas', name: 'Haas School of Business', lat: 37.8716, lng: -122.2533, category: 'Business', popular: true, undergrad: true, grad: true },
   { id: 'chou', name: 'Chou Hall', lat: 37.8720, lng: -122.2539, category: 'Business', popular: true, undergrad: true, grad: true },
   { id: 'cheit', name: 'Cheit Hall', lat: 37.8717, lng: -122.2538, category: 'Business', popular: false, undergrad: true, grad: true },
-  { id: 'law_building', name: 'The Law Building (Old Boalt)', lat: 37.8693, lng: -122.2535, category: 'Professional', popular: false, undergrad: false, grad: true },
-  { id: 'minor', name: 'Minor Hall (Optometry)', lat: 37.8708, lng: -122.2532, category: 'Professional', popular: false, undergrad: true, grad: true },
-  { id: 'haviland', name: 'Haviland Hall (Social Welfare)', lat: 37.8735, lng: -122.2553, category: 'Professional', popular: false, undergrad: true, grad: true },
+  { id: 'law_building', name: 'The Law Building', lat: 37.8693, lng: -122.2535, category: 'Professional', popular: false, undergrad: false, grad: true },
+  { id: 'minor', name: 'Minor Hall', lat: 37.8708, lng: -122.2532, category: 'Professional', popular: false, undergrad: true, grad: true },
+  { id: 'haviland', name: 'Haviland Hall', lat: 37.8735, lng: -122.2553, category: 'Professional', popular: false, undergrad: true, grad: true },
   { id: 'goldman_school', name: 'Goldman School of Public Policy', lat: 37.8758, lng: -122.2583, category: 'Professional', popular: false, undergrad: false, grad: true },
 
   // 5. Libraries
@@ -78,12 +78,12 @@ export const buildings = [
   { id: 'eshleman', name: 'Eshleman Hall', lat: 37.8689, lng: -122.2601, category: 'Campus Life', popular: false, undergrad: true, grad: true },
   { id: 'cesar_chavez', name: 'César E. Chávez Student Center', lat: 37.8697, lng: -122.2601, category: 'Campus Life', popular: false, undergrad: true, grad: true },
   { id: 'zellerbach', name: 'Zellerbach Hall', lat: 37.8695, lng: -122.2608, category: 'Campus Life', popular: true, undergrad: true, grad: true },
-  { id: 'sproul', name: 'Sproul Hall (Admin)', lat: 37.8696, lng: -122.2591, category: 'Admin', popular: true, undergrad: true, grad: true },
+  { id: 'sproul', name: 'Sproul Hall', lat: 37.8696, lng: -122.2591, category: 'Admin', popular: true, undergrad: true, grad: true },
   { id: 'alumni_house', name: 'Alumni House', lat: 37.8691, lng: -122.2610, category: 'Admin', popular: false, undergrad: true, grad: true },
   { id: 'faculty_club', name: 'The Faculty Club', lat: 37.8719, lng: -122.2557, category: 'Campus Life', popular: false, undergrad: false, grad: true },
   { id: 'womens_faculty_club', name: 'Women\'s Faculty Club', lat: 37.8715, lng: -122.2549, category: 'Campus Life', popular: false, undergrad: false, grad: true },
   { id: 'tang_center', name: 'University Health Services (Tang Center)', lat: 37.8676, lng: -122.2642, category: 'Campus Life', popular: true, undergrad: true, grad: true },
-  { id: 'career_engagement', name: 'Career Engagement (Center)', lat: 37.8687, lng: -122.2605, category: 'Campus Life', popular: false, undergrad: true, grad: true },
+  { id: 'career_engagement', name: 'Career Engagement Center', lat: 37.8687, lng: -122.2605, category: 'Campus Life', popular: false, undergrad: true, grad: true },
 
   // 7. Housing
   { id: 'unit_1', name: 'Unit 1', lat: 37.8671, lng: -122.2557, category: 'Housing', popular: true, undergrad: true, grad: false },

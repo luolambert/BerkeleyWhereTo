@@ -24,5 +24,6 @@ dist
 *.sw?
 
 # Antigravity / Agent Artifacts
+DevelopPlan.md
 .agent
 .shared
