@@ -350,7 +350,6 @@ function BuildingGrid_TypeA({
                            <BuildingCard
                               title={building.title}
                               summary={building.summary}
-                              imageUrl={building.images[0]}
                               viewDetailsText={viewDetails}
                               onClick={() => onSelect(building)}
                               language={language}

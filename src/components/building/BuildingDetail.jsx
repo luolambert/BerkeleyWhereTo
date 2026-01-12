@@ -83,16 +83,32 @@ function BuildingDetail({
     >
       <div className="relative w-full h-screen group bg-black">
         <AnimatePresence mode="wait">
-          <motion.img 
-            key={currentIndex}
-            src={images[currentIndex]} 
-            alt={`${building.title} - Image ${currentIndex + 1}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: DURATIONS.carousel, ease: EASINGS.easeInOut }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          {images.length > 0 ? (
+            <motion.img 
+              key={currentIndex}
+              src={images[currentIndex]} 
+              alt={`${building.title} - Image ${currentIndex + 1}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: DURATIONS.carousel, ease: EASINGS.easeInOut }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <motion.div
+              key="no-image"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 bg-gradient-to-br from-neutral-700 to-neutral-900 flex items-center justify-center"
+            >
+              <div className="text-center text-white/60">
+                <div className="text-6xl mb-4">🏛️</div>
+                <p className="text-sm font-medium">
+                  {language === 'CN' ? '暂无图片' : 'No Image Available'}
+                </p>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
