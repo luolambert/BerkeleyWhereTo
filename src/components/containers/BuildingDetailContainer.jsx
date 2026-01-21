@@ -8,14 +8,14 @@ import useImageCarousel from '../../hooks/useImageCarousel';
  * Container component that manages state and business logic for BuildingDetail
  * 
  * Responsibilities:
- * - Image source selection (dynamically from Supabase Storage)
+ * - Image source selection (from local storage)
  * - Carousel state management via useImageCarousel hook
  * - Label text configuration based on language
  * 
  * The BuildingDetail component receives all data as props and focuses on rendering.
  */
 function BuildingDetailContainer({ building, onBack, language }) {
-  // Get images dynamically from Supabase Storage
+  // Get images from local storage
   const { images: dynamicImages } = useBuildingImages(building.id);
   
   const images = React.useMemo(() => {

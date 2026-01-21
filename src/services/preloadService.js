@@ -6,43 +6,15 @@
 import { advancedBuildings } from '../data';
 import { listBuildingImages } from './storageService';
 
-const SUPABASE_STORAGE_URL = import.meta.env.VITE_SUPABASE_URL 
-  ? `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/building-images`
-  : null;
-
 /**
- * Get full Supabase Storage URL for a building image
- * @param {string} buildingId - Building identifier
- * @param {string} filename - Image filename (e.g., '1.jpg')
- * @returns {string} Full Supabase Storage URL
+ * Get all unique image URLs from local storage
+ * @returns {string[]} Array of image URLs
  */
-export function getSupabaseImageUrl(buildingId, filename) {
-  if (!SUPABASE_STORAGE_URL) {
-    console.warn('[Preload] Supabase URL not configured');
-    return null;
-  }
-  return `${SUPABASE_STORAGE_URL}/${buildingId}/${filename}`;
-}
-
-/**
- * Collect all unique image URLs dynamically from Supabase Storage
- * @returns {Promise<string[]>} Array of unique Supabase image URLs
- */
-export async function getAllImageUrls() {
-  if (!SUPABASE_STORAGE_URL) {
-    console.warn('[Preload] Supabase URL not configured, skipping image preload');
-    return [];
-  }
-  
+export function getAllImageUrls() {
   const urls = [];
-  
-  await Promise.all(
-    advancedBuildings.map(async (building) => {
-      const images = await listBuildingImages(building.id);
-      urls.push(...images);
-    })
-  );
-  
+  advancedBuildings.forEach((building) => {
+    urls.push(...listBuildingImages(building.id));
+  });
   return urls;
 }
 
@@ -73,7 +45,6 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
   while (attempts < maxRetries) {
     attempts++;
     try {
-      // Add cache-busting timestamp on retry
       const loadUrl = attempts > 1 ? `${url}${url.includes('?') ? '&' : '?'}retry=${Date.now()}` : url;
       await preloadImage(loadUrl);
       return { success: true, url, attempts };
@@ -96,7 +67,7 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
  * @returns {Promise<{success: number, failed: number, failedUrls: string[]}>}
  */
 export async function preloadAllImages({ onProgress, onError } = {}) {
-  const urls = await getAllImageUrls();
+  const urls = getAllImageUrls();
   const total = urls.length;
   let loaded = 0;
   let failed = 0;
@@ -106,7 +77,6 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
     return { success: 0, failed: 0, failedUrls: [] };
   }
   
-  // Use Promise.allSettled to handle all images regardless of individual failures
   const results = await Promise.allSettled(
     urls.map(async (url) => {
       const result = await preloadImageWithRetry(url);

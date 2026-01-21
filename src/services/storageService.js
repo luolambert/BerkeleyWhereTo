@@ -1,70 +1,35 @@
-import { supabase } from "./supabaseClient";
+import buildingImages from "../data/buildingImages.json";
 
-const BUCKET_NAME = "building-images";
+const IMAGES_BASE_PATH = "/images/buildings";
 
 export function getImageUrl(buildingId, filename = "1.jpg") {
-  if (!supabase) {
-    console.warn("[StorageService] Supabase client not initialized");
-    return null;
-  }
-  const { data } = supabase.storage
-    .from(BUCKET_NAME)
-    .getPublicUrl(`${buildingId}/${filename}`);
-  return data.publicUrl;
+  return `${IMAGES_BASE_PATH}/${buildingId}/${filename}`;
 }
 
 export function getImageUrls(buildingId, count = 1) {
-  if (!supabase) return [];
-  return Array.from({ length: count }, (_, i) =>
-    getImageUrl(buildingId, `${i + 1}.jpg`)
-  ).filter(Boolean);
+  const files = buildingImages[buildingId] || [];
+  const actualCount = Math.min(count, files.length || 1);
+  return Array.from({ length: actualCount }, (_, i) =>
+    getImageUrl(buildingId, files[i] || `${i + 1}.jpg`)
+  );
 }
 
-export async function listBuildingImages(buildingId) {
-  if (!supabase) return [];
-  
-  const { data, error } = await supabase.storage
-    .from(BUCKET_NAME)
-    .list(buildingId, { limit: 100, sortBy: { column: "name", order: "asc" } });
-
-  if (error) {
-    console.error(`Failed to list images for ${buildingId}:`, error);
-    return [];
-  }
-
-  return data
-    .filter((file) => file.name.match(/\.(jpg|jpeg|png|webp)$/i))
-    .map((file) => getImageUrl(buildingId, file.name));
+export function listBuildingImages(buildingId) {
+  const files = buildingImages[buildingId] || ["1.jpg"];
+  return files.map((filename) => getImageUrl(buildingId, filename));
 }
 
 export async function uploadImage(buildingId, file, filename) {
-  if (!supabase) return null;
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("buildingId", buildingId);
+  formData.append("filename", filename);
   
-  const path = `${buildingId}/${filename}`;
-  const { data, error } = await supabase.storage
-    .from(BUCKET_NAME)
-    .upload(path, file, { upsert: true });
-
-  if (error) {
-    console.error(`Failed to upload ${path}:`, error);
-    return null;
-  }
-
-  return getImageUrl(buildingId, filename);
+  console.warn("[StorageService] Local upload not implemented - requires backend API");
+  return null;
 }
 
 export async function deleteImage(buildingId, filename) {
-  if (!supabase) return { success: false, error: "Supabase not initialized" };
-  
-  const path = `${buildingId}/${filename}`;
-  const { error } = await supabase.storage
-    .from(BUCKET_NAME)
-    .remove([path]);
-
-  if (error) {
-    console.error(`Failed to delete ${path}:`, error);
-    return { success: false, error };
-  }
-
-  return { success: true };
+  console.warn("[StorageService] Local delete not implemented - requires backend API");
+  return { success: false, error: "Not implemented" };
 }
