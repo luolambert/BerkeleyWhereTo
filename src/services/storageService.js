@@ -1,21 +1,29 @@
-import buildingImages from "../data/buildingImages.json";
-
 const IMAGES_BASE_PATH = "/images/buildings";
 
 export function getImageUrl(buildingId, filename = "1.jpg") {
   return `${IMAGES_BASE_PATH}/${buildingId}/${filename}`;
 }
 
-export function getImageUrls(buildingId, count = 1) {
-  const files = buildingImages[buildingId] || [];
-  const actualCount = Math.min(count, files.length || 1);
-  return Array.from({ length: actualCount }, (_, i) =>
-    getImageUrl(buildingId, files[i] || `${i + 1}.jpg`)
-  );
+export function getImageUrls(buildingId, filenames = []) {
+  if (filenames.length === 0) return [getImageUrl(buildingId, "1.jpg")];
+  return filenames.map((filename) => getImageUrl(buildingId, filename));
 }
 
-export function listBuildingImages(buildingId) {
-  const files = buildingImages[buildingId] || ["1.jpg"];
+export async function listBuildingImages(buildingId) {
+  if (import.meta.env.DEV) {
+    try {
+      const response = await fetch(`/api/images?buildingId=${buildingId}`);
+      if (response.ok) {
+        const data = await response.json();
+        return data.images.map((filename) => getImageUrl(buildingId, filename));
+      }
+    } catch (e) {
+      console.warn("[StorageService] API not available, using static config");
+    }
+  }
+  
+  const buildingImages = await import("../data/buildingImages.json");
+  const files = buildingImages.default?.[buildingId] || buildingImages[buildingId] || ["1.jpg"];
   return files.map((filename) => getImageUrl(buildingId, filename));
 }
 
@@ -24,12 +32,42 @@ export async function uploadImage(buildingId, file, filename) {
   formData.append("file", file);
   formData.append("buildingId", buildingId);
   formData.append("filename", filename);
-  
-  console.warn("[StorageService] Local upload not implemented - requires backend API");
-  return null;
+
+  try {
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error("[StorageService] Upload failed:", error);
+      return null;
+    }
+
+    const data = await response.json();
+    return data.url;
+  } catch (e) {
+    console.error("[StorageService] Upload error:", e);
+    return null;
+  }
 }
 
 export async function deleteImage(buildingId, filename) {
-  console.warn("[StorageService] Local delete not implemented - requires backend API");
-  return { success: false, error: "Not implemented" };
+  try {
+    const response = await fetch(
+      `/api/delete?buildingId=${buildingId}&filename=${encodeURIComponent(filename)}`,
+      { method: "DELETE" }
+    );
+
+    if (!response.ok) {
+      const error = await response.json();
+      return { success: false, error: error.error };
+    }
+
+    return { success: true };
+  } catch (e) {
+    console.error("[StorageService] Delete error:", e);
+    return { success: false, error: e.message };
+  }
 }
