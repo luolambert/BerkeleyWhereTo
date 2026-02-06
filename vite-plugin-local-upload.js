@@ -8,6 +8,17 @@ const CONFIG_PATH = path.join(__dirname, 'src', 'data', 'buildingImages.json');
 
 const VALID_BUILDING_ID = /^[a-z0-9_]+$/i;
 const VALID_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+const SAFE_FILENAME = /^[a-z0-9][a-z0-9._-]*\.(jpg|jpeg|png|webp)$/i;
+const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
+
+function sanitizeFilename(filename) {
+  const safeName = path.basename(filename || '');
+  if (safeName !== filename) return null;
+  if (!SAFE_FILENAME.test(safeName)) return null;
+  const ext = path.extname(safeName).toLowerCase();
+  if (!VALID_EXTENSIONS.includes(ext)) return null;
+  return safeName;
+}
 
 async function readConfig() {
   try {
@@ -62,7 +73,11 @@ export default function localUploadPlugin() {
 
         try {
           const formidable = (await import('formidable')).default;
-          const form = formidable({ multiples: false });
+          const form = formidable({
+            multiples: false,
+            allowEmptyFiles: false,
+            maxFileSize: MAX_FILE_SIZE_BYTES,
+          });
 
           const [fields, files] = await form.parse(req);
           const buildingId = fields.buildingId?.[0];
@@ -81,33 +96,32 @@ export default function localUploadPlugin() {
             return;
           }
 
-          const ext = path.extname(filename).toLowerCase();
-          if (!VALID_EXTENSIONS.includes(ext)) {
+          const safeFilename = sanitizeFilename(filename);
+          if (!safeFilename) {
             res.statusCode = 400;
-            res.end(JSON.stringify({ error: 'Invalid file type' }));
+            res.end(JSON.stringify({ error: 'Invalid filename or file type' }));
             return;
           }
 
           const buildingDir = path.join(IMAGES_DIR, buildingId);
           await fs.mkdir(buildingDir, { recursive: true });
 
-          const destPath = path.join(buildingDir, filename);
-          const fileContent = await fs.readFile(file.filepath);
-          await fs.writeFile(destPath, fileContent);
+          const destPath = path.join(buildingDir, safeFilename);
+          await fs.copyFile(file.filepath, destPath);
 
           const config = await readConfig();
           if (!config[buildingId]) {
             config[buildingId] = [];
           }
-          if (!config[buildingId].includes(filename)) {
-            config[buildingId].push(filename);
+          if (!config[buildingId].includes(safeFilename)) {
+            config[buildingId].push(safeFilename);
           }
           await writeConfig(config);
 
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify({ 
             success: true, 
-            url: `/images/buildings/${buildingId}/${filename}`,
+            url: `/images/buildings/${buildingId}/${safeFilename}`,
             images: config[buildingId]
           }));
         } catch (err) {
@@ -141,12 +155,19 @@ export default function localUploadPlugin() {
         }
 
         try {
-          const filePath = path.join(IMAGES_DIR, buildingId, filename);
+          const safeFilename = sanitizeFilename(filename);
+          if (!safeFilename) {
+            res.statusCode = 400;
+            res.end(JSON.stringify({ error: 'Invalid filename' }));
+            return;
+          }
+
+          const filePath = path.join(IMAGES_DIR, buildingId, safeFilename);
           await fs.unlink(filePath);
 
           const config = await readConfig();
           if (config[buildingId]) {
-            config[buildingId] = config[buildingId].filter(f => f !== filename);
+            config[buildingId] = config[buildingId].filter(f => f !== safeFilename);
             if (config[buildingId].length === 0) {
               delete config[buildingId];
             }

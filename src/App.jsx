@@ -16,6 +16,8 @@ import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
 function AppContent({ isLoaded }) {
   const location = useLocation();
   const deviceType = useDeviceType();
+  const isAdminEnabled =
+    import.meta.env.DEV || import.meta.env.VITE_ENABLE_ADMIN === 'true';
   
   // Dynamic SEO updates based on current route
   useSEO();
@@ -25,6 +27,9 @@ function AppContent({ isLoaded }) {
 
   // Admin page has its own layout
   if (location.pathname.startsWith('/admin')) {
+    if (!isAdminEnabled) {
+      return <Navigate to="/" replace />;
+    }
     return (
       <Routes location={location}>
         <Route path="/admin" element={<AdminPage />} />

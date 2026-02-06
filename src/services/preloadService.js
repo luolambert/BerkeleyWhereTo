@@ -8,14 +8,14 @@ import { listBuildingImages } from './storageService';
 
 /**
  * Get all unique image URLs from local storage
- * @returns {string[]} Array of image URLs
+ * @returns {Promise<string[]>} Array of image URLs
  */
-export function getAllImageUrls() {
-  const urls = [];
-  advancedBuildings.forEach((building) => {
-    urls.push(...listBuildingImages(building.id));
-  });
-  return urls;
+export async function getAllImageUrls() {
+  const imageLists = await Promise.all(
+    advancedBuildings.map((building) => listBuildingImages(building.id))
+  );
+  const urls = imageLists.flat();
+  return [...new Set(urls)];
 }
 
 /**
@@ -66,8 +66,8 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
  * @param {function(string)} options.onError - Error callback for failed images
  * @returns {Promise<{success: number, failed: number, failedUrls: string[]}>}
  */
-export async function preloadAllImages({ onProgress, onError } = {}) {
-  const urls = getAllImageUrls();
+export async function preloadAllImages({ onProgress, onError, concurrency = 6 } = {}) {
+  const urls = await getAllImageUrls();
   const total = urls.length;
   let loaded = 0;
   let failed = 0;
@@ -77,8 +77,13 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
     return { success: 0, failed: 0, failedUrls: [] };
   }
   
-  const results = await Promise.allSettled(
-    urls.map(async (url) => {
+  const maxWorkers = Math.max(1, Math.min(concurrency, total));
+  let index = 0;
+
+  const worker = async () => {
+    while (index < total) {
+      const currentIndex = index++;
+      const url = urls[currentIndex];
       const result = await preloadImageWithRetry(url);
       if (result.success) {
         loaded++;
@@ -88,9 +93,10 @@ export async function preloadAllImages({ onProgress, onError } = {}) {
         onError?.(url);
       }
       onProgress?.(loaded + failed, total);
-      return result;
-    })
-  );
+    }
+  };
+
+  await Promise.all(Array.from({ length: maxWorkers }, () => worker()));
   if (failedUrls.length > 0) {
     console.warn('[Preload] Failed images:', failedUrls);
   }

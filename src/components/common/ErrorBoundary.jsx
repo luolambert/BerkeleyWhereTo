@@ -1,6 +1,8 @@
 import React from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
+const isDev = import.meta.env?.DEV;
+
 /**
  * ErrorBoundary Component
  * Catches JavaScript errors in child components and displays a friendly error UI
@@ -58,7 +60,7 @@ class ErrorBoundary extends React.Component {
               We're sorry, but something unexpected happened. Please try again or return to the home page.
             </p>
           
-            {process.env.NODE_ENV === 'development' && showDetails && this.state.error && (
+            {isDev && showDetails && this.state.error && (
               <div className="bg-red-50 rounded-lg p-4 mb-6 text-left">
                 <p className="text-sm font-mono text-red-800 break-all">
                   {this.state.error.toString()}

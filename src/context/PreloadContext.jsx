@@ -20,26 +20,30 @@ export function PreloadProvider({ children }) {
     hasStarted.current = true;
 
     const startPreload = async () => {
-      // Preload public assets first (fast)
-      await preloadPublicAssets();
-      
-      // Then preload building images (slower, with retry)
-      const result = await preloadAllImages({
-        onProgress: (loaded, total) => {
-          setProgress(Math.round((loaded / total) * 100));
-        },
-        onError: (url) => {
-          console.warn(`[Preload] Failed: ${url}`);
+      try {
+        // Preload public assets first (fast)
+        await preloadPublicAssets();
+        
+        // Then preload building images (slower, with retry)
+        const result = await preloadAllImages({
+          onProgress: (loaded, total) => {
+            setProgress(Math.round((loaded / total) * 100));
+          },
+          onError: (url) => {
+            console.warn(`[Preload] Failed: ${url}`);
+          }
+        });
+        
+        // Store failed images for UI display
+        if (result.failedUrls && result.failedUrls.length > 0) {
+          setFailedImages(result.failedUrls);
         }
-      });
-      
-      // Store failed images for UI display
-      if (result.failedUrls && result.failedUrls.length > 0) {
-        setFailedImages(result.failedUrls);
+      } catch (err) {
+        console.error("[Preload] Unhandled preload error:", err);
+      } finally {
+        setIsPreloading(false);
+        setIsComplete(true);
       }
-      
-      setIsPreloading(false);
-      setIsComplete(true);
     };
 
     startPreload();
