@@ -14,7 +14,7 @@ import BuildingDetail from '../building/BuildingDetail';
  * TypeA BuildingInfoContainer - Container for mobile/tablet portrait
  * Same logic as TypeB, uses BuildingGrid_TypeA for presentation
  */
-function BuildingInfoContainer_TypeA({ onBack, currentView }) {
+function BuildingInfoContainer_TypeA({ currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
   const [language, setLanguage] = useState('EN');
   const [sortMethod, setSortMethod] = useState('students');
@@ -60,7 +60,7 @@ function BuildingInfoContainer_TypeA({ onBack, currentView }) {
         {selectedBuilding ? (
           <>
             <div className="absolute top-4 right-4 z-[60]">
-              <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="right" />
+              <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="left" />
             </div>
             <BuildingDetail 
               key="detail" 

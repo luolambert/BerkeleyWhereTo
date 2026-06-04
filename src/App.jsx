@@ -13,7 +13,7 @@ import * as TypeBViews from './views/typeB';
 import AdminPage from './views/AdminPage';
 import { GOOGLE_MAPS_LIBRARIES } from './constants/mapConfig';
 
-function AppContent({ isLoaded }) {
+function AppContent({ isLoaded, mapLoadError }) {
   const location = useLocation();
   const deviceType = useDeviceType();
   const isAdminEnabled =
@@ -32,7 +32,8 @@ function AppContent({ isLoaded }) {
     }
     return (
       <Routes location={location}>
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/*" element={<AdminPage />} />
+        <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
     );
   }
@@ -49,7 +50,7 @@ function AppContent({ isLoaded }) {
               element={
                 <ErrorBoundary>
                   <NavigationProvider isLoaded={isLoaded}>
-                    <Views.NavigationPage isLoaded={isLoaded} />
+                    <Views.NavigationPage isLoaded={isLoaded} mapLoadError={mapLoadError} />
                   </NavigationProvider>
                 </ErrorBoundary>
               } 
@@ -68,6 +69,7 @@ function AppContent({ isLoaded }) {
 }
 
 function RootRedirector({ Views }) {
+  const LandingPage = Views.LandingPage;
   const hostname = window.location.hostname;
   
   if (hostname.includes('berkeleywheretogo')) {
@@ -78,11 +80,11 @@ function RootRedirector({ Views }) {
     return <Navigate to="/know" replace />;
   }
   
-  return <Views.LandingPage />;
+  return <LandingPage />;
 }
 
 function App() {
-  const { isLoaded } = useJsApiLoader({
+  const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     libraries: GOOGLE_MAPS_LIBRARIES
@@ -91,7 +93,7 @@ function App() {
   return (
     <PreloadProvider>
       <BrowserRouter>
-        <AppContent isLoaded={isLoaded} />
+        <AppContent isLoaded={isLoaded} mapLoadError={loadError} />
       </BrowserRouter>
     </PreloadProvider>
   );

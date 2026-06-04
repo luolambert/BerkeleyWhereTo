@@ -13,6 +13,12 @@ export function useBuildingImages(buildingId) {
   const [loading, setLoading] = useState(!imageCache.has(buildingId));
 
   useEffect(() => {
+    if (!buildingId) {
+      setImages([]);
+      setLoading(false);
+      return;
+    }
+
     if (imageCache.has(buildingId)) {
       setImages(imageCache.get(buildingId));
       setLoading(false);
@@ -20,14 +26,19 @@ export function useBuildingImages(buildingId) {
     }
 
     let mounted = true;
+    setImages([]);
+    setLoading(true);
 
     const fetchImages = async () => {
-      const urls = await listBuildingImages(buildingId);
+      let urls = [];
+      try {
+        urls = await listBuildingImages(buildingId);
+      } catch {
+        urls = [];
+      }
       if (mounted) {
-        if (urls.length > 0) {
-          imageCache.set(buildingId, urls);
-          setImages(urls);
-        }
+        imageCache.set(buildingId, urls);
+        setImages(urls);
         setLoading(false);
       }
     };
@@ -49,4 +60,3 @@ export function clearImageCache(buildingId) {
     imageCache.clear();
   }
 }
-

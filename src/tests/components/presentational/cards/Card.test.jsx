@@ -1,6 +1,5 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '../../../setup/test-utils'
-import userEvent from '@testing-library/user-event'
 import { BuildingCard, TimeCard } from '../../../../components/presentational/cards'
 
 describe('Card Components', () => {
@@ -19,6 +18,14 @@ describe('Card Components', () => {
       expect(screen.getByText('min')).toBeInTheDocument()
       // Label should be visible  
       expect(screen.getByText('Walking')).toBeInTheDocument()
+    })
+
+    it('renders the provided localized unit', () => {
+      render(<TimeCard time={12} label="步行" unit="分钟" />)
+
+      expect(screen.getByText('12')).toBeInTheDocument()
+      expect(screen.getByText('分钟')).toBeInTheDocument()
+      expect(screen.queryByText('min')).not.toBeInTheDocument()
     })
 
     it('renders different time values', () => {

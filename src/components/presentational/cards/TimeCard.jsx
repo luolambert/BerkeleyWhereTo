@@ -14,6 +14,7 @@ function TimeCard({
   variant = 'primary', // 'primary' | 'secondary'
   language = 'EN',
   labelKey = 'default',
+  unit = 'min',
 }) {
   const divRef = React.useRef(null);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
@@ -80,7 +81,7 @@ function TimeCard({
       <div className="text-3xl font-bold text-neutral-800 mb-0.5 tracking-tight relative z-10 flex items-baseline justify-center">
         {time}
         <span className="text-sm font-semibold text-neutral-500 ml-1">
-          min
+          {unit}
         </span>
       </div>
       

@@ -31,6 +31,8 @@ export function InteractiveGridPattern({
   const svgRef = useRef(null);
   const rafRef = useRef(null);
   const patternId = useId();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getTarget = () => containerRef?.current || svgRef.current;
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,7 +55,7 @@ export function InteractiveGridPattern({
     if (rafRef.current) return;
     
     rafRef.current = requestAnimationFrame(() => {
-      const target = containerRef?.current || svgRef.current;
+      const target = getTarget();
       if (!target) {
         rafRef.current = null;
         return;
@@ -107,7 +109,7 @@ export function InteractiveGridPattern({
       
       rafRef.current = null;
     });
-  }, [width, height, horizontal, vertical, containerRef]);
+  }, [width, height, horizontal, vertical, getTarget]);
 
   const handleMouseLeave = useCallback(() => {
     const current = currentSquareRef.current;
@@ -125,7 +127,7 @@ export function InteractiveGridPattern({
 
   // Core position processing - shared by touch
   const processPosition = useCallback((clientX, clientY) => {
-    const target = containerRef?.current || svgRef.current;
+    const target = getTarget();
     if (!target) return;
     
     const rect = target.getBoundingClientRect();
@@ -172,7 +174,7 @@ export function InteractiveGridPattern({
         });
       }
     }
-  }, [width, height, horizontal, vertical, containerRef]);
+  }, [width, height, horizontal, vertical, getTarget]);
 
   // Touch handlers
   const handleTouchStart = useCallback(() => {

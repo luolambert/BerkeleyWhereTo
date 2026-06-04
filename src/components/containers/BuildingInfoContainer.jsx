@@ -11,7 +11,7 @@ import BuildingDetail from '../building/BuildingDetail';
  * BuildingInfoContainer - Container component for building information
  * Manages state and view switching (grid/detail)
  */
-function BuildingInfoContainer({ onBack, currentView }) {
+function BuildingInfoContainer({ currentView }) {
   const [selectedBuildingId, setSelectedBuildingId] = useState(null);
   const [language, setLanguage] = useState('EN'); // 'CN' or 'EN'
   const [sortMethod, setSortMethod] = useState('students'); // 'students', 'categorical', 'popularity'
@@ -62,7 +62,7 @@ function BuildingInfoContainer({ onBack, currentView }) {
         {selectedBuilding ? (
           <>
             <div className="absolute top-6 right-6 z-[60]">
-              <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="right" />
+              <LanguageToggle language={language} onToggle={toggleLanguage} variant="floating" direction="left" />
             </div>
             <BuildingDetail 
               key="detail" 

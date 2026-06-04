@@ -16,7 +16,7 @@ const containerStyle = {
  * 
  * @param {boolean} hideLegend - Hide the slope legend (for TypeA where legend is in Drawer)
  */
-function MapContainer({ isLoaded, routePoints, onElevationLoaded, hideLegend = false }) {
+function MapContainer({ isLoaded, routePoints, onElevationLoaded, hideLegend = false, mapLoadError = null }) {
   const { language } = useNavigation();
   
   const {
@@ -27,6 +27,19 @@ function MapContainer({ isLoaded, routePoints, onElevationLoaded, hideLegend = f
     onLoad,
     onUnmount,
   } = useMapRoute(isLoaded, routePoints, onElevationLoaded);
+
+  if (mapLoadError) {
+    return (
+      <div className="w-full h-full bg-red-50 flex items-center justify-center">
+        <div className="text-center p-6 max-w-sm">
+          <p className="text-red-700 text-lg font-semibold">Map unavailable</p>
+          <p className="text-red-600 text-sm mt-2">
+            Google Maps could not be loaded. Check the API key, network, or quota.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (!isLoaded) {
     return (

@@ -9,7 +9,7 @@ import { BuildingSelectionContainer } from '../../components/containers';
 import { EXTERNAL_LINKS } from '../../constants/appConfig';
 import { SCALE_VARIANTS } from '../../constants/animations';
 
-function NavigationPage({ isLoaded }) {
+function NavigationPage({ isLoaded, mapLoadError }) {
   const {
     startLocation,
     endLocation,
@@ -34,11 +34,12 @@ function NavigationPage({ isLoaded }) {
         exit="exit"
     >
         <div className="absolute inset-0 z-0">
-            <MapContainer 
-                isLoaded={isLoaded} 
-                routePoints={routePoints} 
-                onElevationLoaded={setElevationData}
-            />
+                <MapContainer 
+                    isLoaded={isLoaded} 
+                    routePoints={routePoints} 
+                    onElevationLoaded={setElevationData}
+                    mapLoadError={mapLoadError}
+                />
         </div>
 
         <div className="absolute top-4 right-4 z-20 pointer-events-auto">
@@ -63,6 +64,8 @@ function NavigationPage({ isLoaded }) {
                     activeField={activeField}
                     onFieldFocus={toggleField}
                     onReset={resetNavigation}
+                    isMapReady={isLoaded}
+                    mapLoadError={mapLoadError}
                 />
                 
                 <div className="relative min-h-[100px] space-y-2 p-2 -m-2">

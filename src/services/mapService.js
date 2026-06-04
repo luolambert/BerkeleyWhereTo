@@ -30,8 +30,12 @@ export async function calculateTravelTime(origin, destination) {
   }
 
   const walkingDuration = result.rows[0].elements[0].duration.value; // in seconds
-  const walkingMin = Math.round(walkingDuration / 60);
-  const scooterMin = Math.round(walkingMin / SCOOTER_SPEED_FACTOR);
+  const walkingMin = walkingDuration > 0
+    ? Math.max(1, Math.ceil(walkingDuration / 60))
+    : 0;
+  const scooterMin = walkingDuration > 0
+    ? Math.max(1, Math.ceil(walkingMin / SCOOTER_SPEED_FACTOR))
+    : 0;
 
   return {
     walking: walkingMin,

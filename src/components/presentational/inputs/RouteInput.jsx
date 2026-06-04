@@ -10,9 +10,20 @@ import { SLIDE_VARIANTS } from '../../../constants/animations';
 import { PrimaryButton, IconButton } from '../buttons';
 import { RippleButton } from '../../ui/ripple-button';
 
-function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFieldFocus, onReset, compact = false }) {
+function RouteInput({
+  startLocation,
+  endLocation,
+  onCalculate,
+  activeField,
+  onFieldFocus,
+  onReset,
+  compact = false,
+  isMapReady = true,
+  mapLoadError = null,
+}) {
   const { isCalculating, language, toggleLanguage } = useNavigation();
   const { t } = useTranslation(language);
+  const isCalculateDisabled = isCalculating || !isMapReady || !!mapLoadError;
   
   return (
     <motion.div 
@@ -73,14 +84,14 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
 
           <RippleButton
             onClick={onCalculate}
-            disabled={isCalculating}
+            disabled={isCalculateDisabled}
             rippleColor="rgba(255, 255, 255, 0.4)"
             duration="600ms"
             className={`
                 w-full relative group overflow-hidden rounded-full ${compact ? 'p-3 mt-2' : 'p-4 mt-3'}
                 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
                 shadow-lg hover:shadow-primary-500/30
-                ${isCalculating ? 'cursor-not-allowed opacity-80' : ''}
+                ${isCalculateDisabled ? 'cursor-not-allowed opacity-80' : ''}
             `}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 bg-[length:200%_100%] animate-shimmer" />
@@ -102,6 +113,11 @@ function RouteInput({ startLocation, endLocation, onCalculate, activeField, onFi
                 )}
             </span>
           </RippleButton>
+          {mapLoadError && (
+            <p className="text-xs font-medium text-red-600 text-center">
+              Map unavailable. Check the Google Maps API key, network, or quota.
+            </p>
+          )}
         </div>
       </div>
     </motion.div>

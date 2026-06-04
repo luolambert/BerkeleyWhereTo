@@ -2,7 +2,7 @@
 // Full-screen map with bottom Drawer, click-to-toggle header switch
 // Fixed: Drawer overlay, map centering, slope legend in drawer
 
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useNavigation } from '../../context/NavigationContext';
@@ -46,7 +46,7 @@ function SlopeLegend({ language }) {
   );
 }
 
-function NavigationPage({ isLoaded }) {
+function NavigationPage({ isLoaded, mapLoadError }) {
   const navigate = useNavigate();
   const {
     startLocation,
@@ -141,12 +141,13 @@ function NavigationPage({ isLoaded }) {
     >
       {/* Full-screen Map - no paddingBottom, let fitBounds handle centering */}
       <div className="absolute inset-0 z-0">
-        <MapContainer 
-          isLoaded={isLoaded} 
-          routePoints={routePoints} 
-          onElevationLoaded={setElevationData}
-          hideLegend={true}
-        />
+          <MapContainer 
+            isLoaded={isLoaded} 
+            routePoints={routePoints} 
+            onElevationLoaded={setElevationData}
+            hideLegend={true}
+            mapLoadError={mapLoadError}
+          />
       </div>
 
       {/* Bottom Drawer - showOverlay=false to not block building panel */}
@@ -228,6 +229,8 @@ function NavigationPage({ isLoaded }) {
                 onFieldFocus={handleFieldFocus}
                 onReset={resetNavigation}
                 compact={true}
+                isMapReady={isLoaded}
+                mapLoadError={mapLoadError}
               />
             ) : (
               <div>

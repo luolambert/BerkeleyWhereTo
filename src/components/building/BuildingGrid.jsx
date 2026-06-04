@@ -47,7 +47,6 @@ function BuildingGrid({
   // Enter: new content comes from the direction of click (positive = from right)
   // Exit: old content goes in the opposite direction
   const enterDirection = slideDirection;
-  const exitDirection = -slideDirection;
   
   const {
     contentOffsetY,
@@ -99,7 +98,7 @@ function BuildingGrid({
     };
   }, [language]);
 
-  const { title, viewDetails, disclaimer, sortOptions } = textConfig || defaultTextConfig;
+  const { viewDetails, disclaimer, sortOptions } = textConfig || defaultTextConfig;
 
 
   return (

@@ -23,27 +23,51 @@ export default function BuildingList({ onSelectBuilding }) {
   const [imageCounts, setImageCounts] = useState({});
   const [thumbnails, setThumbnails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadImageData = async () => {
       setIsLoading(true);
+      setError("");
       const counts = {};
       const thumbs = {};
       
-      await Promise.all(
-        advancedBuildings.map(async (building) => {
-          const images = await listBuildingImages(building.id);
-          counts[building.id] = images.length;
-          thumbs[building.id] = images.slice(0, 4);
-        })
-      );
-      
-      setImageCounts(counts);
-      setThumbnails(thumbs);
-      setIsLoading(false);
+      try {
+        await Promise.all(
+          advancedBuildings.map(async (building) => {
+            try {
+              const images = await listBuildingImages(building.id);
+              counts[building.id] = images.length;
+              thumbs[building.id] = images.slice(0, 4);
+            } catch {
+              counts[building.id] = 0;
+              thumbs[building.id] = [];
+            }
+          })
+        );
+
+        if (isMounted) {
+          setImageCounts(counts);
+          setThumbnails(thumbs);
+        }
+      } catch {
+        if (isMounted) {
+          setError("Image data could not be loaded.");
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
     };
 
     loadImageData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const stats = useMemo(() => {
@@ -115,6 +139,12 @@ export default function BuildingList({ onSelectBuilding }) {
           {filteredBuildings.length} buildings
         </span>
       </div>
+
+      {error && (
+        <div className="empty-state" style={{ minHeight: "auto", padding: "1rem", color: "#b91c1c" }}>
+          {error}
+        </div>
+      )}
 
       <div className="building-grid">
         {filteredBuildings.map((building) => (

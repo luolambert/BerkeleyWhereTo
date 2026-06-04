@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import mapService, { 
+import { describe, it, expect, vi } from 'vitest'
+import {
+  calculateTravelTime,
   getSlopeColor, 
   processElevationData, 
   createColoredSegments,
@@ -8,6 +9,25 @@ import mapService, {
 import { SLOPE_COLORS } from '../../constants/mapConfig'
 
 describe('mapService', () => {
+  describe('calculateTravelTime', () => {
+    it('returns at least one minute for a positive route duration', async () => {
+      window.google.maps.DistanceMatrixService = vi.fn(function DistanceMatrixService() {
+        this.getDistanceMatrix = vi.fn().mockResolvedValue({
+          rows: [{
+            elements: [{
+              status: 'OK',
+              duration: { value: 10 },
+            }]
+          }]
+        })
+      })
+
+      await expect(
+        calculateTravelTime({ lat: 1, lng: 1 }, { lat: 1, lng: 2 })
+      ).resolves.toEqual({ walking: 1, scooter: 1 })
+    })
+  })
+
   describe('getSlopeColor', () => {
     it('returns flat color for slopes under 3%', () => {
       // Assuming defined thresholds: <3 FLAT, 3-8 MODERATE, >8 STEEP

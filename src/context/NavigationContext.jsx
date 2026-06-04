@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { buildings } from '../data/buildings';
 import { buildings as advancedBuildings } from '../data/advanced_building';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../constants/appConfig';
@@ -40,6 +40,7 @@ export function NavigationProvider({ children, isLoaded }) {
   const [elevationData, setElevationData] = useState(initialState.elevationData);
   const [activeField, setActiveField] = useState(initialState.activeField);
   const [language, setLanguage] = useState(initialState.language);
+  const routeRequestIdRef = useRef(0);
 
   // Toggle language
   const toggleLanguage = useCallback(() => {
@@ -50,7 +51,11 @@ export function NavigationProvider({ children, isLoaded }) {
   const calculateRoute = useCallback(async () => {
     if (!startLocation || !endLocation || !isLoaded) return;
 
+    const requestId = routeRequestIdRef.current + 1;
+    routeRequestIdRef.current = requestId;
+
     setIsCalculating(true);
+    setTravelTimes(null);
     setElevationData(null);
     
     const startBuilding = ALL_BUILDINGS.find(b => b.name === startLocation);
@@ -58,7 +63,10 @@ export function NavigationProvider({ children, isLoaded }) {
 
     if (!startBuilding || !endBuilding) {
       console.error('Invalid building selection');
-      setIsCalculating(false);
+      if (routeRequestIdRef.current === requestId) {
+        setIsCalculating(false);
+        setTravelTimes(null);
+      }
       return;
     }
 
@@ -70,11 +78,18 @@ export function NavigationProvider({ children, isLoaded }) {
         { lat: startBuilding.lat, lng: startBuilding.lng },
         { lat: endBuilding.lat, lng: endBuilding.lng }
       );
-      setTravelTimes(travelTime);
+      if (routeRequestIdRef.current === requestId) {
+        setTravelTimes(travelTime);
+      }
     } catch (error) {
       console.error('Route calculation failed:', error.message);
+      if (routeRequestIdRef.current === requestId) {
+        setTravelTimes(null);
+      }
     } finally {
-      setIsCalculating(false);
+      if (routeRequestIdRef.current === requestId) {
+        setIsCalculating(false);
+      }
     }
   }, [startLocation, endLocation, isLoaded]);
 

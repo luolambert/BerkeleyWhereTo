@@ -1,3 +1,5 @@
+import buildingImages from "../data/buildingImages.json";
+
 const IMAGES_BASE_PATH = "/images/buildings";
 
 export function getImageUrl(buildingId, filename = "1.jpg") {
@@ -15,15 +17,14 @@ export async function listBuildingImages(buildingId) {
       const response = await fetch(`/api/images?buildingId=${buildingId}`);
       if (response.ok) {
         const data = await response.json();
-        return data.images.map((filename) => getImageUrl(buildingId, filename));
+        return (data.images || []).map((filename) => getImageUrl(buildingId, filename));
       }
-    } catch (e) {
+    } catch {
       console.warn("[StorageService] API not available, using static config");
     }
   }
-  
-  const buildingImages = await import("../data/buildingImages.json");
-  const files = buildingImages.default?.[buildingId] || buildingImages[buildingId] || ["1.jpg"];
+
+  const files = buildingImages[buildingId] || [];
   return files.map((filename) => getImageUrl(buildingId, filename));
 }
 

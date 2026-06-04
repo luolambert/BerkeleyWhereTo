@@ -4,7 +4,6 @@ import {
   listBuildingImages,
   uploadImage,
   deleteImage,
-  getImageUrl,
 } from "../../services/storageService";
 
 const COMPRESSION_OPTIONS = {
@@ -51,18 +50,26 @@ export default function ImageManager({ building, onBack }) {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
+  const [error, setError] = useState("");
   const [dragOver, setDragOver] = useState(false);
 
   const loadImages = useCallback(async () => {
     setLoading(true);
-    const urls = await listBuildingImages(building.id);
-    setImages(
-      urls.map((url) => ({
-        url,
-        filename: url.split("/").pop().split("?")[0],
-      }))
-    );
-    setLoading(false);
+    setError("");
+    try {
+      const urls = await listBuildingImages(building.id);
+      setImages(
+        urls.map((url) => ({
+          url,
+          filename: url.split("/").pop().split("?")[0],
+        }))
+      );
+    } catch {
+      setImages([]);
+      setError("Images could not be loaded.");
+    } finally {
+      setLoading(false);
+    }
   }, [building.id]);
 
   useEffect(() => {
@@ -73,41 +80,55 @@ export default function ImageManager({ building, onBack }) {
     if (!files.length) return;
     
     setUploading(true);
-    
-    const currentImages = await listBuildingImages(building.id);
-    const existingNumbers = currentImages
-      .map((url) => {
-        const filename = url.split("/").pop().split("?")[0];
-        return parseInt(filename.split(".")[0], 10);
-      })
-      .filter((n) => !isNaN(n));
-    
-    let nextNumber = existingNumbers.length > 0 ? Math.max(...existingNumbers) + 1 : 1;
-    
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const ext = file.name.split(".").pop().toLowerCase();
-      if (!["jpg", "jpeg", "png", "webp"].includes(ext)) continue;
+    setError("");
+
+    try {
+      const currentImages = await listBuildingImages(building.id);
+      const existingNumbers = currentImages
+        .map((url) => {
+          const filename = url.split("/").pop().split("?")[0];
+          return parseInt(filename.split(".")[0], 10);
+        })
+        .filter((n) => !isNaN(n));
       
-      setUploadProgress(`Compressing ${i + 1}/${files.length}...`);
-      const compressedBlob = await compressImage(file);
+      let nextNumber = existingNumbers.length > 0 ? Math.max(...existingNumbers) + 1 : 1;
       
-      const filename = `${nextNumber}.jpg`;
-      setUploadProgress(`Uploading ${i + 1}/${files.length}...`);
-      await uploadImage(building.id, compressedBlob, filename);
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const ext = file.name.split(".").pop().toLowerCase();
+        if (!["jpg", "jpeg", "png", "webp"].includes(ext)) continue;
+        
+        setUploadProgress(`Compressing ${i + 1}/${files.length}...`);
+        const compressedBlob = await compressImage(file);
+        
+        const filename = `${nextNumber}.jpg`;
+        setUploadProgress(`Uploading ${i + 1}/${files.length}...`);
+        const uploadedUrl = await uploadImage(building.id, compressedBlob, filename);
+        if (!uploadedUrl) {
+          throw new Error(`Upload failed for ${file.name}`);
+        }
+        
+        nextNumber++;
+      }
       
-      nextNumber++;
+      await loadImages();
+    } catch (err) {
+      setError(err.message || "Upload failed.");
+    } finally {
+      setUploadProgress("");
+      setUploading(false);
     }
-    
-    setUploadProgress("");
-    await loadImages();
-    setUploading(false);
   };
 
   const handleDelete = async (filename) => {
     if (!confirm(`Delete ${filename}?`)) return;
-    
-    await deleteImage(building.id, filename);
+
+    setError("");
+    const result = await deleteImage(building.id, filename);
+    if (!result.success) {
+      setError(result.error || "Delete failed.");
+      return;
+    }
     await loadImages();
   };
 
@@ -142,6 +163,12 @@ export default function ImageManager({ building, onBack }) {
           </div>
         </div>
       </div>
+
+      {error && (
+        <div className="empty-state" style={{ minHeight: "auto", padding: "1rem", color: "#b91c1c" }}>
+          {error}
+        </div>
+      )}
 
       <div
         className={`upload-zone ${dragOver ? "drag-over" : ""}`}

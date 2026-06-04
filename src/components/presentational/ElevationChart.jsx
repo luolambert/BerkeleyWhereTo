@@ -5,6 +5,18 @@ import { AnimatedText } from '../common';
 import { useNavigation } from '../../context/NavigationContext';
 import useTranslation from '../../hooks/useTranslation';
 
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="glass-pro p-2.5 text-xs shadow-glass-md border border-white/60">
+        <p className="font-bold text-indigo-600 mb-0.5">{`${payload[0].value.toFixed(1)} m`}</p>
+        <p className="text-neutral-500 font-medium">{`${label.toFixed(0)} m from start`}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
 const ElevationChart = ({ data }) => {
   const { language } = useNavigation();
   const { t } = useTranslation(language);
@@ -21,19 +33,6 @@ const ElevationChart = ({ data }) => {
     const diff = data[i].elevation - data[i-1].elevation;
     if (diff > 0) totalClimb += diff;
   }
-
-  // Custom Tooltip
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="glass-pro p-2.5 text-xs shadow-glass-md border border-white/60">
-          <p className="font-bold text-indigo-600 mb-0.5">{`${payload[0].value.toFixed(1)} m`}</p>
-          <p className="text-neutral-500 font-medium">{`${label.toFixed(0)} m from start`}</p>
-        </div>
-      );
-    }
-    return null;
-  };
 
   return (
     <motion.div 

@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'test-results', 'playwright-report', 'coverage']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -15,7 +15,10 @@ export default defineConfig([
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -23,7 +26,17 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['error', {
+        varsIgnorePattern: '^(motion|[A-Z_])',
+        argsIgnorePattern: '^[A-Z_]',
+      }],
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
+  {
+    files: ['src/context/**/*.{js,jsx}', 'src/tests/**/*.{js,jsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])

@@ -1,13 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import useTranslation from '../../hooks/useTranslation'
-import { SUPPORTED_LANGUAGES } from '../../constants/appConfig'
-
-// Mock locale files
-const mockDict = {
-  CN: { hello: '你好', nested: { world: '世界' } },
-  EN: { hello: 'Hello', nested: { world: 'World' } },
-}
 
 describe('useTranslation', () => {
   it('provides translations for selected language', () => {

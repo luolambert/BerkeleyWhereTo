@@ -117,6 +117,83 @@ describe('NavigationContext', () => {
     expect(result.current.travelTimes).toBeNull()
   })
 
+  it('clears stale travel times when a later route calculation fails', async () => {
+    const { result } = renderHook(() => useNavigation(), { wrapper })
+
+    act(() => {
+      result.current.setStartLocation('Sather Gate')
+      result.current.setEndLocation('Moffitt Library')
+    })
+
+    vi.mocked(calculateTravelTime).mockResolvedValueOnce({
+      walking: 10,
+      scooter: 3
+    })
+
+    await act(async () => {
+      await result.current.calculateRoute()
+    })
+
+    expect(result.current.travelTimes).toEqual({ walking: 10, scooter: 3 })
+
+    vi.mocked(calculateTravelTime).mockRejectedValueOnce(new Error('API Error'))
+
+    await act(async () => {
+      await result.current.calculateRoute()
+    })
+
+    expect(result.current.isCalculating).toBe(false)
+    expect(result.current.travelTimes).toBeNull()
+  })
+
+  it('ignores stale travel time results from older route calculations', async () => {
+    const { result } = renderHook(() => useNavigation(), { wrapper })
+    let resolveFirst
+    let resolveSecond
+
+    vi.mocked(calculateTravelTime)
+      .mockImplementationOnce(() => new Promise((resolve) => {
+        resolveFirst = resolve
+      }))
+      .mockImplementationOnce(() => new Promise((resolve) => {
+        resolveSecond = resolve
+      }))
+
+    act(() => {
+      result.current.setStartLocation('Sather Gate')
+      result.current.setEndLocation('Moffitt Library')
+    })
+
+    let firstCalculation
+    await act(async () => {
+      firstCalculation = result.current.calculateRoute()
+    })
+
+    act(() => {
+      result.current.setStartLocation('Doe Memorial Library')
+      result.current.setEndLocation('Wheeler Hall')
+    })
+
+    let secondCalculation
+    await act(async () => {
+      secondCalculation = result.current.calculateRoute()
+    })
+
+    await act(async () => {
+      resolveSecond({ walking: 4, scooter: 1 })
+      await secondCalculation
+    })
+
+    expect(result.current.travelTimes).toEqual({ walking: 4, scooter: 1 })
+
+    await act(async () => {
+      resolveFirst({ walking: 20, scooter: 5 })
+      await firstCalculation
+    })
+
+    expect(result.current.travelTimes).toEqual({ walking: 4, scooter: 1 })
+  })
+
   it('resets navigation state', () => {
     const { result } = renderHook(() => useNavigation(), { wrapper })
     

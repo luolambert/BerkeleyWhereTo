@@ -23,7 +23,7 @@ dist
 *.suo
 *.sw?
 
-# Antigravity / Agent Artifacts
-DevelopPlan.md
-.agent
-.shared
+# Agent Artifacts
+*.md
+/.claude/
+/.agents/

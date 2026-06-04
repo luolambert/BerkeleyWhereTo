@@ -35,7 +35,7 @@ export const TypewriterEffect = ({
         }
       );
     }
-  }, [isInView]);
+  }, [animate, isInView]);
 
   const renderWords = () => {
     return (
@@ -178,7 +178,6 @@ export const TypewriterEffectSmooth = ({
               // Generate keyframe times for blinking during typing, then 3 more blinks, then fade out
               const typingBlinkCount = Math.ceil(totalAnimationTime / blinkDuration);
               const totalBlinks = typingBlinkCount + blinkCount;
-              const totalKeyframes = totalBlinks * 2 + 1;
               const times = [];
               for (let i = 0; i <= totalBlinks * 2; i++) {
                 times.push(i / (totalBlinks * 2));

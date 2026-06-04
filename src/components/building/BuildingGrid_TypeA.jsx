@@ -187,33 +187,6 @@ function BuildingGrid_TypeA({
                     />
                   </motion.div>
                   
-                  {/* Go Header - pops up below Know Header */}
-                  <AnimatePresence>
-                    {showGoHeader && (
-                      <motion.div
-                        className="absolute top-full left-1/2 -translate-x-1/2 -mt-[4mm] z-50"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.12, ease: 'easeOut' }}
-                      >
-                        <div 
-                          className="px-4 py-3 bg-white rounded-2xl cursor-pointer 
-                                     hover:bg-neutral-50 transition-colors border border-neutral-200
-                                     w-fit"
-                          style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08)' }}
-                          onClick={handleNavigateToGo}
-                        >
-                          <Header 
-                            currentView="navigation" 
-                            compact={true}
-                            hideSubtitle={false}
-                            isHovering={false}
-                          />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
                 
                 {/* Row 2: Subtitle - enlarged 1.1x to 15.4px, raised 4mm */}
@@ -299,6 +272,33 @@ function BuildingGrid_TypeA({
                 </div>
               </motion.div>
             )}
+
+            <AnimatePresence>
+              {showGoHeader && (
+                <motion.div
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.12, ease: 'easeOut' }}
+                >
+                  <div 
+                    className="px-4 py-3 bg-white rounded-2xl cursor-pointer 
+                               hover:bg-neutral-50 transition-colors border border-neutral-200
+                               w-fit"
+                    style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08)' }}
+                    onClick={handleNavigateToGo}
+                  >
+                    <Header 
+                      currentView="navigation" 
+                      compact={true}
+                      hideSubtitle={false}
+                      isHovering={false}
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
 

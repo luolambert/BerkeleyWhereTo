@@ -4,9 +4,10 @@ export const AnimatedShinyText = ({
   children,
   className,
   shimmerWidth = 100,
+  as: Component = "span",
 }) => {
   return (
-    <p
+    <Component
       style={{
         "--shimmer-width": `${shimmerWidth}px`,
       }}
@@ -20,6 +21,6 @@ export const AnimatedShinyText = ({
       )}
     >
       {children}
-    </p>
+    </Component>
   );
 };

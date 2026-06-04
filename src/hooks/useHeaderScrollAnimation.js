@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useScroll, useTransform } from 'framer-motion';
 import { ANIMATION } from '../constants/appConfig';
 

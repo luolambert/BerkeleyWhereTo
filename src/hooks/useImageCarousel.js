@@ -20,7 +20,7 @@ function useImageCarousel(images, intervalMs = 5000) {
     }, intervalMs);
 
     return () => clearInterval(interval);
-  }, [images?.length, intervalMs]);
+  }, [images, intervalMs]);
 
   // Preload next image for smooth transitions
   useEffect(() => {

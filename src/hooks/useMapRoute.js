@@ -28,6 +28,7 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
   
   const directionsRendererRef = useRef(null);
   const polylinesRef = useRef([]);
+  const routeRequestIdRef = useRef(0);
 
   // Map load/unload callbacks
   const onLoad = useCallback((mapInstance) => {
@@ -51,7 +52,11 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
     let isCancelled = false;
 
     if (isLoaded && routePoints?.start && routePoints?.end) {
+      const requestId = routeRequestIdRef.current + 1;
+      routeRequestIdRef.current = requestId;
       setError(null);
+      setDirections(null);
+      setColoredSegments([]);
       if (onElevationLoaded) onElevationLoaded(null);
 
       const directionsService = new window.google.maps.DirectionsService();
@@ -64,7 +69,7 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
           travelMode: window.google.maps.TravelMode.WALKING,
         },
         (result, status) => {
-          if (isCancelled) return;
+          if (isCancelled || routeRequestIdRef.current !== requestId) return;
 
           if (status === window.google.maps.DirectionsStatus.OK) {
             const route = result.routes[0];
@@ -78,6 +83,7 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
               { path, samples: ELEVATION_SAMPLES },
               (elevationResults, elevationStatus) => {
                 if (isCancelled) return;
+                if (routeRequestIdRef.current !== requestId) return;
 
                 let newColoredSegments = [];
                 let newElevationData = null;
@@ -98,11 +104,14 @@ function useMapRoute(isLoaded, routePoints, onElevationLoaded) {
           } else {
             console.error(`Directions request failed: ${status}`);
             setDirections(null);
+            setColoredSegments([]);
             setError(`Directions failed: ${status}`);
+            if (onElevationLoaded) onElevationLoaded(null);
           }
         }
       );
     } else {
+      routeRequestIdRef.current += 1;
       // Reset state when no route
       setDirections(null);
       setError(null);

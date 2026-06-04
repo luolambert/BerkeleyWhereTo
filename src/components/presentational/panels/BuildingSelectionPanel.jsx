@@ -56,8 +56,6 @@ const BuildingSelectionPanel = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  const modeDirection = modeSlideDirection === 'left' ? -1 : 1;
-
   return (
     <GlassPanel variant="elevated" padding="none" className="h-full w-full flex flex-col overflow-hidden rounded-3xl">
       <div className={cn(

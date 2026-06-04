@@ -3,18 +3,17 @@
  * Handles preloading of images and other resources for better UX
  */
 
-import { advancedBuildings } from '../data';
-import { listBuildingImages } from './storageService';
+import buildingImages from '../data/buildingImages.json';
+import { getImageUrl } from './storageService';
 
 /**
  * Get all unique image URLs from local storage
  * @returns {Promise<string[]>} Array of image URLs
  */
 export async function getAllImageUrls() {
-  const imageLists = await Promise.all(
-    advancedBuildings.map((building) => listBuildingImages(building.id))
-  );
-  const urls = imageLists.flat();
+  const urls = Object.entries(buildingImages).flatMap(([buildingId, filenames]) => (
+    filenames.map((filename) => getImageUrl(buildingId, filename))
+  ));
   return [...new Set(urls)];
 }
 
@@ -48,7 +47,7 @@ export async function preloadImageWithRetry(url, maxRetries = 3, retryDelay = 10
       const loadUrl = attempts > 1 ? `${url}${url.includes('?') ? '&' : '?'}retry=${Date.now()}` : url;
       await preloadImage(loadUrl);
       return { success: true, url, attempts };
-    } catch (error) {
+    } catch {
       if (attempts < maxRetries) {
         await new Promise(resolve => setTimeout(resolve, retryDelay));
       }

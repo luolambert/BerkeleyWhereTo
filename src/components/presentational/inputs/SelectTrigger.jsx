@@ -27,7 +27,7 @@ function SelectTrigger({
   className = '',
 }) {
   return (
-    <div className="flex flex-col space-y-2">
+    <div className={`flex flex-col space-y-2 ${className}`}>
       <label className="text-neutral-600 text-sm font-medium flex items-center gap-2">
         <AnimatedText textKey={`label-${label}-${language}`}>
           {label}
