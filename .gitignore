@@ -27,3 +27,9 @@ dist
 *.md
 /.claude/
 /.agents/
+
+# Local rebuildable project-memory cache.
+.memory-cache/
+
+# Isolated migration rollback data; never index or commit.
+.memory-migration-backups/
